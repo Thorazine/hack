@@ -1,0 +1,13 @@
+{
+    "name": "thorazine/hack",
+    "description": "A non-intrusive packaged CMS",
+    "type": "project",
+    "require": {
+        "laravelcollective/html": "^5.4",
+        "intervention/image": "^2.3",
+        "cartalyst/sentinel": "^2.0",
+        "jenssegers/agent": "^2.5",
+        "barryvdh/laravel-debugbar": "^2.3"
+    },
+    "minimum-stability": "dev"
+}
