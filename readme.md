@@ -2,6 +2,8 @@
 
 - SSL (on every server that is not localhost)
 - Mail capabilities
+- Npm
+- Laravel 5.3 or higher install, preferably a clean install
 
 
 ## Installing Hack
@@ -46,6 +48,8 @@ composer require thorazine/hack
 Run
 ```
 php artisan vendor:publish --tag=hack --force
+npm install
+gulp
 ```
 
 We use tags to control the cache. So set .env CACHE_DRIVER to array, memcached or redis. File will not do.
