@@ -17,11 +17,11 @@ composer require thorazine/hack
 
 	Collective\Html\HtmlServiceProvider::class,
     Barryvdh\Debugbar\ServiceProvider::class,
-	App\Providers\HackServiceProvider::class,
-    App\Providers\BuilderServiceProvider::class,
-    App\Providers\CmsServiceProvider::class,
-    App\Providers\FrontServiceProvider::class,
-    App\Providers\ValidationServiceProvider::class,
+	Thorazine\Hack\HackServiceProvider::class,
+    Thorazine\Hack\Providers\BuilderServiceProvider::class,
+    Thorazine\Hack\Providers\CmsServiceProvider::class,
+    Thorazine\Hack\Providers\FrontServiceProvider::class,
+    Thorazine\Hack\Providers\ValidationServiceProvider::class,
     Intervention\Image\ImageServiceProvider::class,
     Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
     Jenssegers\Agent\AgentServiceProvider::class,
@@ -35,9 +35,9 @@ composer require thorazine/hack
     'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
     'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
     'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
-    'Builder' => App\Facades\BuilderFacade::class,
-    'Cms' => App\Facades\CmsFacade::class,
-    'Front' => App\Facades\FrontFacade::class,
+    'Builder' => Thorazine\App\Facades\BuilderFacade::class,
+    'Cms' => Thorazine\App\Facades\CmsFacade::class,
+    'Front' => Thorazine\App\Facades\FrontFacade::class,
 
 #Add to the App\Http\Kernel $routeMiddleware:
 

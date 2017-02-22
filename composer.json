@@ -9,5 +9,10 @@
         "jenssegers/agent": "^2.5",
         "barryvdh/laravel-debugbar": "^2.3"
     },
+    "autoload": {
+        "psr-4": {
+            "Thorazine\\Hack\\": "src/"
+        }
+    },
     "minimum-stability": "dev"
 }
