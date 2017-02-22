@@ -1,0 +1,30 @@
+.nested {
+	margin-top: 20px;
+	padding: 0px;
+
+	li {
+		list-style: none;
+	}
+
+	.item {
+		background-color: $color-secondary;
+		margin-bottom: 5px;
+		color: $color-font-secondary-default;
+		padding: 13px;
+		position: relative;
+		border: 1px solid $color-tertiary;
+		border-radius: 5px;
+		cursor: move;
+	}
+
+	.options {
+		position: absolute;
+		right: 10px;
+		top: 7px;
+	}
+
+	.mjs-nestedSortable-error {
+		background-color: red;
+	}
+
+}

@@ -1,0 +1,107 @@
+.grid {
+
+	box-sizing: content-box;
+	clear: both;
+	min-height: 1px;
+
+	&:after { 
+		content: " ";
+		display: block; 
+		height: 0; 
+		clear: both;
+	}
+
+	$sizes: (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50);
+
+	// create inner padding on the blocks from the border
+	@each $size in $sizes {
+
+		&.space-#{$size} {
+			margin-left: -#{$size}px;
+			margin-right: -#{$size}px;
+
+			div[class^="grid-"] {
+				padding: 0 #{$size}px;
+			}
+		}
+
+		&.vspace-#{$size} {
+			margin-bottom: -#{$size}px;
+		}
+	}
+
+	div[class^="grid-"] {
+		box-sizing: border-box;
+		min-height: 1px;
+		float: left;
+	}
+
+	.grid-12 {
+		width: 100%;
+	}
+
+	.grid-8 {
+		width: 66.666666%;
+	}
+
+	.grid-6 {
+		width: 50%;
+	}
+
+	.grid-4 {
+		width: 33.333333%;
+	}
+
+	.grid-3 {
+		width: 25%;
+	}
+
+	.grid-2 {
+		width: 16.666666%;
+	}
+
+	.grid-1 {
+		width: 8.333333%;
+	}
+
+	.grid-9 {
+		width: 75%;
+	}
+
+	.grid-51 {
+		width: 20%;
+	}
+
+	.grid-52 {
+		width: 40%;
+	}
+
+	.grid-53 {
+		width: 60%;
+	}
+
+	.grid-54 {
+		width: 80%;
+	}
+
+}
+
+/**
+ * A grid
+ *
+
+<div class="grid">
+	<div class="grid-4"></div>
+	<div class="grid-8"></div>
+</div>
+
+
+ * 
+ * a grid with padding from the container wall and 10px space in each block
+
+<div class="grid space-10">
+	<div class="grid-6"></div>
+	<div class="grid-6"></div>
+</div>
+
+*/
