@@ -53,10 +53,11 @@ composer require thorazine/hack
 Run
 ```
 php artisan vendor:publish --tag=hack --force
+php artisan migrate
 npm install
 gulp
 ```
 
-We use tags to control the cache. So set .env CACHE_DRIVER to array, memcached or redis. File will not do.
+I use tags to control the cache. So set .env CACHE_DRIVER to array, memcached or redis. File will not do.
 
-Make sure you have a mail driver setup. If you don't have that option just use "log". But be sure to make it functional on the production server as we send out mails to confirm the location if needed.
+Make sure you have a mail driver setup. If you don't have that option just use "log". But be sure to make it functional on the production server as I send out mails to confirm the location if needed.

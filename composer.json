@@ -1,7 +1,9 @@
 {
     "name": "thorazine/hack",
-    "description": "A non-intrusive packaged CMS",
+    "description": "A non-intrusive packaged CMS built on Laravel",
+    "keywords": ["laravel", "hack", "cms"],
     "type": "project",
+    "license": "MIT",
     "require": {
         "laravel/framework": "5.3.*|^5.4.14",
         "laravelcollective/html": "5.*",
