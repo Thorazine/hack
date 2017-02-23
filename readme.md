@@ -1,9 +1,14 @@
+## Introduction
+This is a personal content management system I use for clients.
+Feel free to try it, but don't expect support. 
+
+
 ## Requirements
 
 - SSL (on every server that is not localhost)
 - Mail capabilities
 - Npm
-- Laravel 5.3 or higher install, preferably a clean install
+- Laravel 5.4.14 or higher install, preferably a clean install
 
 
 ## Installing Hack
