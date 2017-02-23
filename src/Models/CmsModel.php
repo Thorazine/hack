@@ -21,7 +21,7 @@ class CmsModel extends Model
     /**
      * Constructor
      */
-    public function __construct($child = false)
+    public function __construct($child)
     {
         // we need to force the parent construct
         parent::__construct();

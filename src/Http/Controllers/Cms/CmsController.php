@@ -30,10 +30,8 @@ class CmsController extends Controller
     protected $child;
 
 
-    public function __construct($child = false)
+    public function __construct($child)
     {
-        $this->types = @$this->model->types;
-        $this->child = $child;
         $this->slug = false;
         $this->model = false;
 
