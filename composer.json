@@ -3,8 +3,7 @@
     "description": "A non-intrusive packaged CMS",
     "type": "project",
     "require": {
-        "illuminate/support": "5.3.*|5.4.*",
-        "laravelcollective/html": "^5.*",
+        "laravelcollective/html": "5.*",
         "intervention/image": "^2.3",
         "cartalyst/sentinel": "^2.0",
         "jenssegers/agent": "^2.5",
