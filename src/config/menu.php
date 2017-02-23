@@ -22,10 +22,6 @@ return [
 				'label' => 'cms.module.pages',
 			],
 			[
-				'route' => 'cms.restaurant_menus.index',
-				'label' => 'cms.module.restaurant_menus',
-			],
-			[
 				'route' => 'cms.menus.index',
 				'label' => 'cms.module.menus',
 			],

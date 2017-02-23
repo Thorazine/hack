@@ -32,8 +32,8 @@ class CmsController extends Controller
 
     public function __construct($child)
     {
-        $this->slug = false;
-        $this->model = false;
+        $this->types = $this->model->types;
+        $this->child = $child;
 
         view()->share([
             'slug' => $this->slug,
