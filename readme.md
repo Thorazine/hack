@@ -18,7 +18,7 @@ Run
 composer require thorazine/hack
 ```
 
-#Add to config/app.providers:
+# Add to config/app.providers:
 
     	Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
@@ -32,7 +32,7 @@ composer require thorazine/hack
         Jenssegers\Agent\AgentServiceProvider::class,
         Thorazine\Hack\Providers\RouteServiceProvider::class,
 
-#Add to config/app.aliases:
+# Add to config/app.aliases:
 
     	'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
@@ -45,7 +45,7 @@ composer require thorazine/hack
         'Cms' => Thorazine\Hack\Facades\CmsFacade::class,
         'Front' => Thorazine\Hack\Facades\FrontFacade::class,
 
-#Add to the App\Http\Kernel $routeMiddleware:
+# Add to the App\Http\Kernel $routeMiddleware:
 
         'sentinel.auth' => \Thorazine\Hack\Http\Middleware\SentinelAuthentication::class,
         'site' => \Thorazine\Hack\Http\Middleware\SiteRedirect::class,
