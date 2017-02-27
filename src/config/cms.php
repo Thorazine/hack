@@ -15,16 +15,16 @@ return [
 	 */
 	'modules' => [
 		'text' => [
-		 	'namespace' => 'App\Models\Builders\Text',
+		 	'namespace' => 'Thorazine\Hack\Models\Builders\Text',
 		 	'label' => 'Text',
 	 	],
 		'image' => [
-		 	'namespace' => 'App\Models\Builders\Image',
+		 	'namespace' => 'Thorazine\Hack\Models\Builders\Image',
 		 	'label' => 'Image',
-		 	'builder' => 'App\Classes\Builders\Image',
+		 	'builder' => 'Thorazine\Hack\Classes\Builders\Image',
 	 	],
 		'wysiwyg' => [
-		 	'namespace' => 'App\Models\Builders\Wysiwyg',
+		 	'namespace' => 'Thorazine\Hack\Models\Builders\Wysiwyg',
 		 	'label' => 'Wysiwyg',
 		 	'values' => [
 		 		'plain',
@@ -32,13 +32,13 @@ return [
 		 	],
 	 	],
 		'menu' => [
-		 	'namespace' => 'App\Models\Builders\Menu',
+		 	'namespace' => 'Thorazine\Hack\Models\Builders\Menu',
 		 	'label' => 'Menu',
 	 	],
 		'form' => [
-		 	'namespace' => 'App\Models\Builders\Form',
+		 	'namespace' => 'Thorazine\Hack\Models\Builders\Form',
 		 	'label' => 'Form',
-		 	'builder' => 'App\Classes\Builders\Form',
+		 	'builder' => 'Thorazine\Hack\Classes\Builders\Form',
 	 	],
 	],
 	
@@ -48,7 +48,7 @@ return [
 	 */
 	'forms' => [
 		'on_complete_functions' => [
-			// 'App\Classes\Email@mailChimp' => 'Add to MailChimp',
+			// 'Thorazine\Hack\Classes\Email@mailChimp' => 'Add to MailChimp',
 		],
 
 		'types' => [

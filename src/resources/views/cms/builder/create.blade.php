@@ -3,7 +3,7 @@
 
 @foreach($types as $key => $type)
 	@if($typeTrue($type, 'create'))
-		@include('cms.input.create.'.$type['type'])
+		@include('cms.positions.create.'.((@$type['position']) ? $type['position'] : 'main'))
 	@endif
 @endforeach
 
