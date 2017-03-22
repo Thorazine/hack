@@ -5,9 +5,10 @@ Feel free to try it, but don't expect support.
 
 ## Included in package
 
-- Multi website
-- Multi (all) language front end
-- Multi (all) language CMS (language files can be added)
+- Multi site
+- Multi domain
+- Multi language front end
+- Multi language CMS (language files can be added)
 - 2 factor authentication based on known previous locations with custom radius
 - Fully customisable rights authentication system (Sentinel)
 - Persistant login with session control
