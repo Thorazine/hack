@@ -77,11 +77,14 @@ class Gallery extends CmsModel
     }
 
 
+    /**
+     * Add the url with  to the db output
+     */
     public function getUrlAttribute()
     {
         if($this->filename && $this->extension) {
             $gallery = new Gallery;
-            return asset(Storage::disk($gallery->disk)->url('cropped/original/'.$this->filename.'.'.$this->extension));
+            return asset(Storage::disk($gallery->disk)->url('cropped/original/'.$this->filename.'.'.$this->extension)).'?cache='.crc32($this->updated_at);
         }
         return null;
     }

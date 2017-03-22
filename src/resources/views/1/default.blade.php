@@ -6,4 +6,5 @@
 	This is a default template. Below you'll see the output from the $page variable. All you need is withing the $page variable.
 
 	{{ dump($page) }}
+
 @stop

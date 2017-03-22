@@ -3,10 +3,29 @@ This is a personal content management system I use for clients.
 Feel free to try it, but don't expect support. 
 
 
+## Included in package
+
+- Multi website
+- Multi (all) language front end
+- Multi (all) language CMS (language files can be added)
+- 2 factor authentication based on known previous locations with custom radius
+- Fully customisable rights authentication system (Sentinel)
+- Persistant login with session control
+- Advanced/automatic browser cache
+- Full cache (memcached/redis) on front end requests 
+- Cache flushed by tags, minimizing flushed items 
+- Gallery with aspect ratio cropper (customisable per input)
+- Customisable wysiwygs per input
+- Easy to extend with your own modules
+- Installable in excisting project
+- Front end SASS tools
+- Automatic response as JSON for API calls
+
+
 ## Requirements
 
 - SSL (on every server that is not localhost)
-- Mail capabilities
+- Mail capabilities (env settings)
 - Npm
 - Laravel 5.4.14 or higher install, preferably a clean install
 
@@ -59,6 +78,7 @@ npm install
 gulp
 ```
 
-I use tags to control the cache. So set .env CACHE_DRIVER to array, memcached or redis. File will not do.
+# Important
+We use tags to control the cache. So set .env CACHE_DRIVER to array, memcached or redis. File will not do.
 
-Make sure you have a mail driver setup. If you don't have that option just use "log". But be sure to make it functional on the production server as I send out mails to confirm the location if needed.
+Make sure you have a mail driver setup. If you don't have that option just use "log" although I recommend [Mailhog](https://github.com/mailhog/MailHog). But be sure to make it functional on the production server as we send out mails to confirm the location if needed.
