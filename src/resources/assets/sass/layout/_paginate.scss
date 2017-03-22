@@ -1,0 +1,41 @@
+.paginate {
+	
+	&.paginate-bottom {
+		position: fixed;
+		bottom: 0px;
+		right: 0px;
+		height: 35px;
+		width: calc(100% - 235px);
+		border-top: 1px solid #CCC;
+		background-color: #FFF;
+		overflow: hidden;
+
+		.pagination {
+			margin: 0px;
+
+			li {
+				a, span {
+					border: none;
+					border-radius: 0px;
+					color: #d19b3d;
+					height: 35px;
+					width: 35px;
+					border-right: 1px solid #CCC;
+					background-color: transparent;
+					text-align: center;
+				}
+
+				a {
+					cursor: pointer;
+				}
+
+				&.active {
+					span {
+						color: #CCC;
+					}
+				}
+			}
+		}
+	}
+
+}
