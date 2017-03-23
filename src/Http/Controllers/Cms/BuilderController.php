@@ -3,9 +3,10 @@
 namespace Thorazine\Hack\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
-use Thorazine\Hack\Http\Requests\ModuleUpdate;
-use Thorazine\Hack\Http\Requests\ModuleStore;
+use Thorazine\Hack\Http\Requests\BuilderUpdate;
+use Thorazine\Hack\Http\Requests\BuilderStore;
 use Illuminate\Http\Request;
+use Thorazine\Hack\Traits\ModuleSearch;
 use Thorazine\Hack\Traits\ModuleHelper;
 use Thorazine\Hack\Models\Templateable;
 use Thorazine\Hack\Models\Template;
@@ -18,9 +19,11 @@ use Cms;
 use Log;
 use DB;
 
-class BuilderController extends CmsController
+class BuilderController
 {
+    use ModuleHelper;
 
+    use ModuleSearch;
 
     public function __construct(Template $model, Templateable $templateable, Page $page, Pageable $pageable)
     {
@@ -32,13 +35,36 @@ class BuilderController extends CmsController
 
         $this->model->types = $templateable->types;
 
-        parent::__construct($this);
+        // parent::__construct($this);
 
         // set the create route
+        $this->types = $this->model->types;
+
         view()->share([
             'hasOrder' => true,
             'createRoute' => 'cms.'.$this->slug.'.module',
-        ]);        
+            'slug' => $this->slug,
+            'types' => $this->types,
+            'model' => $this->model,
+            'hasPermission' => function($action) {
+                return Cms::hasPermission(Cms::siteId().'.cms.'.$this->slug.'.'.$action);
+            },
+            'route' => function($action) {
+                return 'cms.'.$this->slug.'.'.$action;
+            },
+            'typeTrue' => function($type, $field, $default = true) {
+                // if not excists, true
+                if(array_key_exists($field, $type)) {
+                    if(! $type[$field]) {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                }
+                return $default;
+            },
+        ]);     
     }
 
 
@@ -124,7 +150,7 @@ class BuilderController extends CmsController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ModuleStore $request)
+    public function store(BuilderStore $request)
     {
 
         // Start insert
@@ -225,7 +251,7 @@ class BuilderController extends CmsController
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ModuleUpdate $request, $id)
+    public function update(BuilderUpdate $request, $id)
     {
         // Start insert
         try {

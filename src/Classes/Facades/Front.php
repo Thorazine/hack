@@ -13,7 +13,7 @@ class Front {
         $file = Cms::getGallery()->select('filename', 'extension')->where('id', $id)->first();
 
         if($file) {
-            return asset(Storage::disk(Cms::getGallery()->disk)->url('cropped/thumbnail/'.$file->fullname));
+            return asset(Storage::disk(config('filesystems.default'))->url('cropped/thumbnail/'.$file->fullname));
         }
         
     }
@@ -24,7 +24,7 @@ class Front {
         
 
         if($fullname) {
-            return asset(Storage::disk(Cms::getGallery()->disk)->url('cropped/original/'.$fullname));
+            return asset(Storage::disk(config('filesystems.default'))->url('cropped/original/'.$fullname));
         }
         
     }

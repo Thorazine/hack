@@ -81,7 +81,9 @@ gulp
 ```
 
 # Filesystem
-This package uses the Laravel Filesystem to handle storage. For settings take a look at the [Laravel docs](https://laravel.com/docs/5.4/filesystem).
+This package uses the default Laravel Filesystem to handle storage. For settings take a look at the [Laravel docs](https://laravel.com/docs/5.4/filesystem).
+Personally I like to start of with the public driver and the ```php artisan storage:link``` command. 
+Obviously you are going to want to have the url availible on whatever driver you use.
 
 # Important
 We use tags to control the cache. So set .env CACHE_DRIVER to array, memcached or redis. File will not do.

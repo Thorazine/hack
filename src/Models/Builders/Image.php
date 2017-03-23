@@ -35,6 +35,8 @@ class Image extends BaseBuilder
     {
         // we need to force the parent construct
         parent::__construct($this);
+
+        $this->types();
     }
 
 

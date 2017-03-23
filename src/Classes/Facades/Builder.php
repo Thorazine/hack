@@ -31,7 +31,7 @@ class Builder {
         $file = $gallery->select('filename', 'extension')->where('id', $id)->first();
 
         if($file) {
-            return asset(Storage::disk($gallery->disk)->url('cropped/thumbnail/'.$file->fullname)).'?cache='.crc32($file->updated_at);
+            return asset(Storage::disk(config('filesystems.default'))->url('cropped/thumbnail/'.$file->fullname)).'?cache='.crc32($file->updated_at);
         }
         
     }
@@ -42,7 +42,7 @@ class Builder {
         $gallery = new Gallery;
 
         if($fullname) {
-            return asset(Storage::disk($gallery->disk)->url('cropped/original/'.$fullname));
+            return asset(Storage::disk(config('filesystems.default'))->url('cropped/original/'.$fullname));
         }
         
     }

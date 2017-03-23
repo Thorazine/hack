@@ -78,23 +78,23 @@ class BaseBuilder extends Model
                 'builder' => false,
                 'type' => 'text',
                 'label' => trans('modules.field.value'),
-                'regex' => 'required',
+                'regex' => '',
             ],
             'default_value' => [
                 'type' => 'text',
                 'label' => trans('modules.field.default_value'),
-                'regex' => 'required',
+                'regex' => '',
             ],
             'create_regex' => [
                 'type' => 'text',
                 'label' => trans('modules.field.create_regex'),
-                'regex' => 'required',
+                'regex' => '',
                 'overview' => false,
             ],
             'edit_regex' => [
                 'type' => 'text',
                 'label' => trans('modules.field.edit_regex'),
-                'regex' => 'required',
+                'regex' => '',
                 'overview' => false,
             ],
         ];
