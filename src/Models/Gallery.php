@@ -68,9 +68,15 @@ class Gallery extends CmsModel
     }
 
 
+    /**
+     * Return the url with browser cache buster
+     */
     public function __toString()
     {
-        return 'image test';
+        if($this->filename && $this->extension) {
+            return asset(Storage::disk(config('filesystems.default'))->url('cropped/original/'.$this->filename.'.'.$this->extension)).'?cache='.crc32($this->updated_at);
+        }
+        return null;
     }
 
 
@@ -89,8 +95,7 @@ class Gallery extends CmsModel
     public function getUrlAttribute()
     {
         if($this->filename && $this->extension) {
-            $gallery = new Gallery;
-            return asset(Storage::disk(config('filesystems.default'))->url('cropped/original/'.$this->filename.'.'.$this->extension)).'?cache='.crc32($this->updated_at);
+            return asset(Storage::disk(config('filesystems.default'))->url('cropped/original/'.$this->filename.'.'.$this->extension));
         }
         return null;
     }
@@ -144,7 +149,25 @@ class Gallery extends CmsModel
      */
     public function fileType($extension)
     {
-    	return $this->allowedExtensions[$extension];
+        return $this->allowedExtensions[$extension];
+    }
+
+
+    /**
+     * Get the filetype
+     */
+    public function has()
+    {
+        return Storage::disk(config('filesystems.default'))->exists('cropped/original/'.$this->filename.'.'.$this->extension);
+    }
+
+
+    /**
+     * Get the filetype
+     */
+    public function key()
+    {
+        return crc32($this->updated_at);
     }
 
 
