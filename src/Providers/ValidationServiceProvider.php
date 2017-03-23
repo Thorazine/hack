@@ -15,6 +15,9 @@ class ValidationServiceProvider extends ServiceProvider
     public function boot()
     {
         Validator::extend('slug', function ($attribute, $value, $parameters, $validator) {
+            if($value == '') {
+                return true;
+            }
             return preg_match('/^[a-z0-9\-\/]+$/', $value);
         });
     }

@@ -28,7 +28,7 @@ class Gallery extends CmsModel
      *
      * @var string
      */
-    public $disk = 'cms';
+    public $disk = 'replace with config(\'filesystems.default\')';
 
     /**
      * If there is a conflict in an image, use this to couple
@@ -68,6 +68,12 @@ class Gallery extends CmsModel
     }
 
 
+    public function __toString()
+    {
+        return 'image test';
+    }
+
+
     /**
      * Add the fullname to the db output
      */
@@ -84,7 +90,7 @@ class Gallery extends CmsModel
     {
         if($this->filename && $this->extension) {
             $gallery = new Gallery;
-            return asset(Storage::disk($gallery->disk)->url('cropped/original/'.$this->filename.'.'.$this->extension)).'?cache='.crc32($this->updated_at);
+            return asset(Storage::disk(config('filesystems.default'))->url('cropped/original/'.$this->filename.'.'.$this->extension)).'?cache='.crc32($this->updated_at);
         }
         return null;
     }
@@ -99,8 +105,8 @@ class Gallery extends CmsModel
 
     	// dd($path.$file['filename'].(($counter) ? $this->conflictPrefix.$counter : '').'.'.$file['extension']);
 
-    	if(Storage::disk($this->disk)->exists($path.$file['filename'].(($counter) ? $this->conflictPrefix.$counter : '').'.'.$file['extension'])) {
-    		if($counter) {
+    	if(Storage::disk(config('filesystems.default'))->exists($path.$file['filename'].(($counter) ? $this->conflictPrefix.$counter : '').'.'.$file['extension'])) {
+            if($counter) {
     			$counter++;
     		}
     		else {
@@ -109,6 +115,8 @@ class Gallery extends CmsModel
 
     		return $this->conflictFilename($filename, $path, $counter);
     	}
+
+
 
     	return $file['filename'].(($counter) ? $this->conflictPrefix.$counter : '').'.'.$file['extension'];
     }
@@ -123,7 +131,7 @@ class Gallery extends CmsModel
 
     	$hash = hash('sha256', microtime().rand(0, 9999));
 
-    	if(Storage::disk($this->disk)->has($hash.'.'.$file['extension'])) {
+    	if(Storage::disk(config('filesystems.default'))->has($hash.'.'.$file['extension'])) {
     		return $this->conflictHash($filename);
     	}
 
@@ -146,7 +154,7 @@ class Gallery extends CmsModel
     public function diskPath($filename)
     {
     	//  get the disks storage path
-        return Storage::disk($this->disk)->getDriver()->getAdapter()->getPathPrefix().$filename;
+        return Storage::disk(config('filesystems.default'))->getDriver()->getAdapter()->getPathPrefix().$filename;
     }
 
 
@@ -158,8 +166,8 @@ class Gallery extends CmsModel
         $file = $this->where('id', $id)->first();
 
         if($file) {
-            Storage::disk($this->disk)->delete('cropper/original/'.$file->fullname);
-            Storage::disk($this->disk)->delete('cropper/thumbnail/'.$file->fullname);
+            Storage::disk(config('filesystems.default'))->delete('cropper/original/'.$file->fullname);
+            Storage::disk(config('filesystems.default'))->delete('cropper/thumbnail/'.$file->fullname);
             $this->where('id', $id)->delete();
         }
     }
@@ -187,7 +195,7 @@ class Gallery extends CmsModel
             }
 
             // delete them from disk and db
-            Storage::disk($this->disk)->delete($delete);
+            Storage::disk(config('filesystems.default'))->delete($delete);
             $this->whereIn('id', $ids)->delete();
         }
     }

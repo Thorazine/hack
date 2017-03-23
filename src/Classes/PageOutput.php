@@ -77,9 +77,9 @@ class PageOutput {
 		// the query will always have a slash because of the combine
         // so we need to give the slug at least one slash to match
         $slug = trim($slug, '/');
-        if(strpos($slug, '/') === false) {
-            $slug = '/'.$slug;
-        }
+        // if(strpos($slug, '/') === false) {
+        //     $slug = '/'.$slug;
+        // }
 
         return $slug;
 	}

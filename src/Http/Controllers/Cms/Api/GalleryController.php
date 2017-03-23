@@ -44,6 +44,8 @@ class GalleryController extends Controller
 
 	    		$file = pathinfo($request->filename);
 
+
+
 	    		// clean the filename
 	    		$file['extension'] = strtolower($file['extension']);
 	    		$file['filename'] = str_slug($file['filename']);
@@ -57,13 +59,13 @@ class GalleryController extends Controller
 	    		}
 
 	    		// get the storage path
-	    		// $storagePath = Storage::disk($this->gallery->disk)->getDriver()->getAdapter()->getPathPrefix();
+	    		// $storagePath = Storage::disk(config('filesystems.default'))->getDriver()->getAdapter()->getPathPrefix();
 
 	    		// store original image to disk
-	    		$request->file('file')->storeAs('original', $filename, $this->gallery->disk);
+	    		$request->file('file')->storeAs('original', $filename, config('filesystems.default'));
 
 	    		// get an instance of the original
-	    		$original = Image::make(Storage::disk($this->gallery->disk)->get('original/'.$filename))->encode($file['extension'], $this->quality);
+	    		$original = Image::make(Storage::disk(config('filesystems.default'))->get('original/'.$filename))->encode($file['extension'], $this->quality);
 
 	    		foreach($this->defaultSizes as $folder => $specifications) {
 	    			$temp = clone $original;
@@ -73,7 +75,7 @@ class GalleryController extends Controller
 					})->stream($file['extension'], $this->quality);
 
 	    			// save the image
-	    			Storage::disk($this->gallery->disk)->put('thumbnail/'.$filename, $image);
+	    			Storage::disk(config('filesystems.default'))->put('thumbnail/'.$filename, $image);
 	    		}	    		
 
 	    		// Prepare for insert
@@ -96,7 +98,7 @@ class GalleryController extends Controller
 		    	return response()->json([
 		    		'id' => $id,
 		    		'filename' => $newFile['filename'],
-		    		'original' => asset(Storage::disk($this->gallery->disk)->url('original/'.$filename))
+		    		'original' => asset(Storage::disk(config('filesystems.default'))->url('original/'.$filename))
 		    	], 200);
 		    }
 		}
@@ -132,7 +134,7 @@ class GalleryController extends Controller
     		}
 
     		// get an instance of the original
-    		$original = Image::make(Storage::disk($this->gallery->disk)->get('original/'.$gallery->fullname));
+    		$original = Image::make(Storage::disk(config('filesystems.default'))->get('original/'.$gallery->fullname));
 
     		// create instance of the cropped image
     		$cropped = $original->crop(ceil($request->width), ceil($request->height), ceil($request->x), ceil($request->y));
@@ -146,14 +148,14 @@ class GalleryController extends Controller
 				})->stream($gallery->extension, $this->quality);
 
     			// save the default image
-    			Storage::disk($this->gallery->disk)->put('cropped/thumbnail/'.$filename, $image);
+    			Storage::disk(config('filesystems.default'))->put('cropped/thumbnail/'.$filename, $image);
     		}
 
     		// create stream of the resized original
     		$image = $cropped->resize($request->resize_width, $request->resize_height)->stream($gallery->extension, $this->quality);
 
     		// save the original image
-    		Storage::disk($this->gallery->disk)->put('cropped/original/'.$filename, $image);
+    		Storage::disk(config('filesystems.default'))->put('cropped/original/'.$filename, $image);
 
     		// Prepare for insert
 	    	$newFile = pathinfo($filename);
@@ -175,7 +177,7 @@ class GalleryController extends Controller
 
 	    	return response()->json([
 	    		'id' => $id,
-	    		'thumbnail' => asset(Storage::disk($this->gallery->disk)->url('cropped/thumbnail/'.$filename)),
+	    		'thumbnail' => asset(Storage::disk(config('filesystems.default'))->url('cropped/thumbnail/'.$filename)),
 	    	], 200);
 
     	}
@@ -192,7 +194,7 @@ class GalleryController extends Controller
     {
     	try {
 	    	$gallery = $this->gallery->where('id', $request->id)->first();
-	    	Storage::disk($this->gallery->disk)->delete($this->gallery->fullname);
+	    	Storage::disk(config('filesystems.default'))->delete($this->gallery->fullname);
 	    	$this->gallery->where('id', $request->id)->delete();
 
 	    	return response()->json([
@@ -225,8 +227,8 @@ class GalleryController extends Controller
 	    		array_push($return, [
 	    			'id' => $data->id,
 	    			'title' => $data->filename,
-	    			'original' => asset(Storage::disk($this->gallery->disk)->url('original/'.$data->fullname)),
-	    			'thumbnail' => asset(Storage::disk($this->gallery->disk)->url('thumbnail/'.$data->fullname)),
+	    			'original' => asset(Storage::disk(config('filesystems.default'))->url('original/'.$data->fullname)),
+	    			'thumbnail' => asset(Storage::disk(config('filesystems.default'))->url('thumbnail/'.$data->fullname)),
 	    		]);
 	    	}
 

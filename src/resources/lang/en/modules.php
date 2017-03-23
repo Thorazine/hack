@@ -16,6 +16,7 @@ return [
 		'og_description' => 'og:description',
 		'og_type' => 'og:type',
 		'og_image' => 'og:image',
+		'browser_cache_time' => 'Browser cache time',
 		'keywords' => 'Keywords',
 		'publish_at' => 'Publish date',
 		'depublish_at' => 'Depublish date',

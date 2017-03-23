@@ -21,7 +21,7 @@ Feel free to try it, but don't expect support any day soon.
 - Installable in excisting project
 - Front end SASS tools
 - Automatic response as JSON for API calls
-- CDN support
+- Uses Laravel filesystem, so CDN and local support
 
 
 ## Requirements
@@ -79,6 +79,9 @@ php artisan migrate
 npm install
 gulp
 ```
+
+# Filesystem
+This package uses the Laravel Filesystem to handle storage. For settings take a look at the [Laravel docs](https://laravel.com/docs/5.4/filesystem).
 
 # Important
 We use tags to control the cache. So set .env CACHE_DRIVER to array, memcached or redis. File will not do.
