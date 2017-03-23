@@ -8,7 +8,7 @@
 @endforeach
 
 @foreach($data['builders'] as $type)
-	@include('cms.input.edit.'.$type['type'], ['key' => $type['key'], 'builder' => $type, 'data' => [$type['key'] => $type['value']]])
+	@include('cms.positions.edit.'.((@$type['position']) ? $type['position'] : 'main'), ['key' => $type['key'], 'builder' => $type, 'data' => [$type['key'] => $type['value']]])
 @endforeach
 
 

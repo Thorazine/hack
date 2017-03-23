@@ -10,15 +10,14 @@
 	<meta property="og:title" content="{{ ($page->og_title) ? $page->og_title : $page->title  }}"/>
 	<meta property="og:description" content="{{ ($page->og_description) ? $page->og_description : $page->description }}"/>
 	<meta property="og:type" content="{{ ($page->og_type) ? $page->og_type : 'page' }}"/>
+	<meta property="og:url" content="{{ Request::url() }}"/>
+	
 	@if($page->og_image)
-
 	<meta property="og:image" content="{{ $page->og_image }}"/>
 	<meta property="og:image:type" content="image/jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 	@endif
-	
-	<meta property="og:url" content="{{ Request::url() }}"/>
 
 	<link rel="shortcut icon" href="{{ $page->favicon }}" type="image/x-icon" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,11 +32,9 @@
 
 	@yield('content')
 
-	<script src="{{ asset('assets/frontend/js/frontend.js') }}"></script>
-
 	@yield('script')
 
-	@if (App::environment() === 'production')
+	@if(App::environment() === 'production')
 
 	@else
 		<script src="//localhost:35729/livereload.js?snipver=1" type="text/javascript"></script>

@@ -60,10 +60,6 @@ elixir(mix => {
         'auth.js',
     ], 'public/assets/cms/js/auth.js')
 
-    // frontend
-    .scripts([
-        '../../../node_modules/jquery/dist/jquery.min.js',
-    ], 'public/assets/frontend/js/frontend.js')
 
     .livereload();
     // mix.browserSync({
