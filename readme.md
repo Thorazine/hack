@@ -1,6 +1,6 @@
 ## Introduction
 This is a personal content management system I use for clients.
-Feel free to try it, but don't expect support. 
+Feel free to try it, but don't expect support any day soon. 
 
 
 ## Included in package
@@ -21,6 +21,7 @@ Feel free to try it, but don't expect support.
 - Installable in excisting project
 - Front end SASS tools
 - Automatic response as JSON for API calls
+- CDN support
 
 
 ## Requirements
