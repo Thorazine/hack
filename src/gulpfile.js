@@ -63,10 +63,6 @@ elixir(mix => {
     // frontend
     .scripts([
         '../../../node_modules/jquery/dist/jquery.min.js',
-        '../../../node_modules/waypoints/lib/jquery.waypoints.min.js',
-        '../../../node_modules/waypoints/lib/shortcuts/inview.min.js',
-        '../../../node_modules/jquery-parallax.js/parallax.min.js',
-        'parallax.js',
     ], 'public/assets/frontend/js/frontend.js')
 
     .livereload();
