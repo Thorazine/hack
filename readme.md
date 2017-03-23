@@ -89,3 +89,5 @@ Obviously you are going to want to have the url availible on whatever driver you
 We use tags to control the cache. So set .env CACHE_DRIVER to array, memcached or redis. File will not do.
 
 Make sure you have a mail driver setup. If you don't have that option just use "log" although I recommend [Mailhog](https://github.com/mailhog/MailHog). But be sure to make it functional on the production server as we send out mails to confirm the location if needed.
+
+Now visit http://[domain]/cms and fill in the blancs.
