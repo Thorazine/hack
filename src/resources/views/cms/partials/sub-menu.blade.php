@@ -2,9 +2,15 @@
 	$route = route($child['route']);
 	$subMenuOpen = false;
 
-	if(strpos(Request::url(), $route) !== false) {
-		Cms::setMenuOpen(true);
-		$subMenuOpen = true;
+	$inMenu = false;
+	$possibilities = (@$child['route-matches'] && is_array($child['route-matches'])) ? $child['route-matches'] : [];
+	array_push($possibilities, $route);
+
+	foreach($possibilities as $possibility) {
+		if(strpos(Request::url(), $possibility) !== false) {
+			Cms::setMenuOpen(true);
+			$subMenuOpen = true;
+		}
 	}
 	
 ?>
