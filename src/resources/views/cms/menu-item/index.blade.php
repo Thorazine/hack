@@ -7,6 +7,8 @@
 	
 	<div class="content model">
 
+		@include('cms.partials.header')
+
 		<div class="subheader">
 			<a class="" href="{{ route('cms.menus.index') }}"><i class="fa fa-arrow-left"></i> {{ trans('cms.back') }}</a>
 			@if($hasPermission('create'))
@@ -44,6 +46,8 @@
 	            handle: 'div',
 	            items: 'li',
 	            toleranceElement: '> div',
+	            placeholder: 'placeholder',
+				revert: 25,
 	            // rootID: 'list_0',
 	            maxLevels: $('.nested').data('max-levels'),
 	            stop: function(event) {
