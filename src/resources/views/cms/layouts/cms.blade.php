@@ -7,9 +7,9 @@
 
 <meta name="_token" content="{{ csrf_token() }}">
 
-<link href="{{ asset('assets/cms/css/cms.css') }}" type="text/css" rel="stylesheet" media="screen"/>
+<link href="{{ asset('assets/cms/css/cms.css') }}?version={{ (App::environment() === 'develop') ? rand(1,1000) : '' }}" type="text/css" rel="stylesheet" media="screen"/>
 
-<script src="{{ asset('assets/cms/js/cms.js') }}"></script>
+<script src="{{ asset('assets/cms/js/cms.js') }}?version={{ (App::environment() === 'develop') ? rand(1,1000) : '' }}"></script>
 
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 

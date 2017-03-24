@@ -34,6 +34,9 @@ return [
 			[
 				'route' => 'cms.menus.index',
 				'label' => 'cms.module.menus',
+				'route-matches' => [
+					'/cms/menu_items',
+				],
 			],
 			[
 				'route' => 'cms.not_found.index',

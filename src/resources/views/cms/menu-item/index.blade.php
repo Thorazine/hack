@@ -7,6 +7,8 @@
 	
 	<div class="content model">
 
+		@include('cms.partials.header')
+
 		<div class="subheader">
 			<a class="" href="{{ route('cms.menus.index') }}"><i class="fa fa-arrow-left"></i> {{ trans('cms.back') }}</a>
 			@if($hasPermission('create'))
