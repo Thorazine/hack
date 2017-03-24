@@ -7,26 +7,26 @@
 
         <ul id="menu-content" class="menu-content collapse out">
 
-        	@foreach(config('menu') as $menu)
+            @foreach(config('menu') as $menu)
 
-        		@if(@$menu['route'])
+                @if(@$menu['route'])
 
-        			<?php
-        				$route = route($menu['route']);
-        			?>
+                    <?php
+                        $route = route($menu['route']);
+                    ?>
 
-	                <li @if(strpos(Request::url(), $route) !== false) class="active" @endif>
-		                <a @if(Request::url() == $route) href="javascript:void(0)" @else href="{{ $route }}" @endif>
-		                  	<i class="fa {{ $menu['icon'] }} fa-lg"></i> 
-		                  	{{ trans($menu['label']) }}
-		                </a>
-	                </li>
+                    <li @if(strpos(Request::url(), $route) !== false) class="active" @endif>
+                        <a @if(Request::url() == $route) href="javascript:void(0)" @else href="{{ $route }}" @endif>
+                            <i class="fa {{ $menu['icon'] }} fa-lg"></i> 
+                            {{ trans($menu['label']) }}
+                        </a>
+                    </li>
 
-        		@elseif(@$menu['children'])
-        			@include('cms.partials.collapse')
-        		@endif
+                @elseif(@$menu['children'])
+                    @include('cms.partials.collapse')
+                @endif
 
-        	@endforeach
+            @endforeach
         </ul>
     </div>
 

@@ -51,7 +51,7 @@ return [
 		'settings' => 'Settings',
 		'users' => 'Users',
 		'roles' => 'Roles',
-		'restaurant_menus' => 'Restaurant menu',
+		'gallery' => 'Gallery',
 
 		// builders
 		'text' => 'Text',

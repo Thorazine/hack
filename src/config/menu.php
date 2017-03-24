@@ -8,32 +8,38 @@ return [
 		'icon' => 'fa-dashboard',
 	],
 
+	// General
+	[
+		'route' => 'cms.sites.index',
+		'label' => 'cms.module.sites',
+		'icon' => 'fa-th-list',
+	],
+
 	// Content
 	[
 		'label' => 'menu.content',
 		'icon' => 'fa-cloud',
 		'children' => [
 			[
-				'route' => 'cms.sites.index',
-				'label' => 'cms.module.sites',
-			],
-			[
 				'route' => 'cms.pages.index',
 				'label' => 'cms.module.pages',
+			],
+			[
+				'route' => 'cms.templates.index',
+				'label' => 'cms.module.templates',
+				'route-matches' => [
+					'/cms/builder',
+				],
 			],
 			[
 				'route' => 'cms.menus.index',
 				'label' => 'cms.module.menus',
 			],
 			[
-				'route' => 'cms.templates.index',
-				'label' => 'cms.module.templates',
-			],
-			[
 				'route' => 'cms.not_found.index',
 				'label' => 'cms.module.not_found',
 			],
-		]
+		],
 	],
 
 	// Forms
@@ -50,6 +56,13 @@ return [
 				'label' => 'cms.module.form_validations',
 			],
 		]
+	],
+
+	// Gallery
+	[
+		'route' => 'cms.gallery.index',
+		'label' => 'cms.module.gallery',
+		'icon' => 'fa-picture-o',
 	],
 
 	// Settings

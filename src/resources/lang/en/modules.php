@@ -109,9 +109,11 @@ return [
 		'width' => 'Width',
 		'values' => 'Values',
 	],
-	'restaurant_menus' => [
-		'dish' => 'Dish',
-		'price' => 'Price',
-		'active' => 'Active',
+	'gallery' => [
+		'filetype' => 'File type',
+		'title' => 'Title',
+		'width' => 'Width',
+		'height' => 'Height',
+		'image' => 'Image',
 	]
 ];

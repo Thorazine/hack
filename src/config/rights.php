@@ -50,6 +50,12 @@ return [
 		'edit',
 		'destroy',
 	],
+	'gallery' => [
+		'index',
+		'create',
+		'edit',
+		'destroy',
+	],
 	'restaurant_menus' => [
 		'index',
 		'create',

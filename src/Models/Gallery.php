@@ -3,6 +3,7 @@
 namespace Thorazine\Hack\Models;
 
 use Illuminate\Support\Facades\Storage;
+use Thorazine\Hack\Scopes\SiteScope;
 
 class Gallery extends CmsModel
 {
@@ -65,7 +66,76 @@ class Gallery extends CmsModel
     {
         // we need to force the parent construct
         parent::__construct($this);
+
+        $this->types = $this->types();
     }
+
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new SiteScope);
+    }
+
+
+    /**
+     * Return all the types for this module
+     */
+    public function types()
+    {
+        return [
+            'id' => [
+                'type' => 'number',
+                'label' => 'Id',
+                'regex' => '',
+                'overview' => false,
+                'create' => false,
+                'edit' => false,
+            ],
+            'filetype' => [
+                'type' => 'select',
+                'label' => trans('modules.gallery.filetype'),
+                'regex' => 'required',
+                'values' => [
+                    'image' => 'Image',
+                    // 'document' => 'Document',
+                ],
+            ],
+            'image' => [
+                'type' => 'text',
+                'value' => 'poep',
+                'label' => trans('modules.gallery.image'),
+                'regex' => 'required',
+            ],
+            'title' => [
+                'type' => 'text',
+                'label' => trans('modules.gallery.title'),
+                'regex' => 'required',
+            ],
+            'width' => [
+                'type' => 'number',
+                'label' => trans('modules.gallery.width'),
+                'regex' => '',
+                'overview' => true,
+                'create' => false,
+                'edit' => false,
+            ],
+            'height' => [
+                'type' => 'number',
+                'label' => trans('modules.gallery.height'),
+                'regex' => '',
+                'overview' => true,
+                'create' => false,
+                'edit' => false,
+            ],
+        ];
+    } 
 
 
     /**

@@ -84,8 +84,7 @@ Route::group(['middleware' => 'sentinel.auth'], function() {
 	Route::resource('form_fields', 'FormFieldController');
 	Route::resource('form_entries', 'FormEntryController');
 	Route::resource('form_validations', 'FormValidationController');
-	Route::post('restaurant_menus/order', ['as' => 'restaurant_menus.order', 'uses' => 'RestaurantMenuController@order']);
-	Route::resource('restaurant_menus', 'RestaurantMenuController');
+	Route::resource('gallery', 'GalleryController');
 	Route::resource('not_found', 'NotFoundController');
 
 	/**

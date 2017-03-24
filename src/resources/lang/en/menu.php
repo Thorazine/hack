@@ -5,4 +5,5 @@ return [
 	'content' => 'Content',
 	'settings' => 'Settings',
 	'forms' => 'Forms',
+	'gallery' => 'Gallery',
 ];
