@@ -46,6 +46,8 @@
 	            handle: 'div',
 	            items: 'li',
 	            toleranceElement: '> div',
+	            placeholder: 'placeholder',
+				revert: 25,
 	            // rootID: 'list_0',
 	            maxLevels: $('.nested').data('max-levels'),
 	            stop: function(event) {
