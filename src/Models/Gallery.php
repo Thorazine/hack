@@ -107,12 +107,6 @@ class Gallery extends CmsModel
                     // 'document' => 'Document',
                 ],
             ],
-            'image' => [
-                'type' => 'text',
-                'value' => 'poep',
-                'label' => trans('modules.gallery.image'),
-                'regex' => 'required',
-            ],
             'title' => [
                 'type' => 'text',
                 'label' => trans('modules.gallery.title'),

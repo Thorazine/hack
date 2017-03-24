@@ -7,10 +7,10 @@
 	}
 
 	.item {
-		background-color: $color-secondary;
+		background-color: #EEE;
 		margin-bottom: 5px;
-		color: $color-font-secondary-default;
-		padding: 13px;
+		color: $color-font-primary-default;
+		padding: 5px;
 		position: relative;
 		border: 1px solid $color-tertiary;
 		border-radius: 5px;
@@ -20,11 +20,22 @@
 	.options {
 		position: absolute;
 		right: 10px;
-		top: 7px;
+		top: 4px;
 	}
 
 	.mjs-nestedSortable-error {
-		background-color: red;
+		background-color: #F2DEDE;
+	}
+
+	.placeholder {
+		height: 32px;
+		width: 100%;
+		border: 1px dashed #000;
+		display: block;
+		visibility: visible !important;
+		padding: 5px;
+		margin-bottom: 5px;
+		border-radius: 5px;
 	}
 
 }

@@ -18,7 +18,7 @@ class CreateTableMenuItems extends Migration
             $table->increments('id');
             $table->integer('menu_id')->nullable();
             $table->integer('parent_id')->nullable();
-            $table->integer('page_id')->nullable(0);
+            $table->integer('page_id')->nullable();
             $table->string('external_url')->nullable();
             $table->string('title')->nullable();
             $table->string('description')->nullable();

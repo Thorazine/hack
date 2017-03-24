@@ -230,7 +230,7 @@ class CmsController extends Controller
                 ->where('id', $id)
                 ->first()
                 ->toArray();
-        }
+            }
 
         return $this->child->editExtra($request, $id, $data);
     }

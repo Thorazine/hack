@@ -39,7 +39,7 @@ class MenuController extends CmsController
      * @param  \Illuminate\Http\Request  $request|array
      * @return \Illuminate\Http\Response|array
      */
-    protected function beforeUpdate($request, $id)
+    protected function beforeStore($request)
     {
         $this->extraCreateValues = [
             'site_id' => Cms::siteId(),
