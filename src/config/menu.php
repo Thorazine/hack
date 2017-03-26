@@ -53,6 +53,9 @@ return [
 			[
 				'route' => 'cms.forms.index',
 				'label' => 'cms.module.forms',
+				'route-matches' => [
+					'/cms/form_fields',
+				],
 			],
 			[
 				'route' => 'cms.form_validations.index',

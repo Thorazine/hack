@@ -227,6 +227,15 @@ class Gallery extends CmsModel
 
 
     /**
+     * Quick html output
+     */
+    public function html($class = null)
+    {
+        return '<img '.(($class) ? 'class="'.$class.'"' : '').'src="'.$this.'" title="'.$this->title.'">';
+    }
+
+
+    /**
      * Get the filetype
      */
     public function key()

@@ -12,5 +12,6 @@
 */
 
 Route::group(['namespace' => 'Front'], function() {
+	Route::post('/form-builder/store', ['as' => 'form-builder.store', 'uses' => 'FormBuilderController@store']);
 	Route::get('{slug}', ['as' => 'page', 'uses' => 'SlugController@slug'])->where('slug', '.*');
 });

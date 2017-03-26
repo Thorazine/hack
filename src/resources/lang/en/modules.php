@@ -98,6 +98,7 @@ return [
 		'on_complete_function_placeholder' => 'No function',
 		'download' => 'Download',
 		'entries' => 'Entries',
+		'download_as' => 'Download as',
 	],
 	'form_fields' => [
 		'field_type' => 'Type of field',

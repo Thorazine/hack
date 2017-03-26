@@ -56,12 +56,6 @@ return [
 		'edit',
 		'destroy',
 	],
-	'restaurant_menus' => [
-		'index',
-		'create',
-		'edit',
-		'destroy',
-	],
 	'not_found' => [
 		'index',
 		'create',
@@ -99,10 +93,10 @@ return [
 		'edit',
 		'destroy',
 	],
-	'remote' => [
-		'request',
-		'recieve',
-		'control',
-		'voyeur',
-	],
+	// 'remote' => [
+	// 	'request',
+	// 	'recieve',
+	// 	'control',
+	// 	'voyeur',
+	// ],
 ];

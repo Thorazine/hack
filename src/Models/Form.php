@@ -2,6 +2,7 @@
 
 namespace Thorazine\Hack\Models;
 
+use Thorazine\Hack\Classes\Builders\FormBuilder;
 use Thorazine\Hack\Scopes\SiteScope;
 use View;
 
@@ -76,13 +77,13 @@ class Form extends CmsModel
             'email_from' => [
                 'type' => 'text',
                 'label' => trans('modules.forms.email_from'),
-                'regex' => 'required_with:email_new',
+                'regex' => 'required_if:email_new,1',
                 'overview' => false,
             ],
             'email_to' => [
                 'type' => 'text',
                 'label' => trans('modules.forms.email_to'),
-                'regex' => 'required_with:email_new',
+                'regex' => 'required_if:email_new,1',
                 'overview' => false,
             ],
             'email_reply_to' => [
@@ -94,7 +95,7 @@ class Form extends CmsModel
             'email_subject' => [
                 'type' => 'text',
                 'label' => trans('modules.forms.email_subject'),
-                'regex' => 'required_with:email_new',
+                'regex' => 'required_if:email_new,1',
                 'overview' => false,
             ],
             'email_body' => [
@@ -114,7 +115,7 @@ class Form extends CmsModel
             'download_as' => [
                 'type' => 'select',
                 'label' => trans('modules.forms.download_as'),
-                'regex' => 'in:xls,csv,xlsx',
+                'regex' => 'in:,xls,csv,xlsx',
                 'overview' => false,
                 'values' => [
                     '' => trans('cms.none'),
@@ -132,7 +133,9 @@ class Form extends CmsModel
      */
     public function formFields()
     {
-        return $this->hasMany('Thorazine\Hack\Models\FormField');
+        return $this->hasMany('Thorazine\Hack\Models\FormField')
+            ->orderBy('drag_order', 'asc')
+            ->orderBy('id', 'asc');
     }
 
 
@@ -145,9 +148,15 @@ class Form extends CmsModel
     }
 
 
-    public function html()
+    /**
+     * Output the html
+     */
+    public function html($page)
     {
-        return 'form_builder';
+        return view('cms.frontend.form.form')
+            ->with('page', $page)
+            ->with('form', $this)
+            ->render();
     }
     
 }

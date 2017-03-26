@@ -30,7 +30,7 @@ class Form extends BaseBuilder
 
 
     /**
-     * Get all of the galley files that belong to the image
+     * 
      */
     public function form()
     {
@@ -43,7 +43,9 @@ class Form extends BaseBuilder
      */
     public function scopeFrontend($query)
     {
-        return $query->with('form');
+        return $query->with(['form' => function($query) {
+            return $query->with('formFields');
+        }]);
     }
 
 

@@ -97,11 +97,33 @@ class FormField extends CmsModel
 
 
     /**
-     * Get the page record associated with the slug.
+     * Get the form that belongs to these fields
      */
-    public function formFields()
+    public function form()
     {
         return $this->blongsTo('Thorazine\Hack\Models\Form');
+    }
+
+
+    /**
+     * Take the values, split them and return them as array
+     */
+    public function valuesAsArray()
+    {
+        $values = explode('|', $this->values);
+
+        $array = [];
+        foreach($values as $value) {
+            if(strpos($value, '~') !== false) {
+                $valueLabel = explode('~', $value);
+                $array[$valueLabel[0]] = $valueLabel[1];
+            }
+            else {
+                $array[$value] = $value;
+            }
+        }
+
+        return $array;
     }
 
 
