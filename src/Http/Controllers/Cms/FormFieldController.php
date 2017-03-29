@@ -82,4 +82,20 @@ class FormFieldController extends CmsController
         
         return $request;
     }
+
+
+    /**
+     * Possibly add query parameters to the model
+     *
+     * @param  string  $query
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function queryParameters($query, $request)
+    {
+        if($request->fid) {
+            return $query->where('form_id', $request->fid);
+        }
+        return $query;
+    }
 }

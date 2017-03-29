@@ -3,15 +3,14 @@
 		{{ $type['label'] }}
 	</label>
 	<div class="col-sm-9">
-		<div class="radio">
-			@foreach(Builder::getArrayValue($model, $type['values'], $data, $key) as $option)
+		@foreach(Builder::getArrayValue($model, $type, $type['values'], $data, $key) as $optionValue => $optionLabel)
+			<div class="radio">
 				<label>
-					{!! Form::radio($key, $option[0], (@$data[$key] = $option[0]) ? true : (@$type['default'] == $option[0]) ? true : false) !!}
-					{!! $option[1] !!}
+					{!! Form::radio($key, $optionValue, (@$data[$key] = $optionValue) ? true : (@$type['default'] == $optionValue) ? true : false) !!}
+					{!! $optionLabel !!}
 				</label>
-			@endforeach
-		</div>
-
+			</div>
+		@endforeach
 		{!! $errors->first($key, '<p class="text-danger">:message</p>') !!}
 		
 	</div>

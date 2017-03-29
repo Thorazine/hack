@@ -245,6 +245,30 @@ class Gallery extends CmsModel
 
 
     /**
+     * Get the filesize
+     */
+    public function filesize($metric = 'B', $precision = 2)
+    {
+        $size = $this->filesize;
+
+        switch ($metric) {
+            case 'KB':
+                $size = $this->filesize / 1024;
+                break;
+            
+            case 'MB':
+                $size = $this->filesize / 1024 / 1024;
+                break;
+
+            case 'GB':
+                $size = $this->filesize / 1024 / 1024 / 1024;
+                break;
+        }
+        return round($size, $precision);
+    }
+
+
+    /**
      * Get the path of the storage
      */
     public function diskPath($filename)
@@ -255,7 +279,7 @@ class Gallery extends CmsModel
 
 
     /**
-     * 
+     * Delete from disc
      */
     public function removeObsoleteItem($id)
     {
@@ -270,7 +294,7 @@ class Gallery extends CmsModel
 
 
     /**
-     * 
+     * Clean temp folder
      */
     public function removeUnused()
     {

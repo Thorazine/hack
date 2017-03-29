@@ -20,9 +20,9 @@ class FormController extends CmsController
             'extraItemButtons' => function($data) {
                 return [
                     [
-                        'class' => 'primary',
+                        'class' => 'success',
                         'route' => route('cms.forms.download', ['id' => $data->id]),
-                        'text' => trans('modules.forms.download'),
+                        'text' => '<i class="fa fa-download" aria-hidden="true"></i>',
                     ],
                     [
                         'class' => 'primary',
@@ -69,5 +69,14 @@ class FormController extends CmsController
 
         return view('cms.form.show')
             ->with('datas', $datas);
+    }
+
+
+    /**
+     * Download all the form entries 
+     */
+    public function download()
+    {
+        
     }
 }

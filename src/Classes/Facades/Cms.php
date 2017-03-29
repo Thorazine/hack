@@ -29,6 +29,11 @@ class Cms {
 	private $code;
 
 	/**
+	 * The site data
+	 */
+	private $page;
+
+	/**
 	 * Cached version of the gallery
 	 */
 	private $gallery;
@@ -83,6 +88,31 @@ class Cms {
 		return Site::select('id', 'title')
             ->orderBy('title', 'asc')
             ->get();
+	}
+
+
+	/**
+	 * Get the page variable of the current page
+	 *
+	 * @return obj
+	 */
+	public function page($attribute = false)
+	{
+		if($attribute) {
+			return $this->page->{$attribute};
+		}
+		return $this->page;
+	}
+
+
+	/**
+	 * Get the site id of the current site
+	 *
+	 * @param collection
+	 */
+	public function setPage($collection)
+	{
+		$this->page = $collection;
 	}
 
 	

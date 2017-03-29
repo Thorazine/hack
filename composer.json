@@ -16,6 +16,5 @@
         "psr-4": {
             "Thorazine\\Hack\\": "src/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }

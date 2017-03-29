@@ -46,11 +46,33 @@ class FormValue extends CmsModel
 
 
     /**
-     * Get the page record associated with the slug.
+     * Get the form entry it belongs to
      */
     public function formEntry()
     {
         return $this->blongsTo('Thorazine\Hack\Models\FormEntry');
+    }
+
+
+    /**
+     * Take the values, split them and return them as array
+     */
+    public function valuesAsArray()
+    {
+        $values = explode('|', $this->values);
+
+        $array = [];
+        foreach($values as $value) {
+            if(strpos($value, '~') !== false) {
+                $valueLabel = explode('~', $value);
+                $array[$valueLabel[0]] = $valueLabel[1];
+            }
+            else {
+                $array[$value] = $value;
+            }
+        }
+
+        return $array;
     }
 
 

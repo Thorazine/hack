@@ -101,7 +101,7 @@ class FormField extends CmsModel
      */
     public function form()
     {
-        return $this->blongsTo('Thorazine\Hack\Models\Form');
+        return $this->belongsTo('Thorazine\Hack\Models\Form');
     }
 
 
@@ -116,10 +116,10 @@ class FormField extends CmsModel
         foreach($values as $value) {
             if(strpos($value, '~') !== false) {
                 $valueLabel = explode('~', $value);
-                $array[$valueLabel[0]] = $valueLabel[1];
+                $array[(string)$valueLabel[0]] = (string)$valueLabel[1];
             }
             else {
-                $array[$value] = $value;
+                $array[(string)$value] = (string)$value;
             }
         }
 

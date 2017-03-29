@@ -55,6 +55,7 @@ return [
 				'label' => 'cms.module.forms',
 				'route-matches' => [
 					'/cms/form_fields',
+					'/cms/form_entries',
 				],
 			],
 			[

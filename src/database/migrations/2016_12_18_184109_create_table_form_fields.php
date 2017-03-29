@@ -25,6 +25,7 @@ class CreateTableFormFields extends Migration
             $table->string('default_value')->nullable();
             $table->string('regex')->nullable();
             $table->string('width')->nullable();
+            $table->boolean('overview')->nullable();
             $table->integer('drag_order')->default(10000);
 
             $table->timestamps();

@@ -55,5 +55,14 @@ class FormEntry extends CmsModel
     }
 
 
+    /**
+     * Get the page record associated with the slug.
+     */
+    public function formFields()
+    {
+        return $this->hasMany('Thorazine\Hack\Models\FormField', 'form_id', 'form_id');
+    }
+
+
     
 }

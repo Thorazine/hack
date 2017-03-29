@@ -3,10 +3,10 @@
 namespace Thorazine\Hack\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Thorazine\Hack\Models\Form;
+use Thorazine\Hack\Models\FormEntry;
 use Request;
 
-class FormBuilderStore extends FormRequest
+class FormBuilderUpdate extends FormRequest
 {
     public $attributesArray = [];
 
@@ -27,7 +27,7 @@ class FormBuilderStore extends FormRequest
      */
     public function rules()
     {
-        $form = Form::find(Request::get('id'))
+        $form = FormEntry::find(Request::get('id'))
             ->with('formFields')
             ->first();
 

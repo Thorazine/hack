@@ -5,6 +5,7 @@ namespace Thorazine\Hack\Models;
 use Thorazine\Hack\Classes\Builders\FormBuilder;
 use Thorazine\Hack\Scopes\SiteScope;
 use View;
+use Cms;
 
 class Form extends CmsModel
 {
@@ -61,6 +62,13 @@ class Form extends CmsModel
                 'label' => trans('modules.forms.title'),
                 'regex' => 'required',
             ],
+            'button_text' => [
+                'type' => 'text',
+                'label' => trans('modules.forms.button_text'),
+                'default' => 'Send',
+                'regex' => 'required',
+                'overview' => false,
+            ],
             'on_complete_function' => [
                 'type' => 'select',
                 'label' => trans('modules.forms.on_complete_function'),
@@ -74,10 +82,23 @@ class Form extends CmsModel
                 'label' => trans('modules.forms.email_new'),
                 'regex' => '',
             ],
+            'email_template' => [
+                'type' => 'text',
+                'label' => trans('modules.forms.email_template'),
+                'regex' => 'required_if:email_new,1',
+                'default' => 'cms.emails.form-builder',
+                'overview' => false,
+            ],
             'email_from' => [
                 'type' => 'text',
                 'label' => trans('modules.forms.email_from'),
                 'regex' => 'required_if:email_new,1',
+                'overview' => false,
+            ],
+            'email_from_name' => [
+                'type' => 'text',
+                'label' => trans('modules.forms.email_from_name'),
+                'regex' => '',
                 'overview' => false,
             ],
             'email_to' => [
@@ -89,6 +110,12 @@ class Form extends CmsModel
             'email_reply_to' => [
                 'type' => 'text',
                 'label' => trans('modules.forms.email_reply_to'),
+                'regex' => '',
+                'overview' => false,
+            ],
+            'email_reply_to_name' => [
+                'type' => 'text',
+                'label' => trans('modules.forms.email_reply_to_name'),
                 'regex' => '',
                 'overview' => false,
             ],
@@ -151,8 +178,10 @@ class Form extends CmsModel
     /**
      * Output the html
      */
-    public function html($page)
+    public function html()
     {
+        $page = Cms::page();
+
         return view('cms.frontend.form.form')
             ->with('page', $page)
             ->with('form', $this)
