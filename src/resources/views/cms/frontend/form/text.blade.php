@@ -1,13 +1,13 @@
-<div class="grid-{{ $formField->width }}">
+<div class="grid-{{ $formField->width }}{{ $errors->first($formField->key, ' form-builder-error') }}">
 	<label class="form-builder-label">
 		{{ $formField->label }}
 	</label>
 	<div class="form-builder-col">
-		{!! Form::text($formField->field_type, $formField->default_value, [
+		{!! Form::text($formField->key, $formField->default_value, [
 			'class' => 'form-builder-text', 
 			'id' => 'form-builder-'.$formField->field_type,
-			'placeholder' => $formField->label
+			'placeholder' => (($formField->placeholder) ? $formField->placeholder : $formField->label)
 		]) !!}
-		{!! $errors->first($formField->field_type, '<p class="form-builder-error">:message</p>') !!}
+		<p class="form-builder-error-text">{{ $errors->first($formField->key) }}</p>
 	</div>
 </div>
