@@ -1,0 +1,14 @@
+/**
+ * Make a child element bound by height ratio
+ * NOTE: (Only) works if child is positioned absolutely
+ *
+ * @param {number} $height (100%) - Height compared to 100% width
+ */
+@mixin height-ratio($height: 100%) {
+    position: relative;
+    &:before {
+        content: '';
+        display: block;
+        padding-bottom: $height;
+    }
+}

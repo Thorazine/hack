@@ -1,0 +1,25 @@
+.model .cropper {
+
+	.model-modal-holder {
+		height: calc(100vh - 120px);
+		width: 100%;
+	}
+
+	.image-holder {
+		position: relative;
+	}
+
+	.delete {
+		background-color: rgba(255,255,255,0.75);
+		color: #333;
+		width: 25px;
+		height: 25px;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		line-height: 20px;
+		font-size: 30px;
+		text-align: center;
+		cursor: pointer;
+	}
+}

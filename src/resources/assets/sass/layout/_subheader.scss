@@ -1,0 +1,77 @@
+.subheader {
+	width: calc(100% + 30px);
+	height: 36px;
+	background-color: #FFF;
+	margin-top: -20px;
+	margin-left: -15px;
+	border-bottom: 1px solid #CCC;
+	margin-bottom: 50px;
+
+	a {
+		height: inherit;
+		padding: 7px 20px;
+		display: inline-block;
+		border-right: 1px solid #CCC;
+		color: #d19b3d;
+
+		&:hover {
+			color: #d19b3d;
+			text-decoration: none;
+			background-color: rgba(0,0,0,0.05);
+		}
+
+		&:active {
+			background-color: #FFF;
+		}
+	}
+
+	.holder {
+		display: inline-block;
+		height: inherit;
+		border-right: 1px solid #CCC;
+		color: #d19b3d;
+		margin-top: 0px;
+		vertical-align: top;
+		margin-left: -4px;
+
+		.fa {
+			line-height: 36px;
+		}
+
+		&:hover {
+			background-color: rgba(0,0,0,0.05);
+		}
+
+		&:active {
+			background-color: #FFF;
+		}
+	}
+
+	#q {
+		height: 35px;
+		width: 300px;
+		border: none;
+		margin-left: -4px;
+		padding-left: 10px;
+		border-right: 1px solid #CCC;
+		padding-right: 30px;
+	}
+
+	#q-button {
+		height: 35px;
+		width: 35px;
+		text-align: center;
+		cursor: pointer;
+	}
+
+	#q-clear {
+		transform: translate(-25px, 10px);
+		color: rgba(0,0,0,0.1);
+		position: absolute;
+		cursor: pointer;
+
+		&:hover {
+			color: rgba(0,0,0,0.2);
+		}
+	}
+}
