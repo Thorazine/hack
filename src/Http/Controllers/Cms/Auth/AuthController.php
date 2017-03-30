@@ -5,10 +5,10 @@ namespace Thorazine\Hack\Http\Controllers\Cms\Auth;
 use App\Http\Controllers\Controller;
 use Thorazine\Hack\Models\Auth\CmsPersistence;
 use Thorazine\Hack\Http\Requests\LoginRequest;
-use Thorazine\Hack\Classes\Tools\Location;
 use Thorazine\Hack\Classes\Tools\Browser;
 use Illuminate\Http\Request;
 use Thorazine\Hack\Http\Requests;
+use Location;
 use Sentinel;
 use Cms;
 use Mail;
@@ -71,7 +71,8 @@ class AuthController extends Controller
             Cms::setUser($user);
 
             // convert the coordinates to a city and country
-            $location = $this->location->coordinatesToAddress($request->latitude, $request->longitude)->get();
+            $location = Location::locale('en')->coordinatesToAddress(['latitude' => $request->latitude, 'longitude' => $request->longitude])->get();
+            // $location = $this->location->coordinatesToAddress($request->latitude, $request->longitude)->get();
 
             $active = $this->persistence->shouldBeActive($user->id, $request->latitude, $request->longitude);
 
@@ -162,6 +163,14 @@ class AuthController extends Controller
             return view('cms.auth.resend');
         }
         // no more code in session, so login, get code
+        return redirect()->route('cms.auth.index');
+    }
+
+
+    public function destroy()
+    {
+        Sentinel::logout();
+
         return redirect()->route('cms.auth.index');
     }
 }

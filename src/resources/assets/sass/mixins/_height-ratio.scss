@@ -11,4 +11,32 @@
         display: block;
         padding-bottom: $height;
     }
+
+    > div, > img, > video, > iframe {
+    	position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+    }
 }
+
+
+/**
+<div class="ar">
+	<div class="inner"></div>
+</div>
+
+.ar {
+	width: 500px;
+	@include height-ratio(50%);
+
+	.inner {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		// 250px height
+	}
+}
+
+*/

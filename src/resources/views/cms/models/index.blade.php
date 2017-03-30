@@ -13,7 +13,7 @@
 
 			@if(@$extraHeaderButtons)
 				@foreach($extraHeaderButtons($datas) as $extraButton)
-					<a class="{{ $extraButton['class'] }}" href="{{ $extraButton['route'] }}">{!! $extraButton['text'] !!}</a>
+					<a class="{{ $extraButton['class'] }}" href="{{ $extraButton['route'] }}" title="{{ @$extraButton['title'] }}">{!! $extraButton['text'] !!}</a>
 				@endforeach
 			@endif
 

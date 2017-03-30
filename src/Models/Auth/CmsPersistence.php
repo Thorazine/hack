@@ -40,9 +40,7 @@ class CmsPersistence extends EloquentPersistence
         		->having('distance', '<', config('cms.validation_distance'))
         		->where('user_id', $userId)
         		->where('verified', 1)
-        		->get();
-
-        		
+        		->get();        		
         		
         	if($inRange->count()) {
         		return 1;

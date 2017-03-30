@@ -144,8 +144,8 @@ class Form extends CmsModel
                 'label' => trans('modules.forms.download_as'),
                 'regex' => 'in:,xls,csv,xlsx',
                 'overview' => false,
+                'default' => 'xls',
                 'values' => [
-                    '' => trans('cms.none'),
                     'xls' => 'Excel (.xls)',
                     'xlsx' => 'Excel (.xlsx)',
                     'csv' => 'Comma seperated (.csv)',

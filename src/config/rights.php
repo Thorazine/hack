@@ -31,6 +31,7 @@ return [
 		'index',
 		'create',
 		'edit',
+		'download',
 		'destroy',
 	],
 	'form_fields' => [

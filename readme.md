@@ -22,6 +22,8 @@ Feel free to try it, but don't expect support any day soon.
 - Front end SASS tools
 - Automatic response as JSON for API calls
 - Uses Laravel filesystem, so CDN and local support
+- Form builder/handler module
+- Form data download as xls, xlsx or csv
 
 
 ## Requirements
@@ -41,9 +43,9 @@ composer require thorazine/hack
 
 # Add to config/app.providers:
 
-    	Collective\Html\HtmlServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-    	Thorazine\Hack\HackServiceProvider::class,
+        Thorazine\Hack\HackServiceProvider::class,
         Thorazine\Hack\Providers\BuilderServiceProvider::class,
         Thorazine\Hack\Providers\CmsServiceProvider::class,
         Thorazine\Hack\Providers\FrontServiceProvider::class,
@@ -51,30 +53,40 @@ composer require thorazine/hack
         Intervention\Image\ImageServiceProvider::class,
         Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
         Thorazine\Hack\Providers\RouteServiceProvider::class,
+        Noprotocol\LaravelLocation\LocationServiceProvider::class,
 
 # Add to config/app.aliases:
 
-    	'Form' => Collective\Html\FormFacade::class,
+        'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
-        'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
-        'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
+        'Reminder' => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
+        'Sentinel' => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Builder' => Thorazine\Hack\Facades\BuilderFacade::class,
         'Cms' => Thorazine\Hack\Facades\CmsFacade::class,
         'Front' => Thorazine\Hack\Facades\FrontFacade::class,
+        'Location' => Noprotocol\LaravelLocation\Facades\LocationFacade::class,
 
 # Add to the App\Http\Kernel $routeMiddleware:
 
         'sentinel.auth' => \Thorazine\Hack\Http\Middleware\SentinelAuthentication::class,
         'site' => \Thorazine\Hack\Http\Middleware\SiteRedirect::class,
 
+# Add to resources\lang\en\validation.php
+```php
+    'slug'                 => 'Not a valid slug (a-z, 0-9, \'_\', and \'-\' are allowed',
+```
+
 
 Run
 ```
 php artisan vendor:publish --tag=hack --force
+php artisan vendor:publish --tag=location
 php artisan migrate
 npm install
 gulp

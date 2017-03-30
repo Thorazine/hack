@@ -2,6 +2,8 @@
 
 namespace Thorazine\Hack\Models;
 
+use Cms;
+
 class FormValidation extends CmsModel
 {
     protected $table = 'form_validations';
@@ -33,21 +35,40 @@ class FormValidation extends CmsModel
                 'create' => false,
                 'edit' => false,
             ],
+            'language' => [
+                'type' => 'select',
+                'label' => trans('modules.form_validations.language'),
+                'regex' => 'required',
+                'values' => 'getLanguages',
+            ],
             'label' => [
                 'type' => 'text',
-                'label' => 'Label',
+                'label' => trans('modules.form_validations.label'),
                 'regex' => 'required',
             ],
             'regex' => [
                 'type' => 'text',
-                'label' => 'Regex',
+                'label' => trans('modules.form_validations.regex'),
                 'regex' => 'required',
             ],
             'error_message' => [
                 'type' => 'text',
-                'label' => 'Error message',
+                'label' => trans('modules.form_validations.error_message'),
                 'regex' => '',
             ],
         ];
-    }    
+    } 
+
+
+    /**
+     * Get all of the module owners.
+     */
+    public function getLanguages($data = [], $key = '')
+    {        
+        $languages = [];
+        foreach(Cms::site('languages') as $language) {
+            $languages[$language] = $language;
+        }
+        return $languages;
+    }  
 }

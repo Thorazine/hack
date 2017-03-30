@@ -134,9 +134,12 @@ class Cms {
 	 *
 	 * @return int
 	 */
-	public function user($attribute = false)
+	public function user($attribute = false, $subAttribute = false)
 	{
 		if($attribute) {
+			if($subAttribute) {
+				return $this->user->{$attribute}->{$subAttribute};
+			}
 			return $this->user->{$attribute};
 		}
 		return $this->user;

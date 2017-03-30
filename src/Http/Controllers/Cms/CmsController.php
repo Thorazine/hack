@@ -5,12 +5,12 @@ namespace Thorazine\Hack\Http\Controllers\Cms;
 use App\Http\Controllers\Controller;
 use Thorazine\Hack\Http\Requests\ModuleUpdate;
 use Thorazine\Hack\Http\Requests\ModuleStore;
-use Illuminate\Http\Request;
 use Thorazine\Hack\Traits\ModuleHelper;
 use Thorazine\Hack\Traits\ModuleSearch;
 use Thorazine\Hack\Models\Gallery;
 use Thorazine\Hack\Http\Requests;
 use Thorazine\Hack\Models\Site;
+use Illuminate\Http\Request;
 use Exception;
 use Cms;
 use Log;
@@ -208,7 +208,7 @@ class CmsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(Request $request, $id)
     {
         return 'Nothing here';
     }

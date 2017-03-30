@@ -43,6 +43,11 @@ class SentinelAuthentication
 
                 $user = Cms::setPersistence($persistence);
 
+                // update persistence last used time
+                CmsPersistence::where('id', $persistence->id)->update([
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ]);
+
                 if(in_array($this->replaceEndOfRight(Cms::siteId().'.'.$request->route()->getName()), $permissions) || in_array($request->route()->getName(), config('cms.rights.excluded'))) {
                     return $next($request);
                 }
@@ -98,10 +103,6 @@ class SentinelAuthentication
         elseif(in_array(end($routeArr), ['order'])) {
             array_pop($routeArr);
             return implode('.', $routeArr).'.index';
-        }
-        elseif(in_array(end($routeArr), ['download'])) {
-            array_pop($routeArr);
-            return implode('.', $routeArr).'.show';
         }
 
         return $permission;

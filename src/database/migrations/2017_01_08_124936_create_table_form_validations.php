@@ -16,6 +16,7 @@ class CreateTableFormValidations extends Migration
         Schema::create('form_validations', function (Blueprint $table) 
         {
             $table->increments('id');
+            $table->string('language')->nullable();
             $table->string('label')->nullable();
             $table->string('regex')->nullable();
             $table->string('error_message')->nullable();

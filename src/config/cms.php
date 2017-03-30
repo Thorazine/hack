@@ -85,13 +85,17 @@ return [
 			'cms.api.gallery.destroy',
 			'cms.api.gallery.api',
 			'cms.api.gallery.crop',
+			'cms.user.show',
+			'cms.user.edit',
+			'cms.user.update',
+			'cms.user.destroy',
 		],
 	],
 
 
 	/**
 	 * The model query searches through these types
-	 * of inputs for a possible match unlsess
+	 * of inputs for a possible match unless
 	 * overwritten in the class.
 	 */
 	'search' => [
