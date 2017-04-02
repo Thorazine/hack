@@ -6,11 +6,11 @@
 	<div class="menu-right">
 		@if(Cms::user('first_name') || Cms::user('last_name'))
 			<div class="holder text">
-				{{ Cms::user('first_name') }} {{ Cms::user('last_name') }}
+				<a href="{{ route('cms.user.show', ['id' => Cms::user('id')]) }}">{{ Cms::user('first_name') }} {{ Cms::user('last_name') }}</a>
 			</div>
 		@else
 			<div class="holder text">
-				Anonymous user
+				<a href="{{ route('cms.user.show', ['id' => Cms::user('id')]) }}">Anonymous user</a>
 			</div>
 		@endif
 
