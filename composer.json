@@ -1,0 +1,22 @@
+{
+    "name": "thorazine/hack",
+    "description": "A non-intrusive packaged CMS built on Laravel",
+    "keywords": ["laravel", "hack", "cms"],
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "laravel/framework": "5.3.*|^5.4.13",
+        "laravelcollective/html": "5.*",
+        "intervention/image": "^2.3",
+        "cartalyst/sentinel": "^2.0",
+        "jenssegers/agent": "^2.5",
+        "barryvdh/laravel-debugbar": "^2.3",
+        "maatwebsite/excel": "^2.1",
+        "noprotocol/laravel-location": "^1.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Thorazine\\Hack\\": "src/"
+        }
+    }
+}

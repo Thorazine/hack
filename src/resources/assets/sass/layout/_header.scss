@@ -1,0 +1,67 @@
+.header {
+	height: $header-height;
+	border-bottom: 1px solid #CCC;
+	width: calc(100% + 35px);
+	margin-left: -20px;
+	margin-bottom: 20px;
+
+	#header-toggle-menu {
+		cursor: pointer;
+	}
+
+	#header-search {
+		padding-top: 7px;
+	}
+
+	.holder {
+		float: left;
+		height: $header-height;
+		min-width: 50px;
+		text-align: center;
+
+		> .fa {
+			line-height: $header-height;
+		}
+	}
+
+	.text {
+		color: #000000;	
+		padding: 14px 9px;
+	}
+
+	ul {
+		height: $header-height;
+	}
+
+	li {
+		height: $header-height;
+		display: inline-block;
+		margin-right: -4px;
+		padding: 7px 15px;
+	}
+
+	#portrait {
+		padding: 4px;
+		height: $header-height;
+		width: $header-height;
+		float: left;
+
+		div {
+			width: 40px;
+			height: 40px;
+			border-radius: 26px;
+			background-size: contain;
+		}
+	}
+
+	.menu-right {
+		position: absolute;
+		height: $header-height;
+		top: 0px;
+		right: 5px;
+	}
+
+	.input-group {
+		max-width: 300px;
+	}
+}
