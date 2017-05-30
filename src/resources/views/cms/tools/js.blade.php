@@ -78,7 +78,6 @@
 				// },
 				content_css: [
 					"https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300",
-					asset("dist/css/wysiwyg.css"),
 				]
 			};
 		}
@@ -94,7 +93,6 @@
 				toolbar1: "insertfile undo redo",
 				content_css: [
 					"https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300",
-					asset("dist/css/wysiwyg.css"),
 				]
 			}
 		}
