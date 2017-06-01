@@ -35,6 +35,6 @@ class CreateTableTextareas extends Migration
      */
     public function down()
     {
-        Schema::drop('builder_textareas');
+        Schema::dropIfExists('builder_textareas');
     }
 }
