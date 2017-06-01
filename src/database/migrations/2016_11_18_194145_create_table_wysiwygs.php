@@ -36,6 +36,6 @@ class CreateTableWysiwygs extends Migration
      */
     public function down()
     {
-        Schema::drop('builder_wysiwygs');
+        Schema::dropIfExists('builder_wysiwygs');
     }
 }
