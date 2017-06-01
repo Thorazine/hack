@@ -31,6 +31,6 @@ class CreateTableSlugs extends Migration
      */
     public function down()
     {
-        Schema::drop('slugs');
+        Schema::dropIfExists('slugs');
     }
 }
