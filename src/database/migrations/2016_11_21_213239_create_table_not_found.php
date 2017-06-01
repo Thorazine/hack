@@ -33,6 +33,6 @@ class CreateTableNotFound extends Migration
      */
     public function down()
     {
-        Schema::drop('not_found');
+        Schema::dropIfExists('not_found');
     }
 }
