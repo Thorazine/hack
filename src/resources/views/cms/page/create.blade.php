@@ -9,8 +9,6 @@
 
 @foreach($data['builders'] as $type)
 	@include('cms.positions.create.'.((@$type['position']) ? $type['position'] : 'main'), ['key' => $type['key'], 'builder' => $type])
-
-	@include('cms.input.create.'.$type['type'], ['key' => $type['key'], 'builder' => $type])
 @endforeach
 
 
