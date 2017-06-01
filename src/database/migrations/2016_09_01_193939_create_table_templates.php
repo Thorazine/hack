@@ -31,6 +31,6 @@ class CreateTableTemplates extends Migration
      */
     public function down()
     {
-        Schema::drop('templates');
+        Schema::dropIfExists('templates');
     }
 }
