@@ -39,6 +39,7 @@
 		if(configType == 'full') {
 			return {
 				selector: id,
+				branding: false,
 				plugins: [
 				    "advlist lists link image print preview hr anchor",
 				    "searchreplace visualblocks visualchars code fullscreen",
@@ -84,6 +85,7 @@
 		else {
 			return {
 				selector: id,
+				branding: false,
 				plugins: "",
 				menubar: "",
 				toolbar: "",
