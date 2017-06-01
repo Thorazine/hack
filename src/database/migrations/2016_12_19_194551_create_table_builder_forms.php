@@ -35,6 +35,6 @@ class CreateTableBuilderForms extends Migration
      */
     public function down()
     {
-        Schema::drop('builder_forms');
+        Schema::dropIfExists('builder_forms');
     }
 }
