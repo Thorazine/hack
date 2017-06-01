@@ -94,12 +94,14 @@ gulp
 
 # Filesystem
 This package uses the default Laravel Filesystem to handle storage. For settings take a look at the [Laravel docs](https://laravel.com/docs/5.4/filesystem).
-Personally I like to start of with the public driver and the ```php artisan storage:link``` command. 
+Personally I like to start of with the ```public``` driver setting and the ```php artisan storage:link``` command. 
 Obviously you are going to want to have the url availible on whatever driver you use.
 
 # Important
 We use tags to control the cache. So set .env CACHE_DRIVER to array, memcached or redis. File will not do.
 
 Make sure you have a mail driver setup. If you don't have that option just use "log" although I recommend [Mailhog](https://github.com/mailhog/MailHog). But be sure to make it functional on the production server as we send out mails to confirm the location if needed.
+
+Make sure your .env file is in order, especially the APP_URL. This is used by the filesystem.
 
 Now visit http://[domain]/cms and fill in the blancs.
