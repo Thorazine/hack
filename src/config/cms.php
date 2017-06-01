@@ -103,6 +103,7 @@ return [
 			'text',
 			'wysiwyg',
 			'number',
+			'timestamp',
 		],
 	],
 
