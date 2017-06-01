@@ -31,6 +31,6 @@ class CreateTableFormValidations extends Migration
      */
     public function down()
     {
-        Schema::drop('form_validations');
+        Schema::dropIfExists('form_validations');
     }
 }
