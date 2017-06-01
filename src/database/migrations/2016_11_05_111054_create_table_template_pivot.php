@@ -32,6 +32,6 @@ class CreateTableTemplatePivot extends Migration
      */
     public function down()
     {
-        Schema::drop('templateables');
+        Schema::dropIfExists('templateables');
     }
 }
