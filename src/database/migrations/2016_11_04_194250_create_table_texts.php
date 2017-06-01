@@ -35,6 +35,6 @@ class CreateTableTexts extends Migration
      */
     public function down()
     {
-        Schema::drop('builder_texts');
+        Schema::dropIfExists('builder_texts');
     }
 }
