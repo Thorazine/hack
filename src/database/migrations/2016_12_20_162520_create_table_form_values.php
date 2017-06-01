@@ -31,6 +31,6 @@ class CreateTableFormValues extends Migration
      */
     public function down()
     {
-        Schema::drop('form_values');
+        Schema::dropIfExists('form_values');
     }
 }
