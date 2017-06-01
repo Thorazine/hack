@@ -31,6 +31,6 @@ class CreateTableRestaurantMenu extends Migration
      */
     public function down()
     {
-        Schema::drop('restaurant_menus');
+        Schema::dropIfExists('restaurant_menus');
     }
 }
