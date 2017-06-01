@@ -15,6 +15,12 @@ return [
 		'edit',
 		'destroy',
 	],
+	'menus' => [
+		'index',
+		'create',
+		'edit',
+		'destroy',
+	],
 	'menu_items' => [
 		'index',
 		'create',
