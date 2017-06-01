@@ -39,6 +39,6 @@ class CreateTablePages extends Migration
      */
     public function down()
     {
-        Schema::drop('pages');
+        Schema::dropIfExists('pages');
     }
 }
