@@ -130,12 +130,12 @@ class MigrationCartalystSentinel extends Migration
      */
     public function down()
     {
-        Schema::drop('activations');
-        Schema::drop('cms_persistences');
-        Schema::drop('reminders');
-        Schema::drop('cms_roles');
-        Schema::drop('role_users');
-        Schema::drop('throttle');
-        Schema::drop('cms_users');
+        Schema::dropIfExists('activations');
+        Schema::dropIfExists('cms_persistences');
+        Schema::dropIfExists('reminders');
+        Schema::dropIfExists('cms_roles');
+        Schema::dropIfExists('role_users');
+        Schema::dropIfExists('throttle');
+        Schema::dropIfExists('cms_users');
     }
 }
