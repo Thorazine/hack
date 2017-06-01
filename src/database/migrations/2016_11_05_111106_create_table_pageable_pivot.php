@@ -32,6 +32,6 @@ class CreateTablePageablePivot extends Migration
      */
     public function down()
     {
-        Schema::drop('pageables');
+        Schema::dropIfExists('pageables');
     }
 }
