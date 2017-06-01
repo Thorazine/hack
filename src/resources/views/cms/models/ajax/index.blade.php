@@ -10,13 +10,19 @@
 				@if(@is_callable($values['alternativeValue']['index']))
 					<td>{!! $values['alternativeValue']['index']($data, $key) !!}</td>
 				@else
-					@if(in_array($values['type'], ['select']))
+					@if(in_array($values['type'], ['select', 'value-label']))
 						<td>{!! (is_array($values['values'])) ? @$values['values'][$data->{$key}] : @$model->{$values['values']}()[$data->{$key}] !!}</td>
 					@elseif(in_array($values['type'], ['checkbox']))
 						@if($data->{$key} == 1)
 							<td>{{ trans('cms.yes') }}</td>
 						@else 
 							<td>{{ trans('cms.no') }}</td>
+						@endif
+					@elseif(in_array($values['type'], ['timestamp']))
+						@if($data->{$key})
+							<td>{{ date('d-m-Y H:i:s', strtotime($data->{$key})) }}</td>
+						@else
+							<td></td>
 						@endif
 					@else
 						<td>{!! $data->{$key} !!}</td>
