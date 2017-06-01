@@ -38,6 +38,6 @@ class CreateTableImages extends Migration
      */
     public function down()
     {
-        Schema::drop('builder_images');
+        Schema::dropIfExists('builder_images');
     }
 }
