@@ -35,6 +35,6 @@ class CreateTableBuilderMenus extends Migration
      */
     public function down()
     {
-        Schema::drop('builder_menus');
+        Schema::dropIfExists('builder_menus');
     }
 }
