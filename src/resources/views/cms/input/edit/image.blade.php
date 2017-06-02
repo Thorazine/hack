@@ -10,7 +10,7 @@
 			<div class="delete">&times;</div>
 		</div>
 
-		{!! Form::hidden($key, '', ['class' => 'input-value']) !!}
+		{!! Form::hidden($key, Builder::createValue($model, $type, $data, $key, 'edit', false), ['class' => 'input-value']) !!}
 		{!! $errors->first($key, '<p class="text-danger">:message</p>') !!}
 
 		@include('cms.input.module.cropper')
