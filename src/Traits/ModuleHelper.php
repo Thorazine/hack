@@ -84,7 +84,10 @@ trait ModuleHelper {
 
 			if($value == '0' || $value) {
 
-				if(@$this->record[$key]) {
+				if(@$this->record[$key] == $value) {
+					$data[$key] = $this->record[$key];
+				}
+				elseif(@$this->record[$key]) {
 					Cms::getGallery()->removeObsoleteItem($this->record[$key]);
 				}
 
