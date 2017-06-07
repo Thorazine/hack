@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Thorazine\Hack\Http\Controllers';
+    protected $vendorNamespace = 'Thorazine\Hack\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -36,6 +36,7 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapCmsRoutes();
+        $this->mapCmsCustomRoutes();
 
         $this->mapFrontRoutes();
     }
@@ -51,7 +52,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware' => ['web', 'site'],
-            'namespace' => $this->namespace.'\Cms',
+            'namespace' => $this->vendorNamespace.'\Cms',
             'prefix' => 'cms',
             'as' => 'cms.'
         ], function ($router) {
@@ -68,11 +69,30 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    protected function mapCmsCustomRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'site'],
+            'prefix' => 'cms',
+            'as' => 'cms.'
+        ], function ($router) {
+            if(file_exists(base_path('routes/cms-custom.php'))) {
+                require base_path('routes/cms-custom.php');
+            }
+        });
+    }
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
     protected function mapFrontRoutes()
     {
         Route::group([
             'middleware' => ['web', 'site'],
-            'namespace' => $this->namespace,
         ], function ($router) {
             if(file_exists(base_path('routes/front.php'))) {
                 require base_path('routes/front.php');
