@@ -33,6 +33,15 @@ class HackServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
+        // Console commands
+        if ($this->app->runningInConsole()) 
+        {
+            $this->commands([
+                Console\Commands\HackBuilder::class,
+                Console\Commands\HackModule::class,
+            ]);
+        }
+
     }
 
     /**
