@@ -59,9 +59,9 @@ class HackModule extends Command
             $this->modelGenerator->fire($this->name, $this->force);
 
             $exitCode = Artisan::call('make:migration', [
-                'name' => 'create_table_'.snake_case($this->name),
+                'name' => 'create_table_'.snake_case(str_plural($this->name)),
                 // '--force' => $this->force,
-                '--create' => snake_case($this->name),
+                '--create' => snake_case(str_plural($this->name)),
             ]);
         }
         catch(Exception $e) {
@@ -74,6 +74,8 @@ You now have to:
 - add the rights
 - configure the model
 - update the migration
+
+For more information go to https://github.com/Thorazine/hack/wiki/Adding-a-custom-module
 ');
     }
 

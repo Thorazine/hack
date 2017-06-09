@@ -94,6 +94,18 @@ return [
 		'edit',
 		'destroy',
 	],
+	'db_logs' => [
+		'index',
+		'create',
+		'edit',
+		'destroy',
+	],
+	'information' => [
+		'index',
+		'create',
+		'edit',
+		'destroy',
+	],
 	// 'remote' => [
 	// 	'request',
 	// 	'recieve',

@@ -75,6 +75,8 @@ You now have to:
 - update menu (config/menu.php)
 - configure the builder 
 - update the migration
+
+For more information go to https://github.com/Thorazine/hack/wiki/Adding-a-custom-builder
 ');
     }
 

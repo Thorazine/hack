@@ -53,11 +53,31 @@ class FirstController extends Controller
                     'updated_at' => date('Y-m-d H:i:s'),
                 ]);
 
+                $rights = $this->getAllRightsAsArray()
+
                 // create the administrator role
-                $roleId = CmsRole::insertGetId([
+                CmsRole::insert([
                     'name' => 'Administrators',
                     'slug' => 'administrators',
-                    'permissions' => json_encode($this->getAllRightsAsArray()),
+                    'permissions' => json_encode($rights),
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ]);
+
+                $clientRights = array_except($rights, [
+                    'templates',
+                    'users',
+                    'roles',
+                    'settings',
+                    'information',
+                    'logs',
+                ]);
+
+                // create the client role
+                CmsRole::insert([
+                    'name' => 'Clients',
+                    'slug' => 'clients',
+                    'permissions' => json_encode($clientRights),
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ]);
@@ -78,6 +98,8 @@ class FirstController extends Controller
 
                 DB::commit();
 
+                DbLog::add(__CLASS__, 'create', 'Congratulations! You have successfully created Hack!');
+
                 return redirect()->route('cms.base.first.success');
             }
 
@@ -92,7 +114,7 @@ class FirstController extends Controller
                 'error' => $e->getMessage(),
             ]);
 
-            return abort(500, 'Not the best start...');
+            return abort(500, 'There was an error. Not the best start...');
         }
     }
 

@@ -88,4 +88,20 @@ return [
 		]
 	],
 
+	// Information
+	[
+		'label' => 'menu.information',
+		'icon' => 'fa-info-circle',
+		'children' => [
+			[
+				'route' => 'cms.db_logs.index',
+				'label' => 'cms.module.users',
+			],
+			[
+				'route' => 'cms.information.index',
+				'label' => 'cms.module.roles',
+			],
+		]
+	],
+
 ];

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Thorazine\Hack\Models\Form;
 use Thorazine\Hack\Models\FormEntry;
 use Thorazine\Hack\Models\FormField;
+use Thorazine\Hack\Models\DbLog;
 use Excel;
 use Cms;
 
@@ -66,8 +67,10 @@ class FormController extends CmsController
     }
 
 
-    public function show(Request $request)
+    public function show(Request $request, $id)
     {
+        $this->viewInitialiser();
+        
         $datas = $this->model
             ->with('formFields')
             ->paginate(100);
@@ -119,6 +122,8 @@ class FormController extends CmsController
 
             $array[$index]['created_at'] = $formEntry->created_at;
         }
+
+        DbLog::add(__CLASS__, 'download', json_encode($request->all()));
 
         Excel::create('Filename', function($excel) use ($array, $form) {
             // Set the title

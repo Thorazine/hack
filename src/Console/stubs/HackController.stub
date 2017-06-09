@@ -15,7 +15,7 @@ class DummyClassController extends CmsController
     public function __construct(DummyClass $model)
     {
         $this->model = $model;
-        $this->slug = 'DummyUrl';
+        $this->slug = 'DummySlug';
 
         parent::__construct($this);
     }

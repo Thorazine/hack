@@ -9,6 +9,7 @@ use Thorazine\Hack\Traits\ModuleHelper;
 use Thorazine\Hack\Traits\ModuleSearch;
 use Thorazine\Hack\Models\Gallery;
 use Thorazine\Hack\Http\Requests;
+use Thorazine\Hack\Models\DbLog;
 use Thorazine\Hack\Models\Site;
 use Illuminate\Http\Request;
 use Exception;
@@ -28,17 +29,32 @@ class CmsController extends Controller
     public $types;
     public $record; // the record before update
     protected $child;
+    protected $hasOrder = false; // by default there is no ordering.
 
 
     public function __construct($child)
     {
         $this->types = $this->model->types;
         $this->child = $child;
+    }
+
+
+    /**
+     * Add functionality to the view
+     *
+     * @param  string  $query
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function viewInitialiser()
+    {
+        $this->model->types = $this->model->types();
 
         view()->share([
             'slug' => $this->slug,
-            'types' => $this->types,
+            'types' => $this->model->types,
             'model' => $this->model,
+            'hasOrder' => (@$this->child->hasOrder) ? $this->child->hasOrder : $this->hasOrder,
             'hasPermission' => function($action) {
                 return Cms::hasPermission(Cms::siteId().'.cms.'.$this->slug.'.'.$action);
             },
@@ -68,8 +84,15 @@ class CmsController extends Controller
      */
     public function index(Request $request)
     {
-        $datas = $this->search($this->queryParameters($this->model, $request), $request)
-            ->paginate();
+        $this->viewInitialiser();
+
+        $datas = $this->search($this->queryParameters($this->model, $request), $request);
+
+        if(@$this->child->hasOrder) {
+            $datas = $datas->orderBy('drag_order', 'asc');
+        }
+
+        $datas = $datas->paginate();
 
         if($request->ajax()) {
             return response()->json([
@@ -100,6 +123,8 @@ class CmsController extends Controller
      */
     public function create(Request $request)
     {
+        $this->viewInitialiser();
+
         if(session('_old_input')) {
             $data = session('_old_input');
         }
@@ -148,6 +173,8 @@ class CmsController extends Controller
             $this->child->storeExtra($request, $id);
 
             DB::commit();
+
+            DbLog::add(__CLASS__, 'store', json_encode($request->all()));
 
             Cms::destroyCache([$this->slug]);
         }
@@ -222,6 +249,8 @@ class CmsController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        $this->viewInitialiser();
+        
         if(session('_old_input')) {
             $data = session('_old_input');
         }
@@ -277,6 +306,8 @@ class CmsController extends Controller
             $this->child->updateExtra($request, $id);
 
             DB::commit();
+
+            DbLog::add(__CLASS__, 'update', json_encode($request->all()));
 
             Cms::destroyCache([$this->slug]);
         }
@@ -348,6 +379,8 @@ class CmsController extends Controller
 
             DB::commit();
 
+            DbLog::add(__CLASS__, 'destroy', $id);
+
             Cms::destroyCache([$this->slug]);
 
             return response()->json([
@@ -392,6 +425,8 @@ class CmsController extends Controller
 
             DB::commit();
 
+            DbLog::add(__CLASS__, 'order', json_encode($request->all()));
+
             Cms::destroyCache([$this->slug]);
 
             return response()->json([
@@ -411,6 +446,9 @@ class CmsController extends Controller
             ], 500);
         }
     }
+
+
+    
 
 
     /**

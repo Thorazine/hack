@@ -3,7 +3,7 @@
 namespace Thorazine\Hack\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Cms;
 
 class CmsModel extends Model
 {
@@ -22,7 +22,7 @@ class CmsModel extends Model
      * Constructor
      */
     public function __construct($child)
-    {
+    {        
         // we need to force the parent construct
         parent::__construct();
 
@@ -38,6 +38,12 @@ class CmsModel extends Model
     {
         $namespace = config('cms.modules.'.$module.'.'.$key);
         return new $namespace($this->child);
+    }
+
+
+    public function addInitiator($initiator)
+    {
+        Cms::addInitiator($initiator);
     }
 
 }

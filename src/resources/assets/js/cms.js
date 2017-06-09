@@ -36,5 +36,10 @@ $(function() {
 
 $(document).ready(function() {
     $('#cms-loader').fadeOut(200);
+
+    // site switcher
+    $('#site-selector').on('change', function(event) {
+        window.location.href = $(this).val();
+    });
 });
 

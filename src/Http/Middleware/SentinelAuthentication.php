@@ -48,6 +48,9 @@ class SentinelAuthentication
                     'updated_at' => date('Y-m-d H:i:s'),
                 ]);
 
+                // set the cms language as defined by the user
+                Cms::setLanguage();
+
                 if(in_array($this->replaceEndOfRight(Cms::siteId().'.'.$request->route()->getName()), $permissions) || in_array($request->route()->getName(), config('cms.rights.excluded'))) {
                     return $next($request);
                 }

@@ -18,23 +18,24 @@ class HackServiceProvider extends ServiceProvider
 
         $this->publishConfig();
 
-        // $this->loadViewsFrom(__DIR__.'/resources/views', 'hack'); // add with the namespace "cms"
-
         $this->publishes([
             __DIR__.'/resources/views/cms' => resource_path('views/cms'),
             __DIR__.'/resources/views/1' => resource_path('views/1'),
             __DIR__.'/resources/views/offline.blade.php' => resource_path('views/offline.blade.php'),
             __DIR__.'/routes/cms.php' => base_path('routes/cms.php'),
-            __DIR__.'/routes/cms-custom.php' => base_path('routes/cms-custom.php'),
             __DIR__.'/routes/front.php' => base_path('routes/front.php'),
         ], 'hack');
+
+        $this->publishes([
+            __DIR__.'/routes/cms-custom.php' => base_path('routes/cms-custom.php'),
+        ]);
 
         $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'cms');
 
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
-        // Console commands
-        if ($this->app->runningInConsole()) 
+        // Register console commands
+        if($this->app->runningInConsole()) 
         {
             $this->commands([
                 Console\Commands\HackBuilder::class,

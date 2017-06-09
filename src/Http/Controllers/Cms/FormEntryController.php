@@ -10,6 +10,7 @@ use Thorazine\Hack\Models\FormValue;
 use Thorazine\Hack\Models\FormField;
 use Thorazine\Hack\Models\FormEntry;
 use Thorazine\Hack\Http\Requests;
+use Thorazine\Hack\Models\DbLog;
 use Illuminate\Http\Request;
 use Exception;
 use Cms;
@@ -71,6 +72,8 @@ class FormEntryController extends Controller
      */
     public function index(Request $request)
     {
+        $this->viewInitialiser();
+
         // get the id's from the paginate
         $formEntries = $this->model
             ->where('form_id', $request->fid)
@@ -100,6 +103,8 @@ class FormEntryController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        $this->viewInitialiser();
+        
         // get the id's from the paginate
         $formEntry = $this->model
             ->where('id', $id)
@@ -171,6 +176,8 @@ class FormEntryController extends Controller
                 }
             }
 
+            DbLog::add(__CLASS__, 'update', json_encode($request->all()));
+
             DB::commit();
 
             Cms::destroyCache([$this->slug, 'forms', 'form_values', 'form_fields']);
@@ -202,6 +209,8 @@ class FormEntryController extends Controller
 
             // delete parent
             $this->model->where('id', $id)->delete();
+
+            DbLog::add(__CLASS__, 'delete', $id);
 
             DB::commit();
 

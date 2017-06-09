@@ -76,6 +76,8 @@ Route::group(['middleware' => 'sentinel.auth'], function() {
 	Route::resource('form_validations', 'FormValidationController');
 	Route::resource('gallery', 'GalleryController');
 	Route::resource('not_found', 'NotFoundController');
+	Route::resource('information', 'InformationController');
+	Route::resource('db_logs', 'DbLogController');
 
 	/**
 	 * Gallery

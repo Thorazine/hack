@@ -9,6 +9,7 @@ use Thorazine\Hack\Traits\ModuleHelper;
 use Illuminate\Http\Request;
 use Thorazine\Hack\Models\Template;
 use Thorazine\Hack\Http\Requests;
+use Thorazine\Hack\Models\DbLog;
 use Thorazine\Hack\Models\Page;
 use Exception;
 use Cms;
@@ -56,6 +57,8 @@ class TemplateController extends CmsController
      */
     public function index(Request $request)
     {
+        $this->viewInitialiser();
+
         $datas = $this->search($this->queryParameters($this->model, $request), $request)
             ->with('pages')
             ->paginate();
@@ -89,6 +92,8 @@ class TemplateController extends CmsController
      */
     public function create(Request $request)
     {
+        $this->viewInitialiser();
+
         if(session('_old_input')) {
             $data = session('_old_input');
         }
@@ -118,6 +123,8 @@ class TemplateController extends CmsController
 
             DB::commit();
 
+            DbLog::add(__CLASS__, 'store', json_encode($request->all()));
+
             Cms::destroyCache([$this->slug]);
         }
         catch(Exception $e) {
@@ -137,6 +144,8 @@ class TemplateController extends CmsController
      */
     public function edit(Request $request, $id)
     {
+        $this->viewInitialiser();
+        
         if(session('_old_input')) {
             $data = session('_old_input');
         }
@@ -175,6 +184,8 @@ class TemplateController extends CmsController
 
             DB::commit();
 
+            DbLog::add(__CLASS__, 'update', json_encode($request->all()));
+
             Cms::destroyCache([$this->slug]);
         }
         catch(Exception $e) {
@@ -195,6 +206,7 @@ class TemplateController extends CmsController
     public function destroy($id)
     {
         //
+        DbLog::add(__CLASS__, 'destroy', $id);
 
         Cms::destroyCache([$this->slug]);
     }

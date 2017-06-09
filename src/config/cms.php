@@ -9,6 +9,15 @@ return [
 		'nl' => 'Dutch',
 		'en' => 'English',
 	],
+
+	/**
+	 * The languages the user can choose from for the cms
+	 * You can add add any language here from the languages config.
+	 */
+	'cms-languages' => [
+		'en' => 'English',
+		'nl' => 'Dutch',
+	],
 	
 
 	/** 

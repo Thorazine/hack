@@ -4,6 +4,7 @@ namespace Thorazine\Hack\Http\Controllers\Cms;
 
 use Thorazine\Hack\Http\Requests\ModuleUpdate;
 use Thorazine\Hack\Models\Auth\CmsPersistence;
+use Thorazine\Hack\Models\DbLog;
 use Thorazine\Hack\Models\User;
 use Illuminate\Http\Request;
 use Hash;
@@ -19,12 +20,15 @@ class UserController extends CmsController
         $this->model = $model;
         $this->slug = 'user';
 
+
         parent::__construct($this);
     }
 
 
     public function show(Request $request, $id)
     {
+        $this->viewInitialiser();
+        
     	if($id != Cms::user('id')) {
     		return redirect()
     			->back()
@@ -73,6 +77,8 @@ class UserController extends CmsController
 
             DB::commit();
 
+            DbLog::add(__CLASS__, 'update', json_encode($request->all()));
+
             Cms::destroyCache([$this->slug]);
         }
         catch(Exception $e) {
@@ -113,6 +119,10 @@ class UserController extends CmsController
             CmsPersistence::where('id', $id)->delete();
 
             DB::commit();
+
+            DbLog::add(__CLASS__, 'destroy', $id);
+
+            Cms::destroyCache([$this->slug]);
 
             return response()->json([
                 'message' => trans('cms.deleted'),

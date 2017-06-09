@@ -38,11 +38,7 @@ class DummyClass extends CmsModel
     {
         parent::boot();
 
-        /**
-         * Only activate when needed
-         *
         static::addGlobalScope(new SiteScope);
-        */
     }
 
 
@@ -62,12 +58,12 @@ class DummyClass extends CmsModel
             ],
             // 'title' => [
             //     'type' => 'text',
-            //     'label' => trans('modules.dummy-path.title'),
+            //     'label' => trans('modules.DummyPath.title'),
             //     'regex' => 'required',
             // ],
             // 'image' => [
             //     'type' => 'image',
-            //     'label' => trans('modules.dummy-path.image'),
+            //     'label' => trans('modules.DummyPath.image'),
             //     'regex' => '',
             //     'width' => false,
             //     'height' => 140,

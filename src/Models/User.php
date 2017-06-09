@@ -70,6 +70,12 @@ class User extends CmsModel
                 'label' => trans('modules.users.last_name'),
                 'regex' => '',
             ],
+            'language' => [
+                'type' => 'select',
+                'label' => trans('modules.users.language'),
+                'regex' => '',
+                'values' => config('cms.cms-languages'),
+            ],
             'password' => [
                 'type' => 'password',
                 'label' => trans('modules.users.password'),

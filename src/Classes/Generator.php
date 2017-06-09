@@ -59,6 +59,13 @@ abstract class Generator {
 	}
 
 
+	protected function replaceSlugName()
+	{
+		$this->template = str_replace('DummySlug', snake_case(str_plural($this->name)), $this->template);
+		return $this;
+	}
+
+
 	protected function replaceNameName()
 	{
 		$this->template = str_replace('DummyName', snake_case($this->name), $this->template);

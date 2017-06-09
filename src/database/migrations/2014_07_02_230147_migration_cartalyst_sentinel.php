@@ -109,6 +109,7 @@ class MigrationCartalystSentinel extends Migration
             $table->increments('id');
             $table->string('email');
             $table->string('password');
+            $table->string('language')->default('en');
             $table->text('permissions')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->string('image')->nullable();

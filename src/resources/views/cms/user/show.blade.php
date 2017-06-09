@@ -10,7 +10,7 @@
 		@include('cms.partials.header')
 
 		<div class="subheader">
-			<a class="primary" href="{{ route('cms.user.edit', ['id' => $user->id]) }}" title="Edit your data">Edit</a>
+			<a class="primary" href="{{ route('cms.user.edit', ['id' => $user->id]) }}" title="{{ trans('cms.edit_your_data') }}">{{ trans('cms.edit') }}</a>
 		</div>
 
 		<div class="row">
@@ -37,22 +37,22 @@
 				</div>
 			</div>
 		</div>
-		<h3>Sessions</h3>
+		<h3>{{ trans('modules.users.sessions') }}</h3>
 		<hr>
 		<div class="row">
 			<div class="col-sm-12">
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>Current</th>
-							<th>Country</th>
-							<th>City</th>
-							<th>OS</th>
-							<th>Browser</th>
-							<th>Device type</th>
-							<th>Device</th>
-							<th>Last used</th>
-							<th>Remove</th>
+							<th>{{ trans('modules.users.current') }}</th>
+							<th>{{ trans('modules.users.country') }}</th>
+							<th>{{ trans('modules.users.city') }}</th>
+							<th>{{ trans('modules.users.os') }}</th>
+							<th>{{ trans('modules.users.browser') }}</th>
+							<th>{{ trans('modules.users.device_type') }}</th>
+							<th>{{ trans('modules.users.device') }}</th>
+							<th>{{ trans('modules.users.last_used') }}</th>
+							<th>{{ trans('modules.users.remove') }}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -65,7 +65,7 @@
 							<td>{{ Cms::user('persistence', 'device_type') }}</td>
 							<td>{{ Cms::user('persistence', 'device') }}</td>
 							<td>{{ Cms::user('persistence', 'updated_at')->format('d-m-Y H:i:s') }}</td>
-							<td><a href="{{ route('cms.auth.destroy') }}" class="btn btn-danger btn-xs">Logout</a></td>
+							<td><a href="{{ route('cms.auth.destroy') }}" class="btn btn-danger btn-xs">{{ trans('cms.logout') }}</a></td>
 						</tr>
 
 						@foreach($user->persistences as $persistence)
@@ -79,7 +79,7 @@
 									<td>{{ $persistence->device_type }}</td>
 									<td>{{ $persistence->device }}</td>
 									<td>{{ $persistence->updated_at->format('d-m-Y H:i:s') }}</td>
-									<td><a href="{{ route('cms.user.destroy', ['id' => $persistence->id]) }}" class="btn btn-danger btn-xs model-delete">Invalidate session</a></td>
+									<td><a href="{{ route('cms.user.destroy', ['id' => $persistence->id]) }}" class="btn btn-danger btn-xs model-delete">{{ trans('modules.users.invalidate_session') }}</a></td>
 								</tr>
 							@endif
 						@endforeach

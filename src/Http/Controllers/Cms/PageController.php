@@ -11,6 +11,7 @@ use Thorazine\Hack\Models\Templateable;
 use Thorazine\Hack\Models\Template;
 use Thorazine\Hack\Models\Pageable;
 use Thorazine\Hack\Http\Requests;
+use Thorazine\Hack\Models\DbLog;
 use Thorazine\Hack\Models\Page;
 use Thorazine\Hack\Models\Slug;
 use Exception;
@@ -58,6 +59,8 @@ class PageController extends CmsController
      */
     public function create(Request $request)
     {
+        $this->viewInitialiser();
+
         if(session('_old_input')) {
             $data = session('_old_input');
         }
@@ -127,6 +130,8 @@ class PageController extends CmsController
 
             DB::commit();
 
+            DbLog::add(__CLASS__, 'store', json_encode($request->all()));
+
             Cms::destroyCache([$this->slug]);
         }
         catch(Exception $e) {
@@ -146,6 +151,8 @@ class PageController extends CmsController
      */
     public function edit(Request $request, $id)
     {
+        $this->viewInitialiser();
+        
         if(session('_old_input')) {
             $page = $this->model
                 ->where('id', $id)
@@ -223,6 +230,8 @@ class PageController extends CmsController
 
             DB::commit();
 
+            DbLog::add(__CLASS__, 'update', json_encode($request->all()));
+
             Cms::destroyCache([$this->slug]);
         
         }
@@ -244,6 +253,8 @@ class PageController extends CmsController
     public function destroy($id)
     {
         //
+
+        DbLog::add(__CLASS__, 'destroy', $id);
 
         Cms::destroyCache([$this->slug]);
     }

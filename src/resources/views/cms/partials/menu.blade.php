@@ -1,6 +1,16 @@
 
 <div class="menu menu-vertical">
-    <div class="brand">{{ Cms::site()->title }}</div>
+    <div class="brand">
+        <select id="site-selector">
+            @foreach(Cms::getSites() as $site)
+                @if(Cms::site()->id == $site->id)
+                    <option value="{{ $site->protocol.$site->domain }}/cms/panel" selected>{{ $site->title }}</option>
+                @else
+                    <option value="{{ $site->protocol.$site->domain }}/cms/panel">{{ $site->title }}</option>
+                @endif
+            @endforeach
+        </select>
+    </div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
     <div class="menu-list">

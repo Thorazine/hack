@@ -2,6 +2,10 @@
 
 return [
 	// module entry fields
+	'panel' => [
+		'info' => '',
+		'more' => 'More',
+	],
 	'sites' => [
 		'title' => 'Title',
 		'robots' => 'Robots',
@@ -78,12 +82,24 @@ return [
 		'first_name' => 'First name',
 		'last_name' => 'Last name', 
 		'email' => 'Email',
+		'language' => 'Language',
 		'permissions' => 'Extra permissions',
 		'image' => 'Image',
 		'persistences' => 'Persistent sessions',
 		'password' => 'Password',
 		'password_confirm' => 'Confirm password',
 		'password_placeholder' => 'Only fill in if you want to change it',
+		'sessions' => 'Sessions',
+		'current' => 'Current',
+		'country' => 'Country',
+		'city' => 'City',
+		'os' => 'OS',
+		'browser' => 'Browser',
+		'device_type' => 'Device type',
+		'device' => 'Device',
+		'last_used' => 'Last used',
+		'remove' => 'Remove',
+		'invalidate_session' => 'Invalidate session',
 	],
 	'roles' => [
 		'name' => 'Name',
@@ -133,5 +149,25 @@ return [
 		'width' => 'Width',
 		'height' => 'Height',
 		'image' => 'Image',
-	]
+	],
+	'information' => [
+		'sites' => 'Sites',
+		'message_type' => 'Message type',
+		'title' => 'Title',
+		'image' => 'Image',
+		'message' => 'Message',
+		'start_date' => 'Start date',
+		'end_date' => 'End date',
+		'publish_at' => 'Publish date',
+		'depublish_at' => 'Depublish date',
+		'maintenance' => 'Maintenance',
+		'news' => 'News',
+	],
+	'db_logs' => [
+		'cms_user_id' => 'User',
+		'action' => 'Action',
+		'level' => 'Warn level',
+		'controller' => 'Controller',
+		'request_data' => 'Request data',
+	],
 ];

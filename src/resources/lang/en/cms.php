@@ -17,6 +17,12 @@ return [
 	'yes' => 'Yes',
 	'no' => 'No',
 	'none' => 'None',
+	'options' => 'Options',
+	'search' => 'Search',
+	'edit' => 'Edit',
+	'edit_your_data' => 'Edit your data',
+	'logout' => 'Logout',
+
 
 	// image module
 	'image' => [
@@ -54,6 +60,8 @@ return [
 		'users' => 'Users',
 		'roles' => 'Roles',
 		'gallery' => 'Gallery',
+		'information' => 'Information',
+		'db_logs' => 'Logs',
 
 		// builders
 		'text' => 'Text',

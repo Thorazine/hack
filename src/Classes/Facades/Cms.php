@@ -5,6 +5,7 @@ namespace Thorazine\Hack\Classes\Facades;
 use Thorazine\Hack\Models\Gallery;
 use Thorazine\Hack\Models\Site;
 use Cache;
+use App;
 
 class Cms {
 
@@ -42,6 +43,9 @@ class Cms {
 	private $menuOpen = false;
 
 
+	private $initiateList = [];
+
+
 	/**
 	 * Get the site id of the current site
 	 *
@@ -65,6 +69,24 @@ class Cms {
 	{
 		$this->site = $collection;
 	}
+
+
+	/**
+	 * Get the site id of the current site
+	 *
+	 * @param collection
+	 */
+	public function getSites()
+	{
+		$sites = Cache::tags(['site'])->remember(implode('-', ['getSites']), env('PAGE_CACHE_TIME'), function() {
+		    $sites = Site::orderBy('title', 'asc')
+		    	->get();
+		        
+		    return $sites;
+		});
+
+		return $sites;
+	}        
 
 
 	/**
@@ -171,6 +193,17 @@ class Cms {
 		$this->user = $collection;
 
 		return $this->user;
+	}
+
+
+	/**
+	 * Get the site id of the current site
+	 *
+	 * @param collection
+	 */
+	public function setLanguage()
+	{
+		App::setLocale($this->user->language);
 	}
 
 
@@ -358,5 +391,21 @@ class Cms {
     {
     	return $this->menuOpen;
     }
+
+
+    // public function addInitiator($initiator)
+    // {
+    // 	array_push($this->initiateList, $initiator);
+    // }
+
+
+    // public function runInitiator()
+    // {
+    // 	foreach($this->initiateList as $initiator) {
+
+    // 		$initiator->types = $initiator->types();
+    // 		// dd($initiator);
+    // 	}
+    // }
 
 }

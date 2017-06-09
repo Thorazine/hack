@@ -18,7 +18,8 @@ class CreateTableLogs extends Migration
             $table->increments('id');
             $table->integer('site_id')->default(1);
             $table->integer('cms_user_id');
-            $table->string('logged_session_id');
+            $table->string('logged_session_id')->nullable();
+            $table->integer('level')->default(1);
             $table->string('action')->nullable();
             $table->string('controller')->nullable();
             $table->text('request_data')->nullable();

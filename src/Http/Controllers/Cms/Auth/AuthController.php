@@ -8,6 +8,7 @@ use Thorazine\Hack\Http\Requests\LoginRequest;
 use Thorazine\Hack\Classes\Tools\Browser;
 use Illuminate\Http\Request;
 use Thorazine\Hack\Http\Requests;
+use Thorazine\Hack\Models\DbLog;
 use Location;
 use Sentinel;
 use Cms;
@@ -100,6 +101,9 @@ class AuthController extends Controller
 
             // if we are in range or it is first run
             if($active) {    
+
+                DbLog::add(__CLASS__, 'login', json_encode($request->except('password')));
+
                 return redirect()->route('cms.panel.index');
             }   
 
@@ -169,6 +173,8 @@ class AuthController extends Controller
 
     public function destroy()
     {
+        DbLog::add(__CLASS__, 'logout', '');
+
         Sentinel::logout();
 
         return redirect()->route('cms.auth.index');

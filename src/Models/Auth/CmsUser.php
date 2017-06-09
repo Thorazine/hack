@@ -55,6 +55,12 @@ class CmsUser extends EloquentUser
                 'label' => trans('modules.users.email'),
                 'regex' => 'required',
             ],
+            'language' => [
+                'type' => 'select',
+                'label' => trans('modules.users.language'),
+                'regex' => '',
+                'values' => config('cms.cms-languages'),
+            ],
             'image' => [
                 'type' => 'image',
                 'label' => trans('modules.users.image'),

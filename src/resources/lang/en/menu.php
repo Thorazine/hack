@@ -6,4 +6,5 @@ return [
 	'settings' => 'Settings',
 	'forms' => 'Forms',
 	'gallery' => 'Gallery',
+	'information' => 'Information',
 ];

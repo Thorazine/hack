@@ -82,13 +82,4 @@ class NotFound extends CmsModel
             ],
         ];
     } 
-
-
-    /**
-     *
-     */
-    public function items()
-    {
-        return $this->hasMany('Thorazine\Hack\Models\MenuItem');
-    }
 }

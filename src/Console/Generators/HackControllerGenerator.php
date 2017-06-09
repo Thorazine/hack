@@ -14,9 +14,11 @@ class HackControllerGenerator extends Generator {
 		$this->name = $name;
 		$this->force = $force;
 
+		$this->filename = studly_case($this->name).'Controller.php';
+
 		$this->setTemplate(__DIR__.'/../stubs/HackController.stub');
 
-		$this->replaceClassName()->replacePathName()->replaceUrlName();
+		$this->replaceClassName()->replacePathName()->replaceUrlName()->replaceSlugName();
 
 		$this->create(base_path('app/Http/Controllers/Cms'));		
 	}

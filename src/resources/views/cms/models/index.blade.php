@@ -21,7 +21,7 @@
 				<a class="" href="{{ route((@$createRoute) ? $createRoute : 'cms.'.$slug.'.create', (@$fid) ? ['fid' => $fid] : []) }}"><i class="fa fa-plus"></i> {{ trans('cms.new') }}</a>
 			@endif
 
-			{!! Form::text('q', Request::get('q'), ['id' => 'q', 'placeholder' => 'Search', 'data-href' => route('cms.'.$slug.'.index'), 'autocomplete' => 'off']) !!}
+			{!! Form::text('q', Request::get('q'), ['id' => 'q', 'placeholder' => trans('cms.search'), 'data-href' => route('cms.'.$slug.'.index'), 'autocomplete' => 'off']) !!}
 			<i class="fa fa-times" id="q-clear"></i>
 			<div class="holder" id="q-button" data-href="{{ Request::url() }}">
 				<i class="fa fa-search"></i>
@@ -48,7 +48,7 @@
 							</th>
 						@endif
 					@endforeach
-					<th>Options</th>
+					<th>{{ trans('cms.options') }}</th>
 				</tr>
 			</thead>
 			<tbody class="order" id="dataset" @if(@$hasOrder) data-order-url="{{ route('cms.'.$slug.'.order') }}" @endif>

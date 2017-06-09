@@ -40,6 +40,8 @@ class FormFieldController extends CmsController
      */
     public function index(Request $request)
     {
+        $this->viewInitialiser();
+        
         $datas = $this->search($this->queryParameters($this->model, $request), $request)
             ->orderBy('drag_order')
             ->paginate();

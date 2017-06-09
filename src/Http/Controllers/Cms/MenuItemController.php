@@ -5,6 +5,10 @@ namespace Thorazine\Hack\Http\Controllers\Cms;
 use Thorazine\Hack\Classes\Tools\Nested;
 use Illuminate\Http\Request;
 use Thorazine\Hack\Models\MenuItem;
+use Thorazine\Hack\Models\DbLog;
+use Exception;
+use Log;
+use DB;
 
 class MenuItemController extends CmsController
 {
@@ -38,6 +42,8 @@ class MenuItemController extends CmsController
      */
     public function index(Request $request)
     {
+        $this->viewInitialiser();
+        
         $datas = $this->search($this->queryParameters($this->model, $request), $request)
             ->orderBy('drag_order', 'asc')
             ->with('menu')
@@ -121,36 +127,56 @@ class MenuItemController extends CmsController
      */
     public function order(Request $request)
     {
+        // Start insert
+        try {
+            DB::beginTransaction();
 
-        $menuItemsIds = $this->model
-            ->where('menu_id', $request->menu_id)
-            ->pluck('id')
-            ->toArray();
+            $menuItemsIds = $this->model
+                ->where('menu_id', $request->menu_id)
+                ->pluck('id')
+                ->toArray();
 
-        foreach($request->menu_items as $index => $menuItem) {
+            foreach($request->menu_items as $index => $menuItem) {
 
-            if(@$menuItem['name']) { // update
-                $this->model->where('id', $menuItem['name'])->update([
-                    'parent_id' => $menuItem['parent_id'],
-                    'depth' => $menuItem['depth'],
-                    'drag_order' => $index,
-                    'updated_at' => date('Y-m-d H:i:s'),
-                ]);
+                if(@$menuItem['name']) { // update
+                    $this->model->where('id', $menuItem['name'])->update([
+                        'parent_id' => $menuItem['parent_id'],
+                        'depth' => $menuItem['depth'],
+                        'drag_order' => $index,
+                        'updated_at' => date('Y-m-d H:i:s'),
+                    ]);
 
-                // delete id from delete list
+                    // delete id from delete list
 
-                if(@$menuItem['name'] && ($key = array_search($menuItem['name'], $menuItemsIds)) !== false) {
-                    unset($menuItemsIds[$key]);
+                    if(@$menuItem['name'] && ($key = array_search($menuItem['name'], $menuItemsIds)) !== false) {
+                        unset($menuItemsIds[$key]);
+                    }
+                }
+                else { // create
+
                 }
             }
-            else { // create
 
-            }
+            DB::commit();
+
+            DbLog::add(__CLASS__, 'order', json_encode($request->all()));
+
+            Cms::destroyCache([$this->slug]);
         }
+        catch(Exception $e) {
 
-        Cms::destroyCache([$this->slug]);
+            DB::rollBack();
 
-        // dd($menuItemsIds);
+            Log::error('Rollback after deletion attempt', [
+                'action' => 'destroy',
+                'data' => $id,
+                'error' => $e->getMessage(),
+            ]);
+
+            return response()->json([
+                'error' => '',
+            ]);
+        } 
 
         return response()->json([
             'success' => true,

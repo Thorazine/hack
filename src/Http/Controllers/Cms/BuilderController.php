@@ -12,6 +12,7 @@ use Thorazine\Hack\Models\Templateable;
 use Thorazine\Hack\Models\Template;
 use Thorazine\Hack\Models\Pageable;
 use Thorazine\Hack\Http\Requests;
+use Thorazine\Hack\Models\DbLog;
 use Thorazine\Hack\Models\Page;
 use Exception;
 use Builder;
@@ -195,6 +196,8 @@ class BuilderController
 
             DB::commit();
 
+            DbLog::add(__CLASS__, 'store', json_encode($request->all()));
+
             Cms::destroyCache([$this->slug]);
         }
         catch(Exception $e) {
@@ -278,6 +281,8 @@ class BuilderController
 
             DB::commit();
 
+            DbLog::add(__CLASS__, 'update', json_encode($request->all()));
+
             Cms::destroyCache([$this->slug]);
         }
         catch(Exception $e) {
@@ -327,6 +332,10 @@ class BuilderController
             $this->templateable->where('id', $id)->delete();
 
             DB::commit();
+
+            DbLog::add(__CLASS__, 'destroy', $id);
+
+            Cms::destroyCache([$this->slug]);
 
             return response()->json([
                 'message' => trans('cms.deleted'),
@@ -388,6 +397,8 @@ class BuilderController
                         'drag_order' => $order,
                     ]);
             }
+
+            DbLog::add(__CLASS__, 'order', json_encode($request->all()));
 
             DB::commit();
 

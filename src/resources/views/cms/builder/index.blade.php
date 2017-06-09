@@ -28,7 +28,7 @@
 							<th>{{ $values['label'] }}</th>
 						@endif
 					@endforeach
-					<th>Options</th>
+					<th>{{ trans('cms.options') }}</th>
 				</tr>
 			</thead>
 			<tbody class="order" @if(@$hasOrder) data-order-url="{{ route('cms.'.$slug.'.order') }}" @endif>

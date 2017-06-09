@@ -158,6 +158,7 @@ class Site extends CmsModel
                 'type' => 'number',
                 'label' => trans('modules.sites.browser_cache_time'),
                 'regex' => 'numeric|required',
+                'default' => 300,
                 'overview' => false,
             ],
         ];
