@@ -11,6 +11,7 @@ Feel free to try it, but don't expect support any day soon.
 - Multi language CMS (language files can be added)
 - 2 factor authentication based on known previous locations with custom radius
 - Fully customisable rights authentication system (Sentinel)
+- The default Laravel Auth is totally unused and therfore availible for your project
 - Persistant login with session control
 - Advanced/automatic browser cache
 - Full cache (memcached/redis) on front end requests 
