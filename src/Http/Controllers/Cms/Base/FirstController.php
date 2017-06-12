@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Thorazine\Hack\Models\Auth\CmsRole;
 use Thorazine\Hack\Http\Requests;
 use Thorazine\Hack\Models\Site;
+use Thorazine\Hack\Models\DbLog;
 use Sentinel;
 use DB;
 

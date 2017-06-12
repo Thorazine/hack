@@ -8,14 +8,14 @@ use Thorazine\Hack\Models\Auth\CmsRole;
 
 class CmsUser extends EloquentUser
 {
-	use SoftDeletes;
-	
-	/**
-	 * Overwrite the sentinel default table with a new 
-	 * one so we can keep using the users for in site
-	 *
-	 **/
-	protected $table = 'cms_users';
+    use SoftDeletes;
+    
+    /**
+     * Overwrite the sentinel default table with a new 
+     * one so we can keep using the users for in site
+     *
+     **/
+    protected $table = 'cms_users';
 
 
     /**
@@ -55,6 +55,14 @@ class CmsUser extends EloquentUser
                 'label' => trans('modules.users.email'),
                 'regex' => 'required',
             ],
+            'password' => [
+                'type' => 'password',
+                'label' => trans('modules.users.password'),
+                'confirmation_label' => 'Confirm password',
+                'regex' => 'required',
+                'overview' => false,
+                'edit' => false,
+            ],
             'language' => [
                 'type' => 'select',
                 'label' => trans('modules.users.language'),
@@ -79,10 +87,10 @@ class CmsUser extends EloquentUser
                 'regex' => '',
             ],
             'roles' => [
-            	'type' => 'multi-checkbox',
-            	'label' => trans('modules.users.roles'),
-            	'regex' => '',
-            	'values' => 'getRoles',
+                'type' => 'multi-checkbox',
+                'label' => trans('modules.users.roles'),
+                'regex' => '',
+                'values' => 'getRoles',
                 'overview' => false,
                 'labelField' => 'name',
                 'valueField' => 'id',
@@ -110,7 +118,7 @@ class CmsUser extends EloquentUser
     public function getRoles($data = [], $key = '')
     {
         if(! @$this->cmsRoles) {
-    	   $this->cmsRoles = CmsRole::select('id', 'name')->orderBy('name', 'asc')->pluck('name', 'id');
+           $this->cmsRoles = CmsRole::select('id', 'name')->orderBy('name', 'asc')->pluck('name', 'id');
         }
         return $this->cmsRoles;
     }

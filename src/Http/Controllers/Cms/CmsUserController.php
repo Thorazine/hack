@@ -3,6 +3,7 @@
 namespace Thorazine\Hack\Http\Controllers\Cms;
 
 use Thorazine\Hack\Models\Auth\CmsUser;
+use Hash;
 use DB;
 
 class CmsUserController extends CmsController
@@ -27,9 +28,43 @@ class CmsUserController extends CmsController
      */
     protected function storeValues($request)
     {
-        return $request->except('permissions')+[
+        return $request->except('permissions', 'roles', 'password', 'password_confirmation')+[
             'permissions' => ($request->permissions) ? json_encode($request->permissions) : null,
+            'password' => Hash::make($request->password),
         ];
+    }
+
+
+    public function storeExtra($request, $id)
+    {
+        // get all the current role id for this user
+        $roleIds = DB::table('role_users')
+            ->where('user_id', $id)
+            ->pluck('role_id')
+            ->toArray();
+
+        $roles = ($request->roles) ? $request->roles : [];
+
+        foreach($roles as $role) {
+            if(in_array($role, $roleIds)) {
+                // remove item from list, no update needed
+                if(($key = array_search($role, $roleIds)) !== false) {
+                    unset($roleIds[$key]);
+                }
+            }
+            else {
+                // add item
+                DB::table('role_users')
+                    ->insert([
+                        'user_id' => $id,
+                        'role_id' => $role,
+                        'created_at' => date('Y-m-d H:i:s'),
+                        'updated_at' => date('Y-m-d H:i:s'),
+                    ]);
+            }
+        }
+
+        DB::table('role_users')->where('user_id', $id)->whereIn('role_id', $roleIds)->delete();
     }
 
 
@@ -45,9 +80,9 @@ class CmsUserController extends CmsController
 
     public function updateValues($request, $id)
     {
-        return $request->except('roles', 'permissions')+[
+        return $request->except('roles', 'permissions', 'password', 'password_confirmation')+[
             'permissions' => ($request->permissions) ? json_encode($request->permissions) : null,
-        ];
+        ]+(($request->password) ? ['password' => Hash::make($request->password)] : []);
     }
 
 

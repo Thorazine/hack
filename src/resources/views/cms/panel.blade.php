@@ -10,20 +10,24 @@
 
 		@include('cms.partials.header')
 
-		panel
+		<h1>Dashboard</h1>
 
-		<div class="grid">
-			<div class="grid-6">
-				<div class="panel panel-warning">
-					<div class="panel-heading">Panel heading without title</div>
-					<div class="panel-body">
-						Panel content
+		<div class="grid space-10">
+
+			@if($maintenance)
+				<div class="grid-12">
+					<div class="panel panel-warning">
+						<div class="panel-heading">{!! trans('modules.panel.maintenance', ['start_date' => $maintenance->start_date, 'end_date' => $maintenance->end_date]) !!}</div>
+						<div class="panel-body">
+							{!! $maintenance->message !!}
+						</div>
 					</div>
 				</div>
-			</div>
+			@endif
+
 			<div class="grid-6">
 				<div class="panel panel-info">
-					<div class="panel-heading">Panel heading without title</div>
+					<div class="panel-heading">Basic information</div>
 					<div class="panel-body">
 						Panel content
 					</div>
@@ -31,7 +35,7 @@
 			</div>
 			<div class="grid-6">
 				<div class="panel panel-success">
-					<div class="panel-heading">Panel heading without title</div>
+					<div class="panel-heading">Success messages</div>
 					<div class="panel-body">
 						Panel content
 					</div>

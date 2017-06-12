@@ -27,7 +27,7 @@
 			$key.'_confirmation', 
 			[
 				'class' => 'form-control', 
-				'placeholder' => ($type['confirmation_placeholder']) ? $type['confirmation_placeholder'] : $type['confirmation_label'],
+				'placeholder' => (@$type['confirmation_placeholder']) ? $type['confirmation_placeholder'] : $type['confirmation_label'],
 				'autocomplete' => 'off',
 			]
 		) !!}
