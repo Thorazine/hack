@@ -53,7 +53,7 @@ class FirstController extends Controller
                     'updated_at' => date('Y-m-d H:i:s'),
                 ]);
 
-                $rights = $this->getAllRightsAsArray()
+                $rights = $this->getAllRightsAsArray();
 
                 // create the administrator role
                 CmsRole::insert([
