@@ -95,11 +95,11 @@ return [
 		'children' => [
 			[
 				'route' => 'cms.db_logs.index',
-				'label' => 'cms.module.users',
+				'label' => 'cms.module.db_logs',
 			],
 			[
 				'route' => 'cms.information.index',
-				'label' => 'cms.module.roles',
+				'label' => 'cms.module.information',
 			],
 		]
 	],
