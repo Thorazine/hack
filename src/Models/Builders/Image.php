@@ -106,7 +106,10 @@ class Image extends BaseBuilder
 
         if($request->{$builder['key']} === '0' || $request->{$builder['key']}) { // delete action
 
-            if($builder['value']) {
+            if(@$builder['value'] == $request->{$builder['key']}) {
+                $request->{$builder['key']} = $builder['value'];
+            }
+            elseif($builder['value']) {
                 // remove old image from disk and DB
                 $gallery->removeObsoleteItem($builder['value']);
             }

@@ -48,6 +48,8 @@ class PageController extends CmsController
      */
     public function module(Request $request)
     {
+        $this->viewInitialiser();
+         
         return view('cms.page.module');
     }
 

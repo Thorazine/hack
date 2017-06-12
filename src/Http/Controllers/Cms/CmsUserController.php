@@ -3,6 +3,8 @@
 namespace Thorazine\Hack\Http\Controllers\Cms;
 
 use Thorazine\Hack\Models\Auth\CmsUser;
+use Activation;
+use Sentinel;
 use Hash;
 use DB;
 
@@ -65,6 +67,10 @@ class CmsUserController extends CmsController
         }
 
         DB::table('role_users')->where('user_id', $id)->whereIn('role_id', $roleIds)->delete();
+
+        Sentinel::findById($id);
+
+        Activation::create($user);
     }
 
 
