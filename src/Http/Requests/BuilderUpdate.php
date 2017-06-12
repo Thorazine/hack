@@ -36,7 +36,7 @@ class BuilderUpdate extends FormRequest
         // get the model
         $model = $controller->model;
 
-        $module = $controller->templateable->where('id', Request::get('module_id'))->firstOrFail();
+        $module = $controller->templateable->where('id', Request::get('id'))->firstOrFail();
 
         $types = App::make($module->templateable_type)->types;
 
