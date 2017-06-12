@@ -1,16 +1,29 @@
 
 <div class="menu menu-vertical">
-    <div class="brand">
-        <select id="site-selector">
-            @foreach(Cms::getSites() as $site)
-                @if(Cms::site()->id == $site->id)
-                    <option value="{{ $site->protocol.$site->domain }}/cms/panel" selected>{{ $site->title }}</option>
-                @else
-                    <option value="{{ $site->protocol.$site->domain }}/cms/panel">{{ $site->title }}</option>
-                @endif
-            @endforeach
-        </select>
-    </div>
+    
+            
+    <?php
+        $sites = Cms::getSites();
+    ?>
+
+    @if(count($sites) > 1)
+        <div class="brand chevron">
+            <select id="site-selector">
+                @foreach($sites as $site)
+                    @if(Cms::site()->id == $site->id)
+                        <option value="{{ $site->protocol.$site->domain }}/cms/panel" selected>{{ $site->title }}</option>
+                    @else
+                        <option value="{{ $site->protocol.$site->domain }}/cms/panel">{{ $site->title }}</option>
+                    @endif
+                @endforeach
+            </select>
+        </div>
+    @else
+        <div class="brand">
+            {{ $sites[0]->title }}
+        </div>
+    @endif
+    
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
     <div class="menu-list">

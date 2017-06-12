@@ -47,7 +47,7 @@
 			overflow: hidden;
 			position: relative;
 
-			&:after {
+			& .chevron:after {
 				position: absolute;
 				right: 10px;
 				top: 0px;
