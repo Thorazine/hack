@@ -95,7 +95,7 @@ class MenuItem extends CmsModel
         }
 
         $pages = Page::get();
-        $return = [];
+        $return = ['' => trans('cms.placeholder.menu_items.page_id')];
         foreach($pages as $index => $page) {
             $return[$page->id] = $page->url;
         }
