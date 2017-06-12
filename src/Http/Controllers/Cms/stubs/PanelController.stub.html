@@ -1,6 +1,6 @@
 <?php
 
-namespace Thorazine\Hack\Http\Controllers\Cms;
+namespace App\Http\Controllers\Cms;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
