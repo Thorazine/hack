@@ -25,11 +25,8 @@ class HackServiceProvider extends ServiceProvider
             __DIR__.'/routes/cms.php' => base_path('routes/cms.php'),
             __DIR__.'/routes/front.php' => base_path('routes/front.php'),
             __DIR__.'/Http/Controllers/Cms/stubs/PanelController.stub' => app_path('Http/Controllers/Cms/PanelController.php'),
-        ], 'hack');
-
-        $this->publishes([
             __DIR__.'/routes/cms-custom.php' => base_path('routes/cms-custom.php'),
-        ]);
+        ], 'hack');
 
         $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'cms');
 
