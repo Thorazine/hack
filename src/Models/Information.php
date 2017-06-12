@@ -116,4 +116,14 @@ class Information extends CmsModel
         ];
     } 
 
+
+    public function scopePublished($query)
+    {
+        return $query->where('publish_at', '<', date('Y-m-d H:i:s'))
+            ->where(function($query) {
+                $query->where('depublish_at', '>', date('Y-m-d H:i:s'))
+                    ->orWhereNull('depublish_at');
+            });
+    }
+
 }

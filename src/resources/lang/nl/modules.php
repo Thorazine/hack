@@ -2,6 +2,11 @@
 
 return [
 	// module entry fields
+	'panel' => [
+		'info' => '',
+		'more' => 'More',
+		'maintenance' => 'Er word onderhoud gepleegd van :start_date tot :end_date',
+	],
 	'sites' => [
 		'title' => 'Titel',
 		'robots' => 'Robots',

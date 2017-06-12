@@ -49,8 +49,6 @@ Route::group(['namespace' => 'Email', 'prefix' => 'email', 'as' => 'email.'], fu
  */
 Route::group(['middleware' => 'sentinel.auth'], function() {
 
-	Route::get('panel', ['as' => 'panel.index', 'uses' => 'PanelController@index']);
-
 	/**
 	 * Module routing
 	 */

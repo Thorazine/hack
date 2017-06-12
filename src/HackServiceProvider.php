@@ -24,6 +24,7 @@ class HackServiceProvider extends ServiceProvider
             __DIR__.'/resources/views/offline.blade.php' => resource_path('views/offline.blade.php'),
             __DIR__.'/routes/cms.php' => base_path('routes/cms.php'),
             __DIR__.'/routes/front.php' => base_path('routes/front.php'),
+            __DIR__.'/Http/Cms/PanelController.php' => app_path('Http/Controllers/Cms/PanelController.php'),
         ], 'hack');
 
         $this->publishes([

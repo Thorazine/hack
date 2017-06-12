@@ -5,6 +5,7 @@ namespace Thorazine\Hack\Http\Controllers\Cms;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Thorazine\Hack\Http\Requests;
+use Thorazine\Hack\Models\Information;
 
 class PanelController extends Controller
 {
@@ -17,6 +18,11 @@ class PanelController extends Controller
 
     public function index()
     {    	
-    	return view('cms.panel');
+    	$maintenance = Information::published()
+    		->where('message_type', 'maintenance')
+    		->first();
+
+    	return view('cms.panel')
+    		->with('maintenance', $maintenance);
     }
 }

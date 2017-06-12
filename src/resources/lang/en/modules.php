@@ -5,6 +5,7 @@ return [
 	'panel' => [
 		'info' => '',
 		'more' => 'More',
+		'maintenance' => 'There is a maintenance window planned from :start_date to :end_date',
 	],
 	'sites' => [
 		'title' => 'Title',
