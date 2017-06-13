@@ -39,6 +39,17 @@ class FormField extends CmsModel
                 'regex' => 'required',
                 'values' => config('cms.forms.types'),
             ],
+            'field_type' => [
+                'type' => 'select',
+                'label' => trans('modules.form_fields.overview'),
+                'regex' => '',
+                'default' => 1,
+                'values' => [
+                    '1' => trans('modules.form_fields.visible'),
+                    '' => trans('modules.form_fields.invisible'),
+                ],
+                'overview' => false,
+            ],
             'label' => [
                 'type' => 'text',
                 'label' => trans('modules.form_fields.label'),

@@ -72,7 +72,6 @@ class FormEntryController extends Controller
      */
     public function index(Request $request)
     {
-        $this->viewInitialiser();
 
         // get the id's from the paginate
         $formEntries = $this->model
@@ -82,8 +81,8 @@ class FormEntryController extends Controller
             ->paginate(50);
 
         $formFields = $this->formField
+            ->distinct('key')
             ->where('form_id', $request->fid)
-            ->groupBy('key')
             ->orderBy('drag_order', 'asc')
             ->get();
 
@@ -102,9 +101,7 @@ class FormEntryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, $id)
-    {
-        $this->viewInitialiser();
-        
+    {        
         // get the id's from the paginate
         $formEntry = $this->model
             ->where('id', $id)
@@ -113,8 +110,8 @@ class FormEntryController extends Controller
             ->first();
 
         $formFields = $this->formField
+            ->distinct('key')
             ->where('form_id', $formEntry->form_id)   
-            ->groupBy('key')
             ->orderBy('drag_order', 'asc')
             ->get();
 
@@ -139,6 +136,17 @@ class FormEntryController extends Controller
         try {
             DB::beginTransaction();
 
+            // Callback
+            $namespace = 'App\Models\Classes\FormEntryCallback';
+            if(class_exists($namespace)) {
+                
+                $class = new $namespace();
+
+                if(method_exists($class, 'update')) {
+                    $class->update($this->model, $request, $id);
+                }
+            }
+
             // get the id's from the paginate
             $formEntry = $this->model
                 ->where('id', $id)
@@ -147,8 +155,8 @@ class FormEntryController extends Controller
                 ->first();
 
             $formFields = $this->formField
+                ->distinct('key')
                 ->where('form_id', $formEntry->form_id) 
-                ->groupBy('key')
                 ->orderBy('drag_order', 'asc')
                 ->get();
 
@@ -203,6 +211,17 @@ class FormEntryController extends Controller
         try {
 
             DB::beginTransaction();
+
+            // Callback
+            $namespace = 'App\Models\Classes\FormEntryCallback';
+            if(class_exists($namespace)) {
+                
+                $class = new $namespace();
+
+                if(method_exists($class, 'destroy')) {
+                    $class->destroy($this->model, $id);
+                }
+            }
 
             // delete children
             $this->formValue->where('form_entry_id', $id)->delete();

@@ -137,6 +137,9 @@ return [
 		'regex' => 'Regex',
 		'width' => 'Breedte',
 		'values' => 'Waardes',
+		'overview' => 'Zichtbaar in overzicht',
+		'visible' => 'Zichtbaar',
+		'invisible' => 'Onzichtbaar',
 	],
 	'form_validations' => [
 		'error_message' => 'Error bericht',

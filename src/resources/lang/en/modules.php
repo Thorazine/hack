@@ -137,6 +137,9 @@ return [
 		'regex' => 'Regex',
 		'width' => 'Width',
 		'values' => 'Values',
+		'overview' => 'Visible in overview',
+		'visible' => 'Visible',
+		'invisible' => 'Invisible',
 	],
 	'form_validations' => [
 		'error_message' => 'Error message',
