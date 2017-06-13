@@ -78,7 +78,7 @@ class MenuItem extends CmsModel
         elseif(@$this->page) {
             return $this->page->toUrl();
         }
-        return null;
+        return '';
     }
 
 
