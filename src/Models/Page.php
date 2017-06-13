@@ -115,6 +115,23 @@ class Page extends CmsModel
         ];
     }
 
+
+    /**
+     * Return the url
+     */
+    public function __toString()
+    {
+        return $this->toUrl();
+    }
+
+
+    public function toUrl()
+    {
+        $url = rtrim(Cms::site('protocol').Cms::site('domain').$this->prepend_slug, '/');
+        return $url.'/'.$this->slug;
+    }
+
+
     /*
      * Catch all the methods for this model. Filter out the 
      * relational requests so we can automatically make

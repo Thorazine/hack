@@ -68,6 +68,21 @@ class MenuItem extends CmsModel
 
 
     /**
+     * Return the url
+     */
+    public function __toString()
+    {
+        if($this->external_url) {
+            return $this->external_url;
+        }
+        elseif(@$this->page) {
+            return $this->page->toUrl();
+        }
+        return null;
+    }
+
+
+    /**
      *
      */
     public function menu()
