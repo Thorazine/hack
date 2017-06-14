@@ -15,6 +15,7 @@ class FormFieldController extends CmsController
     {
         $this->model = $model;
         $this->slug = 'form_fields';
+        $this->hasOrder = true;
 
         view()->share([
             'hasOrder' => true,
