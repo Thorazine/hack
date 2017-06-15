@@ -182,6 +182,13 @@ class Form extends CmsModel
     {
         $page = Cms::page();
 
+        if(view()->exists(Cms::site('id').'.form.form')) {
+            return view(Cms::site('id').'.form.form')
+            ->with('page', $page)
+            ->with('form', $this)
+            ->render();
+        }
+        
         return view('cms.frontend.form.form')
             ->with('page', $page)
             ->with('form', $this)
