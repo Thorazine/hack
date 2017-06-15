@@ -1,4 +1,5 @@
 <?php
+
 	$route = route($child['route']);
 	$subMenuOpen = false;
 
@@ -12,10 +13,10 @@
 			$subMenuOpen = true;
 		}
 	}
-	
+	// dd(Cms::hasPermission($child['route']));
 ?>
-<li @if(@$subMenuOpen) class="active" @endif>
-    <a @if(Request::url() == $route) href="javascript:void(0)" @else href="{{ $route }}" @endif>
-      	{{ trans($child['label']) }}
-    </a>
-</li>
+	<li @if(@$subMenuOpen) class="active" @endif>
+	    <a @if(Request::url() == $route) href="javascript:void(0)" @else href="{{ $route }}" @endif>
+	      	{{ trans($child['label']) }}
+	    </a>
+	</li>
