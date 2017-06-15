@@ -21,7 +21,7 @@
 					</div>
 				@else
 					<div class="holder">
-						<i class="fa fa-user"></i>
+						<i class="fa fa-user" style="font-size:100px;"></i>
 					</div>
 				@endif
 
