@@ -46,10 +46,16 @@ class SiteRedirect
             abort(404, 'Domain not found');
         }
 
+        // redirect if not on main domain
         if($request->root() != $site->protocol.$site->domain) {
             header("HTTP/1.1 301 Moved Permanently");
             header('Location: '.str_replace($request->root(), $site->protocol.$site->domain, $request->fullUrl()));
             die();
+        }
+
+        // check if site has been taken offline.
+        if($site->publish_at > date('Y-m-d H:i:s') && (is_null($site->depublish_at) || $site->depublish_at < date('Y-m-d H:i:s')) && strpos($request->fullUrl(), $site->protocol.$site->domain.'/cms') === false) {
+            abort(404, 'Site not availible at this time.');
         }
 
         Cms::setSite($site);
