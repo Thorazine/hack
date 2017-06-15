@@ -12,6 +12,7 @@ return [
 	'back' => 'Terug',
 	'error' => 'Er zat een fout in uw aanvraag.',
 	'deleted' => 'Verwijderd',
+	'confirm_delete' => 'Weet u zeker dat u dit item wil verwijderen?',
 	'add' => 'Toevoegen',
 	'no_records' => 'Er zijn geen resultaten',
 	'yes' => 'Ja',

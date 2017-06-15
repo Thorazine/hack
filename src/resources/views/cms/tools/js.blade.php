@@ -99,6 +99,20 @@
 			}
 		}
 	}
+
+	function trans(key)
+	{
+		var language = {
+			confirm_delete: "{{ trans('cms.confirm_delete') }}",
+		};
+
+		if(typeof language.confirm_delete === 'undefined') {
+			return key;
+		}
+
+		return language.confirm_delete;
+
+	}
 </script>
 
 @if(env('APP_DEBUG'))

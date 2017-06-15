@@ -7,6 +7,10 @@ $(document).ready(function() {
 	 */
 	$('.model-delete').click(function(event) {
 
+		if(! confirm(trans('confirm_delete'))) {
+			return false;
+		}
+
 		event.preventDefault();
 
 		var that = this;

@@ -12,6 +12,7 @@ return [
 	'back' => 'Back',
 	'error' => 'There was an error in your submission.',
 	'deleted' => 'Deleted',
+	'confirm_delete' => 'Are you sure you want to delete this item?',
 	'add' => 'Add',
 	'no_records' => 'There are no records',
 	'yes' => 'Yes',
