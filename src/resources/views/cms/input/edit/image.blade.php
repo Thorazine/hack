@@ -6,7 +6,7 @@
 
 		<button type="button" class="btn btn-primary" data-image-button data-open-gallery data-open-cropper @if(@$data[$key]) style="display: none" @endif>{{ trans('cms.add') }}</button>
 		<div class="image-holder" data-image-image @if(! @$data[$key]) style="display: none" @endif>
-			<img @if(@$data[$key]) src="{{ Builder::image($data[$key]) }}" @endif>
+			<img @if(@$data[$key]) src="{{ Builder::image($data[$key], false) }}" @endif>
 			<div class="delete">&times;</div>
 		</div>
 

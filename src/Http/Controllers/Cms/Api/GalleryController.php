@@ -10,6 +10,7 @@ use Thorazine\Hack\Models\Gallery;
 use Thorazine\Hack\Http\Requests;
 use Exception;
 use Image;
+use File;
 use Cms;
 
 class GalleryController extends Controller
@@ -74,13 +75,11 @@ class GalleryController extends Controller
 	    			$image = $temp->fit($specifications['width'], $specifications['height'], function ($constraint) {
 					    $constraint->aspectRatio();
 					})
-					->encode($file['extension'], $this->quality)
-					->save(public_path('uploads/'.$filename));
-
-	    			Storage::disk(config('filesystems.default'))->put('uploads/'.$filename, public_path('uploads/'.$filename));
-
+					->encode($file['extension'], $this->quality);
+				
+					Storage::disk(config('filesystems.default'))->put('thumbnail/'.$filename, $image->getEncoded());
+	    			
 	    			$image->destroy();
-	    			unlink(public_path('uploads/'.$filename));
 	    		}	    		
 
 	    		// Prepare for insert
@@ -150,17 +149,26 @@ class GalleryController extends Controller
     			// create the image 
     			$image = $temp->fit($specifications['width'], $specifications['height'], function ($constraint) {
 				    $constraint->aspectRatio();
-				})->stream($gallery->extension, $this->quality);
+				})
+				->encode($gallery->extension, $this->quality);
+				
+				// save the default image
+				Storage::disk(config('filesystems.default'))->put('cropped/thumbnail/'.$filename, $image->getEncoded());
 
-    			// save the default image
-    			Storage::disk(config('filesystems.default'))->put('cropped/thumbnail/'.$filename, $image);
+    			
+    			// Storage::disk(config('filesystems.default'))->put('cropped/thumbnail/'.$filename, $image);
     		}
 
     		// create stream of the resized original
-    		$image = $cropped->resize($request->resize_width, $request->resize_height)->stream($gallery->extension, $this->quality);
+    		$image = $cropped->resize($request->resize_width, $request->resize_height)
+    			->encode($gallery->extension, $this->quality);
+				
+			// save the default image
+			Storage::disk(config('filesystems.default'))->put('cropped/original/'.$filename, $image->getEncoded());
+    			// ->stream($gallery->extension, $this->quality);
 
     		// save the original image
-    		Storage::disk(config('filesystems.default'))->put('cropped/original/'.$filename, $image);
+    		// Storage::disk(config('filesystems.default'))->put('cropped/original/'.$filename, $image);
 
     		// Prepare for insert
 	    	$newFile = pathinfo($filename);

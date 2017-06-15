@@ -74,6 +74,7 @@ cropper.load = function(that, key, url, id) {
 	        aspectRatio: cropper.instances[key].width / cropper.instances[key].height,
 	        checkOrientation: false,
 	        autoCropArea: 1,
+	        checkCrossOrigin: false,
 	        crop: function(e) {
 				cropper.instances[key].x = e.x;
 			    cropper.instances[key].y = e.y;

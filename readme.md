@@ -93,8 +93,6 @@ npm install
 gulp
 ```
 
-Create a folder in ```public``` and call it ```uploads```. This is a temporary upload folder to assist with the streaming of images to any storage.
-
 # Filesystem
 This package uses the default Laravel Filesystem to handle storage. For settings take a look at the [Laravel docs](https://laravel.com/docs/5.4/filesystem).
 Personally I like to start of with the ```public``` driver setting and the ```php artisan storage:link``` command. 
