@@ -68,9 +68,14 @@ class CmsUserController extends CmsController
 
         DB::table('role_users')->where('user_id', $id)->whereIn('role_id', $roleIds)->delete();
 
-        Sentinel::findById($id);
+        $user = Sentinel::findById($id);
 
         Activation::create($user);
+
+        Activation::where('user_id', $id)->update([
+            'completed_at' => date('Y-m-d H:i:s'),
+            'completed' => 1,
+        ]);
     }
 
 

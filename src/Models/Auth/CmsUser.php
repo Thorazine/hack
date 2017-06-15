@@ -59,7 +59,14 @@ class CmsUser extends EloquentUser
                 'type' => 'password',
                 'label' => trans('modules.users.password'),
                 'confirmation_label' => 'Confirm password',
-                'regex' => 'required',
+                'regex' => [
+                    'create' => [
+                        'required',
+                    ],
+                    'edit' => [
+                        'confirmed',
+                    ],
+                ],
                 'overview' => false,
                 'edit' => false,
             ],
