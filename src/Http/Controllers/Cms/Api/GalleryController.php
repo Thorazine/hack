@@ -45,7 +45,7 @@ class GalleryController extends Controller
 	    		$file = pathinfo($request->filename);
 
 
-
+// dd($file);
 	    		// clean the filename
 	    		$file['extension'] = strtolower($file['extension']);
 	    		$file['filename'] = str_slug($file['filename']);
@@ -69,13 +69,18 @@ class GalleryController extends Controller
 
 	    		foreach($this->defaultSizes as $folder => $specifications) {
 	    			$temp = clone $original;
+
 	    			// create the image 
 	    			$image = $temp->fit($specifications['width'], $specifications['height'], function ($constraint) {
 					    $constraint->aspectRatio();
-					})->stream($file['extension'], $this->quality);
+					})
+					->encode($file['extension'], $this->quality)
+					->save(public_path('uploads/'.$filename));
 
-	    			// save the image
-	    			Storage::disk(config('filesystems.default'))->put('thumbnail/'.$filename, $image);
+	    			Storage::disk(config('filesystems.default'))->put('uploads/'.$filename, public_path('uploads/'.$filename));
+
+	    			$image->destroy();
+	    			unlink(public_path('uploads/'.$filename));
 	    		}	    		
 
 	    		// Prepare for insert
