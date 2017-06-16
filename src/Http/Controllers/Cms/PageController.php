@@ -254,11 +254,40 @@ class PageController extends CmsController
      */
     public function destroy($id)
     {
-        //
+        try {
+            $builders = Builder::getPageBuilders($id, $this->model, true);
 
-        DbLog::add(__CLASS__, 'destroy', $id);
+            foreach($builders as $builder) {
+                $builderClass = Builder::makeBuilder($builder['type']);
 
-        Cms::destroyCache([$this->slug]);
+                $builderClass->where('id', $builder['id'])->delete();
+            }
+
+            $this->model->where('id', $id)->delete();
+
+            DbLog::add(__CLASS__, 'destroy', $id);
+
+            Cms::destroyCache([$this->slug]);
+
+            return response()->json([
+                'message' => trans('cms.deleted'),
+            ]);
+        
+        }
+        catch(Exception $e) {
+
+            DB::rollBack();
+
+            Log::error('Rollback after deletion attempt', [
+                'action' => 'destroy',
+                'data' => $id,
+                'error' => $e->getMessage(),
+            ]);
+
+            return response()->json([
+                'error' => '',
+            ]);
+        }
     }
 
 

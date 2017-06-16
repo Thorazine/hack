@@ -197,20 +197,6 @@ class TemplateController extends CmsController
     }
 
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        DbLog::add(__CLASS__, 'destroy', $id);
-
-        Cms::destroyCache([$this->slug]);
-    }
-
 
     /**
      * Possibly add query parameters to the model
