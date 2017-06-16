@@ -32,7 +32,7 @@
 
             @foreach(config('menu') as $menu)
 
-                @if(@$menu['route'] && Cms::hasPermission(Cms::site('id').'.'.$menu['route']))
+                @if(@$menu['route'] && (Cms::hasPermission(Cms::site('id').'.'.$menu['route']) || @$menu['verified']))
 
                     <?php
                         $route = route($menu['route']);

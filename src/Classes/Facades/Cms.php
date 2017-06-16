@@ -371,7 +371,7 @@ class Cms {
     {
     	$html = '';
     	foreach($children as $child) {
-			if(@$child['route'] && Cms::hasPermission(Cms::site('id').'.'.$child['route'])) {
+			if(@$child['route'] && (Cms::hasPermission(Cms::site('id').'.'.$child['route']) || @$menu['verified'])) {
                 $html .= view('cms.partials.sub-menu')
                 	->with('child', $child)
                 	->render();

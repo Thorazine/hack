@@ -6,6 +6,7 @@ return [
 		'route' => 'cms.panel.index',
 		'label' => 'menu.dashboard',
 		'icon' => 'fa-dashboard',
+		'verified' => true, // always in menu
 	],
 
 	// General
