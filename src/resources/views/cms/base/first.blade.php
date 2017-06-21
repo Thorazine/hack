@@ -22,8 +22,16 @@
 				<div class="form-group">
 					<label for="password" class="col-sm-4 control-label">Password</label>
 					<div class="col-sm-8">
-						{!! Form::text('password', '', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
+						{!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
 						{!! $errors->first('password', '<p class="text-danger">:message</p>') !!}
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="password" class="col-sm-4 control-label">Password confirmation</label>
+					<div class="col-sm-8">
+						{!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
+						{!! $errors->first('password_confirmation', '<p class="text-danger">:message</p>') !!}
 					</div>
 				</div>
 
