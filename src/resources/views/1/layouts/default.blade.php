@@ -18,8 +18,9 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 	@endif
-
+	@if($page->favicon->has())
 	<link rel="shortcut icon" href="{{ $page->favicon }}" type="image/x-icon" />
+	@endif
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1 minimal-ui">
 	<meta name="apple-mobile-web-app-capable" content="yes" />

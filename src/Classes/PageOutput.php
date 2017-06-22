@@ -128,12 +128,16 @@ class PageOutput {
 		// Add the site data to the output, overwrite what is non existant or empty
         $site = Cms::site();   
 
+
         if($this->pageData) {  
             $images = [];    
             foreach(Cms::site()->toArray() as $key => $value) {
                 if(! $this->pageData->{$key}) {
                 	if($site->types[$key]['type'] == 'image') {
                         $images[$value] = $key;
+
+                        // give each image a gallery placeholder
+                        $this->pageData->{$key} = new Gallery;
                 	}
                 	else {
                     	$this->pageData->{$key} = $value;
@@ -144,12 +148,12 @@ class PageOutput {
             // get all the images for this module
             $galleries = Gallery::whereIn('id', array_keys($images))->get();
 
-            // assign them to ther respective input
+            // assign them to their respective input, replacing the placeholder
             foreach($galleries as $gallery) {
                 $this->pageData->{$images[$gallery->id]} = $gallery;
             }
 
-            $this->pageData->site = Cms::site();            
+            $this->pageData->site = Cms::site();   
         }
         else {
             
