@@ -16,15 +16,15 @@
 </head>
 <body>
 
-	@include('cms.partials.cms-loader')
+	@include('hack::partials.cms-loader')
 
-	@include('cms.tools.alert')
+	@include('hack::tools.alert')
 	
 	@yield('content')
 
 	@yield('modal')
 
-	@include('cms.tools.js')
+	@include('hack::tools.js')
 
 	@yield('script')
 </body>

@@ -50,7 +50,7 @@ class PageController extends CmsController
     {
         $this->viewInitialiser();
          
-        return view('cms.page.module');
+        return view('hack::page.module');
     }
 
 
@@ -75,7 +75,7 @@ class PageController extends CmsController
         // add the builders to the output
         $data['builders'] = Builder::getTemplateBuilders($request->template_id, $this->model, true);
 
-        return view('cms.page.create')
+        return view('hack::page.create')
             ->with('data', $data);
     }
 
@@ -173,7 +173,7 @@ class PageController extends CmsController
         // add the builders to the output
         $data['builders'] = Builder::getPageBuilders($id, $this->model, true);
 
-        return view('cms.page.edit')
+        return view('hack::page.edit')
             ->with('data', $data)
             ->with('id', $id)
             ->with('types', $this->types);

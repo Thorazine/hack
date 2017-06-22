@@ -43,7 +43,7 @@ class UserController extends CmsController
     		}])
     		->first();
 
-    	return view('cms.'.$this->slug.'.show')
+    	return view('hack::'.$this->slug.'.show')
     		->with('user', $user);
     }
 

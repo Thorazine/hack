@@ -28,7 +28,7 @@ class ValidateController extends Controller
     	]);
 
     	if($success) {
-    		return view('cms.auth.validate-success');
+    		return view('hack::auth.validate-success');
     	}
 
     	abort(404, 'No validation found');

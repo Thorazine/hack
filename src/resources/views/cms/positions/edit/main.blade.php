@@ -1,4 +1,4 @@
 @section('main')
-	@include('cms.input.edit.'.$type['type'])
+	@include('hack::input.edit.'.$type['type'])
 	@parent
 @stop

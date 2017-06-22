@@ -96,12 +96,12 @@ class CmsController extends Controller
 
         if($request->ajax()) {
             return response()->json([
-                'dataset' => view('cms.models.ajax.index')
+                'dataset' => view('hack::models.ajax.index')
                     ->with('datas', $datas)
                     ->with('fid', $request->fid)
                     ->with('searchFields', $this->searchFields)
                     ->render(),
-                'paginate' => view('cms.models.ajax.paginate')
+                'paginate' => view('hack::models.ajax.paginate')
                     ->with('datas', $datas)
                     ->with('fid', $request->fid)
                     ->with('searchFields', $this->searchFields)
@@ -109,7 +109,7 @@ class CmsController extends Controller
             ]);
         }
 
-        return view('cms.models.index')
+        return view('hack::models.index')
             ->with('datas', $datas)
             ->with('fid', $request->fid)
             ->with('searchFields', $this->searchFields);
@@ -147,7 +147,7 @@ class CmsController extends Controller
      */
     protected function createExtra($request, $data)
     {
-        return view('cms.models.create')
+        return view('hack::models.create')
             ->with('data', $data)
             ->with('fid', $request->fid);
     }
@@ -277,7 +277,7 @@ class CmsController extends Controller
      */
     protected function editExtra($request, $id, $data)
     {
-        return view('cms.models.edit')
+        return view('hack::models.edit')
             ->with('data', $data)
             ->with('id', $id)
             ->with('fid', $request->fid);

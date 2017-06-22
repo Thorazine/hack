@@ -1,14 +1,14 @@
-@extends('cms.layouts.cms')
+@extends('hack::layouts.cms')
 
 
 
 @section('content')
 
-	@include('cms.partials.menu')
+	@include('hack::partials.menu')
 	
 	<div class="content">
 
-		@include('cms.partials.header')
+		@include('hack::partials.header')
 
 		<h1>Dashboard</h1>
 

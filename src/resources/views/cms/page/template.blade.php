@@ -1,18 +1,18 @@
-@extends('cms.layouts.cms')
+@extends('hack::layouts.cms')
 
 
 @foreach($template['modules'] as $module)
-	@include('cms.input.create.'.$module['type'], ['data' => $module+['key' => $module['refrence']]])
+	@include('hack::input.create.'.$module['type'], ['data' => $module+['key' => $module['refrence']]])
 @endforeach
 
 
 @section('content')
 
-	@include('cms.partials.menu')
+	@include('hack::partials.menu')
 	
 	<div class="content page model">
 
-		@include('cms.partials.header')
+		@include('hack::partials.header')
 		
 		{!! Form::open(['route' => 'cms.page.store', 'class' => 'form-horizontal']) !!}
 

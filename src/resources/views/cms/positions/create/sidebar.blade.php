@@ -1,4 +1,4 @@
 @section('sidebar')
-	@include('cms.input.create.'.$type['type'])
+	@include('hack::input.create.'.$type['type'])
 	@parent
 @stop

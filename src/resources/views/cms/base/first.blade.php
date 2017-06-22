@@ -1,4 +1,4 @@
-@extends('cms.layouts.base')
+@extends('hack::layouts.base')
 
 
 

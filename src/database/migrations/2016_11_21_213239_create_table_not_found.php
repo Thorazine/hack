@@ -19,7 +19,7 @@ class CreateTableNotFound extends Migration
             $table->integer('site_id')->default(1);
             $table->string('slug')->nullable();
             $table->string('redirect')->nullable();
-            $table->string('referrer')->nullable();
+            $table->string('referer')->nullable();
             $table->integer('requests')->default(0);
             
             $table->timestamps();

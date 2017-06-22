@@ -65,12 +65,12 @@ class TemplateController extends CmsController
 
         if($request->ajax()) {
             return response()->json([
-                'dataset' => view('cms.models.ajax.index')
+                'dataset' => view('hack::models.ajax.index')
                     ->with('datas', $datas)
                     ->with('fid', $request->fid)
                     ->with('searchFields', $this->searchFields)
                     ->render(),
-                'paginate' => view('cms.models.ajax.paginate')
+                'paginate' => view('hack::models.ajax.paginate')
                     ->with('datas', $datas)
                     ->with('fid', $request->fid)
                     ->with('searchFields', $this->searchFields)
@@ -78,7 +78,7 @@ class TemplateController extends CmsController
             ]);
         }
 
-        return view('cms.models.index')
+        return view('hack::models.index')
             ->with('datas', $datas)
             ->with('fid', $request->fid)
             ->with('searchFields', $this->searchFields);
@@ -101,7 +101,7 @@ class TemplateController extends CmsController
             $data = [];
         }
 
-        return view('cms.models.create')
+        return view('hack::models.create')
             ->with('data', $data);
     }
 
@@ -156,7 +156,7 @@ class TemplateController extends CmsController
                 ->toArray();
         }
 
-        return view('cms.models.edit')
+        return view('hack::models.edit')
             ->with('data', $data)
             ->with('id', $id);
     }

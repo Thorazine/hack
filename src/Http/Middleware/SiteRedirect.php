@@ -28,7 +28,7 @@ class SiteRedirect
         $this->domain = str_replace(['http://', 'https://'], ['', ''], $request->root());
 
         // find the site
-        $site = Cache::tags(['site'])->remember(implode('-', ['site', $this->domain]), env('PAGE_CACHE_TIME'), function() {
+        $site = Cache::tags(['site'])->remember(implode('-', ['site', $this->domain]), env('PAGE_CACHE_TIME', 1), function() {
             $site = Site::where('domain', $this->domain)
                 ->orWhereRaw('FIND_IN_SET("'.$this->domain.'", domains)')
                 ->orderBy('domain', '=', $this->domain, 'asc')

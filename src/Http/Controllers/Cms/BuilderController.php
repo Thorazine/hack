@@ -81,12 +81,12 @@ class BuilderController
 
         if($request->ajax()) {
             return response()->json([
-                'dataset' => view('cms.builder.ajax.index')
+                'dataset' => view('hack::builder.ajax.index')
                     ->with('datas', $datas)
                     ->with('fid', $request->fid)
                     ->with('searchFields', $this->searchFields)
                     ->render(),
-                'paginate' => view('cms.model.ajax.paginate')
+                'paginate' => view('hack::model.ajax.paginate')
                     ->with('datas', $datas)
                     ->with('fid', $request->fid)
                     ->with('searchFields', $this->searchFields)
@@ -94,7 +94,7 @@ class BuilderController
             ]);
         }
 
-        return view('cms.builder.index')
+        return view('hack::builder.index')
             ->with('datas', $datas)
             ->with('fid', $request->fid);
     }
@@ -107,7 +107,7 @@ class BuilderController
      */
     public function module(Request $request)
     {
-        return view('cms.builder.module')
+        return view('hack::builder.module')
             ->with('fid', $request->fid);
     }
 
@@ -137,7 +137,7 @@ class BuilderController
             }
         }
 
-        return view('cms.builder.create')
+        return view('hack::builder.create')
             ->with('data', $data)
             ->with('types', $moduleClass->types)
             ->with('fid', $request->fid)
@@ -239,7 +239,7 @@ class BuilderController
             }
         }
 
-        return view('cms.builder.edit')
+        return view('hack::builder.edit')
             ->with('types', $moduleClass->types)
             ->with('fid', $request->fid)
             ->with('data', $moduleData)

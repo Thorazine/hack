@@ -2,10 +2,12 @@
 
 namespace Thorazine\Hack\Classes;
 
+use Thorazine\Hack\Models\NotFound;
 use Thorazine\Hack\Models\Pageable;
 use Thorazine\Hack\Models\Gallery;
 use Thorazine\Hack\Models\Page;
 use Thorazine\Hack\Models\Slug;
+use Request;
 use Builder;
 use Cms;
 use DB;
@@ -27,15 +29,13 @@ class PageOutput {
 
 	public function bySlug($slug)
 	{
-		
 		$slug = $this->trimSlug($slug);
 
 		$this->getPageBySlug($slug);
 
-		$this->addSiteData();
-		
+		$this->addSiteData($slug);
 
-		// If no page is found cache won't be saved. So we can just abort.
+		// set the default view
 		if(! $this->pageData->view) {
 			$this->pageData->view = 'default';
 		}
@@ -123,7 +123,7 @@ class PageOutput {
 	}
 
 
-	private function addSiteData()
+	private function addSiteData($slug)
 	{
 		// Add the site data to the output, overwrite what is non existant or empty
         $site = Cms::site();   
@@ -152,7 +152,13 @@ class PageOutput {
             $this->pageData->site = Cms::site();            
         }
         else {
-            Cms::abort(404);
+            
+            if(! Cms::getNotFound()) {
+                NotFound::add($slug); // Add to 404 table
+            }
+            
+            Cms::setNotFound();
+            Cms::abort(404, 'Slug not found');
         }
 
         return $this;

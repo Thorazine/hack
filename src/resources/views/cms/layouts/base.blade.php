@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	@include('cms.tools.alert')
+	@include('hack::tools.alert')
 	
 	@yield('content')
 

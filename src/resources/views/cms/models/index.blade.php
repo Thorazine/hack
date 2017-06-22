@@ -1,13 +1,13 @@
-@extends((@$isAjax) ? 'cms.layouts.ajax' : 'cms.layouts.cms')
+@extends((@$isAjax) ? 'hack::layouts.ajax' : 'hack::layouts.cms')
 
 
 @section('content')
 
-	@include('cms.partials.menu')
+	@include('hack::partials.menu')
 	
 	<div class="content model">
 
-		@include('cms.partials.header')
+		@include('hack::partials.header')
 
 		<div class="subheader">
 
@@ -53,7 +53,7 @@
 			</thead>
 			<tbody class="order" id="dataset" @if(@$hasOrder) data-order-url="{{ route('cms.'.$slug.'.order') }}" @endif>
 
-				@include('cms.models.ajax.index')
+				@include('hack::models.ajax.index')
 
 			</tbody>
 		</table>

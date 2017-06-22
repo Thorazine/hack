@@ -1,24 +1,24 @@
-@extends('cms.layouts.cms')
+@extends('hack::layouts.cms')
 
 
 @foreach($types as $key => $type)
 	@if($typeTrue($type, 'create'))
-		@include('cms.positions.create.'.((@$type['position']) ? $type['position'] : 'main'))
+		@include('hack::positions.create.'.((@$type['position']) ? $type['position'] : 'main'))
 	@endif
 @endforeach
 
 @foreach($data['builders'] as $type)
-	@include('cms.positions.create.'.((@$type['position']) ? $type['position'] : 'main'), ['key' => $type['key'], 'builder' => $type])
+	@include('hack::positions.create.'.((@$type['position']) ? $type['position'] : 'main'), ['key' => $type['key'], 'builder' => $type])
 @endforeach
 
 
 @section('content')
 
-	@include('cms.partials.menu')
+	@include('hack::partials.menu')
 	
 	<div class="content model">
 
-		@include('cms.partials.header')
+		@include('hack::partials.header')
 
 		<div class="subheader">
 			<a class="" href="{{ route('cms.'.$slug.'.index') }}"><i class="fa fa-arrow-left"></i> {{ trans('cms.back') }}</a>

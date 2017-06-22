@@ -1,4 +1,4 @@
-@extends('cms.layouts.email')
+@extends('hack::layouts.email')
 
 
 

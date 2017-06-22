@@ -38,7 +38,7 @@ class AuthController extends Controller
         }
 
         if($_SERVER['SERVER_NAME'] == 'localhost') {
-            return view('cms.auth.index')
+            return view('hack::auth.index')
                 ->with('latitude', '55')
                 ->with('longitude', '5')
                 ->with('locationPermission', 2)
@@ -53,7 +53,7 @@ class AuthController extends Controller
     		$locationPermission = $request->cookie('location_permission_set');
     	}
 
-    	return view('cms.auth.index')
+    	return view('hack::auth.index')
     		->with('locationPermission', $locationPermission);
     }
 
@@ -128,7 +128,7 @@ class AuthController extends Controller
      */
     public function persistence()
     {
-        return view('cms.auth.persistence');
+        return view('hack::auth.persistence');
     }
 
 
@@ -164,7 +164,7 @@ class AuthController extends Controller
                 $message->subject('Hack CMS - Login attempt needs verification');
             });
 
-            return view('cms.auth.resend');
+            return view('hack::auth.resend');
         }
         // no more code in session, so login, get code
         return redirect()->route('cms.auth.index');

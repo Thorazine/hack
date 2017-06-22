@@ -37,10 +37,8 @@ class SlugController extends Controller
             return view('offline');
         }
 
-    	$page = Cache::tags('pages', 'templates', 'slugs')->remember($this->cacheKey(['page', $request->slug, Cms::siteId()]), env('PAGE_CACHE_TIME'), function() use ($request) {
-    		
+    	$page = Cache::tags('pages', 'templates', 'slugs')->remember(Cms::cacheKey(['page', $request->slug, Cms::siteId()]), env('PAGE_CACHE_TIME', 1), function() use ($request) {
             return $this->pageOutput->bySlug($request->slug);
-
 	    });
 
         // if we get an array with an abort for page, we need to redirect
@@ -86,18 +84,6 @@ class SlugController extends Controller
 
         // abort to 404
         $this->abort(404, 'View '.$page['site_id'].'.'.$page['view'].' not found');
-    }
-
-
-    /**
-     * Create a cache key from an array
-     * 
-     * @param array $keys
-     * @return string
-     */
-    private function cacheKey(array $keys = [])
-    {
-        return implode('-', $keys);
     }
 
 

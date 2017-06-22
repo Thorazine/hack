@@ -1,13 +1,13 @@
-@extends('cms.layouts.cms')
+@extends('hack::layouts.cms')
 
 
 @section('content')
 
-	@include('cms.partials.menu')
+	@include('hack::partials.menu')
 	
 	<div class="content model">
 
-		@include('cms.partials.header')
+		@include('hack::partials.header')
 
 		<div class="subheader">
 			<a class="" href="{{ route('cms.menus.index') }}"><i class="fa fa-arrow-left"></i> {{ trans('cms.back') }}</a>
@@ -21,7 +21,7 @@
 
 				{!! $nested->before($index, $data, $datas) !!} 
 
-				@include('cms.menu-item.item')
+				@include('hack::menu-item.item')
 
 				{!! $nested->after($index, $data, $datas) !!} 
 

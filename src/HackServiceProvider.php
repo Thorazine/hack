@@ -36,9 +36,10 @@ class HackServiceProvider extends ServiceProvider
             __DIR__.'/resources/lang' => base_path('resources/lang'),
 
             // views
-            __DIR__.'/resources/views/cms' => resource_path('views/cms'),
+            // __DIR__.'/resources/views/cms' => resource_path('views/cms'),
             __DIR__.'/resources/views/1' => resource_path('views/1'),
             __DIR__.'/resources/views/offline.blade.php' => resource_path('views/offline.blade.php'),
+            __DIR__.'/resources/views/errors' => resource_path('views/errors/'),
 
             // routes
             __DIR__.'/routes/cms.php' => base_path('routes/cms.php'),
@@ -51,6 +52,7 @@ class HackServiceProvider extends ServiceProvider
 
         // Register the migrations
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+        $this->loadViewsFrom(__DIR__.'/resources/views/cms', 'hack');
 
         // Register console commands
         if($this->app->runningInConsole()) 

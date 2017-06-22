@@ -83,7 +83,7 @@ class CmsUserController extends CmsController
     {
         $data['roles'] = (@$data['roles']) ? collect($data['roles'])->pluck('id')->all() : [];
 
-        return view('cms.models.edit')
+        return view('hack::models.edit')
             ->with('data', $data)
             ->with('id', $id);
     }

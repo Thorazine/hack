@@ -22,7 +22,7 @@ class PanelController extends Controller
     		->where('message_type', 'maintenance')
     		->first();
 
-    	return view('cms.panel')
+    	return view('hack::panel')
     		->with('maintenance', $maintenance);
     }
 }

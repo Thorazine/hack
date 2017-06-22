@@ -27,7 +27,7 @@ class FirstController extends Controller
     {
 
         if(! $this->site->count()) {
-    		return view('cms.base.first');
+    		return view('hack::base.first');
     	}
     }
 
@@ -125,7 +125,7 @@ class FirstController extends Controller
      */
     public function success()
     {
-        return view('cms.base.thank');
+        return view('hack::base.thank');
     }
 
 

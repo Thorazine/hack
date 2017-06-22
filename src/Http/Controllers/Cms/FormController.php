@@ -75,7 +75,7 @@ class FormController extends CmsController
             ->with('formFields')
             ->paginate(100);
 
-        return view('cms.form.show')
+        return view('hack::form.show')
             ->with('datas', $datas);
     }
 

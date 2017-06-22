@@ -13,8 +13,8 @@
 		{!! Form::hidden($key, Builder::createValue($model, $type, $data, $key, 'edit', false), ['class' => 'input-value']) !!}
 		{!! $errors->first($key, '<p class="text-danger">:message</p>') !!}
 
-		@include('cms.input.module.cropper')
-		@include('cms.input.module.gallery')
+		@include('hack::input.module.cropper')
+		@include('hack::input.module.gallery')
 
 	</div>
 </div>

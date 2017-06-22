@@ -46,7 +46,7 @@
                     </li>
 
                 @elseif(@$menu['children'])
-                    @include('cms.partials.collapse')
+                    @include('hack::partials.collapse')
                 @endif
 
             @endforeach

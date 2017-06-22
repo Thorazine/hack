@@ -1,11 +1,11 @@
-@extends('cms.layouts.cms')
+@extends('hack::layouts.cms')
 
 @foreach($formFields as $formField)
 	<?php $found = false; ?>
 	@foreach($data->formValues as $formValue)
 		@if($formValue->form_field_id == $formField->id)
 			<?php $found = true; ?>
-			@include('cms.positions.edit.main', [
+			@include('hack::positions.edit.main', [
 				'position' => 'main', 
 				'key' => $formField->key, 
 				'value' => $formValue->value,
@@ -19,7 +19,7 @@
 		@endif
 	@endforeach 
 	@if(! $found)
-		@include('cms.positions.edit.main', [
+		@include('hack::positions.edit.main', [
 			'position' => 'main', 
 			'key' => $formField->key, 
 			'value' => '',
@@ -36,11 +36,11 @@
 
 @section('content')
 
-	@include('cms.partials.menu')
+	@include('hack::partials.menu')
 	
 	<div class="content model">
 
-		@include('cms.partials.header')
+		@include('hack::partials.header')
 
 		<div class="subheader">
 			<a class="" href="{{ route('cms.'.$slug.'.index', ['fid' => $fid]) }}"><i class="fa fa-arrow-left"></i> {{ trans('cms.back') }}</a>

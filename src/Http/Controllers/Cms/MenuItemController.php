@@ -51,12 +51,12 @@ class MenuItemController extends CmsController
 
         if($request->ajax()) {
             return response()->json([
-                'dataset' => view('cms.models.ajax.index')
+                'dataset' => view('hack::models.ajax.index')
                     ->with('datas', $datas)
                     ->with('fid', $request->fid)
                     ->with('searchFields', $this->searchFields)
                     ->render(),
-                'paginate' => view('cms.models.ajax.paginate')
+                'paginate' => view('hack::models.ajax.paginate')
                     ->with('datas', $datas)
                     ->with('fid', $request->fid)
                     ->with('searchFields', $this->searchFields)
@@ -64,7 +64,7 @@ class MenuItemController extends CmsController
             ]);
         }
 
-        return view('cms.menu-item.index')
+        return view('hack::menu-item.index')
             ->with('datas', $datas)
             ->with('fid', $request->fid);
     }

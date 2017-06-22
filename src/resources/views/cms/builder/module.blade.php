@@ -1,14 +1,14 @@
-@extends('cms.layouts.cms')
+@extends('hack::layouts.cms')
 
 
 
 @section('content')
 
-	@include('cms.partials.menu')
+	@include('hack::partials.menu')
 	
 	<div class="content model">
 
-		@include('cms.partials.header')
+		@include('hack::partials.header')
 
 		<div class="subheader">
 			<a class="" href="{{ route('cms.templates.index') }}"><i class="fa fa-arrow-left"></i> {{ trans('cms.back') }}</a>

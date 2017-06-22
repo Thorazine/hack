@@ -1,4 +1,4 @@
-@extends('cms.layouts.auth')
+@extends('hack::layouts.auth')
 
 
 

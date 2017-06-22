@@ -72,7 +72,7 @@ return [
 		'requests' => 'Requests',
 		'slug' => 'Url',
 		'redirect' => 'Redirect to',
-		'referrer' => 'Referred by',
+		'referer' => 'Refered by',
 	],
 	'slugs' => [
 		'slug' => 'Url',

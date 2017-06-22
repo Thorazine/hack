@@ -1,4 +1,4 @@
-@extends('cms.layouts.persistence')
+@extends('hack::layouts.persistence')
 
 
 

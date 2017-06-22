@@ -12,9 +12,9 @@
 	<meta property="og:type" content="{{ ($page->og_type) ? $page->og_type : 'page' }}"/>
 	<meta property="og:url" content="{{ Request::url() }}"/>
 	
-	@if($page->og_image)
+	@if($page->og_image->has())
 	<meta property="og:image" content="{{ $page->og_image }}"/>
-	<meta property="og:image:type" content="image/jpg">
+	<meta property="og:image:type" content="image/{{ $page->og_image->extension }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 	@endif

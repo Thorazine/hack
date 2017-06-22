@@ -2,6 +2,7 @@
 
 namespace Thorazine\Hack\Classes\Facades;
 
+use Thorazine\Hack\Classes\PageOutput;
 use Thorazine\Hack\Models\Gallery;
 use Thorazine\Hack\Models\Site;
 use Cache;
@@ -46,6 +47,9 @@ class Cms {
 	private $initiateList = [];
 
 
+	private $notFound = false;
+
+
 	/**
 	 * Get the site id of the current site
 	 *
@@ -57,6 +61,24 @@ class Cms {
 			return $this->site->{$attribute};
 		}
 		return $this->site;
+	}
+
+
+	/**
+	 * Set 404 flag
+	 */
+	public function setNotFound()
+	{
+		$this->notFound = true;
+	}
+
+
+	/**
+	 * Get 404 flag
+	 */
+	public function getNotFound()
+	{
+		return $this->notFound;
 	}
 
 
@@ -78,7 +100,7 @@ class Cms {
 	 */
 	public function getSites()
 	{
-		$sites = Cache::tags(['site'])->remember(implode('-', ['getSites']), env('PAGE_CACHE_TIME'), function() {
+		$sites = Cache::tags(['site'])->remember(implode('-', ['getSites']), env('PAGE_CACHE_TIME', 1), function() {
 		    $sites = Site::orderBy('title', 'asc')
 		    	->get();
 		        
@@ -372,7 +394,7 @@ class Cms {
     	$html = '';
     	foreach($children as $child) {
 			if(@$child['route'] && (Cms::hasPermission(Cms::site('id').'.'.$child['route']) || @$menu['verified'])) {
-                $html .= view('cms.partials.sub-menu')
+                $html .= view('hack::partials.sub-menu')
                 	->with('child', $child)
                 	->render();
 			}
@@ -393,19 +415,22 @@ class Cms {
     }
 
 
-    // public function addInitiator($initiator)
-    // {
-    // 	array_push($this->initiateList, $initiator);
-    // }
+    public function getErrorPage($error)
+    {
+    	$page = Cache::tags('pages', 'templates', 'slugs')->remember(Cms::cacheKey(['page', $error, Cms::siteId()]), env('PAGE_CACHE_TIME', 1), function() use ($error) {
+            $pageOutput = App::make('Thorazine\Hack\Classes\PageOutput');
+            return $pageOutput->bySlug($error);
+	    });
 
+	    if($page) {
+	    	return view(Cms::siteId().'.error')
+	    		->with('page', $page)
+	    		->render();
+	    }
 
-    // public function runInitiator()
-    // {
-    // 	foreach($this->initiateList as $initiator) {
+	    // hard die. Nothing to be done.
+	    die();
 
-    // 		$initiator->types = $initiator->types();
-    // 		// dd($initiator);
-    // 	}
-    // }
+    }
 
 }

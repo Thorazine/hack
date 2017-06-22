@@ -86,7 +86,7 @@ class FormEntryController extends Controller
             ->orderBy('drag_order', 'asc')
             ->get();
 
-        return view('cms.form-entry.index')
+        return view('hack::form-entry.index')
             ->with('datas', $formEntries)
             ->with('formFields', $formFields)
             ->with('fid', $request->fid)
@@ -115,7 +115,7 @@ class FormEntryController extends Controller
             ->orderBy('drag_order', 'asc')
             ->get();
 
-        return view('cms.form-entry.edit')
+        return view('hack::form-entry.edit')
             ->with('data', $formEntry)
             ->with('formFields', $formFields)
             ->with('id', $id)

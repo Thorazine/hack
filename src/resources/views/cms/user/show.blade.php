@@ -1,13 +1,13 @@
-@extends((@$isAjax) ? 'cms.layouts.ajax' : 'cms.layouts.cms')
+@extends((@$isAjax) ? 'hack::layouts.ajax' : 'hack::layouts.cms')
 
 
 @section('content')
 
-	@include('cms.partials.menu')
+	@include('hack::partials.menu')
 	
 	<div class="content user">
 
-		@include('cms.partials.header')
+		@include('hack::partials.header')
 
 		<div class="subheader">
 			<a class="primary" href="{{ route('cms.user.edit', ['id' => $user->id]) }}" title="{{ trans('cms.edit_your_data') }}">{{ trans('cms.edit') }}</a>
@@ -61,7 +61,7 @@
 							<td>{{ Cms::user('persistence', 'country') }}</td>
 							<td>{{ Cms::user('persistence', 'city') }}</td>
 							<td>{{ Cms::user('persistence', 'os') }}</td>
-							<td>@include('cms.user.browser', ['browser' => strtolower(Cms::user('persistence', 'browser'))]) {{ Cms::user('persistence', 'browser') }}</td>
+							<td>@include('hack::user.browser', ['browser' => strtolower(Cms::user('persistence', 'browser'))]) {{ Cms::user('persistence', 'browser') }}</td>
 							<td>{{ Cms::user('persistence', 'device_type') }}</td>
 							<td>{{ Cms::user('persistence', 'device') }}</td>
 							<td>{{ Cms::user('persistence', 'updated_at')->format('d-m-Y H:i:s') }}</td>
@@ -75,7 +75,7 @@
 									<td>{{ $persistence->country }}</td>
 									<td>{{ $persistence->city }}</td>
 									<td>{{ $persistence->os }}</td>
-									<td>@include('cms.user.browser', ['browser' => strtolower($persistence->browser)]) {{ $persistence->browser }}</td>
+									<td>@include('hack::user.browser', ['browser' => strtolower($persistence->browser)]) {{ $persistence->browser }}</td>
 									<td>{{ $persistence->device_type }}</td>
 									<td>{{ $persistence->device }}</td>
 									<td>{{ $persistence->updated_at->format('d-m-Y H:i:s') }}</td>

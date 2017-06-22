@@ -72,7 +72,7 @@ return [
 		'requests' => 'Opgevraagd',
 		'slug' => 'Url',
 		'redirect' => 'Redirect naar',
-		'referrer' => 'Aangevraagd door',
+		'referer' => 'Aangevraagd door',
 	],
 	'slugs' => [
 		'slug' => 'Url',

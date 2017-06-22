@@ -3,6 +3,8 @@
 namespace Thorazine\Hack\Models;
 
 use Thorazine\Hack\Scopes\SiteScope;
+use Request;
+use Cms;
 
 class NotFound extends CmsModel
 {
@@ -73,13 +75,37 @@ class NotFound extends CmsModel
                 'label' => trans('modules.not_found.redirect'),
                 'regex' => 'required',
             ],
-            'referrer' => [
+            'referer' => [
                 'type' => 'text',
-                'label' => trans('modules.not_found.referrer'),
+                'label' => trans('modules.not_found.referer'),
                 'regex' => '',
                 'create' => false,
                 'edit' => false,
             ],
         ];
     } 
+
+
+    public static function add($slug)
+    {
+        $exist = NotFound::where('referer', Request::header('referer'))
+            ->where('slug', $slug)
+            ->first();
+
+        if($exist) {
+            NotFound::where('referer', Request::header('referer'))
+                ->where('slug', $slug)
+                ->increment('requests');
+        }
+        else {
+            NotFound::insert([
+                'site_id' => Cms::siteId(),
+                'slug' => $slug,
+                'referer' => Request::header('referer'),
+                'requests' => 1,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ]);
+        }
+    }
 }

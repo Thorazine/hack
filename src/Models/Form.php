@@ -189,7 +189,7 @@ class Form extends CmsModel
             ->render();
         }
         
-        return view('cms.frontend.form.form')
+        return view('hack::frontend.form.form')
             ->with('page', $page)
             ->with('form', $this)
             ->render();
