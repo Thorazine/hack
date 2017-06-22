@@ -47,4 +47,32 @@ class Wysiwyg extends BaseBuilder
             ],
         ], 'value');
     }
+
+
+    /**
+     * Add to the DB scope for the frontend
+     */
+    public function replaceFrontendValue($original, $builder)
+    {
+        return $builder->value;
+    }
+
+
+    public function getTags($value)
+    {
+        $pattern = '<data-gallery=\"(\d+)\">';
+        preg_match_all($pattern, $value, $matches);
+
+        foreach($matches[1] as $id) {
+
+        }
+        $ids = $matches[1];
+        dd($matches);
+    }
+
+
+    public function setTags()
+    {
+        $pattern = '<img src=\"https?://[^/\s]+/\S+\.(jpg|png|gif)\">';
+    }
 }

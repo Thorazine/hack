@@ -68,7 +68,7 @@ class PageOutput {
             }
         }
 
-        // put the page data in a flash variable 
+        // put the page data in a flash variable and return it
         Cms::setPage($this->pageData);
 
         return $this->pageData;

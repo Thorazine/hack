@@ -36,6 +36,7 @@ return [
 		'wysiwyg' => [
 		 	'namespace' => 'Thorazine\Hack\Models\Builders\Wysiwyg',
 		 	'label' => 'Wysiwyg',
+		 	'builder' => 'Thorazine\Hack\Classes\Builders\Wysiwyg',
 		 	'values' => [
 		 		'plain',
 		 		'full',
