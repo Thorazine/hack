@@ -3,7 +3,6 @@
 const elixir    = require('laravel-elixir');
 var gulp        = require('gulp');
                   require('laravel-elixir-livereload');
-// require('laravel-elixir-vue');
 
 /*
  |--------------------------------------------------------------------------
@@ -26,7 +25,12 @@ elixir(mix => {
     // frontend
     .sass([
         'frontend.scss'
-    ], 'public/assets/frontend/css/frontend.css').livereload();
+    ], 'public/assets/frontend/css/frontend.css')
+
+    // wysiwyg
+    .sass([
+        'wysiwyg.scss'
+    ], 'public/assets/cms/css/wysiwyg.css').livereload();
 
 
 

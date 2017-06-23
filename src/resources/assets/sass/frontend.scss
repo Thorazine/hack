@@ -1,14 +1,15 @@
 // basic stuff
 @import 'frontend/variables';
-@import 'base/reset';
-
-// pages
+@import 'frontend/base/reset';
+@import 'frontend/base/font-includes';
 
 // mixins
-@import 'frontend/mixin/aspect-ratio';
+@import 'frontend/mixins/aspect-ratio';
 
 // components
-@import 'frontend/component/base';
-@import 'frontend/component/menu';
-@import 'frontend/component/grid';
-@import 'frontend/component/form-builder';
+@import 'frontend/components/menu';
+@import 'frontend/components/grid';
+@import 'frontend/components/form-builder';
+@import 'frontend/components/wysiwyg';
+
+// pages

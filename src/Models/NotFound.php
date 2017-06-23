@@ -88,8 +88,7 @@ class NotFound extends CmsModel
 
     public static function add($slug)
     {
-        $exist = NotFound::where('referer', Request::header('referer'))
-            ->where('slug', $slug)
+        $exist = NotFound::where('slug', $slug)
             ->first();
 
         if($exist) {
