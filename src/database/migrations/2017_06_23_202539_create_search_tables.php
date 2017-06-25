@@ -15,7 +15,7 @@ class CreateSearchTables extends Migration
     {
         Schema::table('pages', function (Blueprint $table) 
         {
-            $table->tinyInteger('search_priority')->default(3);
+            $table->tinyInteger('search_priority')->default(5);
         });
 
         Schema::create('search_index', function (Blueprint $table) 

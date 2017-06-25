@@ -125,6 +125,25 @@ class Page extends CmsModel
                 'regex' => '',
                 'position' => 'sidebar',
             ],
+            'search_priority' => [
+                'type' => 'select',
+                'label' => trans('modules.pages.search_priority'),
+                'regex' => 'required',
+                'values' => [
+                    0 => trans('modules.pages.no_index'),
+                    1 => 1,
+                    2 => 2,
+                    3 => 3,
+                    4 => 4,
+                    5 => 5,
+                    6 => 6,
+                    7 => 7,
+                    8 => 8,
+                    9 => 9,
+                    10 => 10,
+                ],
+                'position' => 'sidebar',
+            ],
         ];
     }
 

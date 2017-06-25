@@ -57,6 +57,8 @@ return [
 		'body' => 'Body',
 		'publish_at' => 'Publish date',
 		'depublish_at' => 'Depublish date',
+		'search_priority' => 'Search priority',
+		'no_index' => 'Don\'t index',
 	],
 	'menu' => [
 		'title' => 'Title',

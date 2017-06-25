@@ -57,6 +57,8 @@ return [
 		'body' => 'Body',
 		'publish_at' => 'Publicatie datum',
 		'depublish_at' => 'Depublicatie datum',
+		'search_priority' => 'Zoek prioriteit',
+		'no_index' => 'Niet indexeren',
 	],
 	'menu' => [
 		'title' => 'Titel',
