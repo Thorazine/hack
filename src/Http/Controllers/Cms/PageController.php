@@ -95,7 +95,9 @@ class PageController extends CmsController
             $template = $this->template->where('id', $request->template_id)->firstOrFail();
 
             $id = $this->model->insertGetId($this->prepareValues($request->only([
-                'slug', 
+                'slug',
+                'title',
+                'body', 
                 'template_id', 
                 'language',
                 'publish_at',
@@ -197,6 +199,8 @@ class PageController extends CmsController
 
             $values = $this->prepareValues($request->only([
                 'slug', 
+                'title',
+                'body', 
                 'language',
                 'publish_at',
                 'depublish_at',

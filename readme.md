@@ -93,6 +93,10 @@ npm install
 gulp
 ```
 
+# Database
+The default setting for strictness of the database is set to true. This needs to be false for the system to work since we 
+use the eloquent ```groupBy```.
+
 # Filesystem
 This package uses the default Laravel Filesystem to handle storage. For settings take a look at the [Laravel docs](https://laravel.com/docs/5.4/filesystem).
 Personally I like to start of with the ```public``` driver setting and the ```php artisan storage:link``` command. To do so add ```FILESYSTEM_DRIVER=public``` to the .env file.

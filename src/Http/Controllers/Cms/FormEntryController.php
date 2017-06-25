@@ -81,8 +81,8 @@ class FormEntryController extends Controller
             ->paginate(50);
 
         $formFields = $this->formField
-            ->distinct('key')
             ->where('form_id', $request->fid)
+            ->groupBy('key')
             ->orderBy('drag_order', 'asc')
             ->get();
 
@@ -110,8 +110,8 @@ class FormEntryController extends Controller
             ->first();
 
         $formFields = $this->formField
-            ->distinct('key')
-            ->where('form_id', $formEntry->form_id)   
+            ->where('form_id', $formEntry->form_id)
+            ->groupBy('key')
             ->orderBy('drag_order', 'asc')
             ->get();
 
@@ -155,8 +155,8 @@ class FormEntryController extends Controller
                 ->first();
 
             $formFields = $this->formField
-                ->distinct('key')
-                ->where('form_id', $formEntry->form_id) 
+                ->where('form_id', $formEntry->form_id)
+                ->groupBy('key')
                 ->orderBy('drag_order', 'asc')
                 ->get();
 

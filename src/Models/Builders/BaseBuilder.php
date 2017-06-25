@@ -153,4 +153,15 @@ class BaseBuilder extends Model
         return $builder->value;
     }
 
+
+    /**
+     * Add to the DB scope for the frontend
+     */
+    public function page()
+    {
+        return $this->morphToMany('Thorazine\Hack\Models\Page', 'pageable');
+    }
+
+
+
 }

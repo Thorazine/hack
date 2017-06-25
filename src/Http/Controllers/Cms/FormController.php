@@ -98,9 +98,9 @@ class FormController extends CmsController
             ->get();
 
         $formFields = $this->formField
-            ->distinct('key')
             ->where('form_id', $id) 
             ->orderBy('drag_order', 'asc')
+            ->groupBy('key')
             ->get();
 
         $array = [];

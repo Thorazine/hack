@@ -109,11 +109,15 @@ return [
 	 * overwritten in the class.
 	 */
 	'search' => [
-		'defaultSearchTypes' => [
+		'cmsSearchTypes' => [
 			'text',
 			'wysiwyg',
 			'number',
 			'timestamp',
+		],
+		'frontendSearchTypes' => [
+			'text',
+			'wysiwyg',
 		],
 	],
 

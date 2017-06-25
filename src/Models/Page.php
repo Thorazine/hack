@@ -99,6 +99,19 @@ class Page extends CmsModel
                 'label' => trans('modules.pages.slug'),
                 'regex' => 'slug',
             ],
+            'title' => [
+                'type' => 'text',
+                'label' => trans('modules.pages.title'),
+                'regex' => '',
+                'overview' => false,
+            ],
+            'body' => [
+                'type' => 'wysiwyg',
+                'label' => trans('modules.pages.body'),
+                'regex' => '',
+                'configuration' => 'full',
+                'overview' => false,
+            ],
             'publish_at' => [
                 'type' => 'timestamp',
                 'label' => trans('modules.pages.publish_at'),

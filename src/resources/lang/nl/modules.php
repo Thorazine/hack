@@ -54,6 +54,7 @@ return [
 		'slug' => 'Slug',
 		'language' => 'Taal',
 		'title' => 'Titel',
+		'body' => 'Body',
 		'publish_at' => 'Publicatie datum',
 		'depublish_at' => 'Depublicatie datum',
 	],

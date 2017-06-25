@@ -1,1 +1,0 @@
-{!! Cms::getErrorPage('404') !!}

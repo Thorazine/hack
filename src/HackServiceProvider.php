@@ -60,6 +60,7 @@ class HackServiceProvider extends ServiceProvider
             $this->commands([
                 Console\Commands\HackBuilder::class,
                 Console\Commands\HackModule::class,
+                Console\Commands\HackSearch::class,
             ]);
         }
 

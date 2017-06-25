@@ -5,10 +5,12 @@ namespace Thorazine\Hack\Classes;
 use Thorazine\Hack\Models\NotFound;
 use Thorazine\Hack\Models\Pageable;
 use Thorazine\Hack\Models\Gallery;
+use Thorazine\Hack\Classes\Search;
 use Thorazine\Hack\Models\Page;
 use Thorazine\Hack\Models\Slug;
 use Request;
 use Builder;
+use Cache;
 use Cms;
 use DB;
 
@@ -19,10 +21,11 @@ class PageOutput {
 	private $morphs;
 	
 	
-	public function __construct(Page $page, Slug $slug, Pageable $pageable)
+	public function __construct(Page $page, Slug $slug, Pageable $pageable, Search $search)
 	{
 		$this->page = $page;
         $this->slug = $slug;
+        $this->search = $search;
     	$this->pageable = $pageable;
 	}
 
@@ -39,6 +42,9 @@ class PageOutput {
 		if(! $this->pageData->view) {
 			$this->pageData->view = 'default';
 		}
+        elseif($this->pageData->view == 'search') {
+            $this->pageData->search = $this->search->get();
+        }
 
 		// check which relations are needed for this page
 		$this->morps = $this->pageable
@@ -159,9 +165,20 @@ class PageOutput {
             
             if(! Cms::getNotFound()) {
                 NotFound::add($slug); // Add to 404 table
+                Cms::setNotFound();
+ 
+                $page = Cache::tags('pages', 'templates', 'slugs')->remember(Cms::cacheKey(['page', '404', Cms::siteId()]), env('PAGE_CACHE_TIME', 1), function() {
+                    return $this->bySlug('404');
+                });
+
+                if($page) {
+                    return $page;
+                    return view(Cms::siteId().'.error')
+                        ->with('page', $page)
+                        ->render();
+                }
             }
-            
-            Cms::setNotFound();
+
             Cms::abort(404, 'Slug not found');
         }
 

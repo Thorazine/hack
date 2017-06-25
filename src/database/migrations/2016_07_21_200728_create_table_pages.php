@@ -19,8 +19,9 @@ class CreateTablePages extends Migration
             $table->integer('template_id');
             $table->string('prepend_slug')->nullable();
             $table->string('slug')->default('/');
-            $table->string('language')->default('nl');
+            $table->string('language')->default('en');
             $table->string('title')->nullable();
+            $table->text('body')->nullable();
             $table->string('view')->nullable();
 
             $table->timestamp('publish_at')->nullable();

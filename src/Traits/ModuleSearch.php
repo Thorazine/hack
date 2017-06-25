@@ -43,7 +43,7 @@ trait ModuleSearch {
 	{
 		if(! count($this->searchFields)) {
 			if(! count($this->defaultSearchTypes)) {
-				$this->defaultSearchTypes = config('cms.search.defaultSearchTypes');
+				$this->defaultSearchTypes = config('cms.search.cmsSearchTypes');
 			}
 
 			foreach($this->model->types as $key => $values) {

@@ -35,4 +35,14 @@ class Front {
         return $this->asset($page->{$key.'Gallery'}->fullname);
     }
 
+    /*
+     * Shorten a string and ellipse it based on length
+     */
+    public function str_short($value, $length = 150)
+    {
+        if(strlen($value) > $length) {
+            return substr($value, 0, $length).'...';
+        }
+    }
+
 }
