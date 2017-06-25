@@ -141,8 +141,10 @@ class PageController extends CmsController
 
             Cms::destroyCache([$this->slug]);
 
-            // call the search
-            $this->search->pageIndex();
+            // call the search if needed
+            if(config('cms.search.index_on_update')) {
+                $this->search->pageIndex();
+            }
         }
         catch(Exception $e) {
             return $this->rollback($e, $request);
@@ -246,8 +248,10 @@ class PageController extends CmsController
 
             Cms::destroyCache([$this->slug]);
 
-            // call the search
-            $this->search->pageIndex();
+            // call the search if needed
+            if(config('cms.search.index_on_update')) {
+                $this->search->pageIndex();
+            }
         
         }
         catch(Exception $e) {
@@ -282,8 +286,10 @@ class PageController extends CmsController
 
             Cms::destroyCache([$this->slug]);
 
-            // call the search
-            $this->search->pageIndex();
+            // call the search if needed
+            if(config('cms.search.index_on_update')) {
+                $this->search->pageIndex();
+            }
 
             return response()->json([
                 'message' => trans('cms.deleted'),

@@ -5,6 +5,7 @@ namespace Thorazine\Hack\Classes\Facades;
 use Thorazine\Hack\Classes\PageOutput;
 use Thorazine\Hack\Models\Gallery;
 use Thorazine\Hack\Models\Site;
+use Exception;
 use Cache;
 use App;
 
@@ -379,7 +380,9 @@ class Cms {
         
     }
 
-
+    /*
+     * return an instance of the gallery
+     */
     public function getGallery()
     {
         if(! $this->gallery) {
@@ -388,7 +391,9 @@ class Cms {
         return $this->gallery;
     }
 
-
+    /*
+     * Get the submenus for a parent
+     */
     public function getSubMenu($children)
     {
     	$html = '';
@@ -402,35 +407,42 @@ class Cms {
 		return $html;
     }
 
-
+    /*
+     * Flag the menu open
+     */
     public function setMenuOpen($state)
     {
     	$this->menuOpen = $state;
     }
 
-
+    /*
+     * Return the state of a flag
+     */
     public function getMenu()
     {
     	return $this->menuOpen;
     }
 
-
-    public function getErrorPage($error)
+    /*
+     * Get the package version
+     */
+    public function getVersion()
     {
-    	$page = Cache::tags('pages', 'templates', 'slugs')->remember(Cms::cacheKey(['page', $error, Cms::siteId()]), env('PAGE_CACHE_TIME', 1), function() use ($error) {
-            $pageOutput = App::make('Thorazine\Hack\Classes\PageOutput');
-            return $pageOutput->bySlug($error);
-	    });
+    	try {
+	    	return Cache::remember('version', 60, function() {
+	    		$content = json_decode(file_get_contents(base_path('composer.lock')), true);
 
-	    if($page) {
-	    	return view(Cms::siteId().'.error')
-	    		->with('page', $page)
-	    		->render();
+		    	foreach($content['packages'] as $package) {
+		    		if($package['name'] == 'thorazine/hack') {
+		    			return $package['version'];
+		    			break;
+		    		}
+		    	}
+	    	});
 	    }
-
-	    // hard die. Nothing to be done.
-	    die();
-
+	    catch(Exception $e) {
+	    	return '0.0.0';
+	    }
     }
 
 }

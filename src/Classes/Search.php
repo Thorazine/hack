@@ -25,24 +25,24 @@ class Search {
 	{
 		$q = Request::get('q');
 
-        $search = $this->searchIndex;
 
         if($q) {
-	        $search = $search->where(function($query) use ($q) {
+            $search = $this->searchIndex
+                ->where(function($query) use ($q) {
                     foreach($this->queryToArray($q) as $qpart) {
                         $query = $query->where('value', 'LIKE', '%'.$qpart.'%');
                     }
                     return $query;
-                });
+                })
+                ->orderBy('search_priority', 'desc')
+            	->groupBy('page_id')
+                ->orderBy('publish_date', 'desc')
+                ->paginate(10);
 
-	    }
+            return $search;
+        }
 
-        $search = $search->orderBy('search_priority', 'desc')
-        	->groupBy('page_id')
-            ->orderBy('publish_date', 'desc')
-            ->paginate(10);
-
-        return $search;
+        return false;
 	}
 
 	/*
@@ -75,7 +75,7 @@ class Search {
     public function pageIndex()
     {
         // get the builder types we want to be able to search for
-        $searchTypes = config('cms.search.frontendSearchTypes');
+        $searchTypes = config('cms.search.frontend_search_types');
 
         $sites = $this->site->get();
 

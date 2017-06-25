@@ -104,21 +104,40 @@ return [
 
 
 	/**
-	 * The model query searches through these types
-	 * of inputs for a possible match unless
-	 * overwritten in the class.
+	 * All the settings for searching
 	 */
 	'search' => [
-		'cmsSearchTypes' => [
+
+		/**
+		 * The model query searches through these types
+		 * of inputs for a possible match unless
+		 * overwritten in the class.
+		 */
+		'cms_search_types' => [
 			'text',
 			'wysiwyg',
 			'number',
 			'timestamp',
 		],
-		'frontendSearchTypes' => [
+
+		/**
+		 * The frontens searches through these types
+		 * of inputs for a possible match
+		 */
+		'frontend_search_types' => [
 			'text',
 			'wysiwyg',
 		],
+
+		/**
+		 * The search results are indexed to make searching the pages 
+		 * more efficient. When you are low on pages it makes 
+		 * sense to only update the results on a page change. 
+		 * However, when the amount of pages grows you are going to want
+		 * to run the indexer in the background by running the hack:search
+		 * artisan command on a crontab every few minutes.
+		 */
+		'index_on_update' => true,
 	],
 
 ];

@@ -52,4 +52,8 @@
 		</div>
 	</div>
 
+	<div class="footer">
+		<span class="version">Version {{ Cms::getVersion() }}</span>
+	</div>
+
 @stop

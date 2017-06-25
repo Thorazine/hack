@@ -11,11 +11,13 @@
 		{!! Form::text('q', Request::get('q'), ['class' => '']) !!}
 	{!! Form::close() !!}
 
-	@foreach($page->search as $search)
-		<div>
-			<a href="{{ $search->url }}">{{ $search->title }}</a><br>
-			{{ $search->body }}<br>
-		</div>
-	@endforeach
+	@if($page->search)
+		@foreach($page->search as $search)
+			<div>
+				<a href="{{ $search->url }}">{{ $search->title }}</a><br>
+				{{ $search->body }}<br>
+			</div>
+		@endforeach
+	@endif
 
 @stop
