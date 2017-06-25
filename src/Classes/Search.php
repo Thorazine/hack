@@ -22,7 +22,13 @@ class Search {
         $search = $this->searchIndex;
 
         if($q) {
-	        $search = $search->where('value', 'LIKE', '%'.$q.'%');
+	        $search = $search->where(function($query) use ($q) {
+                    foreach($this->queryToArray($q) as $qpart) {
+                        $query = $query->where('value', 'LIKE', '%'.$qpart.'%');
+                    }
+                    return $query;
+                });
+
 	    }
 
         $search = $search->orderBy('search_priority', 'desc')
@@ -32,5 +38,31 @@ class Search {
 
         return $search;
 	}
+
+	/*
+	 * Split the query on quotes
+	 */
+    private function queryToArray($q)
+    {
+        $query = $q;
+
+        preg_match_all('/"(?:\\\\.|[^\\\\"])*"|\S+/', $query, $matches);
+
+        return $this->removeQuotes($matches[0]);
+    }
+
+    /*
+	 * Trim and push all the query parts 
+	 */
+    private function removeQuotes($parts)
+    {
+        $matches = [];
+
+        foreach($parts as $part) {
+            array_push($matches, trim($part, '"'));
+        }
+
+        return $matches;
+    }
 
 }
