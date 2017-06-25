@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 
-<title>{{ Cms::site('title') }}</title>
+<title>{{ Cms::site('title') }} - CMS</title>
 <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1 minimal-ui">
 <link rel="shortcut icon" href="{{ Builder::image(Cms::site('favicon')) }}" type="image/x-icon" />
 

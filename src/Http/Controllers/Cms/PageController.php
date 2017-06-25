@@ -10,12 +10,14 @@ use Thorazine\Hack\Traits\ModuleHelper;
 use Thorazine\Hack\Models\Templateable;
 use Thorazine\Hack\Models\Template;
 use Thorazine\Hack\Models\Pageable;
+use Thorazine\Hack\Classes\Search;
 use Thorazine\Hack\Http\Requests;
 use Thorazine\Hack\Models\DbLog;
 use Thorazine\Hack\Models\Page;
 use Thorazine\Hack\Models\Slug;
 use Exception;
 use Builder;
+use Artisan;
 use Cms;
 use Log;
 use DB;
@@ -23,7 +25,7 @@ use DB;
 class PageController extends CmsController
 {
 
-    public function __construct(Page $model, Template $template, Templateable $templateable, Pageable $pageable, Slug $slug)
+    public function __construct(Page $model, Template $template, Templateable $templateable, Pageable $pageable, Slug $slug, Search $search)
     {
 
         $this->model = $model;
@@ -32,6 +34,7 @@ class PageController extends CmsController
         $this->templateable = $templateable;
         $this->pageable = $pageable;
         $this->notFound = $slug;
+        $this->search = $search;
 
         parent::__construct($this);
 
@@ -137,6 +140,9 @@ class PageController extends CmsController
             DbLog::add(__CLASS__, 'store', json_encode($request->all()));
 
             Cms::destroyCache([$this->slug]);
+
+            // call the search
+            $this->search->pageIndex();
         }
         catch(Exception $e) {
             return $this->rollback($e, $request);
@@ -239,6 +245,9 @@ class PageController extends CmsController
             DbLog::add(__CLASS__, 'update', json_encode($request->all()));
 
             Cms::destroyCache([$this->slug]);
+
+            // call the search
+            $this->search->pageIndex();
         
         }
         catch(Exception $e) {
@@ -272,6 +281,9 @@ class PageController extends CmsController
             DbLog::add(__CLASS__, 'destroy', $id);
 
             Cms::destroyCache([$this->slug]);
+
+            // call the search
+            $this->search->pageIndex();
 
             return response()->json([
                 'message' => trans('cms.deleted'),

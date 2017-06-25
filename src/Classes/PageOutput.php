@@ -99,7 +99,7 @@ class PageOutput {
 		// find the page
 		$this->pageData = $this->page
             ->where('site_id', Cms::siteId())
-			->where(DB::raw('CONCAT_WS("/", prepend_slug, slug)'), $slug)
+			->where(DB::raw('TRIM(BOTH "/" FROM CONCAT_WS("/", prepend_slug, slug))'), $slug)
 			->published()
 			->first();
 
