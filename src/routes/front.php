@@ -12,7 +12,8 @@
 Route::group(['namespace' => 'Thorazine\Hack\Http\Controllers\Front'], function() {
 
 	Route::get('sitemap.xml', function() {
-		return Storage::disk(config('filesystems.default'))->get('sitemaps/'.Cms::siteId().'/sitemap.xml');
+		return response(Storage::disk(config('filesystems.default'))->get('sitemaps/'.Cms::siteId().'/sitemap.xml'), 200)
+			->header('Content-Type', 'text/xml');
 	});
 
 	// A post route for the form builder
