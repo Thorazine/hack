@@ -7,6 +7,9 @@ use Thorazine\Hack\Models\Templateable;
 use Thorazine\Hack\Models\Template;
 use Thorazine\Hack\Models\Pageable;
 use Thorazine\Hack\Models\Page;
+use Thorazine\Hack\Models\Menu;
+use Thorazine\Hack\Models\MenuItem;
+use Thorazine\Hack\Models\Builders\Menu as MenuBuilder;
 use Thorazine\Hack\Models\Builders\Text;
 use Thorazine\Hack\Models\Builders\Wysiwyg;
 
@@ -77,6 +80,15 @@ class HackExampleSite extends Seeder
         	'drag_order' => '2',
         ]);
 
+    	// create a templateable builder refrence to home
+        Templateable::insert([
+        	'template_id' => 1,
+        	'templateable_id' => '1',
+        	'templateable_type' => 'Thorazine\Hack\Models\Builders\Menu',
+        	'slug' => '/',
+        	'drag_order' => '3',
+        ]);
+
         Page::insert([
         	'site_id' => '1',
         	'template_id' => '1',
@@ -140,7 +152,7 @@ class HackExampleSite extends Seeder
         	'title' => 'This page will have a search mechanism',
         	'body' => '<p>This is due to the fact that the templates name is "search"</p>',
         	'view' => 'search',
-        	'search_priority' => '5',
+        	'search_priority' => '',
         	'publish_at' => date('Y-m-d H:i:s'),
         	'depublish_at' => null,
         	'created_at' => date('Y-m-d H:i:s'),
@@ -157,7 +169,7 @@ class HackExampleSite extends Seeder
         	'body' => '<p>Any 404 will end up here. You can fully customize this page as you like.</p>
 				<p>If this template is not defined it will just fallback to the Laravel default 404 system (views/errors/404 or "whoops" screen)</p>',
         	'view' => '404',
-        	'search_priority' => '5',
+        	'search_priority' => '0',
         	'publish_at' => date('Y-m-d H:i:s'),
         	'depublish_at' => null,
         	'created_at' => date('Y-m-d H:i:s'),
@@ -176,6 +188,13 @@ class HackExampleSite extends Seeder
         	'pageable_id' => '1',
         	'pageable_type' => 'Thorazine\Hack\Models\Builders\Wysiwyg',
         	'drag_order' => '2',
+        ]);
+
+        Pageable::insert([
+        	'page_id' => '1',
+        	'pageable_id' => '1',
+        	'pageable_type' => 'Thorazine\Hack\Models\Builders\Menu',
+        	'drag_order' => '3',
         ]);
 
         Text::insert([
@@ -225,6 +244,62 @@ class HackExampleSite extends Seeder
         	'default_value' => '',
         	'create_regex' => '',
         	'edit_regex' => '',
+        	'created_at' => date('Y-m-d H:i:s'),
+        	'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        MenuBuilder::insert([
+        	'template_sibling' => null,
+        	'key' => 'main_menu',
+        	'label' => 'Main menu',
+        	'value' => '1',
+        	'default_value' => '',
+        	'create_regex' => '',
+        	'edit_regex' => '',
+        	'created_at' => date('Y-m-d H:i:s'),
+        	'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        MenuBuilder::insert([
+        	'template_sibling' => 1,
+        	'key' => 'main_menu',
+        	'label' => 'Main menu',
+        	'value' => '1',
+        	'default_value' => '',
+        	'create_regex' => '',
+        	'edit_regex' => '',
+        	'created_at' => date('Y-m-d H:i:s'),
+        	'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        Menu::insert([
+        	'site_id' => '1',
+        	'max_levels' => '1',
+        	'Title' => 'Main menu',
+        	'created_at' => date('Y-m-d H:i:s'),
+        	'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        MenuItem::insert([
+        	'menu_id' => '1',
+        	'page_id' => '1',
+        	'Title' => 'Home',
+        	'created_at' => date('Y-m-d H:i:s'),
+        	'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        MenuItem::insert([
+        	'menu_id' => '1',
+        	'page_id' => '2',
+        	'Title' => 'Simple page',
+        	'created_at' => date('Y-m-d H:i:s'),
+        	'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        MenuItem::insert([
+        	'menu_id' => '1',
+        	'page_id' => '3',
+        	'Title' => 'Search',
         	'created_at' => date('Y-m-d H:i:s'),
         	'updated_at' => date('Y-m-d H:i:s'),
         ]);

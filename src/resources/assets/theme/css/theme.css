@@ -2,6 +2,7 @@
 	min-height: 20px;
 	font-family: Raleway;
 	padding: 30px;
+	position: relative;
 }
 
 .block.light {
@@ -17,6 +18,10 @@
 .block.dark {
 	background-color: #333;
 	color: #FFF;
+}
+
+.block.footer {
+	width: 100%;
 }
 
 h2.center {
@@ -35,10 +40,50 @@ h2.center {
 
 ul.menu li {
 	float: left;
-	padding: 7px 15px;
 	border-right: 1px solid #333;
 }
 
 ul.menu li:first-child {
 	border-left: 1px solid #333;
+}
+
+ul.menu li a {
+	display: block;
+	padding: 7px 15px;
+
+}
+
+ul.menu li a:hover {
+	text-decoration: none;
+	background-color: #EEE;
+}
+
+.search {
+	width: 400px;
+	position: relative;
+}
+
+.search-box {
+	width: 100%;
+	padding: 7px;
+	padding-right: 40px;
+	border: 1px solid #CCC;
+	border-radius: 3px;
+}
+
+.search-button {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	height: 100%;
+}
+
+.search-result {
+	width: 100%;
+	padding: 7px 0;
+	border-bottom: 1px solid #CCC;
+}
+
+.search-result:first-child {
+	border-top: 1px solid #CCC;
 }

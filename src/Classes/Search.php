@@ -105,7 +105,8 @@ class Search {
             $domain = Cms::site('protocol').Cms::site('domain');
 
             // start query
-            $pages = $this->page;
+            $pages = $this->page
+                ->where('search_priority', '>', 0);
 
             // attach the wanted builders
             foreach($searchTypes as $searchType) {
@@ -118,7 +119,7 @@ class Search {
             // loop through all the pages
             foreach($pages as $page) {
 
-                if($page->publish_at < $date && (is_null($page->depublish_at) || $page->depublish_at > $date) && $page->search_priority > 0) {
+                if($page->publish_at < $date && (is_null($page->depublish_at) || $page->depublish_at > $date)) {
 
                     // create the page url
                     $url = $domain.'/'.ltrim($page->prepend_slug.'/'.$page->slug, '/');
