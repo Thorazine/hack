@@ -13,7 +13,7 @@
 @section('content')
 
 	<div class="block menu">
-		<div class="container small">
+		<div class="container narrow">
 			<ul class="menu">
 				@foreach($page->main_menu->menuItems as $menuItem) 
 					<li>
@@ -25,7 +25,7 @@
 	</div>
 	
 	<div class="block light">
-		<div class="container small">
+		<div class="container narrow">
 			<h2>{{ $page->title }}</h2>
 				
 			<div class="wysiwyg">
@@ -34,17 +34,7 @@
 		</div>
 	</div>
 
-	<div class="block medium">
-		<div class="container">
-			<h2 class="center">{{ $page->title_2 }}</h2>
-				
-			<div class="wysiwyg">
-				{!! $page->body_2 !!}
-			</div>
-		</div>
-	</div>
-
-	<div class="block dark">
+	<div class="block dark footer">
 		<div class="container">
 
 

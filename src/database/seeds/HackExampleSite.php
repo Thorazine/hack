@@ -119,7 +119,7 @@ class HackExampleSite extends Seeder
 				<p style="text-align: right;">Right align</p>
 				<div class="iframe youtube"><iframe src="https://www.youtube.com/embed/QH2-TGUlwu4" width="1200" height="150" data-mce-fragment="1"></iframe></div>
 				<p>More text</p>',
-        	'view' => 'home',
+        	'view' => 'example.home',
         	'search_priority' => '5',
         	'publish_at' => date('Y-m-d H:i:s'),
         	'depublish_at' => null,
@@ -135,7 +135,7 @@ class HackExampleSite extends Seeder
         	'language' => 'en',
         	'title' => 'This is an example title',
         	'body' => '<p>This is an example body text</p>',
-        	'view' => 'simple',
+        	'view' => 'example.simple',
         	'search_priority' => '5',
         	'publish_at' => date('Y-m-d H:i:s'),
         	'depublish_at' => null,
@@ -150,8 +150,8 @@ class HackExampleSite extends Seeder
         	'slug' => 'search',
         	'language' => 'en',
         	'title' => 'This page will have a search mechanism',
-        	'body' => '<p>This is due to the fact that the templates name is "search"</p>',
-        	'view' => 'search',
+        	'body' => '<p>This is due to the fact that the template view name is "search"</p>',
+        	'view' => 'example.search',
         	'search_priority' => '',
         	'publish_at' => date('Y-m-d H:i:s'),
         	'depublish_at' => null,
@@ -168,7 +168,7 @@ class HackExampleSite extends Seeder
         	'title' => 'This page is not found',
         	'body' => '<p>Any 404 will end up here. You can fully customize this page as you like.</p>
 				<p>If this template is not defined it will just fallback to the Laravel default 404 system (views/errors/404 or "whoops" screen)</p>',
-        	'view' => '404',
+        	'view' => 'example.404',
         	'search_priority' => '0',
         	'publish_at' => date('Y-m-d H:i:s'),
         	'depublish_at' => null,
