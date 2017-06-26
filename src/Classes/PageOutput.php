@@ -42,7 +42,7 @@ class PageOutput {
 		if(! $this->pageData->view) {
 			$this->pageData->view = 'default';
 		}
-        elseif($this->pageData->view == 'search') {
+        elseif(in_array($this->pageData->view, config('cms.search.view_bind'))) {
             $this->pageData->search = $this->search->get();
         }
 

@@ -28,6 +28,8 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/frontend.css') }}?version={{ (App::environment() === 'develop') ? rand(1,1000) : '' }}">
 
+    @yield('css')
+    
 </head>
 <body>
 

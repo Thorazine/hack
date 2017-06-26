@@ -16,6 +16,7 @@ Feel free to try it, but don't expect support any day soon.
 - Advanced/automatic browser cache
 - Full cache (memcached/redis) on front end requests 
 - Cache flushed by tags, minimizing flushed items 
+- All pages and sites are equipped with editable on-/offline timestamps
 - Gallery with aspect ratio cropper (customisable per input)
 - Customisable wysiwygs per input
 - Easy to extend with your own modules

@@ -106,7 +106,8 @@ class Search {
 
             // start query
             $pages = $this->page
-                ->where('search_priority', '>', 0);
+                ->where('search_priority', '>', 0)
+                ->orderBy('search_priority', 'desc');
 
             // attach the wanted builders
             foreach($searchTypes as $searchType) {

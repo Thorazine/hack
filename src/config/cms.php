@@ -138,6 +138,14 @@ return [
 		 * artisan command on a crontab every few minutes.
 		 */
 		'index_on_update' => true,
+
+		/**
+		 * Run the search engine on these views 
+		 */
+		'view_bind' => [
+			'search',
+			'example.search',
+		],
 	],
 
 ];

@@ -59,14 +59,14 @@
 					{title: 'Right', value: 'right'}
 				],
 				plugins: [
-				    "advlist lists link image print preview hr anchor",
+				    "advlist lists link image print hr anchor",
 				    "searchreplace visualblocks visualchars code fullscreen",
 				    "media nonbreaking contextmenu directionality",
-				    "emoticons template paste textcolor colorpicker textpattern imagetools"
+				    "paste textcolor colorpicker textpattern imagetools noneditable"
 				],
 				menubar: "insert edit tools",
 				toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent",
-				toolbar2: "link image media | forecolor backcolor",
+				toolbar2: "link image media | forecolor backcolor | fullscreen",
 				media_live_embeds: true,
 				media_dimensions: false,
 				media_poster: false,
@@ -97,13 +97,13 @@
 				relative_urls : false,
 				remove_script_host : true,
 				document_base_url : "{{ $baseUrl }}",
-				plugins: "",
+				plugins: "fullscreen",
 				menubar: "",
 				toolbar: "",
 				style_formats: [
 					{ title: "Normal", inline: "p" },
 				],
-				toolbar1: "insertfile undo redo",
+				toolbar1: "insertfile undo redo | fullscreen",
 				content_css: [
 					"{{ asset('assets/cms/css/wysiwyg.css') }}",
 				]
@@ -124,11 +124,13 @@
 		return language[key];
 	}
 
-	function youtube_parser(url){
+	function youtube_parser(url)
+	{
 	    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
 	    var match = url.match(regExp);
 	    return (match&&match[7].length==11)? match[7] : false;
 	}
+
 </script>
 
 @if(env('APP_DEBUG'))

@@ -43,6 +43,7 @@ class Front {
         if(strlen($value) > $length) {
             return substr($value, 0, $length).'...';
         }
+        return $value;
     }
 
 }

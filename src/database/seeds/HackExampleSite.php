@@ -191,10 +191,24 @@ class HackExampleSite extends Seeder
         ]);
 
         Pageable::insert([
-        	'page_id' => '1',
-        	'pageable_id' => '1',
-        	'pageable_type' => 'Thorazine\Hack\Models\Builders\Menu',
-        	'drag_order' => '3',
+            'page_id' => '1',
+            'pageable_id' => '1',
+            'pageable_type' => 'Thorazine\Hack\Models\Builders\Menu',
+            'drag_order' => '3',
+        ]);
+
+        Pageable::insert([
+            'page_id' => '2',
+            'pageable_id' => '1',
+            'pageable_type' => 'Thorazine\Hack\Models\Builders\Menu',
+            'drag_order' => '4',
+        ]);
+
+        Pageable::insert([
+            'page_id' => '3',
+            'pageable_id' => '1',
+            'pageable_type' => 'Thorazine\Hack\Models\Builders\Menu',
+            'drag_order' => '5',
         ]);
 
         Text::insert([
