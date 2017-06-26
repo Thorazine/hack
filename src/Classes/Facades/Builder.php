@@ -225,8 +225,8 @@ class Builder {
             }
             return $this->getPlainValue($model, $data[$key], $data, $key);
         }
-
-        dd('Key "'.$key.'" doesn\'t exist. (Builder->createValue())');
+        
+        dd('Key "'.$key.'" doesn\'t exist. You probably forgot to migrate after an upgrade (Builder->createValue())');
     }
 
 

@@ -13,6 +13,12 @@ use DB;
 
 class Search {
 
+
+    private $entries = [];
+    private $sitemapData = [];
+
+
+
 	public function __construct(SearchIndex $searchIndex, Site $site, Page $page)
 	{
         $this->site = $site;
@@ -75,91 +81,99 @@ class Search {
 
     public function pageIndex()
     {
-        // get the builder types we want to be able to search for
-        $searchTypes = config('cms.search.frontend_search_types');
-
         $sites = $this->site->get();
 
-        $entries = [];
-        $sitemapData = [];
-        $date = date('Y-m-d H:i:s');
+        $this->entries = [];
+        $this->sitemapData = [];
 
 
         foreach($sites as $site) {
             Cms::setSite($site);
 
-            if($site->publish_at < $date && (is_null($site->depublish_at) || $site->depublish_at > $date)) {
-                $domain = Cms::site('protocol').Cms::site('domain');
+            $this->pageIndexEntry();
+        }
+    }
 
-                // start query
-                $pages = $this->page;
 
-                // attach the wanted builders
-                foreach($searchTypes as $searchType) {
-                    $pages = $pages->with(str_plural($searchType));
-                }
+    public function pageIndexEntry() 
+    {
+        // get the builder types we want to be able to search for
+        $searchTypes = config('cms.search.frontend_search_types');
+        $date = date('Y-m-d H:i:s');
 
-                // get records
-                $pages = $pages->get();
+        if(Cms::site('publish_at') < $date && (is_null(Cms::site('depublish_at')) || Cms::site('depublish_at') > $date)) {
+            $domain = Cms::site('protocol').Cms::site('domain');
 
-                // loop through all the pages
-                foreach($pages as $page) {
+            // start query
+            $pages = $this->page;
 
-                    if($page->publish_at < $date && (is_null($page->depublish_at) || $page->depublish_at > $date) && $page->search_priority > 0) {
+            // attach the wanted builders
+            foreach($searchTypes as $searchType) {
+                $pages = $pages->with(str_plural($searchType));
+            }
 
-                        // create the page url
-                        $url = $domain.'/'.ltrim($page->prepend_slug.'/'.$page->slug, '/');
+            // get records
+            $pages = $pages->get();
 
-                        // add the page itself
-                        array_push($entries, [
-                            'page_id' => $page->id,
-                            'title' => $page->title,
-                            'body' => Front::str_short(strip_tags($page->body)),
-                            'url' => $url,
-                            'value' => strip_tags($page->body),
-                            'search_priority' => $page->search_priority,
-                            'publish_date' => $page->publish_at,
-                            'created_at' => $date,
-                            'updated_at' => $date,
-                        ]);
+            // loop through all the pages
+            foreach($pages as $page) {
 
-                        array_push($sitemapData, [
-                            'url' => $url,
-                            'updated_at' => $page->updated_at->format('Y-m-d'),
-                            'priority' => round(($page->search_priority / 10), 1),
-                        ]);
+                if($page->publish_at < $date && (is_null($page->depublish_at) || $page->depublish_at > $date) && $page->search_priority > 0) {
 
-                        // extract builders from page
-                        foreach($searchTypes as $searchType) {
-                            $builders = $page->{str_plural($searchType)};
+                    // create the page url
+                    $url = $domain.'/'.ltrim($page->prepend_slug.'/'.$page->slug, '/');
 
-                            // loop through builders
-                            foreach($builders as $builder) {
+                    // add the page itself
+                    array_push($this->entries, [
+                        'page_id' => $page->id,
+                        'title' => $page->title,
+                        'body' => Front::str_short(strip_tags($page->body)),
+                        'url' => $url,
+                        'value' => strip_tags($page->body),
+                        'search_priority' => $page->search_priority,
+                        'publish_date' => $page->publish_at,
+                        'created_at' => $date,
+                        'updated_at' => $date,
+                    ]);
 
-                                // Add the builders
-                                array_push($entries, [
-                                    'page_id' => $page->id,
-                                    'title' => $page->title,
-                                    'body' => Front::str_short(strip_tags($page->body)),
-                                    'url' => $url,
-                                    'value' => strip_tags($builder->value),
-                                    'search_priority' => $page->search_priority,
-                                    'publish_date' => $page->publish_at,
-                                    'created_at' => $date,
-                                    'updated_at' => $date,
-                                ]);
-                            }
+                    array_push($this->sitemapData, [
+                        'url' => $url,
+                        'updated_at' => $page->updated_at->format('Y-m-d'),
+                        'priority' => round(($page->search_priority / 10), 1),
+                    ]);
+
+                    // extract builders from page
+                    foreach($searchTypes as $searchType) {
+                        $builders = $page->{str_plural($searchType)};
+
+                        // loop through builders
+                        foreach($builders as $builder) {
+
+                            // Add the builders
+                            array_push($this->entries, [
+                                'page_id' => $page->id,
+                                'title' => $page->title,
+                                'body' => Front::str_short(strip_tags($page->body)),
+                                'url' => $url,
+                                'value' => strip_tags($builder->value),
+                                'search_priority' => $page->search_priority,
+                                'publish_date' => $page->publish_at,
+                                'created_at' => $date,
+                                'updated_at' => $date,
+                            ]);
                         }
                     }
                 }
             }
+
+            $this->searchIndex->truncate();
+            $this->searchIndex->insert($this->entries);
+
+            $sitemap = view('hack::tools.sitemap')->with('pages', $this->sitemapData)->render();
+
+            Storage::disk(config('filesystems.default'))->put('sitemaps/'.Cms::siteId().'/sitemap.xml', $sitemap);
+            
         }
-        $this->searchIndex->truncate();
-        $this->searchIndex->insert($entries);
-
-        $sitemap = view('hack::tools.sitemap')->with('pages', $sitemapData)->render();
-
-        Storage::disk(config('filesystems.default'))->put('sitemaps/'.Cms::siteId().'/sitemap.xml', $sitemap);
     }
 
 }

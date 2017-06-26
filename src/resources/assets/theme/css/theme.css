@@ -1,0 +1,44 @@
+.block {
+	min-height: 20px;
+	font-family: Raleway;
+	padding: 30px;
+}
+
+.block.light {
+	background-color: #FFF;
+	color: #333;
+}
+
+.block.medium {
+	background-color: #CCC;
+	color: #000;
+}
+
+.block.dark {
+	background-color: #333;
+	color: #FFF;
+}
+
+h2.center {
+	display: block;
+	text-align: center;
+}
+
+.container.small {
+	max-width: 800px;
+}
+
+.block.menu {
+	padding: 0px;
+	border-bottom: 1px solid #333;
+}
+
+ul.menu li {
+	float: left;
+	padding: 7px 15px;
+	border-right: 1px solid #333;
+}
+
+ul.menu li:first-child {
+	border-left: 1px solid #333;
+}

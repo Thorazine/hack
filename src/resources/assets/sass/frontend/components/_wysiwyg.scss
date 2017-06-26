@@ -1,57 +1,56 @@
 .wysiwyg, .mce-content-body {
 	font-family: $font-family;
-	color: $font-color;
+	color: inherit;
 	font-size: 15px;
 	// margin: 20px
-	padding: 10px;
 	line-height: 140%;
 
 	h1 {
 		font-family: $font-family;
-		color: $font-color;
+		color: inherit;
 		font-size: 35px;
 		margin: 0 0 20px;
 	}
 
 	h2 {
 		font-family: $font-family;
-		color: $font-color;
+		color: inherit;
 		font-size: 30px;
 		margin: 0 0 20px;
 	}
 
 	h3 {
 		font-family: $font-family;
-		color: $font-color;
+		color: inherit;
 		font-size: 25px;
 		margin: 0 0 10px;
 	}
 
 	h4 {
 		font-family: $font-family;
-		color: $font-color;
+		color: inherit;
 		font-size: 20px;
 		margin: 0 0 10px;
 	}
 
 	p {
 		font-family: $font-family;
-		color: $font-color;
+		color: inherit;
 		font-size: 15px;
 		margin: 0 0 10px;
 	}
 
 	a {
-		color: $font-color;
+		color: inherit;
 		text-decoration: underline;
 		cursor: pointer;
 
 		&:active {
-			color: $font-color;
+			color: inherit;
 		}
 
 		&:visited {
-			color: $font-color; 
+			color: inherit; 
 		}
 	}
 
@@ -67,24 +66,16 @@
 		list-style-type: disc;
 		margin-bottom: 10px;
 		padding-left: 17px;
-
-		li {
-			padding-left: 10px;
-		}
 	}
 
 	ol {
 		list-style-type: decimal;
 		margin-bottom: 10px;
 		padding-left: 17px;
-
-		li {
-			padding-left: 10px;
-		}
 	}
 
 	li {
-
+		padding-left: 10px;
 	}
 
 	img {
@@ -127,4 +118,8 @@
 		}
 		margin-bottom: 10px;
 	}
+}
+
+.mce-content-body {
+	padding: 10px;
 }

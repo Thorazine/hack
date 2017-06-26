@@ -3,14 +3,14 @@
 namespace Thorazine\Hack\Classes\Facades;
 
 use Illuminate\Support\Facades\Storage;
-use Cms;
+use Cms as CmsFacade;
 
 class Front {
 
 
 	public function image($id)
     {
-        $file = Cms::getGallery()->select('filename', 'extension')->where('id', $id)->first();
+        $file = CmsFacade::getGallery()->select('filename', 'extension')->where('id', $id)->first();
 
         if($file) {
             return asset(Storage::disk(config('filesystems.default'))->url('cropped/thumbnail/'.$file->fullname));

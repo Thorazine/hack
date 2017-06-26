@@ -72,8 +72,8 @@
 				media_poster: false,
 				media_alt_source: false,
 				media_url_resolver: function (data, resolve/*, reject*/) {
-				    if (data.url.indexOf('www.youtube') !== -1) {
-						var embedHtml = '<div class="iframe youtube"><iframe src="' + data.url +
+				    if (youtube_parser(data.url)) {
+						var embedHtml = '<div class="iframe youtube"><iframe src="https://www.youtube.com/embed/' + youtube_parser(data.url) +
 						'" width="1200"></iframe></div>';
 						resolve({html: embedHtml});
 				    } else {
@@ -122,7 +122,12 @@
 		}
 
 		return language[key];
+	}
 
+	function youtube_parser(url){
+	    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+	    var match = url.match(regExp);
+	    return (match&&match[7].length==11)? match[7] : false;
 	}
 </script>
 

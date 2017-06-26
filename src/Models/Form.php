@@ -171,7 +171,7 @@ class Form extends CmsModel
      */
     public function getForms()
     {
-        return $this->select('id', 'title')->orderBy('title', 'asc')->pluck('title', 'id');
+        return ['' => 'None']+$this->select('id', 'title')->orderBy('title', 'asc')->pluck('title', 'id')->toArray();
     }
 
 

@@ -2,6 +2,7 @@
 
 namespace Thorazine\Hack\Models;
 
+use Request;
 use Cms;
 
 class MenuItem extends CmsModel
@@ -77,6 +78,27 @@ class MenuItem extends CmsModel
         }
         elseif(@$this->page) {
             return $this->page->toUrl();
+        }
+        return '';
+    }
+
+
+    public function getActiveAttribute()
+    {
+        if(rtrim($this->external_url, '/') == Request::url()) {
+            return true;
+        }
+        elseif(@rtrim($this->page, '/') == Request::url()) {
+            return true;
+        }
+        return false;
+    }
+
+
+    public function activeHtml($html)
+    {
+        if($this->active) {
+            return $html;
         }
         return '';
     }

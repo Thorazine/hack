@@ -144,7 +144,7 @@ class PageController extends CmsController
 
             // call the search if needed
             if(config('cms.search.index_on_update')) {
-                $this->search->pageIndex();
+                $this->search->pageIndexEntry();
             }
         }
         catch(Exception $e) {
@@ -252,7 +252,7 @@ class PageController extends CmsController
 
             // call the search if needed
             if(config('cms.search.index_on_update')) {
-                $this->search->pageIndex();
+                $this->search->pageIndexEntry();
             }
         
         }
@@ -290,7 +290,7 @@ class PageController extends CmsController
 
             // call the search if needed
             if(config('cms.search.index_on_update')) {
-                $this->search->pageIndex();
+                $this->search->pageIndexEntry();
             }
 
             return response()->json([

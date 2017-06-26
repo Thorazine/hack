@@ -15,7 +15,8 @@ class CreateSearchTables extends Migration
     {
         Schema::table('pages', function (Blueprint $table) 
         {
-            $table->tinyInteger('search_priority')->default(5);
+            $table->tinyInteger('search_priority')->default(5)->after('view');
+            $table->text('body')->nullable()->after('search_priority');
         });
 
         Schema::create('search_index', function (Blueprint $table) 
@@ -40,7 +41,7 @@ class CreateSearchTables extends Migration
     public function down()
     {
         Schema::table('pages', function (Blueprint $table) {
-            $table->dropColumn('search_priority');
+            $table->dropColumn(['search_priority', 'body']);
         });
 
         Schema::dropIfExists('search_index');

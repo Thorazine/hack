@@ -18,10 +18,9 @@ class CreateTablePageablePivot extends Migration
             $table->increments('id');
             $table->integer('page_id');
             $table->morphs('pageable');
-            $table->string('page_type')->default('template');
             $table->integer('drag_order')->nullable()->default(10000);
 
-            $table->index(['page_id', 'pageable_id', 'pageable_type'], 'pageable');
+            $table->index(['page_id', 'pageable_id'], 'pageable');
         });
     }
 

@@ -84,6 +84,6 @@ class Menu extends CmsModel
      */
     public function getMenus()
     {
-        return $this->select('id', 'title')->orderBy('title', 'asc')->pluck('title', 'id');
+        return ['' => 'None']+$this->select('id', 'title')->orderBy('title', 'asc')->pluck('title', 'id')->toArray();
     }
 }

@@ -143,6 +143,7 @@ class Page extends CmsModel
                     10 => 10,
                 ],
                 'position' => 'sidebar',
+                'default' => 5,
             ],
         ];
     }
