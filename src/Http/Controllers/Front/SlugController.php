@@ -57,6 +57,7 @@ class SlugController extends Controller
             ->with('page', $page);
 
         return response($response)
+            // add the browser cache
             ->header('Cache-Control', 'public, max-age='.Cms::site('browser_cache_time'))
             ->header('Expires', date('D, d M Y H:i:s ', time() + Cms::site('browser_cache_time')).'GMT');
     }
