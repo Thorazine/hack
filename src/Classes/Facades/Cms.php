@@ -124,6 +124,17 @@ class Cms {
 
 
 	/**
+	 * Set the site language for the current page
+	 *
+	 * @param collection
+	 */
+	public function setSiteLanguage($language)
+	{
+		App::setLocale($language);
+	}
+
+
+	/**
 	 * Get all the sites
 	 *
 	 * @return collection
