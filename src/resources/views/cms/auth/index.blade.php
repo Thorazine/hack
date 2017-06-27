@@ -52,6 +52,16 @@
 			</div>
 			<div class="panel-body" >
 
+				@if ($errors->any())
+					<div class="alert alert-danger">
+				        <ul>
+				            @foreach ($errors->all() as $error)
+				                <li>{{ $error }}</li>
+				            @endforeach
+				        </ul>
+				    </div>
+				@endif
+
 				{!! Form::open(['route' => 'cms.auth.store', 'method' => 'post', 'class' => 'form-horizontal']) !!}
 
 					{!! Form::hidden('latitude', @$latitude, ['id' => 'latitude']) !!}
@@ -72,8 +82,6 @@
 							{!! $errors->first('password', '<p class="text-danger">:message</p>') !!}
 						</div>
 					</div>
-					{!! $errors->first('latitude', '<p class="text-danger">:message</p>') !!}
-					{!! $errors->first('longitude', '<p class="text-danger">:message</p>') !!}
 
 					@if(! isset($latitude))
 						<button type="submit" class="btn btn-primary pull-right" disabled="disabled" id="submit">One moment please, requesting location <i class="fa fa-spinner fa-spin"></i></button>
