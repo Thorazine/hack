@@ -15,6 +15,25 @@ return [
 		'edit',
 		'destroy',
 	],
+	'templates' => [
+		'index',
+		'create',
+		'edit',
+		'destroy',
+	],
+	'builder' => [
+		'index',
+		'module',
+		'create',
+		'edit',
+		'destroy',
+	],
+	'gallery' => [
+		'index',
+		'create',
+		'edit',
+		'destroy',
+	],
 	'menus' => [
 		'index',
 		'create',
@@ -51,32 +70,7 @@ return [
 		'edit',
 		'destroy',
 	],
-	'gallery' => [
-		'index',
-		'create',
-		'edit',
-		'destroy',
-	],
 	'not_found' => [
-		'index',
-		'create',
-		'edit',
-		'destroy',
-	],
-	'templates' => [
-		'index',
-		'create',
-		'edit',
-		'destroy',
-	],
-	'builder' => [
-		'index',
-		'module',
-		'create',
-		'edit',
-		'destroy',
-	],
-	'settings' => [
 		'index',
 		'create',
 		'edit',
@@ -101,6 +95,12 @@ return [
 		'destroy',
 	],
 	'information' => [
+		'index',
+		'create',
+		'edit',
+		'destroy',
+	],
+	'settings' => [
 		'index',
 		'create',
 		'edit',
