@@ -9,7 +9,7 @@ use Cms;
 
 class DummyClass extends CmsModel
 {
-    protected $table = 'builder_DummyTable';
+    protected $table = 'DummyTable';
 
     protected $viewPath = 'cms.DummyPath.inputs';
 
