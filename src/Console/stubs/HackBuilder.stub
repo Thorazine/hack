@@ -12,7 +12,7 @@ class DummyClass extends BaseBuilder
     /**
      * The databae table
      */
-    protected $table = 'DummyTable';
+    protected $table = 'builder_DummyTable';
 
     /**
      * Set the type
