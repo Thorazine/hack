@@ -3,15 +3,13 @@
 
 
 @section('css')
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="{{ asset('theme/css/theme.css') }}">
-	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+	@include('1.example.partials.css')
 @stop
 
 
 
 @section('content')
-	
+<div id="content">	
 	<div class="block menu">
 		<div class="container narrow">
 			<ul class="menu">
@@ -57,11 +55,6 @@
 		</div>
 	@endif
 
-	<div class="block dark footer">
-		<div class="container">
-
-
-		</div>
-	</div>
-
+	@include('1.example.partials.footer')
+</div>
 @stop

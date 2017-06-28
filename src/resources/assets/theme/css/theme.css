@@ -1,3 +1,23 @@
+#content {
+	width: 100%;
+	min-height: 100vh;
+	padding-bottom: 60px;
+}
+
+#footer {
+	position: absolute;
+	bottom: 0px;
+}
+
+a {
+	color: #FFF;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #FFF;
+}
+
 .block {
 	min-height: 20px;
 	font-family: Raleway;
@@ -20,7 +40,7 @@
 	color: #FFF;
 }
 
-.block.footer {
+.block#footer {
 	width: 100%;
 }
 
@@ -48,12 +68,14 @@ ul.menu li:first-child {
 }
 
 ul.menu li a {
+	color: #333;
 	display: block;
 	padding: 7px 15px;
 
 }
 
 ul.menu li a:hover {
+	color: #333;
 	text-decoration: none;
 	background-color: #EEE;
 }

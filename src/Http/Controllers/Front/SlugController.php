@@ -23,9 +23,9 @@ class SlugController extends Controller
 
     public function __construct(Page $page, Slug $slug, Pageable $pageable, PageOutput $pageOutput)
     {
-    	$this->page = $page;
+        $this->page = $page;
         $this->slug = $slug;
-    	$this->pageable = $pageable;
+        $this->pageable = $pageable;
         $this->pageOutput = $pageOutput;
     }
 
@@ -37,9 +37,9 @@ class SlugController extends Controller
             return view('offline');
         }
 
-    	$page = Cache::tags('pages', 'templates', 'slugs')->remember(Cms::cacheKey(['page', $request->slug, Cms::siteId()]), env('PAGE_CACHE_TIME', 1), function() use ($request) {
+        $page = Cache::tags('pages', 'templates', 'slugs')->remember(Cms::cacheKey(['page', $request->slug, Cms::siteId()]), env('PAGE_CACHE_TIME', 1), function() use ($request) {
             return $this->pageOutput->bySlug($request->slug);
-	    });
+        });
 
         // if we get an array with an abort for page, we need to redirect
         if(is_array($page) && array_key_exists('abort', $page)) {
@@ -51,10 +51,13 @@ class SlugController extends Controller
             $this->abort(404);
         }
 
+        Cms::setSiteLanguage($page['language']);
+
         $response = view($this->getView($page))
             ->with('page', $page);
 
-	    return response($response)
+        return response($response)
+            // add the browser cache
             ->header('Cache-Control', 'public, max-age='.Cms::site('browser_cache_time'))
             ->header('Expires', date('D, d M Y H:i:s ', time() + Cms::site('browser_cache_time')).'GMT');
     }
