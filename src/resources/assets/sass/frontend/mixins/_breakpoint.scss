@@ -1,5 +1,17 @@
-$font-family: helvetica;
-$font-color: #333;
+/**
+ * Breakpoint
+ * @param {string} $name - Name of the breakpoint used in $breakpoints
+ */
+@mixin breakpoint($name) {
+	@if map-has-key($breakpoints, $name) {
+		@media #{map-get($breakpoints, $name)} {
+			@content;
+		}
+	}
+}
+
+/*
+// Breakpoint sizes as defined in variables
 $breakpoints: (
 	'mobile-portrait': 	'(max-width: 479px)',
 	'tablet-portrait': 	'(max-width: 768px)',
@@ -9,3 +21,4 @@ $breakpoints: (
 	'desktop-hover':	'(min-device-width: 1025px)',
 	'desktop-high':		'(min-height: 1000px)',
 );
+*/
