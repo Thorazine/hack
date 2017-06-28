@@ -16,6 +16,7 @@ class DummyClassController extends CmsController
     {
         $this->model = $model;
         $this->slug = 'DummySlug';
+        $this->hasOrder = false;
 
         parent::__construct($this);
     }

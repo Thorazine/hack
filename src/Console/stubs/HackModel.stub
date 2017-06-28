@@ -81,5 +81,4 @@ class DummyClass extends CmsModel
         return $this->hasOne('Thorazine\Hack\Models\Gallery', 'id', 'image');
     }
     */
-    
 }
