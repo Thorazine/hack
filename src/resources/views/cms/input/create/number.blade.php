@@ -18,7 +18,9 @@
 				'class' => 'form-control', 
 				'placeholder' => (@$type['placeholder']) ? $type['placeholder'] : $type['label'],
 				'autocomplete' => 'off',
-			]
+			]+
+			((@$type['min']) ? ['min' => $type['min']] : []),
+			((@$type['max']) ? ['max' => $type['max']] : [])
 		) !!}
 
 		@if(@$type['prependLabel'] || @$type['appendLabel'])
