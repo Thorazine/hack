@@ -358,6 +358,9 @@ class Cms {
 	 */
 	public function destroyCache(array $keys = [])
     {
+    	// since this is a frontend cache remover and this only gets called
+    	// when frontend stuf gets changed, we will always flush page.
+    	array_push($keys, 'page'); 
         Cache::tags($keys)->flush();;
     }
 
