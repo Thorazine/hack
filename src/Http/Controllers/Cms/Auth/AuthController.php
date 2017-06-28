@@ -20,7 +20,7 @@ class AuthController extends Controller
     private $locationSession = null;
 
 
-	public function __construct(Location $location, Browser $browser, CmsPersistence $persistence)
+    public function __construct(Location $location, Browser $browser, CmsPersistence $persistence)
     {
         $this->browser = $browser;
         $this->location = $location;
@@ -49,12 +49,12 @@ class AuthController extends Controller
         $response = response();
 
         $locationPermission = 0;
-    	if($request->cookie('location_permission')) {
-    		$locationPermission = $request->cookie('location_permission_set');
-    	}
+        if($request->cookie('location_permission')) {
+            $locationPermission = $request->cookie('location_permission_set');
+        }
 
-    	return view('hack::auth.index')
-    		->with('locationPermission', $locationPermission);
+        return view('hack::auth.index')
+            ->with('locationPermission', $locationPermission);
     }
 
 
@@ -108,7 +108,7 @@ class AuthController extends Controller
             }   
 
             // email user for verification to confirm the location
-            Mail::send('cms.emails.validate', ['user' => $user, 'persistence' => $persistenceAddData], function($message) use ($user) {
+            Mail::send('hack::emails.validate', ['user' => $user, 'persistence' => $persistenceAddData], function($message) use ($user) {
                 $message->to($user->email);
                 $message->subject('Hack CMS - Login attempt needs verification');
             });
@@ -159,7 +159,7 @@ class AuthController extends Controller
 
 
             // email user for verification
-            Mail::send('cms.emails.validate', ['user' => $user, 'persistence' => $persistence], function($message) use ($user) {
+            Mail::send('hack::emails.validate', ['user' => $user, 'persistence' => $persistence], function($message) use ($user) {
                 $message->to($user->email);
                 $message->subject('Hack CMS - Login attempt needs verification');
             });

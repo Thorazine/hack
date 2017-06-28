@@ -53,6 +53,8 @@ class HackServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->loadViewsFrom(__DIR__.'/resources/views/cms', 'hack');
 
+        $this->mergeConfigFrom(__DIR__.'/config/cms.php', 'cms');
+
         // Register console commands
         if($this->app->runningInConsole()) 
         {
@@ -72,6 +74,7 @@ class HackServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        
+        // as of version 1.0.20
+        $this->mergeConfigFrom(__DIR__.'/config/cms.php', 'cms.search.view_bind');
     }
 }
