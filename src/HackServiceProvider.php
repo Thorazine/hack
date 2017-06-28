@@ -42,9 +42,8 @@ class HackServiceProvider extends ServiceProvider
             __DIR__.'/resources/views/offline.blade.php' => resource_path('views/offline.blade.php'),
 
             // routes
-            __DIR__.'/routes/cms.php' => base_path('routes/cms.php'),
             __DIR__.'/routes/front.php' => base_path('routes/front.php'),
-            __DIR__.'/routes/cms-custom.php' => base_path('routes/cms-custom.php'),
+            __DIR__.'/routes/hack.php' => base_path('routes/hack.php'),
 
             // stubs
             __DIR__.'/Http/Controllers/Cms/stubs/PanelController.stub' => app_path('Http/Controllers/Cms/PanelController.php'),

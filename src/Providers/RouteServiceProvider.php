@@ -56,8 +56,8 @@ class RouteServiceProvider extends ServiceProvider
             'prefix' => 'cms',
             'as' => 'cms.'
         ], function ($router) {
-            if(file_exists(base_path('routes/cms.php'))) {
-                require base_path('routes/cms.php');
+            if(file_exists(__DIR__.'routes/cms.php')) {
+                require __DIR__.'routes/cms.php';
             }
         });
     }
@@ -76,8 +76,8 @@ class RouteServiceProvider extends ServiceProvider
             'prefix' => 'cms',
             'as' => 'cms.'
         ], function ($router) {
-            if(file_exists(base_path('routes/cms-custom.php'))) {
-                require base_path('routes/cms-custom.php');
+            if(file_exists(base_path('routes/hack.php'))) {
+                require base_path('routes/hack.php');
             }
         });
     }
