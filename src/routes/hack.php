@@ -12,13 +12,13 @@ Route::group(['middleware' => 'sentinel.auth', 'namespace' => 'App\Http\Controll
 	| If you want to be able to order add this line first
 	|----------------------------------------------------------------------
 	| 
-	| Route::post('example/order', ['as' => 'example.order', 'uses' => 'ExampleController@order']);
+	| Route::post('examples/order', ['as' => 'examples.order', 'uses' => 'ExampleController@order']);
 	|
 	|----------------------------------------------------------------------
 	| Always use the below line
 	|----------------------------------------------------------------------
 	| 
-	| Route::resource('example', 'ExampleController');
+	| Route::resource('examples', 'ExampleController');
 	|
 	|----------------------------------------------------------------------
 	| More information here: https://github.com/Thorazine/hack/wiki/Adding-a-custom-module
