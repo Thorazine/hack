@@ -56,8 +56,8 @@ class RouteServiceProvider extends ServiceProvider
             'prefix' => 'cms',
             'as' => 'cms.'
         ], function ($router) {
-            if(file_exists(__DIR__.'routes/cms.php')) {
-                require __DIR__.'routes/cms.php';
+            if(file_exists(base_path('vendor/thorazine/hack/src/routes/cms.php'))) {
+                require base_path('vendor/thorazine/hack/src/routes/cms.php');
             }
         });
     }
