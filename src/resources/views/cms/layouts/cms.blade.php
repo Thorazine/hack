@@ -11,6 +11,8 @@
 
 <script src="{{ asset('assets/cms/js/cms.js') }}?version={{ (App::environment() === 'develop') ? rand(1,1000) : '' }}"></script>
 
+<script src="https://use.fontawesome.com/5daec6a801.js"></script>
+
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 
 </head>
