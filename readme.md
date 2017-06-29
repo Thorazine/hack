@@ -91,7 +91,7 @@ php artisan vendor:publish --tag=hack --force
 php artisan vendor:publish --tag=location
 php artisan migrate
 npm install
-gulp
+npm run dev
 ```
 
 # Database
