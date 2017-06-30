@@ -53,8 +53,6 @@ class HackServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->loadViewsFrom(__DIR__.'/resources/views/cms', 'hack');
 
-        $this->mergeConfigFrom(__DIR__.'/config/cms.php', 'cms');
-
         // Register console commands
         if($this->app->runningInConsole()) 
         {
