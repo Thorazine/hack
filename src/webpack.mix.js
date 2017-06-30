@@ -12,8 +12,8 @@ let mix = require('laravel-mix');
  */
 
 mix
-	// cms
-	.sass('resources/assets/sass/cms.scss', 'public/assets/cms/css/cms.css')
+    // cms
+    .sass('resources/assets/sass/cms.scss', 'public/assets/cms/css/cms.css')
 
     // frontend
     .sass('resources/assets/sass/frontend.scss', 'public/assets/frontend/css/frontend.css')
