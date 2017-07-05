@@ -361,7 +361,7 @@ class Cms {
     	// since this is a frontend cache remover and this only gets called
     	// when frontend stuf gets changed, we will always flush page.
     	array_push($keys, 'pages'); 
-        Cache::tags($keys)->flush();;
+        Cache::tags($keys)->flush();
     }
 
 
