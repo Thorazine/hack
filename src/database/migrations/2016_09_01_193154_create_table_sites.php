@@ -26,7 +26,7 @@ class CreateTableSites extends Migration
             $table->text('languages')->nullable();
             $table->string('favicon')->nullable();
             $table->string('og_title')->nullable();
-            $table->string('og_description')->nullable();
+            $table->text('og_description')->nullable();
             $table->string('og_type')->nullable();
             $table->string('og_image')->nullable();
             $table->integer('browser_cache_time')->nullable()->default(300);

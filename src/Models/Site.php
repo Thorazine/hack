@@ -95,10 +95,11 @@ class Site extends CmsModel
                 'overview' => false,
             ],
             'description' => [
-                'type' => 'text',
+                'type' => 'wysiwyg',
                 'label' => trans('modules.sites.description'),
-                'regex' => 'max:155',
+                'regex' => '',
                 'overview' => false,
+                'configuration' => 'plain',
             ],
             'keywords' => [
                 'type' => 'text',
@@ -121,10 +122,11 @@ class Site extends CmsModel
                 'overview' => false,
             ],
             'og_description' => [
-                'type' => 'text',
+                'type' => 'wysiwyg',
                 'label' => trans('modules.sites.og_description'),
-                'regex' => 'max:155',
+                'regex' => '',
                 'overview' => false,
+                'configuration' => 'plain',
             ],
             'og_type' => [
                 'type' => 'text',
