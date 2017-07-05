@@ -3,6 +3,7 @@
 namespace Thorazine\Hack\Http\Middleware;
 
 use Thorazine\Hack\Models\Auth\CmsPersistence;
+use Thorazine\Hack\Scopes\SiteScope;
 use Sentinel;
 use Closure;
 use Cms;
@@ -25,7 +26,9 @@ class SentinelAuthentication
             $user->roles;
 
             // lazy load the users image
-            $user->gallery;
+            $user->load(['gallery' => function($query) {
+                $query->withoutGlobalScope(SiteScope::class);
+            }]);
 
             // make a request cache version of the user
             Cms::setUser($user);
