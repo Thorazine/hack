@@ -95,7 +95,7 @@ class Site extends CmsModel
                 'overview' => false,
             ],
             'description' => [
-                'type' => 'wysiwyg',
+                'type' => 'textarea',
                 'label' => trans('modules.sites.description'),
                 'regex' => '',
                 'overview' => false,
@@ -122,7 +122,7 @@ class Site extends CmsModel
                 'overview' => false,
             ],
             'og_description' => [
-                'type' => 'wysiwyg',
+                'type' => 'textarea',
                 'label' => trans('modules.sites.og_description'),
                 'regex' => '',
                 'overview' => false,
