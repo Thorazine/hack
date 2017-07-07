@@ -36,6 +36,9 @@ class PageOutput {
 
 		$this->getPageBySlug($slug);
 
+        // set the language
+        Cms::setSiteLanguage($this->pageData['language']);
+
 		$this->addSiteData($slug);
 
 		// set the default view

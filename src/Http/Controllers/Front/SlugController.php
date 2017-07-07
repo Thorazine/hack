@@ -30,6 +30,12 @@ class SlugController extends Controller
     }
 
 
+    /**
+     * Handle all the page output
+     * 
+     * @param  Request
+     * @return response
+     */
     public function slug(Request $request)
     {   
         // See if the site in all should be online
@@ -50,8 +56,6 @@ class SlugController extends Controller
         if(! $page['publish_at'] || ($page['publish_at'] < date('Y-m-d H:i:s') && ($page['depublish_at'] && date('Y-m-d H:i:s') > $page['depublish_at']))) {
             $this->abort(404);
         }
-
-        Cms::setSiteLanguage($page['language']);
 
         $response = view($this->getView($page))
             ->with('page', $page);
