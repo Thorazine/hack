@@ -47,6 +47,9 @@ class SlugController extends Controller
             return $this->pageOutput->bySlug($request->slug);
         });
 
+        // set the language (again) to make sure when in cache it's the correct language
+        Cms::setSiteLanguage($page['language']);
+
         // if we get an array with an abort for page, we need to redirect
         if(is_array($page) && array_key_exists('abort', $page)) {
             $this->abort($page['abort'], @$page['attribute']);
