@@ -26,7 +26,7 @@ class HackServiceProvider extends ServiceProvider
 
             // js and style
             __DIR__.'/package.json' => base_path('package.json'),
-            __DIR__.'/webpack.mix.js' => base_path('gulpfile.js'),
+            __DIR__.'/webpack.mix.js' => base_path('webpack.mix.js'),
             __DIR__.'/resources/assets/theme' => public_path('theme'),
             __DIR__.'/resources/assets/fonts' => public_path('fonts'),
             __DIR__.'/resources/assets/images' => public_path('images'),
