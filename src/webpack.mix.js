@@ -49,3 +49,12 @@ mix
         'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
         'resources/assets/js/auth.js',
     ], 'public/assets/cms/js/auth.js');
+
+
+var LiveReloadPlugin = require('webpack-livereload-plugin');
+
+mix.webpackConfig({
+    plugins: [
+        new LiveReloadPlugin()
+    ]
+});
