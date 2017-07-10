@@ -35,7 +35,6 @@ class PageController extends CmsController
         $this->pageable = $pageable;
         $this->notFound = $slug;
         $this->search = $search;
-        $this->paginate = false;
 
         parent::__construct($this);
 
