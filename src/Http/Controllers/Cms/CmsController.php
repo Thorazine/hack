@@ -30,6 +30,8 @@ class CmsController extends Controller
     public $record; // the record before update
     protected $child;
     protected $hasOrder = false; // by default there is no ordering.
+    protected $paginate = true;
+    protected $paginateAmount = 25;
 
 
     public function __construct($child)
@@ -92,7 +94,12 @@ class CmsController extends Controller
             $datas = $datas->orderBy('drag_order', 'asc');
         }
 
-        $datas = $datas->paginate();
+        if($this->paginate) {
+            $datas = $datas->paginate($this->paginateAmount);
+        }
+        else {
+            $datas = $datas->get();
+        }
 
         if($request->ajax()) {
             return response()->json([
