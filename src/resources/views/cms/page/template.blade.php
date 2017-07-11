@@ -29,7 +29,7 @@
 				</div>
 			</div>
 
-			<button type="submit" class="btn btn-primary pull-right">{{ trans('cms.save') }}</button>
+			<button type="submit" class="btn btn-primary pull-right">{{ trans('hack::cms.save') }}</button>
 
 		{!! Form::close() !!}
 	</div>

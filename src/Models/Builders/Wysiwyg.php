@@ -38,10 +38,10 @@ class Wysiwyg extends BaseBuilder
         $this->addToTypes([
             'configuration' => [
                 'type' => 'select',
-                'label' => trans('modules.field.configuration'),
+                'label' => trans('hack::modules.field.configuration'),
                 'regex' => 'required',
                 'values' => array_reduce(config('cms.modules.wysiwyg.values'), function ($result, $item) {
-                    $result[$item] = trans('cms.wysiwyg-values.'.$item);
+                    $result[$item] = trans('hack::cms.wysiwyg-values.'.$item);
                     return $result;
                 }, []),
             ],

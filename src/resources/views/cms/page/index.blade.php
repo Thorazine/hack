@@ -11,10 +11,10 @@
 
 		<div class="subheader">
 			@if($hasPermission('create'))
-				<a class="" href="{{ route('cms.'.$slug.'.'.((@$createRoute) ? $createRoute : 'create')) }}"><i class="fa fa-plus"></i> {{ trans('cms.new') }}</a>
+				<a class="" href="{{ route('cms.'.$slug.'.'.((@$createRoute) ? $createRoute : 'create')) }}"><i class="fa fa-plus"></i> {{ trans('hack::cms.new') }}</a>
 			@endif
 
-			{!! Form::text('q', Request::get('q'), ['id' => 'q', 'placeholder' => trans('cms.search'), 'data-href' => route('cms.'.$slug.'.index'), 'autocomplete' => 'off']) !!}
+			{!! Form::text('q', Request::get('q'), ['id' => 'q', 'placeholder' => trans('hack::cms.search'), 'data-href' => route('cms.'.$slug.'.index'), 'autocomplete' => 'off']) !!}
 			<i class="fa fa-times" id="q-clear"></i>
 			<div class="holder" id="q-button" data-href="{{ Request::url() }}">
 				<i class="fa fa-search"></i>
@@ -33,7 +33,7 @@
 							</th>
 						@endif
 					@endforeach
-					<th>{{ trans('cms.options') }}</th>
+					<th>{{ trans('hack::cms.options') }}</th>
 				</tr>
 			</thead>
 			<tbody>

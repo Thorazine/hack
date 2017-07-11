@@ -54,7 +54,7 @@ class ModuleStore extends FormRequest
 
     protected function failedValidation(Validator $validator)
     {
-        Session::flash('alert-danger', trans('cms.error.validation'));
+        Session::flash('alert-danger', trans('hack::cms.error.validation'));
         parent::failedValidation($validator);
     }
 }

@@ -41,7 +41,7 @@
                     <li @if(strpos(Request::url(), $route) !== false) class="active" @endif>
                         <a @if(Request::url() == $route) href="javascript:void(0)" @else href="{{ $route }}" @endif>
                             <i class="fa {{ $menu['icon'] }} fa-lg"></i> 
-                            {{ trans($menu['label']) }}
+                            {{ trans('hack::'.$menu['label']) }}
                         </a>
                     </li>
 

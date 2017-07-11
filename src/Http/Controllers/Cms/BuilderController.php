@@ -205,7 +205,7 @@ class BuilderController
         }
 
         return redirect()->route('cms.builder.edit', ['id' => $templateableId, 'fid' => $request->fid])
-            ->with('alert-success', trans('cms.info.created'));
+            ->with('alert-success', trans('hack::cms.info.created'));
     }
 
 
@@ -290,7 +290,7 @@ class BuilderController
         }
 
         return redirect()->route('cms.'.$this->slug.'.edit', ['id' => $id, 'fid' => $request->fid])
-            ->with('alert-success', trans('cms.info.updated'));
+            ->with('alert-success', trans('hack::cms.info.updated'));
     }
 
 
@@ -338,7 +338,7 @@ class BuilderController
             Cms::destroyCache([$this->slug]);
 
             return response()->json([
-                'message' => trans('cms.deleted'),
+                'message' => trans('hack::cms.deleted'),
             ]);
 
         }

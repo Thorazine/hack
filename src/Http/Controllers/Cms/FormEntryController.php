@@ -57,7 +57,7 @@ class FormEntryController extends Controller
                     [
                         'class' => 'primary',
                         'route' => route('cms.forms.index'),
-                        'text' => '<i class="fa fa-arrow-left"></i> '. trans('cms.back'),
+                        'text' => '<i class="fa fa-arrow-left"></i> '. trans('hack::cms.back'),
                     ],
                 ];
             },
@@ -195,7 +195,7 @@ class FormEntryController extends Controller
         }
 
         return redirect()->route('cms.'.$this->slug.'.edit', ['id' => $id, 'fid' => $request->fid])
-            ->with('alert-success', trans('cms.info.updated'));
+            ->with('alert-success', trans('hack::cms.info.updated'));
     }
 
 
@@ -236,7 +236,7 @@ class FormEntryController extends Controller
             Cms::destroyCache([$this->slug]);
 
             return response()->json([
-                'message' => trans('cms.deleted'),
+                'message' => trans('hack::cms.deleted'),
             ]);
 
         }

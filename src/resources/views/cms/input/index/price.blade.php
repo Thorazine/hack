@@ -1,0 +1,1 @@
+<td>&euro; {!! $data->{$key} !!}</td>

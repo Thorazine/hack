@@ -86,7 +86,7 @@ class UserController extends CmsController
         }
 
         return redirect()->route('cms.'.$this->slug.'.edit', ['id' => $id, 'fid' => $request->fid])
-            ->with('alert-success', trans('cms.info.updated'));
+            ->with('alert-success', trans('hack::cms.info.updated'));
     }
 
 
@@ -125,7 +125,7 @@ class UserController extends CmsController
             Cms::destroyCache([$this->slug]);
 
             return response()->json([
-                'message' => trans('cms.deleted'),
+                'message' => trans('hack::cms.deleted'),
             ]);
 
         }

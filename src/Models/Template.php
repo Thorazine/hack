@@ -68,12 +68,12 @@ class Template extends CmsModel
             ],
             'refrence' => [
                 'type' => 'text',
-                'label' => trans('modules.templates.refrence'),
+                'label' => trans('hack::modules.templates.refrence'),
                 'regex' => 'required',
             ],
             'prepend_slug' => [
                 'type' => 'text',
-                'label' => trans('modules.templates.prepend_slug'),
+                'label' => trans('hack::modules.templates.prepend_slug'),
                 'regex' => '',
                 'beforeSave' => function($value) {
                     return trim(trim($value, '/'));
@@ -81,13 +81,13 @@ class Template extends CmsModel
             ],
             'view' => [
                 'type' => 'text',
-                'label' => trans('modules.templates.view'),
+                'label' => trans('hack::modules.templates.view'),
                 'regex' => 'required',
                 'default' => 'default',
             ],
             'pages' =>[
                 'type' => 'label',
-                'label' => trans('modules.templates.pages'),
+                'label' => trans('hack::modules.templates.pages'),
                 'alternativeValue' => [
                     'index' => function($data, $key) {
                         return @count($data->pages);

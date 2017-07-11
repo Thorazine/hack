@@ -17,9 +17,9 @@
 		@include('hack::partials.header')
 
 		<div class="subheader">
-			<a class="" href="{{ route('cms.'.$slug.'.index', ((@$fid) ? ['fid' => $fid] : [])) }}"><i class="fa fa-arrow-left"></i> {{ trans('cms.back') }}</a>
+			<a class="" href="{{ route('cms.'.$slug.'.index', ((@$fid) ? ['fid' => $fid] : [])) }}"><i class="fa fa-arrow-left"></i> {{ trans('hack::cms.back') }}</a>
 			@if($hasPermission('create'))
-				<a class="" href="{{ route('cms.'.$slug.'.create', ((@$fid) ? ['fid' => $fid] : [])) }}"><i class="fa fa-plus"></i> {{ trans('cms.new') }}</a>
+				<a class="" href="{{ route('cms.'.$slug.'.create', ((@$fid) ? ['fid' => $fid] : [])) }}"><i class="fa fa-plus"></i> {{ trans('hack::cms.new') }}</a>
 			@endif
 			@if(@$extraEditButtons)
 				@foreach($extraEditButtons($data) as $extraButton)
@@ -44,7 +44,7 @@
 					@yield('sidebar')
 				</div>
 			</div>
-			<button type="submit" class="btn btn-primary">{{ trans('cms.update') }}</button>
+			<button type="submit" class="btn btn-primary">{{ trans('hack::cms.update') }}</button>
 
 		{!! Form::close() !!}
 

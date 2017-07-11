@@ -35,12 +35,12 @@ class Slug extends CmsModel
             ],
             'slug' => [
                 'type' => 'text',
-                'label' => trans('modules.slugs.slug'),
+                'label' => trans('hack::modules.slugs.slug'),
                 'regex' => 'required',
             ],
             'page_id' => [
                 'type' => 'label',
-                'label' => trans('modules.slugs.page_id'),
+                'label' => trans('hack::modules.slugs.page_id'),
                 'regex' => '',
                 'alternativeValue' => [
                     'index' => function($data, $key) {

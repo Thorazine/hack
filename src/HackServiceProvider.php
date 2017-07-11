@@ -34,7 +34,12 @@ class HackServiceProvider extends ServiceProvider
             __DIR__.'/resources/assets/sass' => base_path('resources/assets/sass'),
 
             // language files
-            __DIR__.'/resources/lang' => base_path('resources/lang'),
+            __DIR__.'/resources/lang/stubs/en/modules.php' => base_path('resources/lang/vendor/hack/en/modules.php'),
+            __DIR__.'/resources/lang/stubs/nl/modules.php' => base_path('resources/lang/vendor/hack/nl/modules.php'),
+            __DIR__.'/resources/lang/stubs/en/menu.php' => base_path('resources/lang/vendor/hack/en/menu.php'),
+            __DIR__.'/resources/lang/stubs/nl/menu.php' => base_path('resources/lang/vendor/hack/nl/menu.php'),
+            __DIR__.'/resources/lang/stubs/en/cms.php' => base_path('resources/lang/vendor/hack/en/cms.php'),
+            __DIR__.'/resources/lang/stubs/nl/cms.php' => base_path('resources/lang/vendor/hack/nl/cms.php'),
 
             // views
             // __DIR__.'/resources/views/cms' => resource_path('views/cms'),
@@ -45,6 +50,7 @@ class HackServiceProvider extends ServiceProvider
             __DIR__.'/routes/front.php' => base_path('routes/front.php'),
             __DIR__.'/routes/hack.php' => base_path('routes/hack.php'),
 
+
             // stubs
             __DIR__.'/Http/Controllers/Cms/stubs/PanelController.stub' => app_path('Http/Controllers/Cms/PanelController.php'),
         ], 'hack');
@@ -52,6 +58,7 @@ class HackServiceProvider extends ServiceProvider
         // Register the migrations
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->loadViewsFrom(__DIR__.'/resources/views/cms', 'hack');
+        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'hack');
 
         // Register console commands
         if($this->app->runningInConsole()) 

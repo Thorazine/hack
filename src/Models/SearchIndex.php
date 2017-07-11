@@ -43,7 +43,7 @@ class SearchIndex extends CmsModel
             ],
             'title' => [
                 'type' => 'text',
-                'label' => trans('modules.sites.title'),
+                'label' => trans('hack::modules.sites.title'),
                 'regex' => 'max:70',
             ],
         ];

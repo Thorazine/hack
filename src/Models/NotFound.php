@@ -60,24 +60,24 @@ class NotFound extends CmsModel
             ],
             'requests' => [
                 'type' => 'number',
-                'label' => trans('modules.not_found.requests'),
+                'label' => trans('hack::modules.not_found.requests'),
                 'regex' => '',
                 'create' => false,
                 'edit' => false,
             ],
             'slug' => [
                 'type' => 'text',
-                'label' => trans('modules.not_found.slug'),
+                'label' => trans('hack::modules.not_found.slug'),
                 'regex' => 'required',
             ],
             'redirect' => [
                 'type' => 'text',
-                'label' => trans('modules.not_found.redirect'),
+                'label' => trans('hack::modules.not_found.redirect'),
                 'regex' => 'required',
             ],
             'referer' => [
                 'type' => 'text',
-                'label' => trans('modules.not_found.referer'),
+                'label' => trans('hack::modules.not_found.referer'),
                 'regex' => '',
                 'create' => false,
                 'edit' => false,

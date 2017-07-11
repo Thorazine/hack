@@ -50,39 +50,39 @@ class User extends CmsModel
             ],
             'image' => [
                 'type' => 'image',
-                'label' => trans('modules.users.image'),
+                'label' => trans('hack::modules.users.image'),
                 'regex' => '',
                 'width' => 240,
                 'height' => 240,
             ],
             'email' => [
                 'type' => 'text',
-                'label' => trans('modules.users.email'),
+                'label' => trans('hack::modules.users.email'),
                 'regex' => 'required',
             ],
             'first_name' => [
                 'type' => 'text',
-                'label' => trans('modules.users.first_name'),
+                'label' => trans('hack::modules.users.first_name'),
                 'regex' => '',
             ],
             'last_name' => [
                 'type' => 'text',
-                'label' => trans('modules.users.last_name'),
+                'label' => trans('hack::modules.users.last_name'),
                 'regex' => '',
             ],
             'language' => [
                 'type' => 'select',
-                'label' => trans('modules.users.language'),
+                'label' => trans('hack::modules.users.language'),
                 'regex' => '',
                 'values' => config('cms.cms-languages'),
             ],
             'password' => [
                 'type' => 'password',
-                'label' => trans('modules.users.password'),
+                'label' => trans('hack::modules.users.password'),
                 'regex' => 'confirmed',
-                'placeholder' => trans('modules.users.password_placeholder'),
+                'placeholder' => trans('hack::modules.users.password_placeholder'),
                 'confirmation_label' => 'Password again',
-                'confirmation_placeholder' => trans('modules.users.password_confirm'),
+                'confirmation_placeholder' => trans('hack::modules.users.password_confirm'),
             ],
         ];
     } 

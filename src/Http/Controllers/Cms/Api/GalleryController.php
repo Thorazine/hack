@@ -211,12 +211,12 @@ class GalleryController extends Controller
 	    	$this->gallery->where('id', $request->id)->delete();
 
 	    	return response()->json([
-	    		'success' => $gallery->fullname.trans('cms.removed'),
+	    		'success' => $gallery->fullname.trans('hack::cms.removed'),
 	    	], 200);
 	    }
 	    catch(Exception $e) {
 	    	// no good, log it
-    	    return response()->json(trans('cms.error.remove'), 500);
+    	    return response()->json(trans('hack::cms.error.remove'), 500);
 	    }
 	    
     }
@@ -252,7 +252,7 @@ class GalleryController extends Controller
 	    }
 	    catch(Exception $e) {
 	    	// no good, log it
-    	    return response()->json(trans('cms.error'), 500);
+    	    return response()->json(trans('hack::cms.error'), 500);
 	    }
 
 	}

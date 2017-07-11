@@ -71,7 +71,7 @@ trait ModuleHelper {
         return redirect()
             ->back()
             ->withInput()
-            ->with('alert-danger', (env('APP_DEBUG')) ? trans('cms.error.rollback').'<br>'.$e->getMessage() : trans('cms.error.rollback'));
+            ->with('alert-danger', (env('APP_DEBUG')) ? trans('hack::cms.error.rollback').'<br>'.$e->getMessage() : trans('hack::cms.error.rollback'));
 	}
 
 

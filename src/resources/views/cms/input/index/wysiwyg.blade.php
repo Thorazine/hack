@@ -1,0 +1,1 @@
+<td>{!! Front::str_short(strip_tags($data->{$key})) !!}</td>

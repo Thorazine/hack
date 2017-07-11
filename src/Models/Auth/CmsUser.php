@@ -52,12 +52,12 @@ class CmsUser extends EloquentUser
             ],
             'email' => [
                 'type' => 'text',
-                'label' => trans('modules.users.email'),
+                'label' => trans('hack::modules.users.email'),
                 'regex' => 'required',
             ],
             'password' => [
                 'type' => 'password',
-                'label' => trans('modules.users.password'),
+                'label' => trans('hack::modules.users.password'),
                 'confirmation_label' => 'Confirm password',
                 'regex' => [
                     'create' => [
@@ -72,30 +72,30 @@ class CmsUser extends EloquentUser
             ],
             'language' => [
                 'type' => 'select',
-                'label' => trans('modules.users.language'),
+                'label' => trans('hack::modules.users.language'),
                 'regex' => '',
                 'values' => config('cms.cms-languages'),
             ],
             'image' => [
                 'type' => 'image',
-                'label' => trans('modules.users.image'),
+                'label' => trans('hack::modules.users.image'),
                 'regex' => '',
                 'width' => 240,
                 'height' => 240,
             ],
             'first_name' => [
                 'type' => 'text',
-                'label' => trans('modules.users.first_name'),
+                'label' => trans('hack::modules.users.first_name'),
                 'regex' => '',
             ],
             'last_name' => [
                 'type' => 'text',
-                'label' => trans('modules.users.last_name'),
+                'label' => trans('hack::modules.users.last_name'),
                 'regex' => '',
             ],
             'roles' => [
                 'type' => 'multi-checkbox',
-                'label' => trans('modules.users.roles'),
+                'label' => trans('hack::modules.users.roles'),
                 'regex' => '',
                 'values' => 'getRoles',
                 'overview' => false,
@@ -104,7 +104,7 @@ class CmsUser extends EloquentUser
             ],
             'permissions' => [
                 'type' => 'permissions',
-                'label' => trans('modules.users.permissions'),
+                'label' => trans('hack::modules.users.permissions'),
                 'regex' => '',
                 'values' => config('rights'),
                 'overview' => false,

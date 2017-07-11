@@ -51,12 +51,12 @@ class CmsRole extends EloquentRole
             ],
             'name' => [
                 'type' => 'text',
-                'label' => trans('modules.roles.name'),
+                'label' => trans('hack::modules.roles.name'),
                 'regex' => 'required',
             ],
             'permissions' => [
                 'type' => 'permissions',
-                'label' => trans('modules.roles.permissions'),
+                'label' => trans('hack::modules.roles.permissions'),
                 'regex' => '',
                 'values' => 'getRights',
                 'overview' => false,

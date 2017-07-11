@@ -11,7 +11,7 @@
 		@include('hack::partials.header')
 
 		<div class="subheader">
-			<a class="" href="{{ route('cms.templates.index') }}"><i class="fa fa-arrow-left"></i> {{ trans('cms.back') }}</a>
+			<a class="" href="{{ route('cms.templates.index') }}"><i class="fa fa-arrow-left"></i> {{ trans('hack::cms.back') }}</a>
 		</div>
 
 		<div class="row">

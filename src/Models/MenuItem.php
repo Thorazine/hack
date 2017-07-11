@@ -38,29 +38,29 @@ class MenuItem extends CmsModel
             ],
             'page_id' => [
                 'type' => 'select',
-                'label' => trans('modules.menu_items.page_id'),
+                'label' => trans('hack::modules.menu_items.page_id'),
                 'regex' => '',
                 'values' => 'getPages',
-                'placeholder' => trans('cms.placeholder.menu_items.page_id'),
+                'placeholder' => trans('hack::cms.placeholder.menu_items.page_id'),
             ],
             'external_url' => [
                 'type' => 'text',
-                'label' => trans('modules.menu_items.external_url'),
+                'label' => trans('hack::modules.menu_items.external_url'),
                 'regex' => '',
             ],
             'title' => [
                 'type' => 'text',
-                'label' => trans('modules.menu_items.title'),
+                'label' => trans('hack::modules.menu_items.title'),
                 'regex' => '',
             ],
             'description' => [
                 'type' => 'text',
-                'label' => trans('modules.menu_items.description'),
+                'label' => trans('hack::modules.menu_items.description'),
                 'regex' => '',
             ],
             'active' => [
                 'type' => 'checkbox',
-                'label' => trans('modules.menu_items.active'),
+                'label' => trans('hack::modules.menu_items.active'),
                 'regex' => '',
                 'default' => 1,
             ],
@@ -132,7 +132,7 @@ class MenuItem extends CmsModel
         }
 
         $pages = Page::get();
-        $return = ['' => trans('cms.placeholder.menu_items.page_id')];
+        $return = ['' => trans('hack::cms.placeholder.menu_items.page_id')];
         foreach($pages as $index => $page) {
             $return[$page->id] = $page->url;
         }

@@ -10,9 +10,9 @@
 		@include('hack::partials.header')
 
 		<div class="subheader">
-			<a class="" href="{{ route('cms.templates.index') }}"><i class="fa fa-arrow-left"></i> {{ trans('cms.back') }}</a>
+			<a class="" href="{{ route('cms.templates.index') }}"><i class="fa fa-arrow-left"></i> {{ trans('hack::cms.back') }}</a>
 			@if($hasPermission('create'))
-				<a class="" href="{{ route((@$createRoute) ? $createRoute : 'cms.'.$slug.'.create', ['fid' => $fid]) }}"><i class="fa fa-plus"></i> {{ trans('cms.new') }}</a>
+				<a class="" href="{{ route((@$createRoute) ? $createRoute : 'cms.'.$slug.'.create', ['fid' => $fid]) }}"><i class="fa fa-plus"></i> {{ trans('hack::cms.new') }}</a>
 			@endif
 		</div>
 		
@@ -28,7 +28,7 @@
 							<th>{{ $values['label'] }}</th>
 						@endif
 					@endforeach
-					<th>{{ trans('cms.options') }}</th>
+					<th>{{ trans('hack::cms.options') }}</th>
 				</tr>
 			</thead>
 			<tbody class="order" @if(@$hasOrder) data-order-url="{{ route('cms.'.$slug.'.order') }}" @endif>

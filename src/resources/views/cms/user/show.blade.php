@@ -10,7 +10,7 @@
 		@include('hack::partials.header')
 
 		<div class="subheader">
-			<a class="primary" href="{{ route('cms.user.edit', ['id' => $user->id]) }}" title="{{ trans('cms.edit_your_data') }}">{{ trans('cms.edit') }}</a>
+			<a class="primary" href="{{ route('cms.user.edit', ['id' => $user->id]) }}" title="{{ trans('hack::cms.edit_your_data') }}">{{ trans('hack::cms.edit') }}</a>
 		</div>
 
 		<div class="row">
@@ -65,7 +65,7 @@
 							<td>{{ Cms::user('persistence', 'device_type') }}</td>
 							<td>{{ Cms::user('persistence', 'device') }}</td>
 							<td>{{ Cms::user('persistence', 'updated_at')->format('d-m-Y H:i:s') }}</td>
-							<td><a href="{{ route('cms.auth.destroy') }}" class="btn btn-danger btn-xs">{{ trans('cms.logout') }}</a></td>
+							<td><a href="{{ route('cms.auth.destroy') }}" class="btn btn-danger btn-xs">{{ trans('hack::cms.logout') }}</a></td>
 						</tr>
 
 						@foreach($user->persistences as $persistence)

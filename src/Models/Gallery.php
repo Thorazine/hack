@@ -98,9 +98,17 @@ class Gallery extends CmsModel
                 'create' => false,
                 'edit' => false,
             ],
+            'preview' => [
+                'type' => 'image',
+                'label' => trans('hack::modules.gallery.preview'),
+                'regex' => '',
+                'overview' => true,
+                'create' => false,
+                'edit' => false,
+            ],
             'filetype' => [
                 'type' => 'select',
-                'label' => trans('modules.gallery.filetype'),
+                'label' => trans('hack::modules.gallery.filetype'),
                 'regex' => 'required',
                 'values' => [
                     'image' => 'Image',
@@ -109,12 +117,12 @@ class Gallery extends CmsModel
             ],
             'title' => [
                 'type' => 'text',
-                'label' => trans('modules.gallery.title'),
+                'label' => trans('hack::modules.gallery.title'),
                 'regex' => 'required',
             ],
             'width' => [
                 'type' => 'number',
-                'label' => trans('modules.gallery.width'),
+                'label' => trans('hack::modules.gallery.width'),
                 'regex' => '',
                 'overview' => true,
                 'create' => false,
@@ -122,7 +130,7 @@ class Gallery extends CmsModel
             ],
             'height' => [
                 'type' => 'number',
-                'label' => trans('modules.gallery.height'),
+                'label' => trans('hack::modules.gallery.height'),
                 'regex' => '',
                 'overview' => true,
                 'create' => false,

@@ -24,7 +24,7 @@ class FormFieldController extends CmsController
                     [
                         'class' => 'primary',
                         'route' => route('cms.forms.index'),
-                        'text' => '<i class="fa fa-arrow-left"></i> '. trans('cms.back'),
+                        'text' => '<i class="fa fa-arrow-left"></i> '. trans('hack::cms.back'),
                     ],
                 ];
             },

@@ -37,23 +37,23 @@ class FormValidation extends CmsModel
             ],
             'language' => [
                 'type' => 'select',
-                'label' => trans('modules.form_validations.language'),
+                'label' => trans('hack::modules.form_validations.language'),
                 'regex' => 'required',
                 'values' => 'getLanguages',
             ],
             'label' => [
                 'type' => 'text',
-                'label' => trans('modules.form_validations.label'),
+                'label' => trans('hack::modules.form_validations.label'),
                 'regex' => 'required',
             ],
             'regex' => [
                 'type' => 'text',
-                'label' => trans('modules.form_validations.regex'),
+                'label' => trans('hack::modules.form_validations.regex'),
                 'regex' => 'required',
             ],
             'error_message' => [
                 'type' => 'text',
-                'label' => trans('modules.form_validations.error_message'),
+                'label' => trans('hack::modules.form_validations.error_message'),
                 'regex' => '',
             ],
         ];

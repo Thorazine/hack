@@ -132,7 +132,7 @@ class TemplateController extends CmsController
         }
 
         return redirect()->route('cms.'.$this->slug.'.edit', $id)
-            ->with('alert-success', trans('cms.info.created'));
+            ->with('alert-success', trans('hack::cms.info.created'));
     }
 
 
@@ -193,7 +193,7 @@ class TemplateController extends CmsController
         }
 
         return redirect()->route('cms.'.$this->slug.'.edit', $id)
-            ->with('alert-success', trans('cms.info.updated'));
+            ->with('alert-success', trans('hack::cms.info.updated'));
     }
 
 

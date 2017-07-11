@@ -10,7 +10,7 @@
 			@foreach(Builder::getArrayValue($model, $type, $type['values'], @$data, $key) as $section => $rights)
 
 				<hr>
-				<h4>{{ trans('cms.module.'.$section) }}</h4>
+				<h4>{{ trans('hack::cms.module.'.$section) }}</h4>
 
 				<div class="grid space-10 vspace-10" style="margin-bottom: 10px;">
 

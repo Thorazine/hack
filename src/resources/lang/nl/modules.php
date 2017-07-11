@@ -151,6 +151,7 @@ return [
 		'label' => 'Etiket',
 	],
 	'gallery' => [
+		'preview' => 'Voorvertoning',
 		'filetype' => 'File type',
 		'title' => 'Titel',
 		'width' => 'Breedte',

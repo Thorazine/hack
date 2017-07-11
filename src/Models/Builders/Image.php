@@ -48,14 +48,14 @@ class Image extends BaseBuilder
         $this->addToTypes([
             'width' => [
                 'type' => 'number',
-                'label' => trans('modules.field.width'),
+                'label' => trans('hack::modules.field.width'),
                 'default' => 1280,
                 'regex' => 'required',
                 'appendLabel' => 'px',
             ],
             'aspect_ratio' => [
                 'type' => 'aspect-ratio',
-                'label' => trans('modules.field.aspect-ratio'),
+                'label' => trans('hack::modules.field.aspect-ratio'),
                 'default' => '16/6',
                 'values' => [
                     '16/10' => '16/10',
@@ -72,7 +72,7 @@ class Image extends BaseBuilder
             ],
             'height' => [
                 'type' => 'number',
-                'label' => trans('modules.field.height'),
+                'label' => trans('hack::modules.field.height'),
                 'default' => 480,
                 'regex' => 'required',
                 'appendLabel' => 'px',

@@ -43,7 +43,7 @@
 		@include('hack::partials.header')
 
 		<div class="subheader">
-			<a class="" href="{{ route('cms.'.$slug.'.index', ['fid' => $fid]) }}"><i class="fa fa-arrow-left"></i> {{ trans('cms.back') }}</a>
+			<a class="" href="{{ route('cms.'.$slug.'.index', ['fid' => $fid]) }}"><i class="fa fa-arrow-left"></i> {{ trans('hack::cms.back') }}</a>
 		</div>
 		
 		{!! Form::open(['route' => ['cms.'.$slug.'.update', $id], 'method' => 'PUT', 'class' => 'form-horizontal']) !!}
@@ -62,7 +62,7 @@
 					@yield('sidebar')
 				</div>
 			</div>
-			<button type="submit" class="btn btn-primary">{{ trans('cms.update') }}</button>
+			<button type="submit" class="btn btn-primary">{{ trans('hack::cms.update') }}</button>
 
 		{!! Form::close() !!}
 

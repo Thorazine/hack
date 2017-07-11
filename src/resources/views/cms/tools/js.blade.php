@@ -114,7 +114,7 @@
 	function trans(key)
 	{
 		var language = {
-			confirm_delete: "{{ trans('cms.confirm_delete') }}",
+			confirm_delete: "{{ trans('hack::cms.confirm_delete') }}",
 		};
 
 		if(typeof language.confirm_delete === 'undefined') {

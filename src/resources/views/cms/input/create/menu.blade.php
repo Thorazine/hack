@@ -9,7 +9,7 @@
 			@$type['default'], 
 			[
 				'class' => 'form-control', 
-				'placeholder' => trans('cms.menu.placeholder'),
+				'placeholder' => trans('hack::cms.menu.placeholder'),
 			]
 		) !!}
 		{!! $errors->first($key, '<p class="text-danger">:message</p>') !!}

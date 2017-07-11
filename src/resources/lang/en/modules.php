@@ -151,6 +151,7 @@ return [
 		'label' => 'Label',
 	],
 	'gallery' => [
+		'preview' => 'Preview',
 		'filetype' => 'File type',
 		'title' => 'Title',
 		'width' => 'Width',

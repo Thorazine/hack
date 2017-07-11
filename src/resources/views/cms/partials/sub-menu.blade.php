@@ -17,6 +17,6 @@
 ?>
 	<li @if(@$subMenuOpen) class="active" @endif>
 	    <a @if(Request::url() == $route) href="javascript:void(0)" @else href="{{ $route }}" @endif>
-	      	{{ trans($child['label']) }}
+	      	{{ trans('hack::'.$child['label']) }}
 	    </a>
 	</li>

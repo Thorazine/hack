@@ -60,28 +60,28 @@ class DbLog extends CmsModel
             ],
             'cms_user_id' => [
             	'type' => 'select',
-                'label' => trans('modules.db_logs.cms_user_id'),
+                'label' => trans('hack::modules.db_logs.cms_user_id'),
                 'regex' => '',
                 'values' => 'getCmsUsers',
             ],
             'action' => [
                 'type' => 'text',
-                'label' => trans('modules.db_logs.action'),
+                'label' => trans('hack::modules.db_logs.action'),
                 'regex' => '',
             ],
             'level' => [
                 'type' => 'text',
-                'label' => trans('modules.db_logs.level'),
+                'label' => trans('hack::modules.db_logs.level'),
                 'regex' => '',
             ],
             'controller' => [
                 'type' => 'text',
-                'label' => trans('modules.db_logs.controller'),
+                'label' => trans('hack::modules.db_logs.controller'),
                 'regex' => '',
             ],
             'request_data' => [
                 'type' => 'label',
-                'label' => trans('modules.db_logs.request_data'),
+                'label' => trans('hack::modules.db_logs.request_data'),
                 'regex' => '',
                 // 'create' => false,
                 // 'edit' => false,

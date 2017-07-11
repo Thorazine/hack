@@ -9,7 +9,7 @@
 			@$data[$key], 
 			[
 				'class' => 'form-control', 
-				'placeholder' => trans('cms.form.placeholder'),
+				'placeholder' => trans('hack::cms.form.placeholder'),
 			]
 		) !!}
 		{!! $errors->first($key, '<p class="text-danger">:message</p>') !!}

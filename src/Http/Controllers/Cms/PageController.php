@@ -152,7 +152,7 @@ class PageController extends CmsController
         }
 
         return redirect()->route('cms.'.$this->slug.'.edit', $id)
-            ->with('alert-success', trans('cms.info.created'));
+            ->with('alert-success', trans('hack::cms.info.created'));
     }
 
 
@@ -261,7 +261,7 @@ class PageController extends CmsController
         }
 
         return redirect()->route('cms.'.$this->slug.'.edit', $id)
-            ->with('alert-success', trans('cms.info.updated'));
+            ->with('alert-success', trans('hack::cms.info.updated'));
     }
 
 
@@ -294,7 +294,7 @@ class PageController extends CmsController
             }
 
             return response()->json([
-                'message' => trans('cms.deleted'),
+                'message' => trans('hack::cms.deleted'),
             ]);
         
         }

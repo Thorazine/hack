@@ -7,6 +7,6 @@
 		@if($hasPermission('destroy'))
 			<a class="btn btn-danger btn-xs model-delete" href="{{ route('cms.'.$slug.'.destroy', ['id' => $data->id]) }}"><i class="fa fa-trash"></i></a>
 		@endif
-		{{-- <a class="btn btn-success" href="{{ route('cms.'.$slug.'.create', ['fid' => $data->id]) }}" title="{{ trans('cms.new') }}"><i class="fa fa-plus"></i></a> --}}
+		{{-- <a class="btn btn-success" href="{{ route('cms.'.$slug.'.create', ['fid' => $data->id]) }}" title="{{ trans('hack::cms.new') }}"><i class="fa fa-plus"></i></a> --}}
 	</div>
 </div>

@@ -6,7 +6,7 @@
 	<li data-toggle="collapse" data-target="#{{ str_slug($menu['label']) }}" class="collapsed @if(Cms::getMenu()) active @endif">
 	  	<a href="javascript:void(0)">
 	  		<i class="fa {{ $menu['icon'] }} fa-lg"></i> 
-	  		{{ trans($menu['label']) }} 
+	  		{{ trans('hack::'.$menu['label']) }} 
 	  		<span class="arrow"></span>
 	  	</a>
 	</li>

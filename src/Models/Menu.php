@@ -50,12 +50,12 @@ class Menu extends CmsModel
             ],
             'title' => [
                 'type' => 'text',
-                'label' => trans('modules.menu.title'),
+                'label' => trans('hack::modules.menu.title'),
                 'regex' => 'required',
             ],
             'max_levels' => [
                 'type' => 'select',
-                'label' => trans('modules.menu.max_levels'),
+                'label' => trans('hack::modules.menu.max_levels'),
                 'regex' => 'required|numeric',
                 'default' => 2,
                 'values' => [
