@@ -37,22 +37,22 @@
 				</div>
 			</div>
 		</div>
-		<h3>{{ trans('modules.users.sessions') }}</h3>
+		<h3>{{ trans('hack::modules.users.sessions') }}</h3>
 		<hr>
 		<div class="row">
 			<div class="col-sm-12">
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>{{ trans('modules.users.current') }}</th>
-							<th>{{ trans('modules.users.country') }}</th>
-							<th>{{ trans('modules.users.city') }}</th>
-							<th>{{ trans('modules.users.os') }}</th>
-							<th>{{ trans('modules.users.browser') }}</th>
-							<th>{{ trans('modules.users.device_type') }}</th>
-							<th>{{ trans('modules.users.device') }}</th>
-							<th>{{ trans('modules.users.last_used') }}</th>
-							<th>{{ trans('modules.users.remove') }}</th>
+							<th>{{ trans('hack::modules.users.current') }}</th>
+							<th>{{ trans('hack::modules.users.country') }}</th>
+							<th>{{ trans('hack::modules.users.city') }}</th>
+							<th>{{ trans('hack::modules.users.os') }}</th>
+							<th>{{ trans('hack::modules.users.browser') }}</th>
+							<th>{{ trans('hack::modules.users.device_type') }}</th>
+							<th>{{ trans('hack::modules.users.device') }}</th>
+							<th>{{ trans('hack::modules.users.last_used') }}</th>
+							<th>{{ trans('hack::modules.users.remove') }}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -79,7 +79,7 @@
 									<td>{{ $persistence->device_type }}</td>
 									<td>{{ $persistence->device }}</td>
 									<td>{{ $persistence->updated_at->format('d-m-Y H:i:s') }}</td>
-									<td><a href="{{ route('cms.user.destroy', ['id' => $persistence->id]) }}" class="btn btn-danger btn-xs model-delete">{{ trans('modules.users.invalidate_session') }}</a></td>
+									<td><a href="{{ route('cms.user.destroy', ['id' => $persistence->id]) }}" class="btn btn-danger btn-xs model-delete">{{ trans('hack::modules.users.invalidate_session') }}</a></td>
 								</tr>
 							@endif
 						@endforeach

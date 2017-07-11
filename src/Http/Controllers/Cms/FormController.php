@@ -29,17 +29,17 @@ class FormController extends CmsController
                         'class' => 'success',
                         'route' => route('cms.forms.download', ['id' => $data->id]),
                         'text' => '<i class="fa fa-download" aria-hidden="true"></i>',
-                        'title' => trans('modules.forms.download'),
+                        'title' => trans('hack::modules.forms.download'),
                     ],
                     [
                         'class' => 'primary',
                         'route' => route('cms.form_entries.index', (($data->id) ? ['fid' => $data->id] : [] )),
-                        'text' => trans('modules.forms.entries'),
+                        'text' => trans('hack::modules.forms.entries'),
                     ],
                     [
                         'class' => 'primary',
                         'route' => route('cms.form_fields.index', (($data->id) ? ['fid' => $data->id] : [] )),
-                        'text' => trans('modules.forms.fields'),
+                        'text' => trans('hack::modules.forms.fields'),
                     ],
                 ];
             },

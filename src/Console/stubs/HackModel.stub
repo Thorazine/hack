@@ -58,12 +58,12 @@ class DummyClass extends CmsModel
             ],
             // 'title' => [
             //     'type' => 'text',
-            //     'label' => trans('modules.DummyPath.title'),
+            //     'label' => trans('hack::modules.DummyPath.title'),
             //     'regex' => 'required',
             // ],
             // 'image' => [
             //     'type' => 'image',
-            //     'label' => trans('modules.DummyPath.image'),
+            //     'label' => trans('hack::modules.DummyPath.image'),
             //     'regex' => '',
             //     'width' => false,
             //     'height' => 140,

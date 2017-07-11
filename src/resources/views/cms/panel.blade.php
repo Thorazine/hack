@@ -17,7 +17,7 @@
 			@if($maintenance)
 				<div class="grid-12">
 					<div class="panel panel-warning">
-						<div class="panel-heading">{!! trans('modules.panel.maintenance', ['start_date' => $maintenance->start_date, 'end_date' => $maintenance->end_date]) !!}</div>
+						<div class="panel-heading">{!! trans('hack::modules.panel.maintenance', ['start_date' => $maintenance->start_date, 'end_date' => $maintenance->end_date]) !!}</div>
 						<div class="panel-body">
 							{!! $maintenance->message !!}
 						</div>

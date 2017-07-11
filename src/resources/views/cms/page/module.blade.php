@@ -18,7 +18,7 @@
 			<div class="col-sm-9" id="main">
 				<div class="form-group">
 					<label class="col-sm-3 control-label">
-						{{ trans('modules.templates.template') }}
+						{{ trans('hack::modules.templates.template') }}
 					</label>
 					<div class="col-sm-9">
 						<?php $templates = Builder::templates(); ?>
