@@ -10,8 +10,8 @@
 				@if(@is_callable($values['alternativeValue']['index']))
 					<td>{!! $values['alternativeValue']['index']($data, $key) !!}</td>
 				@else
-					@if(view()->exists('cms.input.index.'.$values['type']))
-						@include('cms.input.index.'.$values['type'])
+					@if(View::exists('hack::input.index.'.$values['type']))
+						@include('hack::input.index.'.$values['type'])
 					@else
 						<td>{!! $data->{$key} !!}</td>
 					@endif

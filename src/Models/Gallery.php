@@ -99,7 +99,7 @@ class Gallery extends CmsModel
                 'edit' => false,
             ],
             'preview' => [
-                'type' => 'image',
+                'type' => 'gallery-image',
                 'label' => trans('hack::modules.gallery.preview'),
                 'regex' => '',
                 'overview' => true,
