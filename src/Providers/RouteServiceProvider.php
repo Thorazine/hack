@@ -36,12 +36,14 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapCmsRoutes();
+        
+        $this->mapHackCustomRoutes();
 
         $this->mapFrontRoutes();
     }
 
     /**
-     * Define the "cms" routes for the application.
+     * Define the "web" routes for the application.
      *
      * These routes all receive session state, CSRF protection, etc.
      *
@@ -62,7 +64,27 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the "front" routes for the application.
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapHackCustomRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'site'],
+            'prefix' => 'cms',
+            'as' => 'cms.'
+        ], function ($router) {
+            if(file_exists(base_path('routes/hack.php'))) {
+                require base_path('routes/hack.php');
+            }
+        });
+    }
+
+    /**
+     * Define the "web" routes for the application.
      *
      * These routes all receive session state, CSRF protection, etc.
      *
