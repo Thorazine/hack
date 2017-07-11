@@ -18,7 +18,7 @@ class Builder {
 	public function trans($array)
 	{
 		foreach($array as &$text) {
-			$text = trans('builder.'.$text);
+			$text = trans('hack::builder.'.$text);
 		}
 		return $array;
 	}
