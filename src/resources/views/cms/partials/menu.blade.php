@@ -53,7 +53,7 @@
         </ul>
     </div>
 
-    <div class="quick">
+{{--     <div class="quick">
         <a href="{{ route('cms.auth.destroy') }}">
             <i class="fa fa-power-off fa-2x"></i>
         </a>
@@ -63,5 +63,5 @@
         <a href="{{ route('cms.panel.index') }}">
             <i class="fa fa-gear fa-2x"></i>
         </a>
-    </div>
+    </div> --}}
 </div>
