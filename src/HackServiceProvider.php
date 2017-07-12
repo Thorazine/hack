@@ -30,8 +30,10 @@ class HackServiceProvider extends ServiceProvider
             __DIR__.'/resources/assets/theme' => public_path('theme'),
             __DIR__.'/resources/assets/fonts' => public_path('fonts'),
             __DIR__.'/resources/assets/images' => public_path('images'),
-            __DIR__.'/resources/assets/js' => base_path('resources/assets/js'),
-            __DIR__.'/resources/assets/sass' => base_path('resources/assets/sass'),
+            __DIR__.'/resources/assets/sass/frontend' => base_path('resources/assets/sass/frontend'),
+            __DIR__.'/resources/assets/sass/cms.scss' => base_path('resources/assets/sass/cms.scss'),
+            __DIR__.'/resources/assets/sass/frontend.scss' => base_path('resources/assets/sass/frontend.scss'),
+            __DIR__.'/resources/assets/sass/wysiwyg.scss' => base_path('resources/assets/sass/wysiwyg.scss'),
 
             // language files
             __DIR__.'/resources/lang/stubs/en/modules.php' => base_path('resources/lang/vendor/hack/en/modules.php'),

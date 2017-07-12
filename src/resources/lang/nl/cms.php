@@ -23,6 +23,7 @@ return [
 	'edit' => 'Bewerken',
 	'edit_your_data' => 'Bewerk je gegevens',
 	'logout' => 'Uitloggen',
+	'pick' => 'Kies een :attr',
 
 	// image module
 	'image' => [

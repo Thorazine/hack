@@ -61,7 +61,7 @@ class Site extends CmsModel
                 'regex' => '',
             ],
             'domains' => [
-                'type' => 'text',
+                'type' => 'comma-seperated',
                 'label' => trans('hack::modules.sites.domains'),
                 'regex' => '',
                 'overview' => false,

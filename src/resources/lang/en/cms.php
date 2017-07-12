@@ -23,6 +23,7 @@ return [
 	'edit' => 'Edit',
 	'edit_your_data' => 'Edit your data',
 	'logout' => 'Logout',
+	'pick' => 'Pick a :attr',
 
 
 	// image module

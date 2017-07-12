@@ -4,6 +4,7 @@ model.page = 1;
 model.order = '';
 model.q = '';
 model.dir = 'asc';
+model.filters = {};
 
 $(document).ready(function() {
 
@@ -124,7 +125,12 @@ $(document).ready(function() {
     	model.page = 1;
 		model.order = '';
 		model.dir = 'asc';
+		model.filters = {};
     	model.search();
+
+    	$('.model-filter').each(function() {
+    		$(this).val('');
+    	});
     });
 
     // get the initial values for search, sort, order and page
@@ -134,13 +140,35 @@ $(document).ready(function() {
 	model.dir = (url.searchParams.get("dir")) ? url.searchParams.get("dir") : model.dir;
 	model.page = (url.searchParams.get("page")) ? url.searchParams.get("page") : model.page;
 
-	model.modelPaginateBind();    
+	$('.model-filter').each(function() {
+		var filter = $(this).data('filter');
+		if(url.searchParams.has('filters['+filter+']')) {
+			model.filters[filter] = url.searchParams.get('filters['+filter+']');
+			$('#filter-'+filter).val(model.filters[filter]);
+		}
+	});
+
+	model.modelPaginateBind();  
+
+	model.buildFilters()
+
+
+	$('.model-filter').change(function(event) {
+		event.preventDefault();
+		if($(this).val()) {
+			model.filters[$(this).data('filter')] = $(this).val();
+		}
+		else {
+			delete model.filters[$(this).data('filter')];
+		}
+		model.search();
+	});
 });
 
 
 model.search = function()
 {
-	url = $('#q-button').data('href')+'?q='+model.q+'&order='+model.order+'&page='+model.page+'&dir='+model.dir;
+	url = $('#q-button').data('href')+'?q='+model.q+'&order='+model.order+'&page='+model.page+'&dir='+model.dir+model.buildFilters();
 
 	history.replaceState({state:1}, "Search", url);
 
@@ -164,4 +192,14 @@ model.modelPaginateBind = function()
 
     	model.search();
     });
+};
+
+model.buildFilters = function() {
+	var url = '';
+	$.each(model.filters, function(key, value) {
+		if(value) {
+			url += '&filters['+key+']='+value;
+		}
+	});
+	return url;
 };

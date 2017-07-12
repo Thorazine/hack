@@ -37,7 +37,7 @@ class FormField extends CmsModel
                 'type' => 'select',
                 'label' => trans('hack::modules.form_fields.field_type'),
                 'regex' => 'required',
-                'values' => config('hack::cms.forms.types'),
+                'values' => config('cms.forms.types'),
             ],
             'overview' => [
                 'type' => 'select',

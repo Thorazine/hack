@@ -90,10 +90,22 @@ class CmsController extends Controller
 
         $datas = $this->search($this->queryParameters($this->model, $request), $request);
 
+        // apply on-the-fly filter
+        if($request->filters) {
+            foreach($request->filters as $filterKey => $filter) {
+                $datas = $datas->where($filterKey, $filter);
+            }
+        }
+
+        // if the table has a drag/drop order requirement
         if(@$this->child->hasOrder) {
             $datas = $datas->orderBy('drag_order', 'asc');
         }
+        
+        // add the default order
+        $datas = $this->child->defaultOrder($datas);
 
+        // if the table needs pagination
         if($this->paginate) {
             $datas = $datas->paginate($this->paginateAmount);
         }
@@ -455,9 +467,6 @@ class CmsController extends Controller
     }
 
 
-    
-
-
     /**
      * Possibly add query parameters to the model
      *
@@ -468,5 +477,18 @@ class CmsController extends Controller
     public function queryParameters($query, $request)
     {
         return $query;
+    }
+
+
+    /**
+     * Add the default order to the model. If "hasOrder" 
+     * That will take default
+     *
+     * @param  string  $query
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function defaultOrder($query)
+    {
+        return $query->orderBy('id');
     }
 }

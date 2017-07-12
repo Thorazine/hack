@@ -26,6 +26,12 @@
 			<div class="holder" id="q-button" data-href="{{ Request::url() }}">
 				<i class="fa fa-search"></i>
 			</div>
+
+			@if(@$filters) 
+				@foreach($filters as $filterType => $filter)
+					@include('hack::filters.'.$filter['type'])
+				@endforeach
+			@endif
 		</div>
 		
 		<table class="table table-striped" id="data-header" data-href="{{ route('cms.'.$slug.'.index') }}">

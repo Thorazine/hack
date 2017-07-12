@@ -27,12 +27,13 @@
 
 	.holder {
 		display: inline-block;
-		height: inherit;
+		height: 35px;
 		border-right: 1px solid #CCC;
 		color: #d19b3d;
 		margin-top: 0px;
 		vertical-align: top;
 		margin-left: -4px;
+		position: relative;
 
 		.fa {
 			line-height: 36px;
@@ -44,6 +45,36 @@
 
 		&:active {
 			background-color: #FFF;
+		}
+
+		select {
+			height: 35px;
+		    box-shadow: none;
+		    background: transparent;
+		    background-image: none;
+		    -webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			border-radius: 0px;
+			padding: 0 45px 0 10px;
+			border: none;
+		}
+
+		&.select:after {
+			content: '\f078';
+			font-family: FontAwesome;
+		    font-style: normal;
+		    font-weight: normal;
+		    text-decoration: inherit;
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			width: 35px;
+			line-height: 35px;
+			text-align: center;
+			height: inherit;
+			border-left: 1px solid #CCC;
+			pointer-events: none;
 		}
 	}
 
@@ -65,10 +96,15 @@
 	}
 
 	#q-clear {
-		transform: translate(-25px, 10px);
+		transform: translate(-39px, 0px);
 		color: rgba(0,0,0,0.1);
 		position: absolute;
 		cursor: pointer;
+		width: 35px;
+		height: 35px;
+		text-align: center;
+		line-height: 35px;
+
 
 		&:hover {
 			color: rgba(0,0,0,0.2);

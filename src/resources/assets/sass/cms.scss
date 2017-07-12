@@ -1,50 +1,52 @@
 
 // basic stuff
-@import 'cms/variables';
-@import 'cms/base/font-includes';
-@import 'cms/base/helper'; 
-@import 'cms/base/font';
-@import 'cms/base/form';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/variables';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/base/font-includes';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/base/helper'; 
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/base/font';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/base/form';
 
 // mixins
-@import 'cms/mixins/height-ratio';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/mixins/height-ratio';
 
 // components
 
 // includes
-@import 'cms/includes/bootstrap-fixes';
-@import 'cms/includes/jquery-ui';
-@import '../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
-@import '../../../node_modules/eonasdan-bootstrap-datetimepicker/src/sass/bootstrap-datetimepicker-build';
-@import '../../../node_modules/cropper/src/scss/cropper';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/includes/bootstrap-fixes';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/includes/jquery-ui';
+@import './node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+@import './node_modules/eonasdan-bootstrap-datetimepicker/src/sass/bootstrap-datetimepicker-build';
+@import './node_modules/cropper/src/scss/cropper';
 
 // layout
-@import 'cms/layout/cms-loader';
-@import 'cms/layout/content';
-@import 'cms/layout/grid';
-@import 'cms/layout/header';
-@import 'cms/layout/menu';
-@import 'cms/layout/paginate';
-@import 'cms/layout/footer';
-@import 'cms/layout/sidebar';
-@import 'cms/layout/subheader';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/layout/cms-loader';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/layout/content';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/layout/grid';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/layout/header';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/layout/menu';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/layout/paginate';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/layout/footer';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/layout/sidebar';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/layout/subheader';
 
 // model
-@import 'cms/model/alert';
-@import 'cms/model/builder';
-@import 'cms/model/modal';
-@import 'cms/model/model';
-@import 'cms/model/wysiwyg';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/model/alert';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/model/builder';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/model/modal';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/model/model';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/model/wysiwyg';
 
 // modules
-@import 'cms/modules/cropper';
-@import 'cms/modules/dropzone';
-@import 'cms/modules/gallery';
-@import 'cms/modules/image';
-@import 'cms/modules/nested';
-@import 'cms/modules/permissions';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/modules/cropper';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/modules/dropzone';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/modules/gallery';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/modules/image';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/modules/nested';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/modules/permissions';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/modules/comma-seperated';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/modules/value-label';
 
 // pages
-@import 'cms/pages/auth';
-@import 'cms/pages/base';
-@import 'cms/pages/user';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/pages/auth';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/pages/base';
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/pages/user';

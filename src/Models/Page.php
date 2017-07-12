@@ -112,19 +112,6 @@ class Page extends CmsModel
                 'configuration' => 'full',
                 'overview' => false,
             ],
-            'publish_at' => [
-                'type' => 'timestamp',
-                'label' => trans('hack::modules.pages.publish_at'),
-                'regex' => '',
-                'default' => date('Y-m-d H:i:s'),
-                'position' => 'sidebar',
-            ],
-            'depublish_at' => [
-                'type' => 'timestamp',
-                'label' => trans('hack::modules.pages.depublish_at'),
-                'regex' => '',
-                'position' => 'sidebar',
-            ],
             'search_priority' => [
                 'type' => 'select',
                 'label' => trans('hack::modules.pages.search_priority'),
@@ -144,6 +131,19 @@ class Page extends CmsModel
                 ],
                 'position' => 'sidebar',
                 'default' => 5,
+            ],
+            'publish_at' => [
+                'type' => 'timestamp',
+                'label' => trans('hack::modules.pages.publish_at'),
+                'regex' => '',
+                'default' => date('Y-m-d H:i:s'),
+                'position' => 'sidebar',
+            ],
+            'depublish_at' => [
+                'type' => 'timestamp',
+                'label' => trans('hack::modules.pages.depublish_at'),
+                'regex' => '',
+                'position' => 'sidebar',
             ],
         ];
     }
@@ -282,11 +282,10 @@ class Page extends CmsModel
             return $this->templates;
         }
 
-
-
         $this->templates = Template::select('id', 'refrence')
             ->orderBy('refrence', 'asc')
-            ->pluck('refrence', 'id');
+            ->pluck('refrence', 'id')
+            ->toArray();
 
         return $this->templates;
     }

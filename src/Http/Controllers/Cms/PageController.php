@@ -40,7 +40,37 @@ class PageController extends CmsController
 
         view()->share([
             'createRoute' => 'cms.'.$this->slug.'.module',
+            'filters' => [
+                'template_id' => [
+                    'type' => 'select',
+                    'values' => function() {
+                        return ['' => '-- '.trans('hack::modules.pages.template_id').' --']+$this->model->getTemplates();
+                    },
+                ],
+                'prepend_slug' => [
+                    'type' => 'select',
+                    'values' => function() {
+                        return ['' => '-- '.trans('hack::modules.pages.prepend_slug').' --']+$this->model
+                            ->groupBy('prepend_slug')
+                            ->pluck('prepend_slug', 'prepend_slug')
+                            ->toArray();
+                    },
+                ]
+            ],
         ]);
+    }
+
+
+    /**
+     * Add the default order to the model. If "hasOrder" 
+     * That will take default
+     *
+     * @param  string  $query
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function defaultOrder($query)
+    {
+        return $query->orderBy('template_id')->orderBy('language');
     }
 
 

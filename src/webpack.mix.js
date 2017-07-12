@@ -31,23 +31,25 @@ mix
         'node_modules/cropper/dist/cropper.min.js',
         'node_modules/dropzone/dist/min/dropzone.min.js',
         'node_modules/nestedSortable/jquery.mjs.nestedSortable.js',
-        'resources/assets/js/gateway.js',
-        'resources/assets/js/model.js',
-        'resources/assets/js/menu.js',
-        'resources/assets/js/input/multi-checkbox.js',
-        'resources/assets/js/input/aspect-ratio.js',
-        'resources/assets/js/input/labeled-multi-checkbox.js',
-        'resources/assets/js/input/gallery.js',
-        'resources/assets/js/input/cropper.js',
-        'resources/assets/js/input/image.js',
-        'resources/assets/js/cms.js',
+        'vendor/thorazine/hack/src/resources/assets/js/gateway.js',
+        'vendor/thorazine/hack/src/resources/assets/js/model.js',
+        'vendor/thorazine/hack/src/resources/assets/js/menu.js',
+        'vendor/thorazine/hack/src/resources/assets/js/input/multi-checkbox.js',
+        'vendor/thorazine/hack/src/resources/assets/js/input/aspect-ratio.js',
+        'vendor/thorazine/hack/src/resources/assets/js/input/labeled-multi-checkbox.js',
+        'vendor/thorazine/hack/src/resources/assets/js/input/gallery.js',
+        'vendor/thorazine/hack/src/resources/assets/js/input/cropper.js',
+        'vendor/thorazine/hack/src/resources/assets/js/input/image.js',
+        'vendor/thorazine/hack/src/resources/assets/js/input/comma-seperated.js',
+        'vendor/thorazine/hack/src/resources/assets/js/input/value-label.js',
+        'vendor/thorazine/hack/src/resources/assets/js/cms.js',
     ], 'public/assets/cms/js/cms.js')
 
     // auth
     .scripts([
         'node_modules/jquery/dist/jquery.min.js',
         'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-        'resources/assets/js/auth.js',
+        'vendor/thorazine/hack/src/resources/assets/js/auth.js',
     ], 'public/assets/cms/js/auth.js');
 
 
