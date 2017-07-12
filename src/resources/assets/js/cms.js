@@ -42,6 +42,7 @@ $(document).ready(function() {
         window.location.href = $(this).val();
     });
 
+    // set the width of the pagination
     $('ul.pagination').width($('ul.pagination li').length * 34 + 1);
 });
 

@@ -1,7 +1,13 @@
 $(document).ready(function() {
 
 	$('#header-toggle-menu').click(function() {
-		$('.menu').slideUp();
+		if($('.menu').is(':visible')) {
+			$('.menu').hide();
+		}
+		else {
+			$('.menu').show();
+		}
+		
 	});
 
 });
