@@ -41,5 +41,7 @@ $(document).ready(function() {
     $('#site-selector').on('change', function(event) {
         window.location.href = $(this).val();
     });
+
+    $('ul.pagination').width($('ul.pagination li').length * 34 + 1);
 });
 

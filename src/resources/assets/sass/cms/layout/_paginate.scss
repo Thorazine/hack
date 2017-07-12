@@ -8,10 +8,16 @@
 		width: calc(100% - 235px);
 		border-top: 1px solid #CCC;
 		background-color: #FFF;
-		overflow: hidden;
+		overflow: none;
+
+		@include breakpoint('tablet-portrait') {
+			width: 100%;
+			overflow-x: scroll;
+	    }
 
 		.pagination {
 			margin: 0px;
+			white-space:nowrap;
 
 			li {
 				a, span {

@@ -7,12 +7,23 @@
 	border-bottom: 1px solid #CCC;
 	margin-bottom: 50px;
 
+	&:after { 
+		content: " ";
+		display: block; 
+		height: 0; 
+		clear: both;
+	}
+
 	a {
 		height: inherit;
 		padding: 7px 20px;
 		display: inline-block;
 		border-right: 1px solid #CCC;
 		color: #d19b3d;
+
+		@include breakpoint('mobile-portrait') {
+			padding: 7px 7px;
+		}
 
 		&:hover {
 			color: #d19b3d;
@@ -86,6 +97,10 @@
 		padding-left: 10px;
 		border-right: 1px solid #CCC;
 		padding-right: 30px;
+
+		@include breakpoint('mobile-portrait') {
+    		width: 212px;
+    	}
 	}
 
 	#q-button {

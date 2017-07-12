@@ -24,6 +24,7 @@ mix
     .scripts([
         'node_modules/jquery/dist/jquery.min.js',
         'node_modules/jqueryui/jquery-ui.min.js',
+        'node_modules/jquery-ui-touch-punch/jquery-ui-touch-punch.min.js',
         'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
         'node_modules/moment/min/moment.min.js',
         'node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',

@@ -1,6 +1,6 @@
 <div class="header">
 	<div class="holder" id="header-toggle-menu">
-		<i class="fa fa-chevron-left"></i>
+		<i class="fa fa-bars"></i>
 	</div>
 
 	<div class="menu-right">

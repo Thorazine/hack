@@ -2,7 +2,11 @@
 	padding-left: $menu-width;
 	margin: 0px 15px 50px 15px;
 	transition: padding 5s linear;
-	min-height: 100vh;
+	min-height: calc(100vh - $header-height);
+
+	@include breakpoint('tablet-portrait') {
+		padding-left: 0px;
+    }
 
 	&.closed {
 		padding-left: 0;

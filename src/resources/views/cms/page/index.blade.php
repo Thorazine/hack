@@ -21,58 +21,60 @@
 			</div>
 		</div>
 		
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					@foreach($types as $type => $values)
-						@if($typeTrue($values, 'overview'))
-							<th>
-								<a data-href="{{ Request::url() }}">
-									{{ $values['label'] }} {!! (Request::has('order') && Request::get('order') == $type) ? '<i class="fa fa-chevron-'.((Request::has('dir') && Request::get('dir') == 'asc') ? 'down' : 'up').'"></i>' : '' !!}
-								</a>
-							</th>
-						@endif
-					@endforeach
-					<th>{{ trans('hack::cms.options') }}</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach($datas as $data)
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
 					<tr>
-						@foreach($types as $key => $values)
-
+						@foreach($types as $type => $values)
 							@if($typeTrue($values, 'overview'))
-								{{-- Action by type --}}
-								@if(@is_callable($values['alternativeValue']['index']))
-									<td>{!! $values['alternativeValue']['index']($data, $key) !!}</td>
-								@else
-									@if(in_array($values['type'], ['select']))
-										<td>{!! (is_array($values['values'])) ? $values['values'][$data->{$key}] : $model->{$values['values']}()[$data->{$key}] !!}</td>
+								<th>
+									<a data-href="{{ Request::url() }}">
+										{{ $values['label'] }} {!! (Request::has('order') && Request::get('order') == $type) ? '<i class="fa fa-chevron-'.((Request::has('dir') && Request::get('dir') == 'asc') ? 'down' : 'up').'"></i>' : '' !!}
+									</a>
+								</th>
+							@endif
+						@endforeach
+						<th>{{ trans('hack::cms.options') }}</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach($datas as $data)
+						<tr>
+							@foreach($types as $key => $values)
+
+								@if($typeTrue($values, 'overview'))
+									{{-- Action by type --}}
+									@if(@is_callable($values['alternativeValue']['index']))
+										<td>{!! $values['alternativeValue']['index']($data, $key) !!}</td>
 									@else
-										<td>{!! $data->{$key} !!}</td>
+										@if(in_array($values['type'], ['select']))
+											<td>{!! (is_array($values['values'])) ? $values['values'][$data->{$key}] : $model->{$values['values']}()[$data->{$key}] !!}</td>
+										@else
+											<td>{!! $data->{$key} !!}</td>
+										@endif
 									@endif
 								@endif
-							@endif
-							
-						@endforeach
-						<td class="model-options">
-							@if(@$extraItemButtons)
-								@foreach($extraItemButtons($data) as $extraButton)
-									<a class="btn btn-{{ $extraButton['class'] }}" href="{{ $extraButton['route'] }}">{{ $extraButton['text'] }}</a>
-								@endforeach
-							@endif
+								
+							@endforeach
+							<td class="model-options">
+								@if(@$extraItemButtons)
+									@foreach($extraItemButtons($data) as $extraButton)
+										<a class="btn btn-{{ $extraButton['class'] }}" href="{{ $extraButton['route'] }}">{{ $extraButton['text'] }}</a>
+									@endforeach
+								@endif
 
-							@if($hasPermission('edit'))
-								<a class="btn btn-primary" href="{{ route('cms.'.$slug.'.edit', $data->id) }}"><i class="fa fa-pencil"></i></a>
-							@endif
-							@if($hasPermission('destroy'))
-								<a class="btn btn-danger model-delete" href="{{ route('cms.'.$slug.'.destroy', $data->id) }}"><i class="fa fa-trash"></i></a>
-							@endif
-						</td>
-					</tr>
-				@endforeach
-			</tbody>
-		</table>
+								@if($hasPermission('edit'))
+									<a class="btn btn-primary" href="{{ route('cms.'.$slug.'.edit', $data->id) }}"><i class="fa fa-pencil"></i></a>
+								@endif
+								@if($hasPermission('destroy'))
+									<a class="btn btn-danger model-delete" href="{{ route('cms.'.$slug.'.destroy', $data->id) }}"><i class="fa fa-trash"></i></a>
+								@endif
+							</td>
+						</tr>
+					@endforeach
+				</tbody>
+			</table>
+		</div>
 
 	</div>
 

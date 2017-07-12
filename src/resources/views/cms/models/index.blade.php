@@ -34,35 +34,37 @@
 			@endif
 		</div>
 		
-		<table class="table table-striped" id="data-header" data-href="{{ route('cms.'.$slug.'.index') }}">
-			<thead>
-				<tr>
-					@if(@$hasOrder)
-						<th data-column="drag_order"></th>
-					@endif
-					
-					@foreach($types as $type => $values)
-						@if($typeTrue($values, 'overview'))
-							<th>
-								@if(in_array($type, $searchFields))
-									<a data-order="{{ $type }}" data-dir="{{ (Request::get('order') == $type) ? ((Request::get('dir') == 'asc') ? 'desc' : 'asc') : 'asc' }}">
-										{{ $values['label'] }} {!! (Request::get('order') == $type) ? '<i class="fa fa-chevron-'.((Request::get('dir') == 'asc') ? 'down' : 'up').'"></i>' : '' !!}
-									</a>
-								@else
-									{{ $values['label'] }}
-								@endif
-							</th>
+		<div class="table-responsive">
+			<table class="table table-striped" id="data-header" data-href="{{ route('cms.'.$slug.'.index') }}">
+				<thead>
+					<tr>
+						@if(@$hasOrder)
+							<th data-column="drag_order"></th>
 						@endif
-					@endforeach
-					<th>{{ trans('hack::cms.options') }}</th>
-				</tr>
-			</thead>
-			<tbody class="order" id="dataset" @if(@$hasOrder) data-order-url="{{ route('cms.'.$slug.'.order') }}" @endif>
+						
+						@foreach($types as $type => $values)
+							@if($typeTrue($values, 'overview'))
+								<th>
+									@if(in_array($type, $searchFields))
+										<a data-order="{{ $type }}" data-dir="{{ (Request::get('order') == $type) ? ((Request::get('dir') == 'asc') ? 'desc' : 'asc') : 'asc' }}">
+											{{ $values['label'] }} {!! (Request::get('order') == $type) ? '<i class="fa fa-chevron-'.((Request::get('dir') == 'asc') ? 'down' : 'up').'"></i>' : '' !!}
+										</a>
+									@else
+										{{ $values['label'] }}
+									@endif
+								</th>
+							@endif
+						@endforeach
+						<th>{{ trans('hack::cms.options') }}</th>
+					</tr>
+				</thead>
+				<tbody class="order" id="dataset" @if(@$hasOrder) data-order-url="{{ route('cms.'.$slug.'.order') }}" @endif>
 
-				@include('hack::models.ajax.index')
+					@include('hack::models.ajax.index')
 
-			</tbody>
-		</table>
+				</tbody>
+			</table>
+		</div>
 
 		<div class="paginate paginate-bottom">
 			@if(method_exists($datas, 'render'))

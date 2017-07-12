@@ -16,6 +16,14 @@
     	margin-bottom: 10px;
     	transition: all 5s linear;
 
+    	@include breakpoint('tablet-portrait') {
+    		display: none;
+    		position: fixed;
+    		top: 50px;
+    		z-index: 100;
+    		width: 100%;
+    	}
+
     	&.closed {
     		width: 20px;
     	}
