@@ -16,7 +16,7 @@
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 
 </head>
-<body>
+<body class="sandstone">
 
 	@include('hack::partials.cms-loader')
 

@@ -6,12 +6,12 @@
 		// font-family: verdana;
 		font-size: 12px;
 		font-weight: 200;
-		background-color: $menu-bg;
+		background-color: $navbar-inverse-bg;
 		position: fixed;
 		top: 0px;
 		width: $menu-width;
 		height: 100%;
-		color: $menu-color;
+		color: $navbar-inverse-brand-color;
 		// width: 100%;
     	margin-bottom: 10px;
     	display: block;
@@ -44,16 +44,17 @@
 
 		.brand {
 			height: $header-height;
-			background-color: $menu-bg;
+			background-color: transparent;
 			line-height: $header-height;
 			display: block;
 			text-align: center;
 			font-size: 14px;
 			text-align: left !important;
 			font-size: 22px;
-			// padding-left: 20px;
+			padding-left: 10px;
 			overflow: hidden;
 			position: relative;
+			border-bottom: 1px solid $navbar-inverse-link-disabled-color;
 
 			& .chevron:after {
 				position: absolute;
@@ -81,7 +82,7 @@
 		}
 
 		li {
-			background-color: $menu-item-bg;
+			background-color: $navbar-inverse-bg;
 			list-style: none;
 			padding: 0px;
 			margin: 0px;
@@ -89,25 +90,26 @@
 			cursor: pointer;
 			position: relative;
 			padding-left: 0px;
-			border-left: 3px solid $menu-border;
-			border-bottom: 1px solid $menu-border;
+			border-left: 3px solid $navbar-inverse-link-disabled-color;
+			border-bottom: 1px solid $navbar-inverse-link-disabled-color;
 
 			&.active {
-				border-left: 3px solid $menu-border-active;
-				background-color: $menu-bg-active;
+				border-left: 3px solid $navbar-inverse-border;
+				background-color: $navbar-inverse-border;
 
 				a {
 					cursor: pointer;
+					color: $navbar-inverse-link-hover-color;
 				}
 
 				&:hover {
-					background-color: $menu-bg-active;
+					background-color: $navbar-inverse-link-hover-bg;
 				}
 			}
 
 			a {
 				text-decoration: none;
-				color: $menu-color;
+				color: $navbar-inverse-link-color;
 				width: 100%;
 				display: block;
 
@@ -119,8 +121,8 @@
 			}
 
 			&:hover {
-				border-left: 3px solid $menu-border-active;
-				background-color: darken($menu-item-bg, 5%);
+				border-left: 3px solid $navbar-inverse-link-disabled-color;
+				background-color: darken($navbar-inverse-bg, 5%);
 				-webkit-transition: all 1s ease;
 				-moz-transition: all 1s ease;
 				-o-transition: all 1s ease;
@@ -146,23 +148,27 @@
 			}
 
 			li.active {
-				color: $menu-color-active;
+				color: $navbar-inverse-link-color;
 			}
 
 			li.active a {
-				color: $menu-color-active;
+				color: $navbar-inverse-link-color;
+
+				&:hover {
+					color: $navbar-inverse-link-hover-color
+				}
 			}
 
 			li {
-				background-color: darken($menu-item-bg, 35%);
+				background-color: darken($navbar-inverse-bg, 15%);
 				border: none;
 				line-height: 28px;
-				border-bottom: 1px $menu-border;
+				border-bottom: 1px $navbar-inverse-border;
 				margin-left: 0px;
 			}
 
 			li:hover {
-				background-color: darken($menu-item-bg, 12.5%);
+				background-color: darken($navbar-inverse-bg, 5%);
 			}
 
 			li:before {
@@ -194,7 +200,7 @@
 				background-color: #23282E;
 
 				&:hover {
-					color: $layout-color;
+					color: $navbar-inverse-link-color;
 				}
 			}
 		}

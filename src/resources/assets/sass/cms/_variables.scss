@@ -1,49 +1,6 @@
 $fa-font-path: "../../../fonts";
 $icon-font-path: "../../../fonts/bootstrap/";
 
-$color-primary: #FFFFFF;
-$color-secondary: #262626;
-$color-tertiary: #00CAF3;
-
-$default-border: $btn-default-border;
-
-$menu-color: 			$btn-primary-color;
-$menu-bg: 				darken($btn-primary-bg, 35%);
-$menu-item-bg: 			darken($btn-primary-bg, 25%);
-$menu-border: 			darken($btn-primary-border, 35%);
-$menu-color-active: 	$btn-warning-bg;
-$menu-bg-active: 		$btn-primary-bg;
-$menu-border-active: 	$btn-warning-border;
-
-$layout-color: 			$menu-color-active;
-
-
-
-$color-gradient-primary-top: #00CAF3;
-$color-gradient-primary-bottom: #0091D9;
-
-$color-gradient-secondary-top: #d0ff00;
-$color-gradient-secondary-bottom: #bfea00;
-
-// grey
-$color-font-primary-default: #262626;
-$color-font-primary-highlight: #262626;
-
-// white
-$color-font-secondary-default: #FFFFFF;
-$color-font-secondary-highlight: #DDDDDD;
-
-// blue
-$color-font-tertiary-default: #0091D9;
-$color-font-tertiary-highlight: #00CAF3;
-
-// yellow
-$color-font-quaternary-default: #d0ff00;
-$color-font-quaternary-highlight: #bfea00;
-
-
-// quinary, senary, septenary, octonary, nonary
-
 $header-height: 50px;
 $menu-width: 235px;
 

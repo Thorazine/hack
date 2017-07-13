@@ -10,6 +10,8 @@
 		@include('hack::partials.header')
 
 		<div class="subheader">
+			<div class="line"></div>
+			<div class="line middle"></div>
 			<a class="primary" href="{{ route('cms.user.edit', ['id' => $user->id]) }}" title="{{ trans('hack::cms.edit_your_data') }}">{{ trans('hack::cms.edit') }}</a>
 		</div>
 

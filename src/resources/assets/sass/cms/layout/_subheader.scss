@@ -1,10 +1,10 @@
 .subheader {
 	width: calc(100% + 30px);
 	min-height: 35px;
-	background-color: $body-bg;
+	background-color: $navbar-default-bg;
 	margin-top: -20px;
 	margin-left: -15px;
-	// border-bottom: 1px solid $default-border;
+	// border-bottom: 1px solid $dropdown-divider-bg;
 	margin-bottom: 50px;
 	position: relative;
 
@@ -12,10 +12,10 @@
 		position: absolute;
 		width: 100%;
 		bottom: 0px;
-		border-bottom: 1px solid $default-border;
+		border-bottom: 1px solid $dropdown-divider-bg;
 
 		&.middle {
-			bottom: 35px;
+			bottom: 36px;
 		}
 	}
 
@@ -30,16 +30,16 @@
 		height: inherit;
 		padding: 7px 20px;
 		display: inline-block;
-		border-right: 1px solid $default-border;
-		border-bottom: 1px solid $default-border;
-		color: $layout-color;
+		border-right: 1px solid $dropdown-divider-bg;
+		// border-bottom: 1px solid $dropdown-divider-bg;
+		color: $navbar-default-link-color;
 
 		@include breakpoint('mobile-portrait') {
 			padding: 7px 7px;
 		}
 
 		&:hover {
-			color: $layout-color;
+			color: $navbar-default-link-hover-color;
 			text-decoration: none;
 			background-color: rgba(0,0,0,0.05);
 		}
@@ -52,13 +52,17 @@
 	.holder {
 		display: inline-block;
 		height: 35px;
-		border-right: 1px solid $default-border;
-		border-bottom: 1px solid $default-border;
-		color: $layout-color;
+		border-right: 1px solid $dropdown-divider-bg;
+		// border-bottom: 1px solid $dropdown-divider-bg;
+		color: $navbar-default-link-color;
 		margin-top: 0px;
 		vertical-align: top;
 		margin-left: -4px;
 		position: relative;
+
+		&:hover {
+			color: $navbar-default-link-hover-color;
+		}
 
 		.fa {
 			line-height: 36px;
@@ -98,7 +102,7 @@
 			line-height: 35px;
 			text-align: center;
 			height: inherit;
-			border-left: 1px solid $default-border;
+			border-left: 1px solid $dropdown-divider-bg;
 			pointer-events: none;
 		}
 	}
@@ -109,8 +113,8 @@
 		border: none;
 		margin-left: -4px;
 		padding-left: 10px;
-		border-right: 1px solid $default-border;
-		border-bottom: 1px solid $default-border;
+		border-right: 1px solid $dropdown-divider-bg;
+		border-bottom: 1px solid $dropdown-divider-bg;
 		padding-right: 30px;
 
 		@include breakpoint('mobile-portrait') {
@@ -127,7 +131,7 @@
 
 	#q-clear {
 		transform: translate(-39px, 0px);
-		color: rgba(0,0,0,0.1);
+		color: $navbar-default-link-color;
 		position: absolute;
 		cursor: pointer;
 		width: 35px;

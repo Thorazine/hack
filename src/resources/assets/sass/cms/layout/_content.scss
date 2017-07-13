@@ -2,6 +2,8 @@
 	padding-left: $menu-width;
 	margin: 0px 15px 50px 15px;
 	min-height: calc(100vh - $header-height);
+	background-color: $body-bg;
+	color: $text-color;
 
 	@include breakpoint('tablet-portrait') {
 		padding-left: 0px;
@@ -25,7 +27,7 @@
 		&[type="checkbox"] {
 			width: 20px;
 			height: 20px;
-			border: 1px solid $default-border;
+			border: 1px solid $dropdown-divider-bg;
 			margin-top: 0px;
 			position: relative;
 			-webkit-appearance: none;
@@ -53,15 +55,15 @@
 				top: 0px;
 				width: 8px;
 				height: 15px;
-				border-bottom: 2px solid $color-font-tertiary-default;
-				border-right: 2px solid $color-font-tertiary-default;
+				border-bottom: 2px solid $link-color;
+				border-right: 2px solid $link-color;
 			}
 		}
 
 		&[type="radio"] {
 			width: 20px;
 			height: 20px;
-			border: 1px solid $default-border;
+			border: 1px solid $dropdown-divider-bg;
 			border-radius: 10px;
 			margin-bottom: -4px;
 			position: relative;
@@ -81,7 +83,7 @@
 				left: 9px;
 				top: 9px;
 				border-radius: 10px;
-				background-color: $color-font-tertiary-default;
+				background-color: $link-color;
 				box-shadow: none;
 			}
 
@@ -91,7 +93,7 @@
 				left: 4px;
 				top: 4px;
 				border-radius: 10px;
-				box-shadow: 0 0 2px 0px $color-font-tertiary-default;
+				box-shadow: 0 0 2px 0px $link-color;
 			}
 		}
 	}

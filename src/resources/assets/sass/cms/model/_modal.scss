@@ -3,7 +3,7 @@
 	z-index: 1000;
 	width: 100%;
 	height: 100vh;
-	background-color: rgba(255,255,255, 0.95);
+	background-color: $body-bg;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -21,7 +21,7 @@
 		padding: 0 10px;
 		font-size: 40px;
 		line-height: 42px;
-		color: #CCC;
+		color: $text-color;
 		cursor: pointer;
 
 		&.model-modal-close {
@@ -38,10 +38,10 @@
 		left: 0;
 		top: 0;
 		height: 50px;
-		background-color: #FFF;
+		background-color: $body-bg;
 		z-index: 3;
 		text-align: center;
-		border-bottom: 1px solid #E7EAEC;
+		border-bottom: 1px solid $link-color;
 
 		.brand {
 			// font-family: Code;
@@ -51,13 +51,13 @@
 			left: 20px;
 			top: 0;
 			height: 50px;
-			color: #CCC;
+			color: $text-color;
 		}
 
 		.title {
 			display: block;
 			margin-top: 14px;
-			color: #CCC;
+			color: $text-color;
 		}
 	}
 
@@ -67,9 +67,9 @@
 		left: 0;
 		bottom: 0;
 		height: 50px;
-		background-color: #FFF;
+		background-color: $body-bg;
 		z-index: 3;
 		text-align: center;
-		border-top: 1px solid #E7EAEC;
+		border-top: 1px solid $link-color;
 	}
 }

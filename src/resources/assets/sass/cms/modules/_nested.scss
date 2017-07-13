@@ -7,12 +7,12 @@
 	}
 
 	.item {
-		background-color: #EEE;
+		background-color: $navbar-default-bg;
 		margin-bottom: 5px;
-		color: $color-font-primary-default;
+		color: $btn-default-color;
 		padding: 5px;
 		position: relative;
-		border: 1px solid $color-tertiary;
+		border: 1px solid $btn-default-border;
 		border-radius: 5px;
 		cursor: move;
 	}
@@ -24,13 +24,13 @@
 	}
 
 	.mjs-nestedSortable-error {
-		background-color: #F2DEDE;
+		background-color: $btn-warning-bg;
 	}
 
 	.placeholder {
 		height: 32px;
 		width: 100%;
-		border: 1px dashed #000;
+		border: 1px dashed $btn-default-color;
 		display: block;
 		visibility: visible !important;
 		padding: 5px;

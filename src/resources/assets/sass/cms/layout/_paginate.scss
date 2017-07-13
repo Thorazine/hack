@@ -6,8 +6,8 @@
 		right: 0px;
 		height: 35px;
 		width: calc(100% - 235px);
-		border-top: 1px solid $default-border;
-		background-color: $body-bg;
+		border-top: 1px solid $dropdown-divider-bg;
+		background-color: $navbar-default-bg;
 		overflow: none;
 
 		@include breakpoint('tablet-portrait') {
@@ -24,10 +24,10 @@
 				a, span {
 					border: none;
 					border-radius: 0px;
-					color: $layout-color;
+					color: $navbar-inverse-link-color;
 					height: 35px;
 					width: 35px;
-					border-right: 1px solid $default-border;
+					border-right: 1px solid $dropdown-divider-bg;
 					background-color: transparent;
 					text-align: center;
 				}
@@ -38,7 +38,7 @@
 
 				&.active {
 					span {
-						color: $default-border;
+						color: $navbar-default-link-active-color;
 					}
 				}
 			}

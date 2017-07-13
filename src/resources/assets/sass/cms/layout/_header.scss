@@ -1,9 +1,20 @@
 .header {
 	height: $header-height;
-	border-bottom: 1px solid $default-border;
+	border-bottom: 1px solid $dropdown-divider-bg;
 	width: calc(100% + 35px);
 	margin-left: -20px;
 	margin-bottom: 20px;
+	background-color: $navbar-default-bg;
+	color: $navbar-default-link-color;
+
+	a {
+		color: inherit;
+
+		&:hover {
+			color: $navbar-default-link-hover-color;
+			text-decoration: none;
+		}
+	}
 
 	#header-toggle-menu {
 		cursor: pointer;
@@ -30,7 +41,6 @@
 	}
 
 	.text {
-		color: #000000;	
 		padding: 14px 9px;
 	}
 
