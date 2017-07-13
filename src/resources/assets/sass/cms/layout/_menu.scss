@@ -14,6 +14,7 @@
 		color: $menu-color;
 		// width: 100%;
     	margin-bottom: 10px;
+    	display: block;
 
     	@include breakpoint('tablet-portrait') {
     		display: none;
@@ -43,7 +44,7 @@
 
 		.brand {
 			height: $header-height;
-			background-color: #23282e;
+			background-color: $menu-bg;
 			line-height: $header-height;
 			display: block;
 			text-align: center;
@@ -80,7 +81,7 @@
 		}
 
 		li {
-			background-color: $menu-bg;
+			background-color: $menu-item-bg;
 			list-style: none;
 			padding: 0px;
 			margin: 0px;
@@ -96,7 +97,6 @@
 				background-color: $menu-bg-active;
 
 				a {
-					color: $menu-color-active;
 					cursor: pointer;
 				}
 
@@ -120,7 +120,7 @@
 
 			&:hover {
 				border-left: 3px solid $menu-border-active;
-				background-color: darken($menu-bg, 5%);
+				background-color: darken($menu-item-bg, 5%);
 				-webkit-transition: all 1s ease;
 				-moz-transition: all 1s ease;
 				-o-transition: all 1s ease;
@@ -154,7 +154,7 @@
 			}
 
 			li {
-				background-color: darken($menu-bg, 37.5%);
+				background-color: darken($menu-item-bg, 35%);
 				border: none;
 				line-height: 28px;
 				border-bottom: 1px $menu-border;
@@ -162,7 +162,7 @@
 			}
 
 			li:hover {
-				background-color: darken($menu-bg, 12.5%);
+				background-color: darken($menu-item-bg, 12.5%);
 			}
 
 			li:before {

@@ -10,6 +10,8 @@
 		@include('hack::partials.header')
 
 		<div class="subheader">
+			<div class="line"></div>
+			<div class="line middle"></div>
 
 			@if(@$extraHeaderButtons)
 				@foreach($extraHeaderButtons($datas) as $extraButton)

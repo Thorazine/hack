@@ -1,11 +1,23 @@
 .subheader {
 	width: calc(100% + 30px);
-	height: 36px;
+	min-height: 35px;
 	background-color: $body-bg;
 	margin-top: -20px;
 	margin-left: -15px;
-	border-bottom: 1px solid $default-border;
+	// border-bottom: 1px solid $default-border;
 	margin-bottom: 50px;
+	position: relative;
+
+	.line {
+		position: absolute;
+		width: 100%;
+		bottom: 0px;
+		border-bottom: 1px solid $default-border;
+
+		&.middle {
+			bottom: 35px;
+		}
+	}
 
 	&:after { 
 		content: " ";
@@ -19,6 +31,7 @@
 		padding: 7px 20px;
 		display: inline-block;
 		border-right: 1px solid $default-border;
+		border-bottom: 1px solid $default-border;
 		color: $layout-color;
 
 		@include breakpoint('mobile-portrait') {
@@ -40,6 +53,7 @@
 		display: inline-block;
 		height: 35px;
 		border-right: 1px solid $default-border;
+		border-bottom: 1px solid $default-border;
 		color: $layout-color;
 		margin-top: 0px;
 		vertical-align: top;
@@ -96,6 +110,7 @@
 		margin-left: -4px;
 		padding-left: 10px;
 		border-right: 1px solid $default-border;
+		border-bottom: 1px solid $default-border;
 		padding-right: 30px;
 
 		@include breakpoint('mobile-portrait') {

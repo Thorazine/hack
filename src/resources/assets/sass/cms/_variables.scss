@@ -8,8 +8,9 @@ $color-tertiary: #00CAF3;
 $default-border: $btn-default-border;
 
 $menu-color: 			$btn-primary-color;
-$menu-bg: 				darken($btn-primary-bg, 25%);
-$menu-border: 			darken($btn-primary-border, 50%);
+$menu-bg: 				darken($btn-primary-bg, 35%);
+$menu-item-bg: 			darken($btn-primary-bg, 25%);
+$menu-border: 			darken($btn-primary-border, 35%);
 $menu-color-active: 	$btn-warning-bg;
 $menu-bg-active: 		$btn-primary-bg;
 $menu-border-active: 	$btn-warning-border;
