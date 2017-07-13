@@ -5,6 +5,19 @@ $color-primary: #FFFFFF;
 $color-secondary: #262626;
 $color-tertiary: #00CAF3;
 
+$default-border: $btn-default-border;
+
+$menu-color: 			$btn-primary-color;
+$menu-bg: 				darken($btn-primary-bg, 25%);
+$menu-border: 			darken($btn-primary-border, 50%);
+$menu-color-active: 	$btn-warning-bg;
+$menu-bg-active: 		$btn-primary-bg;
+$menu-border-active: 	$btn-warning-border;
+
+$layout-color: 			$menu-color-active;
+
+
+
 $color-gradient-primary-top: #00CAF3;
 $color-gradient-primary-bottom: #0091D9;
 

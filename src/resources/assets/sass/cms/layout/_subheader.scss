@@ -1,10 +1,10 @@
 .subheader {
 	width: calc(100% + 30px);
 	height: 36px;
-	background-color: #FFF;
+	background-color: $body-bg;
 	margin-top: -20px;
 	margin-left: -15px;
-	border-bottom: 1px solid #CCC;
+	border-bottom: 1px solid $default-border;
 	margin-bottom: 50px;
 
 	&:after { 
@@ -18,29 +18,29 @@
 		height: inherit;
 		padding: 7px 20px;
 		display: inline-block;
-		border-right: 1px solid #CCC;
-		color: #d19b3d;
+		border-right: 1px solid $default-border;
+		color: $layout-color;
 
 		@include breakpoint('mobile-portrait') {
 			padding: 7px 7px;
 		}
 
 		&:hover {
-			color: #d19b3d;
+			color: $layout-color;
 			text-decoration: none;
 			background-color: rgba(0,0,0,0.05);
 		}
 
 		&:active {
-			background-color: #FFF;
+			background-color: $body-bg;
 		}
 	}
 
 	.holder {
 		display: inline-block;
 		height: 35px;
-		border-right: 1px solid #CCC;
-		color: #d19b3d;
+		border-right: 1px solid $default-border;
+		color: $layout-color;
 		margin-top: 0px;
 		vertical-align: top;
 		margin-left: -4px;
@@ -55,7 +55,7 @@
 		}
 
 		&:active {
-			background-color: #FFF;
+			background-color: $body-bg;
 		}
 
 		select {
@@ -84,7 +84,7 @@
 			line-height: 35px;
 			text-align: center;
 			height: inherit;
-			border-left: 1px solid #CCC;
+			border-left: 1px solid $default-border;
 			pointer-events: none;
 		}
 	}
@@ -95,7 +95,7 @@
 		border: none;
 		margin-left: -4px;
 		padding-left: 10px;
-		border-right: 1px solid #CCC;
+		border-right: 1px solid $default-border;
 		padding-right: 30px;
 
 		@include breakpoint('mobile-portrait') {

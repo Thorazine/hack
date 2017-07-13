@@ -28,10 +28,10 @@ class Builder {
     {
         $gallery = new Gallery;
 
-        $file = $gallery->select('filename', 'extension', 'updated_at')->where('id', $id)->first();
+        $file = $gallery->select('title', 'filename', 'extension', 'updated_at')->where('id', $id)->first();
 
         if($file) {
-            return asset(Storage::disk(config('filesystems.default'))->url('cropped/thumbnail/'.$file->fullname)).'?cache='.crc32($file->updated_at);
+            return $file; //asset(Storage::disk(config('filesystems.default'))->url('cropped/thumbnail/'.$file->fullname)).'?cache='.crc32($file->updated_at);
         }
         
     }

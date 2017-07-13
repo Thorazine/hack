@@ -77,7 +77,7 @@ class GalleryController extends Controller
 					})
 					->encode($file['extension'], $this->quality);
 				
-					Storage::disk(config('filesystems.default'))->put('thumbnail/'.$filename, $image->getEncoded());
+					Storage::disk(config('filesystems.default'))->put($folder.'/'.$filename, $image->getEncoded());
 	    			
 	    			$image->destroy();
 	    		}	    		
@@ -153,7 +153,7 @@ class GalleryController extends Controller
 				->encode($gallery->extension, $this->quality);
 				
 				// save the default image
-				Storage::disk(config('filesystems.default'))->put('cropped/thumbnail/'.$filename, $image->getEncoded());
+				Storage::disk(config('filesystems.default'))->put('cropped/'.$folder.'/'.$filename, $image->getEncoded());
 
     			
     			// Storage::disk(config('filesystems.default'))->put('cropped/thumbnail/'.$filename, $image);
@@ -207,7 +207,15 @@ class GalleryController extends Controller
     {
     	try {
 	    	$gallery = $this->gallery->where('id', $request->id)->first();
-	    	Storage::disk(config('filesystems.default'))->delete($this->gallery->fullname);
+
+	    	// remove all default sizes
+	    	foreach($this->defaultSizes as $folder => $specifications) {
+	    		Storage::disk(config('filesystems.default'))->delete($folder.'/'.$gallery->fullname);
+	    	}
+
+	    	// remove the original
+	    	Storage::disk(config('filesystems.default'))->delete('original/'.$gallery->fullname);
+
 	    	$this->gallery->where('id', $request->id)->delete();
 
 	    	return response()->json([

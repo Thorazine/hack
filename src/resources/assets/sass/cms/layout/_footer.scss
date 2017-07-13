@@ -4,8 +4,8 @@
 	right: 0px;
 	height: 35px;
 	width: calc(100% - 235px);
-	border-top: 1px solid #CCC;
-	background-color: #FFF;
+	border-top: 1px solid $default-border;
+	background-color: $body-bg;
 	overflow: hidden;
 
 	@include breakpoint('tablet-portrait') {

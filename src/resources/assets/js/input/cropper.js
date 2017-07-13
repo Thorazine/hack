@@ -58,12 +58,16 @@ cropper.init = function(that, key) {
 	cropper.instances[key].modal = $(that).find('.modal-cropper');
 	cropper.instances[key].width = $(that).data('width');
 	cropper.instances[key].height = $(that).data('height');
+	cropper.instances[key].title = '';
 };
 
 
-cropper.load = function(that, key, url, id) {
+cropper.load = function(that, key, url, id, title) {
 
 	cropper.instances[key].id = id;
+
+	// set the title
+	cropper.instances[key].title = title;
 
 	if(! cropper.instances[key].cropper && url) {
 
@@ -121,9 +125,12 @@ cropper.close = function(that, key) {
 
 
 cropper.setImage = function(that, key, url) {
+
+	// console.log($(that).find('items-inner').html(), key)
 	$(that).find('[data-image-button]').hide();
 	$(that).find('[data-image-image] img').attr('src', url);
 	$(that).find('[data-image-image]').show();
+	$(that).find('[data-image-title]').val(cropper.instances[key].title);
 };
 
 

@@ -6,8 +6,8 @@
 		right: 0px;
 		height: 35px;
 		width: calc(100% - 235px);
-		border-top: 1px solid #CCC;
-		background-color: #FFF;
+		border-top: 1px solid $default-border;
+		background-color: $body-bg;
 		overflow: none;
 
 		@include breakpoint('tablet-portrait') {
@@ -24,10 +24,10 @@
 				a, span {
 					border: none;
 					border-radius: 0px;
-					color: #d19b3d;
+					color: $layout-color;
 					height: 35px;
 					width: 35px;
-					border-right: 1px solid #CCC;
+					border-right: 1px solid $default-border;
 					background-color: transparent;
 					text-align: center;
 				}
@@ -38,7 +38,7 @@
 
 				&.active {
 					span {
-						color: #CCC;
+						color: $default-border;
 					}
 				}
 			}

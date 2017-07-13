@@ -82,6 +82,13 @@ trait ModuleHelper {
 	{
 		if(@$this->types[$key]['type'] == 'image') {
 
+			// see if there is a title, if so add it and drop the index
+			$extraData = [];
+			if(array_key_exists($key.'---title', $data)) {
+				$extraData['title'] = $data[$key.'---title'];
+				unset($data[$key.'---title']);
+			}
+
 			if($value == '0' || $value) {
 
 				if(@$this->record[$key] == $value) {
@@ -92,9 +99,10 @@ trait ModuleHelper {
 				}
 
 				if($value) { // there is a new one, claim it
+
 	                Cms::getGallery()->where('id', $value)->update([
 	                    'updated_at' => date('Y-m-d H:i:s'),
-	                ]);
+	                ]+$extraData);
 	            }
 	            else {
 	            	$data[$key] = '';

@@ -153,6 +153,18 @@ class Gallery extends CmsModel
 
 
     /**
+     * Return the url with browser cache buster
+     */
+    public function getThumbnailAttribute()
+    {
+        if($this->filename && $this->extension) {
+            return asset(Storage::disk(config('filesystems.default'))->url('cropped/thumbnail/'.$this->filename.'.'.$this->extension)).'?cache='.crc32($this->updated_at);
+        }
+        return '';
+    }
+
+
+    /**
      * Add the fullname to the db output
      */
     public function getFullnameAttribute()

@@ -44,5 +44,24 @@ $(document).ready(function() {
 
     // set the width of the pagination
     $('ul.pagination').width($('ul.pagination li').length * 34 + 1);
+
+    hideAlert(1000);
+
+    $('.alert-timeout').click(function(event) {
+        hideAlert(10000);
+    });
 });
+
+// hide the notification alert
+function hideAlert(timeout)
+{
+    $('.alert-timeout').css('right', 0);
+    setTimeout(function() {
+        $('.alert-timeout').animate({
+            right: "-="+($('.alert-timeout').width() + 40),
+        }, 1000, function() {
+        // Animation complete.
+        });
+    }, timeout);
+}
 

@@ -13,7 +13,7 @@
 	</div>
 	<div class="model-modal-holder">
 
-		<div class="items-inner"></div>
+		<div class="items-inner" id="items-inner-{{ $key }}"></div>
 
 	</div>
 	<div class="model-modal-footer">

@@ -29,10 +29,12 @@ var uploadTemplate = '' +
 '<div class="item dz-preview dz-file-preview" title="" data-original="" data-id="">' +
 	'<img data-dz-thumbnail />' +
 	'<div class="dz-progress">' +
-		'<div class="dz-upload" data-dz-uploadprogress></div>' +
+		'<div class="dz-upload" data-dz-uploadprogress style="width:0%;" title="Uploading..."></div>' +
+		'<div class="dz-processing" title="Processing..."><i class="fa fa-refresh fa-spin fa-3x fa-fw"></i></div>' +
 	'</div>' +
+	'<div class="dz-remove" style="display:none;"><i class="fa fa-times"></i></div>' +
+	// '<div class="dz-edit" style="display:none;"><i class="fa fa-pencil"></i></div>' +
 '</div>';
-
 
 gallery.init = function(that, key) {
 
@@ -50,10 +52,9 @@ gallery.init = function(that, key) {
 			// only go if there is an original link, else let it pass
 			if($(target).data('original')) {
 				gallery.close(that, key);
-				cropper.load(that, key, $(target).data('original'), $(target).data('id'));
+				cropper.load(that, key, $(target).data('original'), $(target).data('id'), $(target).attr('title'));
 			}
 	});
-
 };
 
 
@@ -75,15 +76,12 @@ gallery.gateway = function(that, key) {
 
 	request($(that).data('gallery-api'), 'POST', data).then(function(response) {
 		var html = '';
-
 		$.each(response.data.data, function(index, values) {
-			html += '<div class="item" title="'+values.title+'" data-original="'+values.original+'" data-id="'+values.id+'">';
-			html += '<img src="'+values.thumbnail+'">';
-			html += '</div>';
+			html += gallery.template(values.title, values.original, values.id, values.thumbnail);
 		});
 
 		$(gallery.instances[key].modal).find('.items-inner').html(html);
-
+		gallery.bindOptions();
 	}, function(error) {
 
 	});
@@ -121,42 +119,45 @@ gallery.initDropzone = function(that, key) {
 	return $(that).find('.model-modal-holder').dropzone({ 
 		url: $('.gallery').data('upload-url'), 
 		addRemoveLinks: true,
-		previewsContainer: '.items-inner',
+		previewsContainer: '#items-inner-'+key,
 		previewTemplate: uploadTemplate,
 		thumbnailWidth:100,
 		thumbnailHeight:100,
 		addRemoveLinks: false,
-		removedfile: function(file) {
-			$.ajax({
-				type: 'POST',
-				url: galleryDeletePath,
-				data: "id="+file.previewElement.id,
-				dataType: 'html'
-			});
-			var _ref;
-			return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0; 
-		},
 		init: function() {
 			this.on('addedfile', function(file, response) {
 				// move the newly created item to the top of the list
+				console.log($(file.previewElement).parent().attr('class'))
 				$(file.previewElement).parent().prepend(file.previewElement);
 			});
 			this.on('uploadprogress', function(file, progress, bytesSent) {
 				// we want a countdown
 				$(file.previewElement).find('.dz-upload').width((100 - progress)+'%');
+
+				if(progress == 100) {
+					$(file.previewElement).find('.dz-processing').show();
+				}
 			});
 			this.on('success', function(file, response) {
 				// take the response data and add it in the item
-				file.previewElement.id = response.id;
-				file.previewElement.filename = response.filename;
-				file.name = response.filename;
-				$(file.previewElement).attr('title', response.filename);
-				$(file.previewElement).data('original', response.original);
-				$(file.previewElement).data('id', response.id);
-				$(file.previewElement).find('.dz-progress').remove();
+				// file.previewElement.id = response.id;
+				// file.previewElement.filename = response.filename;
+				// file.name = response.filename;
+				// $(file.previewElement).attr('title', response.filename);
+				// $(file.previewElement).data('original', response.original);
+				// $(file.previewElement).data('id', response.id);
+				// $(file.previewElement).find('.dz-progress').remove();
+				// $(file.previewElement).find('.dz-edit').show();
+				// $(file.previewElement).find('.dz-remove').show();
+				// $(file.previewElement).addClass('item-id-'+response.id);
+
+				$('.modal-gallery .items-inner').prepend(gallery.template(response.filename, response.original, response.id, $(file.previewElement).find('img').attr('src')));
+				$(file.previewElement).remove();
+
+				gallery.bindOptions();
 			});
 			this.on('sending', function(file, xhr, formData) {
-				// Will send the filesize along with the file as POST data.
+				// Will send the filename along with the file as POST data.
 				formData.append('filename', file.name);
 				formData.append('_token', $('meta[name="_token"]').attr('content'));
 			});
@@ -167,3 +168,30 @@ gallery.initDropzone = function(that, key) {
 		}
 	});
 };
+
+gallery.bindOptions = function() {
+	$('.item .dz-edit').unbind('click').click(function(event) {
+		alert('edit');
+	});
+
+	$('.item .dz-remove').unbind('click').click(function(event) {
+		if(confirm(trans('confirm_delete'))) {
+			gallery.remove(this, $(this).closest('.item').data('id'));
+		}
+	});
+};
+
+gallery.remove = function(that, id) {
+	request($('.gallery').data('remove-api'), 'POST', {id: id}).then(function(response) {
+		$('.modal-gallery .items-inner').find('[data-id="'+id+'"]').remove();
+	});
+};
+
+gallery.template = function(title, original, id, thumbnail) {
+	var html = '<div class="item" title="'+title+'" data-original="'+original+'" data-id="'+id+'">';
+	html += '<img src="'+thumbnail+'">';
+	html += '<div class="dz-remove"><i class="fa fa-times"></i></div>';
+	// html += '<div class="dz-edit"><i class="fa fa-pencil"></i></div>';
+	html += '</div>';
+	return html;
+}

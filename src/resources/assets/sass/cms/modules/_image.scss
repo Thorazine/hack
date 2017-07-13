@@ -57,4 +57,9 @@
 	.image-drop {
 		display: none;
 	}
+
+	.extra {
+		float: right;
+		width: calc(100% - 120px);
+	}
 }

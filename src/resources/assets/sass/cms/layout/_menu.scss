@@ -6,12 +6,12 @@
 		// font-family: verdana;
 		font-size: 12px;
 		font-weight: 200;
-		background-color: #2e353d;
+		background-color: $menu-bg;
 		position: fixed;
 		top: 0px;
 		width: $menu-width;
 		height: 100%;
-		color: #e1ffff;
+		color: $menu-color;
 		// width: 100%;
     	margin-bottom: 10px;
 
@@ -80,6 +80,7 @@
 		}
 
 		li {
+			background-color: $menu-bg;
 			list-style: none;
 			padding: 0px;
 			margin: 0px;
@@ -87,17 +88,26 @@
 			cursor: pointer;
 			position: relative;
 			padding-left: 0px;
-			border-left: 3px solid #2e353d;
-			border-bottom: 1px solid #23282e;
+			border-left: 3px solid $menu-border;
+			border-bottom: 1px solid $menu-border;
 
 			&.active {
-				border-left: 3px solid #d19b3d;
-				background-color: #4f5b69;
+				border-left: 3px solid $menu-border-active;
+				background-color: $menu-bg-active;
+
+				a {
+					color: $menu-color-active;
+					cursor: pointer;
+				}
+
+				&:hover {
+					background-color: $menu-bg-active;
+				}
 			}
 
 			a {
 				text-decoration: none;
-				color: #e1ffff;
+				color: $menu-color;
 				width: 100%;
 				display: block;
 
@@ -109,8 +119,8 @@
 			}
 
 			&:hover {
-				border-left: 3px solid #d19b3d;
-				background-color: #4f5b69;
+				border-left: 3px solid $menu-border-active;
+				background-color: darken($menu-bg, 5%);
 				-webkit-transition: all 1s ease;
 				-moz-transition: all 1s ease;
 				-o-transition: all 1s ease;
@@ -136,23 +146,23 @@
 			}
 
 			li.active {
-				color: #d19b3d;
+				color: $menu-color-active;
 			}
 
 			li.active a {
-				color: #d19b3d;
+				color: $menu-color-active;
 			}
 
 			li {
-				background-color: #181c20;
+				background-color: darken($menu-bg, 37.5%);
 				border: none;
 				line-height: 28px;
-				border-bottom: 1px solid #23282e;
+				border-bottom: 1px $menu-border;
 				margin-left: 0px;
 			}
 
 			li:hover {
-				background-color: #020203;
+				background-color: darken($menu-bg, 12.5%);
 			}
 
 			li:before {
@@ -184,7 +194,7 @@
 				background-color: #23282E;
 
 				&:hover {
-					color: #d19b3d;
+					color: $layout-color;
 				}
 			}
 		}
