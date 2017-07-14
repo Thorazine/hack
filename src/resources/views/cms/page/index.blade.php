@@ -10,6 +10,8 @@
 		@include('hack::partials.header')
 
 		<div class="subheader">
+			<div class="line"></div>
+			<div class="line middle"></div>
 			@if($hasPermission('create'))
 				<a class="" href="{{ route('cms.'.$slug.'.'.((@$createRoute) ? $createRoute : 'create')) }}"><i class="fa fa-plus"></i> {{ trans('hack::cms.new') }}</a>
 			@endif

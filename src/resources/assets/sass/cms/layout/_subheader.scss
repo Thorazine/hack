@@ -7,7 +7,8 @@
 	// border-bottom: 1px solid $dropdown-divider-bg;
 	margin-bottom: 50px;
 	position: relative;
-
+	overflow: hidden;
+	
 	.line {
 		position: absolute;
 		width: 100%;
@@ -33,6 +34,7 @@
 		border-right: 1px solid $dropdown-divider-bg;
 		// border-bottom: 1px solid $dropdown-divider-bg;
 		color: $navbar-default-link-color;
+		margin-left: -4px;
 
 		@include breakpoint('mobile-portrait') {
 			padding: 7px 7px;

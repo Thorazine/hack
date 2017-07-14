@@ -63,12 +63,30 @@ return [
 		],
 
 		'types' => [
-			'text' => 'Text',
-			'select' => 'Select',
-			'checkbox' => 'Checkbox',
-			'radio' => 'Radio',
-			'date' => 'Date',
-			'time' => 'Time',
+			'text' => [
+				'label' => 'Text',
+				'type' => 'text',
+			],
+			'select' => [
+				'label' => 'Select',
+				'type' => 'value-label',
+			],
+			'checkbox' => [
+				'label' => 'Checkbox',
+				'type' => 'text',
+			],
+			'radio' => [
+				'label' => 'Radio',
+				'type' => 'value-label',
+			],
+			'date' => [
+				'label' => 'Date',
+				'type' => 'text',
+			],
+			'time' => [
+				'label' => 'Time',
+				'type' => 'text',
+			],
 		],
 	],
 

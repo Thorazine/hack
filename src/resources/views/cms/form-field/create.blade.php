@@ -7,10 +7,6 @@
 	@endif
 @endforeach
 
-@foreach($data['builders'] as $type)
-	@include('hack::positions.create.'.((@$type['position']) ? $type['position'] : 'main'), ['key' => $type['key'], 'builder' => $type])
-@endforeach
-
 
 @section('content')
 
@@ -29,7 +25,7 @@
 		
 		{!! Form::open(['route' => 'cms.'.$slug.'.store', 'class' => 'form-horizontal']) !!}
 
-			{!! Form::hidden('template_id', Request::get('template_id')) !!}
+			{!! Form::hidden('field_type', Request::get('field_type')) !!}
 
 			<div class="row">
 				<div class="col-sm-9" id="main">

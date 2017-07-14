@@ -43,6 +43,15 @@ class FormController extends CmsController
                     ],
                 ];
             },
+            'extraEditButtons' => function($data) {
+                return [
+                    [
+                        'class' => '',
+                        'route' => route('cms.form_fields.index', ['fid' => $data['id']]),
+                        'text' => '<i class="fa fa-bars"></i> '.trans('hack::cms.add'),
+                    ]
+                ];
+            }
         ]);
 
         parent::__construct($this);

@@ -74,7 +74,7 @@ class Page extends CmsModel
                 'edit' => false,
             ],
             'template_id' => [
-                'type' => 'value-label',
+                'type' => 'create-value-edit-label',
                 'label' => trans('hack::modules.pages.template_id'),
                 'regex' => 'required',
                 'values' => 'getTemplates',

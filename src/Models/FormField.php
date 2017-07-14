@@ -34,10 +34,10 @@ class FormField extends CmsModel
                 'edit' => false,
             ],
             'field_type' => [
-                'type' => 'select',
+                'type' => 'create-value-edit-label',
                 'label' => trans('hack::modules.form_fields.field_type'),
                 'regex' => 'required',
-                'values' => config('cms.forms.types'),
+                'values' => 'getFieldTypes',
             ],
             'overview' => [
                 'type' => 'select',
@@ -121,20 +121,21 @@ class FormField extends CmsModel
      */
     public function valuesAsArray()
     {
-        $values = explode('|', $this->values);
+        return json_decode($this->values);
+    }
 
-        $array = [];
-        foreach($values as $value) {
-            if(strpos($value, '~') !== false) {
-                $valueLabel = explode('~', $value);
-                $array[(string)$valueLabel[0]] = (string)$valueLabel[1];
-            }
-            else {
-                $array[(string)$value] = (string)$value;
-            }
+    /**
+     * @param  array
+     * @param  string
+     * @return array
+     */
+    public function getFieldTypes($data = [], $key = '')
+    {
+        $types = [];
+        foreach(config('cms.forms.types') as $value => $values) {
+            $types[$value] = $values['label'];
         }
-
-        return $array;
+        return $types;
     }
 
 

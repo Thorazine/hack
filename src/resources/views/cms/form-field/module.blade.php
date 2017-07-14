@@ -23,10 +23,10 @@
 						{{ trans('hack::modules.templates.template') }}
 					</label>
 					<div class="col-sm-9">
-						<?php $templates = Builder::templates(); ?>
-						@if($templates)
-							@foreach($templates as $templateId => $label)
-								<a class="btn btn-primary" style="width:100%; margin-bottom: 10px;" href="{{ route('cms.'.$slug.'.create', ['fid' => Request::get('fid'), 'template_id' => $templateId]) }}">
+						<?php $fieldTypes = $model->getFieldTypes(); ?>
+						@if($fieldTypes)
+							@foreach($fieldTypes as $fieldType => $label)
+								<a class="btn btn-primary" style="width:100%; margin-bottom: 10px;" href="{{ route('cms.'.$slug.'.create', ['fid' => Request::get('fid'), 'field_type' => $fieldType]) }}">
 									{{ $label }}
 								</a>
 							@endforeach

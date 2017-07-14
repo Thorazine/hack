@@ -68,6 +68,7 @@ Route::group(['middleware' => 'sentinel.auth'], function() {
 	Route::resource('slugs', 'SlugController');
 	Route::get('forms/download/{id}', ['as' => 'forms.download', 'uses' => 'FormController@download']);
 	Route::resource('forms', 'FormController');
+	Route::get('form_fields/module/create', ['as' => 'form_fields.module', 'uses' => 'FormFieldController@module']);
 	Route::post('form_fields/order', ['as' => 'form_fields.order', 'uses' => 'FormFieldController@order']);
 	Route::resource('form_fields', 'FormFieldController');
 	Route::resource('form_entries', 'FormEntryController');

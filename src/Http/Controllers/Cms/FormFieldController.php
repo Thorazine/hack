@@ -19,6 +19,7 @@ class FormFieldController extends CmsController
 
         view()->share([
             'hasOrder' => true,
+            'createRoute' => 'cms.form_fields.module',
             'extraHeaderButtons' => function($data) {
                 return [
                     [
@@ -70,6 +71,48 @@ class FormFieldController extends CmsController
 
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function module(Request $request)
+    {
+        $this->viewInitialiser();
+         
+        return view('hack::form-field.module');
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+        $this->viewInitialiser();
+
+        if(session('_old_input')) {
+            $data = session('_old_input');
+        }
+        else {
+            $data = [
+                'field_type' => $request->field_type,
+            ];
+        }
+
+        $this->model->types['values']['type'] = config('cms.forms.types.'.$data['field_type'].'.type');
+
+        view()->share([
+            'types' => $this->model->types,
+        ]);
+
+        return view('hack::form-field.create')
+            ->with('data', $data);
+    }
+
+
+    /**
      * Get the values for saving. This function
      * makes overwriting it with an array  
      * for the child class easier
@@ -84,6 +127,36 @@ class FormFieldController extends CmsController
         ];
         
         return $request;
+    }
+
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Request $request, $id)
+    {
+        $this->viewInitialiser();
+        
+        if(session('_old_input')) {
+            $data = session('_old_input');
+        }
+        else {
+            $data = $this->queryParameters($this->model, $request)
+                ->where('id', $id)
+                ->first()
+                ->toArray();
+        }
+
+        $this->model->types['values']['type'] = config('cms.forms.types.'.$data['field_type'].'.type');
+
+        view()->share([
+            'types' => $this->model->types,
+        ]);
+
+        return $this->child->editExtra($request, $id, $data);
     }
 
 
