@@ -94,12 +94,12 @@
 			border-bottom: 1px solid $navbar-inverse-link-disabled-color;
 
 			&.active {
-				border-left: 3px solid $navbar-inverse-border;
+				border-left: 3px solid $link-color;
 				background-color: $navbar-inverse-border;
 
 				a {
 					cursor: pointer;
-					color: $navbar-inverse-link-hover-color;
+					color: $link-color;
 				}
 
 				&:hover {
@@ -121,7 +121,7 @@
 			}
 
 			&:hover {
-				border-left: 3px solid $navbar-inverse-link-disabled-color;
+				border-left: 3px solid $link-color;
 				background-color: darken($navbar-inverse-bg, 5%);
 				-webkit-transition: all 1s ease;
 				-moz-transition: all 1s ease;
@@ -147,16 +147,8 @@
 				padding-left: 50px;
 			}
 
-			li.active {
-				color: $navbar-inverse-link-color;
-			}
-
-			li.active a {
-				color: $navbar-inverse-link-color;
-
-				&:hover {
-					color: $navbar-inverse-link-hover-color
-				}
+			li.active, li.active a {
+				color: $link-color;
 			}
 
 			li {
