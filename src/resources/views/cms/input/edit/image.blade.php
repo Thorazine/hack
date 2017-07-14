@@ -12,10 +12,10 @@
 			<img @if(@$data[$key]) src="{{ $image->thumbnail }}" @endif>
 			<div class="delete">&times;</div>
 
-			<div class="extra">
+			<div class="input-group extra">
+				<span class="input-group-addon" id="basic-addon1">Title</span>
 				{{ Form::text($key.'---title', @$image->title, ['class' => 'form-control', 'placeholder' => $type['label'].' title', 'id' => $key.'---title', 'data-image-title']) }}
 			</div>
-
 		</div>
 
 		{!! Form::hidden($key, Builder::createValue($model, $type, $data, $key, 'edit', false), ['class' => 'input-value']) !!}

@@ -22,6 +22,7 @@ class CreateTableMenuItems extends Migration
             $table->string('external_url')->nullable();
             $table->string('title')->nullable();
             $table->string('description')->nullable();
+            $table->string('target')->nullable();
             $table->integer('depth')->default(0)->nullable();
             $table->integer('drag_order')->default(0)->nullable();
             $table->boolean('active')->default(1);

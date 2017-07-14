@@ -69,6 +69,7 @@ return [
 		'external_url' => 'Url',
 		'title' => 'Titel',
 		'description' => 'Omschrijving',
+		'target' => 'Target',
 		'active' => 'Actief',
 	],
 	'not_found' => [

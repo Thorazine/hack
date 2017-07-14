@@ -58,6 +58,18 @@ class MenuItem extends CmsModel
                 'label' => trans('hack::modules.menu_items.description'),
                 'regex' => '',
             ],
+            'target' => [
+                'type' => 'select',
+                'label' => trans('hack::modules.menu_items.target'),
+                'regex' => '',
+                'default' => '_self',
+                'values' => [
+                    '_blank' => '_blank',
+                    '_self' => '_self',
+                    '_parent' => '_parent',
+                    '_top' => '_top',
+                ],
+            ],
             'active' => [
                 'type' => 'checkbox',
                 'label' => trans('hack::modules.menu_items.active'),

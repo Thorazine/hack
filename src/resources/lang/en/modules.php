@@ -69,6 +69,7 @@ return [
 		'external_url' => 'Url',
 		'title' => 'Title',
 		'description' => 'Description',
+		'target' => 'Target',
 		'active' => 'Active',
 	],
 	'not_found' => [
