@@ -18,7 +18,7 @@
             </select>
         </div>
     @else
-        <div class="brand">
+        <div class="brand single">
             {{ $sites[0]->title }}
         </div>
     @endif

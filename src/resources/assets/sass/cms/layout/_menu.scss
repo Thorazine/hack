@@ -51,13 +51,12 @@
 			font-size: 14px;
 			text-align: left !important;
 			font-size: 22px;
-			padding-left: 10px;
 			overflow: hidden;
 			position: relative;
 			border-bottom: 1px solid $navbar-inverse-link-disabled-color;
 			color: $link-color;
 
-			& .chevron:after {
+			&.chevron:after {
 				position: absolute;
 				right: 10px;
 				top: 0px;
@@ -66,6 +65,11 @@
 				content: "\f078";
 				font-size: 12px;
 			}
+
+			&.single { 
+				padding-left: 10px;
+			}
+
 		}
 
 		.toggle-btn {
