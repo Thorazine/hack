@@ -95,7 +95,7 @@ class MenuItem extends CmsModel
     }
 
 
-    public function getActiveAttribute()
+    public function getCurrentAttribute()
     {
         if(rtrim($this->external_url, '/') == Request::url()) {
             return true;
@@ -107,7 +107,7 @@ class MenuItem extends CmsModel
     }
 
 
-    public function activeHtml($html)
+    public function currentHtml($html)
     {
         if($this->active) {
             return $html;

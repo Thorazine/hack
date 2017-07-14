@@ -1,5 +1,6 @@
-<div class="item" id="2345">
-	<span>{{ $data->title }}</span>
+<div class="item @if(!$data->active) inactive @endif">
+	<span class="url">{{ $data }}</span>
+	<span class="title">{{ $data->title }}</span>
 	<div class="options">
 		@if($hasPermission('edit'))
 			<a class="btn btn-primary btn-xs" href="{{ route('cms.'.$slug.'.edit', ['id' => $data->id, 'fid' => $fid]) }}"><i class="fa fa-pencil"></i></a>

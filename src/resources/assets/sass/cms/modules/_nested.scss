@@ -16,6 +16,29 @@
 		border-radius: 5px;
 		cursor: move;
 		min-height: 32px;
+
+		&.inactive {
+			border: 1px dashed $btn-danger-border;
+		}
+
+		.title {
+			width: 190px;
+			display: block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.url {
+			position: absolute;
+			left: 0px;
+			padding-left: 200px;
+			padding-right: 70px;
+			width: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
 	}
 
 	.options {
@@ -31,7 +54,7 @@
 	.placeholder {
 		height: 32px;
 		width: 100%;
-		border: 1px dashed $btn-default-color;
+		border: 1px dashed $link-color;
 		display: block;
 		visibility: visible !important;
 		padding: 5px;
