@@ -122,6 +122,7 @@ $(document).ready(function() {
 
     $('#q-clear').click(function(event) {
     	model.q = '';
+    	$('#q').val('');
     	model.page = 1;
 		model.order = '';
 		model.dir = 'asc';
@@ -161,6 +162,7 @@ $(document).ready(function() {
 		else {
 			delete model.filters[$(this).data('filter')];
 		}
+		model.page = 1; // reset the page number
 		model.search();
 	});
 });

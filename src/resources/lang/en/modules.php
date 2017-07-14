@@ -178,5 +178,6 @@ return [
 		'level' => 'Warn level',
 		'controller' => 'Controller',
 		'request_data' => 'Request data',
+		'created_at' => 'Created at',
 	],
 ];

@@ -118,6 +118,7 @@
 		border-right: 1px solid $dropdown-divider-bg;
 		border-bottom: 1px solid $dropdown-divider-bg;
 		padding-right: 30px;
+		color: $navbar-default-link-color;
 
 		@include breakpoint('mobile-portrait') {
     		width: 212px;

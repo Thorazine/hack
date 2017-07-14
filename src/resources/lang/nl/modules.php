@@ -178,5 +178,6 @@ return [
 		'level' => 'Waarschuwings niveau',
 		'controller' => 'Controller',
 		'request_data' => 'Aanvraag data',
+		'created_at' => 'Aangemaakt op',
 	],
 ];

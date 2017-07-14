@@ -87,6 +87,14 @@ class DbLog extends CmsModel
                 // 'edit' => false,
                 'overview' => false,
             ],
+            'created_at' => [
+                'type' => 'timestamp',
+                'label' => trans('hack::modules.db_logs.created_at'),
+                'regex' => '',
+                'position' => 'sidebar',
+                'create' => false,
+                'edit' => false,
+            ],
         ];
     } 
 
