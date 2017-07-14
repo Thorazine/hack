@@ -1,4 +1,4 @@
-@foreach($datas as $data)
+@forelse($datas as $data)
 	<tr data-id="{{ $data->id }}">
 		@if(@$hasOrder)
 			<td><i class="fa fa-bars fa-2x handle"></i></td>
@@ -35,4 +35,8 @@
 			@endif
 		</td>
 	</tr>
-@endforeach
+@empty
+<tr>
+	<td colspan="10">@lang('hack::cms.no_records')</td>
+</tr>
+@endforelse
