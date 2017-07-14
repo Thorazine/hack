@@ -24,7 +24,7 @@
 				a, span {
 					border: none;
 					border-radius: 0px;
-					color: $navbar-inverse-link-color;
+					color: $navbar-default-link-color;
 					height: 35px;
 					width: 35px;
 					border-right: 1px solid $dropdown-divider-bg;
@@ -34,6 +34,10 @@
 
 				a {
 					cursor: pointer;
+
+					&:hover {
+						color: $navbar-default-link-hover-color;
+					}
 				}
 
 				&.active {

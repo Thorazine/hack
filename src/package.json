@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
+    "bootswatch-sass": "^3.2.0",
     "cropper": "^2.3.4",
     "dropzone": "^4.3.0",
     "eonasdan-bootstrap-datetimepicker": "^4.17.42",

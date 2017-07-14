@@ -55,6 +55,7 @@
 			overflow: hidden;
 			position: relative;
 			border-bottom: 1px solid $navbar-inverse-link-disabled-color;
+			color: $link-color;
 
 			& .chevron:after {
 				position: absolute;

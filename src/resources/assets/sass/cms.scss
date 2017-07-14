@@ -1,6 +1,7 @@
 // basic stuff
 @import './node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables'; // overwrite bootstrap colors
 
+// Themes
 // @import './node_modules/bootswatch-sass/amelia/variables';
 // @import './node_modules/bootswatch-sass/cerulean/variables';
 // @import './node_modules/bootswatch-sass/cosmo/variables';
@@ -18,6 +19,9 @@
 // @import './node_modules/bootswatch-sass/superhero/variables';
 // @import './node_modules/bootswatch-sass/united/variables';
 // @import './node_modules/bootswatch-sass/yeti/variables';
+
+@import './vendor/thorazine/hack/src/resources/assets/sass/cms/theme';
+
 @import './vendor/thorazine/hack/src/resources/assets/sass/cms/variables';
 @import './vendor/thorazine/hack/src/resources/assets/sass/cms/base/font-includes';
 @import './vendor/thorazine/hack/src/resources/assets/sass/cms/base/helper'; 

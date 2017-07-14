@@ -24,31 +24,7 @@
 					</div>
 				</div>
 			@endif
-
-			<div class="grid-6">
-				<div class="panel panel-info">
-					<div class="panel-heading">Basic information</div>
-					<div class="panel-body">
-						Panel content
-					</div>
-				</div>
-			</div>
-			<div class="grid-6">
-				<div class="panel panel-success">
-					<div class="panel-heading">Success messages</div>
-					<div class="panel-body">
-						Panel content
-					</div>
-				</div>
-			</div>
-			<div class="grid-6">
-				<div class="panel panel-primary">
-					<div class="panel-heading">Panel heading without title</div>
-					<div class="panel-body">
-						Panel content
-					</div>
-				</div>
-			</div>
+			
 		</div>
 	</div>
 
