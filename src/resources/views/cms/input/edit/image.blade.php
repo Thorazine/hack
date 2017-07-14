@@ -14,7 +14,7 @@
 
 			<div class="input-group extra">
 				<span class="input-group-addon" id="basic-addon1">Title</span>
-				{{ Form::text($key.'---title', @$image->title, ['class' => 'form-control', 'placeholder' => $type['label'].' title', 'id' => $key.'---title', 'data-image-title']) }}
+				{{ Form::text($key.'---title', @$image->title, ['class' => 'form-control', 'placeholder' => $type['label'].' title', 'id' => $key.'---title', 'data-image-title', 'autocomplete' => 'off']) }}
 			</div>
 		</div>
 
