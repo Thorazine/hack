@@ -59,6 +59,7 @@ return [
 		'depublish_at' => 'Depublicatie datum',
 		'search_priority' => 'Zoek prioriteit',
 		'no_index' => 'Niet indexeren',
+		'preview' => 'Voorvertoning',
 	],
 	'menu' => [
 		'title' => 'Titel',

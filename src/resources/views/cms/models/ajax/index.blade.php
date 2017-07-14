@@ -36,7 +36,7 @@
 		</td>
 	</tr>
 @empty
-<tr>
-	<td colspan="10">@lang('hack::cms.no_records')</td>
-</tr>
+	<tr>
+		<td colspan="10">@lang('hack::cms.no_records')</td>
+	</tr>
 @endforelse

@@ -19,15 +19,16 @@
 		</div>
 
 		<ol class="nested" data-max-levels="{{ @$datas[0]->menu->max_levels }}" data-order-url="{{ route('cms.'.$slug.'.order') }}">
-			@foreach($datas as $index => $data)
+			@forelse($datas as $index => $data)
 
 				{!! $nested->before($index, $data, $datas) !!} 
 
 				@include('hack::menu-item.item')
 
 				{!! $nested->after($index, $data, $datas) !!} 
-
-			@endforeach
+			@empty
+				<p>@lang('hack::cms.no_records')</p>
+			@endforelse
 		</ol>
 
 	</div>

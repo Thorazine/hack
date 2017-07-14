@@ -235,8 +235,10 @@ class PageController extends CmsController
         try {
             DB::beginTransaction();
 
+            // get the current page
             $this->record = $this->queryParameters($this->model, $request)->where('id', $id)->first();
 
+            // prepare the page variables
             $values = $this->prepareValues($request->only([
                 'slug', 
                 'title',
@@ -247,6 +249,7 @@ class PageController extends CmsController
                 'depublish_at',
             ]), $id);
 
+            // save the page
             $this->model->where('id', $id)->update($values);
 
             // check if the slug changed. If so, add record to slugs
@@ -258,6 +261,7 @@ class PageController extends CmsController
                 ], false));
             }
 
+            // get al the page builders and loop them for save
             $builders = Builder::getPageBuilders($id, $this->model, true);
 
             foreach($builders as $builder) {
@@ -268,10 +272,18 @@ class PageController extends CmsController
                     $request = $builderClass->beforeUpdate($request, $builder, $id);
                 }
 
+                // save the page builder data
                 $builderClass->where('id', $builder['id'])->update(
-                    $this->prepareValues(array_only($builder, array_keys($builderClass->types)), $builder['id'], [
-                        'value' => $request->{$builder['key']},
-                    ])
+                    $this->prepareValues(
+                        array_only(
+                            $builder, 
+                            array_keys($builderClass->types)
+                        ), 
+                        $builder['id'], 
+                        [
+                            'value' => $request->{$builder['key']},
+                        ]
+                    )
                 );
             }
 
@@ -295,7 +307,7 @@ class PageController extends CmsController
             ->with('alert-success', trans('hack::cms.info.updated'));
     }
 
-
+    
     /**
      * Remove the specified resource from storage.
      *

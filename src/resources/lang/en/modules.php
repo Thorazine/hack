@@ -59,6 +59,7 @@ return [
 		'depublish_at' => 'Depublish date',
 		'search_priority' => 'Search priority',
 		'no_index' => 'Don\'t index',
+		'preview' => 'Preview',
 	],
 	'menu' => [
 		'title' => 'Title',

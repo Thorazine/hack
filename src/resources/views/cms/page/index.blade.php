@@ -40,7 +40,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($datas as $data)
+					@forelse($datas as $data)
 						<tr>
 							@foreach($types as $key => $values)
 
@@ -73,7 +73,11 @@
 								@endif
 							</td>
 						</tr>
-					@endforeach
+					@empty
+						<tr>
+							<td colspan="10">@lang('hack::cms.no_records')</td>
+						</tr>
+					@endforelse
 				</tbody>
 			</table>
 		</div>

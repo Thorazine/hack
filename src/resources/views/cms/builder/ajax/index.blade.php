@@ -1,4 +1,4 @@
-@foreach($datas as $data)
+@forelse($datas as $data)
 	<tr data-id="{{ $data->pivot->id }}">
 
 		@if(@$hasOrder)
@@ -36,4 +36,8 @@
 			@endif
 		</td>
 	</tr>
-@endforeach
+@empty
+	<tr>
+		<td colspan="10">@lang('hack::cms.no_records')</td>
+	</tr>
+@endforelse

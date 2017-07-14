@@ -73,6 +73,14 @@ class Page extends CmsModel
                 'create' => false,
                 'edit' => false,
             ],
+            'preview' => [
+                'type' => 'preview',
+                'label' => trans('hack::modules.pages.preview'),
+                'regex' => '',
+                'overview' => true,
+                'create' => false,
+                'edit' => false,
+            ],
             'template_id' => [
                 'type' => 'create-value-edit-label',
                 'label' => trans('hack::modules.pages.template_id'),

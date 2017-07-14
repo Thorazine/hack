@@ -107,6 +107,12 @@ class Image extends BaseBuilder
     {
         $gallery = new Gallery;
 
+        // see if there is a title, if so add it and drop the index
+        $extraData = [];
+        if(@$builder['key'].'---title') {
+            $extraData['title'] = $request[$builder['key'].'---title'];
+        }
+
         if($request->{$builder['key']} === '0' || $request->{$builder['key']}) { // delete action
 
             if(@$builder['value'] == $request->{$builder['key']}) {
@@ -120,7 +126,7 @@ class Image extends BaseBuilder
             if($request->{$builder['key']}) { // there is a new one, claim it
                 $gallery->where('id', $request->{$builder['key']})->update([
                     'updated_at' => date('Y-m-d H:i:s'),
-                ]);
+                ]+$extraData);
             }
 
             $gallery->removeUnused();
