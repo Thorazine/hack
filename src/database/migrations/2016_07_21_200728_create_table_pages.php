@@ -23,6 +23,7 @@ class CreateTablePages extends Migration
             $table->string('title')->nullable();
             $table->text('body')->nullable();
             $table->string('view')->nullable();
+            $table->string('hash')->nullable();
 
             $table->timestamp('publish_at')->nullable();
             $table->timestamp('depublish_at')->nullable();

@@ -141,6 +141,7 @@ class PageController extends CmsController
                 'site_id' => Cms::siteId(), 
                 'prepend_slug' => $template->prepend_slug,
                 'view' => $template->view,
+                'hash' => str_random(40),
             ]));
 
             $builders = Builder::getTemplateBuilders($request->template_id, $this->model, true);

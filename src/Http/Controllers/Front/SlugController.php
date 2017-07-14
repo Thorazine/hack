@@ -40,15 +40,26 @@ class SlugController extends Controller
     {   
         // See if the site in all should be online
         if(! Cms::site('publish_at') || (Cms::site('publish_at') < date('Y-m-d H:i:s') && (Cms::site('depublish_at') && date('Y-m-d H:i:s') > Cms::site('depublish_at')))) {
-            return view('offline');
+            if(! $request->preview) {
+                return view('offline');
+            }
         }
 
-        $page = Cache::tags('pages', 'templates', 'slugs')->remember(Cms::cacheKey(['page', $request->slug, Cms::siteId()]), env('PAGE_CACHE_TIME', 1), function() use ($request) {
-            return $this->pageOutput->bySlug($request->slug);
-        });
+        if(! $request->preview) {
+            $page = Cache::tags('pages', 'templates', 'slugs')->remember(Cms::cacheKey(['page', $request->slug, Cms::siteId()]), env('PAGE_CACHE_TIME', 1), function() use ($request) {
+                return $this->pageOutput->bySlug($request->slug);
+            });
+        }
+        else {
+            $page = $this->pageOutput->bySlug($request->slug, false);
+        }
 
         // set the language (again) to make sure when in cache it's the correct language
         Cms::setSiteLanguage($page['language']);
+
+        if($request->preview && $page['hash'] != $request->preview) {
+            abort(404, 'Hash doesn\'t match');
+        }
 
         // if we get an array with an abort for page, we need to redirect
         if(is_array($page) && array_key_exists('abort', $page)) {
@@ -56,17 +67,24 @@ class SlugController extends Controller
         }
 
         // Counteract high cache times. Check to see if we should be online
-        if(! $page['publish_at'] || ($page['publish_at'] < date('Y-m-d H:i:s') && ($page['depublish_at'] && date('Y-m-d H:i:s') > $page['depublish_at']))) {
-            $this->abort(404);
+        if(! $request->preview) {
+            if(! $page['publish_at'] || ($page['publish_at'] < date('Y-m-d H:i:s') && ($page['depublish_at'] && date('Y-m-d H:i:s') > $page['depublish_at']))) {
+                $this->abort(404);
+            }
         }
 
         $response = view($this->getView($page))
             ->with('page', $page);
 
-        return response($response)
-            // add the browser cache
-            ->header('Cache-Control', 'public, max-age='.Cms::site('browser_cache_time'))
-            ->header('Expires', date('D, d M Y H:i:s ', time() + Cms::site('browser_cache_time')).'GMT');
+        if(! $request->preview) {
+            return response($response)
+                // add the browser cache
+                ->header('Cache-Control', 'public, max-age='.Cms::site('browser_cache_time'))
+                ->header('Expires', date('D, d M Y H:i:s ', time() + Cms::site('browser_cache_time')).'GMT');
+        }
+
+        // return without headers
+        return response($response);
     }
 
 

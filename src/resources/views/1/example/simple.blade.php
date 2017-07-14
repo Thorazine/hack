@@ -15,7 +15,7 @@
 			<ul class="menu">
 				@foreach($page->main_menu->menuItems as $menuItem) 
 					<li>
-						<a {!! $menuItem->activeHtml('class="active"') !!} href="{{ $menuItem }}">{!! $menuItem->title !!}</a>
+						<a {!! $menuItem->currentHtml('class="active"') !!} href="{{ $menuItem }}">{!! $menuItem->title !!}</a>
 					</li>
 				@endforeach
 			</ul>

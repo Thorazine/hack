@@ -30,11 +30,14 @@ class PageOutput {
 	}
 
 
-	public function bySlug($slug)
+    /**
+     * Get a page and builders by it's slug
+     */
+	public function bySlug($slug, $withRestrictions = true)
 	{
 		$slug = $this->trimSlug($slug);
 
-		$this->getPageBySlug($slug);
+		$this->getPageBySlug($slug, $withRestrictions);
 
         // set the language
         Cms::setSiteLanguage($this->pageData['language']);
@@ -97,14 +100,19 @@ class PageOutput {
 	}
 
 
-	private function getPageBySlug($slug)
+	private function getPageBySlug($slug, $withRestrictions = true)
 	{
 		// find the page
 		$this->pageData = $this->page
             ->where('site_id', Cms::siteId())
-			->where(DB::raw('TRIM(BOTH "/" FROM CONCAT_WS("/", prepend_slug, slug))'), $slug)
-			->published()
-			->first();
+			->where(DB::raw('TRIM(BOTH "/" FROM CONCAT_WS("/", prepend_slug, slug))'), $slug);
+        
+        // if we need the delimiter
+        if($withRestrictions) {
+			$this->pageData = $this->pageData->published();
+        }
+
+		$this->pageData = $this->pageData->first();
 
 		// if the page isn't found we will search for the latest previous matching slug
 		if(! $this->pageData) {
