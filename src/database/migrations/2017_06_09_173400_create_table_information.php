@@ -28,6 +28,8 @@ class CreateTableInformation extends Migration
             $table->timestamp('depublish_at')->nullable();
             
             $table->timestamps();
+            
+            $table->index(['site_id'], 'site_id');
         });
     }
 

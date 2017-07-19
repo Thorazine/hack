@@ -11,8 +11,6 @@ class Form extends CmsModel
 {
     protected $table = 'forms';
 
-    protected $viewPath = 'cms.form.inputs';
-
     protected $builder;
 
 

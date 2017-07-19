@@ -64,6 +64,8 @@ return [
 		'gallery' => 'Gallery',
 		'information' => 'Information',
 		'db_logs' => 'Logs',
+		'carousels' => 'Carousels',
+		'carousel_images' => 'Carousel images',
 
 		// builders
 		'text' => 'Text',

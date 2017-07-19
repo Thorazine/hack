@@ -25,6 +25,8 @@ class CreateTableLogs extends Migration
             $table->text('request_data')->nullable();
             
             $table->timestamps();
+            
+            $table->index(['site_id'], 'site_id');
         });
     }
 

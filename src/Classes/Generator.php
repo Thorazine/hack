@@ -47,7 +47,7 @@ abstract class Generator {
 
 	protected function replacePathName()
 	{
-		$this->template = str_replace('DummyPath', kebab_case($this->name), $this->template);
+		$this->template = str_replace('DummyPath', snake_case(str_plural($this->name)), $this->template);
 		return $this;
 	}
 

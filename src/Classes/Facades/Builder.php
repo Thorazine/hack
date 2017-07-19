@@ -10,6 +10,7 @@ use Thorazine\Hack\Models\Gallery;
 use Thorazine\Hack\Models\Page;
 use Thorazine\Hack\Models\Menu;
 use Thorazine\Hack\Models\Form;
+use Thorazine\Hack\Models\Carousel;
 use Log;
 
 class Builder {
@@ -332,5 +333,12 @@ class Builder {
     {
         $form = new Form;
         return $form->getForms();
+    }
+
+
+    public function getCarousels()
+    {
+        $carousel = new Carousel;
+        return $carousel->getCarousels();
     }
 }

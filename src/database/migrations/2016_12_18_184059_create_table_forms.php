@@ -33,6 +33,8 @@ class CreateTableForms extends Migration
             $table->string('download_as')->nullable();
             
             $table->timestamps();
+
+            $table->index(['site_id'], 'site_id');
         });
     }
 

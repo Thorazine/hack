@@ -21,6 +21,8 @@ class CreateTableTemplates extends Migration
             $table->string('view')->nullable();
             
             $table->timestamps();
+            
+            $table->index(['site_id'], 'site_id');
         });
     }
 

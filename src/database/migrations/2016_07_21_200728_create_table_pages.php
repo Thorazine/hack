@@ -31,6 +31,7 @@ class CreateTablePages extends Migration
             $table->timestamps();
             
             $table->index(['slug'], 'slug');
+            $table->index(['site_id'], 'site_id');
         });
     }
 

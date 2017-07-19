@@ -46,6 +46,18 @@ return [
 		'edit',
 		'destroy',
 	],
+	'carousels' => [
+		'index',
+		'create',
+		'edit',
+		'destroy',
+	],
+	'carousel_images' => [
+		'index',
+		'create',
+		'edit',
+		'destroy',
+	],
 	'forms' => [
 		'index',
 		'create',

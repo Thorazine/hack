@@ -29,6 +29,10 @@ class CreateSearchTables extends Migration
             $table->tinyInteger('search_priority');
             $table->timestamp('publish_date');
             $table->timestamps();
+
+            $table->index(['page_id'], 'page_id');
+            $table->index(['search_priority'], 'search_priority');
+            $table->index(['publish_date'], 'publish_date');
         });
     }
 

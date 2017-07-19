@@ -21,6 +21,8 @@ class CreateTableMenus extends Migration
             $table->string('title')->nullable();
             
             $table->timestamps();
+            
+            $table->index(['site_id'], 'site_id');
         });
     }
 

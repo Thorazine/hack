@@ -28,6 +28,8 @@ class CreateTableGallery extends Migration
             $table->integer('height')->nullable();
 
             $table->timestamps();
+            
+            $table->index(['site_id'], 'site_id');
         });
     }
 

@@ -33,6 +33,11 @@ return [
 		 	'label' => 'Image',
 		 	'builder' => 'Thorazine\Hack\Classes\Builders\Image',
 	 	],
+		'carousel' => [
+		 	'namespace' => 'Thorazine\Hack\Models\Builders\Carousel',
+		 	'label' => 'Carousel',
+		 	// 'builder' => 'Thorazine\Hack\Classes\Builders\Image',
+	 	],
 		'wysiwyg' => [
 		 	'namespace' => 'Thorazine\Hack\Models\Builders\Wysiwyg',
 		 	'label' => 'Wysiwyg',

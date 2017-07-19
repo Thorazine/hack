@@ -63,6 +63,8 @@ return [
 		'gallery' => 'Gallerij',
 		'information' => 'Informatie',
 		'db_logs' => 'Logs',
+		'carousels' => 'Carousellen',
+		'carousel_images' => 'Carousel afbeeldingen',
 
 		// builders
 		'text' => 'Text',

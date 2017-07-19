@@ -23,6 +23,8 @@ class CreateTableNotFound extends Migration
             $table->integer('requests')->default(0);
             
             $table->timestamps();
+            
+            $table->index(['site_id'], 'site_id');
         });
     }
 

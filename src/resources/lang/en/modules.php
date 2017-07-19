@@ -181,4 +181,17 @@ return [
 		'request_data' => 'Request data',
 		'created_at' => 'Created at',
 	],
+	'carousels' => [
+		'title' => 'Title',
+		'width' => 'Width',
+		'height' => 'Height',
+		'options' => 'Options',
+		'slides' => 'Slides',
+ 	],
+	'carousel_images' => [
+		'image' => 'Image',
+		'active' => 'Active',
+		'body' => 'Body',
+		'options' => 'Options',
+	],
 ];

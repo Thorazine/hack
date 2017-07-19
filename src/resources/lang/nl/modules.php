@@ -181,4 +181,17 @@ return [
 		'request_data' => 'Aanvraag data',
 		'created_at' => 'Aangemaakt op',
 	],
+	'carousels' => [
+		'title' => 'Titel',
+		'width' => 'Breedte',
+		'height' => 'Hoogte',
+		'options' => 'Opties',
+		'slides' => 'Slides',
+	],
+	'carousel_images' => [
+		'image' => 'Afbeelding',
+		'active' => 'Actief',
+		'body' => 'Body',
+		'options' => 'Opties',
+	],
 ];

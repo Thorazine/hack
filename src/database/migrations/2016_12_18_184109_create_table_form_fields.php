@@ -29,6 +29,8 @@ class CreateTableFormFields extends Migration
             $table->integer('drag_order')->default(10000);
 
             $table->timestamps();
+
+            $table->index(['form_id'], 'form_id');
         });
     }
 

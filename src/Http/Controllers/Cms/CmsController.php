@@ -76,6 +76,18 @@ class CmsController extends Controller
                 return $default;
             },
         ]);
+
+        $this->child->afterViewInitialiser();
+    }
+
+
+    /**
+     * Give a chance to overwrite the 
+     * view variables
+     */
+    public function afterViewInitialiser()
+    {
+        // void
     }
 
 
@@ -151,7 +163,23 @@ class CmsController extends Controller
             $data = [];
         }
 
+        $data = $this->child->beforeCreateExtra($request, $data);
         return $this->child->createExtra($request, $data);
+    }
+
+
+    /**
+     * An easy way to break in to the 
+     * create proces before sending
+     * it out to the view.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Collection  $data
+     * @return mixed
+     */
+    protected function beforeCreateExtra($request, $data)
+    {
+        return $data;
     }
 
 
@@ -280,7 +308,24 @@ class CmsController extends Controller
                 ->toArray();
         }
 
+        $data = $this->child->beforeEditExtra($request, $id, $data);
         return $this->child->editExtra($request, $id, $data);
+    }
+
+
+    /**
+     * An easy way to break in to the 
+     * edit proces before sending
+     * it out to the view without changing the view
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @param  Collection  $data
+     * @return mixed
+     */
+    protected function beforeEditExtra($request, $id, $data)
+    {
+        return $data;
     }
 
 

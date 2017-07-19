@@ -33,6 +33,13 @@ return [
 				],
 			],
 			[
+				'route' => 'cms.carousels.index',
+				'label' => 'cms.module.carousels',
+				'route-matches' => [
+					'/cms/carousel_images',
+				],
+			],
+			[
 				'route' => 'cms.menus.index',
 				'label' => 'cms.module.menus',
 				'route-matches' => [

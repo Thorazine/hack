@@ -63,6 +63,7 @@ class MigrationCartalystSentinel extends Migration
             $table->unique('code');
             $table->index('code');
             $table->index('user_id');
+            $table->index(['site_id'], 'site_id');
         });
 
         Schema::create('reminders', function (Blueprint $table) {

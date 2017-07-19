@@ -102,7 +102,7 @@ class Site extends CmsModel
                 'configuration' => 'plain',
             ],
             'keywords' => [
-                'type' => 'text',
+                'type' => 'comma-seperated',
                 'label' => trans('hack::modules.sites.keywords'),
                 'regex' => 'max:200',
                 'overview' => false,
