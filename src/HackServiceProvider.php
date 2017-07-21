@@ -71,6 +71,7 @@ class HackServiceProvider extends ServiceProvider
                 Console\Commands\HackBuilder::class,
                 Console\Commands\HackModule::class,
                 Console\Commands\HackSearch::class,
+                Console\Commands\UpdateRehash::class,
             ]);
         }
 

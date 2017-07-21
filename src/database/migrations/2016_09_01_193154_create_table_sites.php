@@ -30,6 +30,7 @@ class CreateTableSites extends Migration
             $table->string('og_type')->nullable();
             $table->string('og_image')->nullable();
             $table->integer('browser_cache_time')->nullable()->default(300);
+            $table->integer('browser_cache_hash')->nullable()->default('');
 
             $table->timestamp('publish_at')->nullable();
             $table->timestamp('depublish_at')->nullable();

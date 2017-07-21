@@ -323,7 +323,7 @@ class PageController extends CmsController
             foreach($builders as $builder) {
                 $builderClass = Builder::makeBuilder($builder['type']);
 
-                $builderClass->where('id', $builder['id'])->delete();
+                $builderClass->remove($builder['id']);
             }
 
             $this->model->where('id', $id)->delete();

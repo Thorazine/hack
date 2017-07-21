@@ -183,8 +183,8 @@ return [
 	],
 	'carousels' => [
 		'title' => 'Titel',
-		'width' => 'Breedte',
-		'height' => 'Hoogte',
+		'width' => 'Afbeelding breedte',
+		'height' => 'Afbeelding hoogte',
 		'options' => 'Opties',
 		'slides' => 'Slides',
 	],

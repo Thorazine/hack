@@ -94,4 +94,16 @@ class Carousel extends CmsModel
     {
         return ['' => 'None']+$this->select('id', 'title')->orderBy('title', 'asc')->pluck('title', 'id')->toArray();
     }
+
+
+    /**
+     * Return the url
+     */
+    public function has()
+    {
+        if(@$this->carouselImages) {
+            return true;
+        }
+        return false;
+    }
 }

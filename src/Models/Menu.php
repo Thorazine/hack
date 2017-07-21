@@ -3,6 +3,7 @@
 namespace Thorazine\Hack\Models;
 
 use Thorazine\Hack\Scopes\SiteScope;
+use Thorazine\Hack\Models\MenuItem;
 
 class Menu extends CmsModel
 {
@@ -85,5 +86,17 @@ class Menu extends CmsModel
     public function getMenus()
     {
         return ['' => 'None']+$this->select('id', 'title')->orderBy('title', 'asc')->pluck('title', 'id')->toArray();
+    }
+
+
+    /**
+     * Return the url
+     */
+    public function has()
+    {
+        if(@$this->MenuItem) {
+            return true;
+        }
+        return false;
     }
 }

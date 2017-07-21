@@ -93,4 +93,16 @@ class CarouselImage extends CmsModel
     {
         return $this->hasOne('Thorazine\Hack\Models\Carousel');
     }
+
+
+    /**
+     * Return the url
+     */
+    public function __toString()
+    {
+        if(@$this->gallery->url) {
+            return $this->gallery->url;
+        }
+        return '';
+    }
 }

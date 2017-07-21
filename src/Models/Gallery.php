@@ -146,7 +146,7 @@ class Gallery extends CmsModel
     public function __toString()
     {
         if($this->filename && $this->extension) {
-            return asset(Storage::disk(config('filesystems.default'))->url('cropped/original/'.$this->filename.'.'.$this->extension)).'?cache='.crc32($this->updated_at);
+            return Storage::disk(config('filesystems.default'))->url('cropped/original/'.$this->filename.'.'.$this->extension).'?cache='.crc32($this->updated_at);
         }
         return '';
     }
@@ -158,7 +158,7 @@ class Gallery extends CmsModel
     public function getThumbnailAttribute()
     {
         if($this->filename && $this->extension) {
-            return asset(Storage::disk(config('filesystems.default'))->url('cropped/thumbnail/'.$this->filename.'.'.$this->extension)).'?cache='.crc32($this->updated_at);
+            return Storage::disk(config('filesystems.default'))->url('cropped/thumbnail/'.$this->filename.'.'.$this->extension).'?cache='.crc32($this->updated_at);
         }
         return '';
     }
@@ -179,9 +179,9 @@ class Gallery extends CmsModel
     public function getUrlAttribute()
     {
         if($this->filename && $this->extension) {
-            return asset(Storage::disk(config('filesystems.default'))->url('cropped/original/'.$this->filename.'.'.$this->extension));
+            return Storage::disk(config('filesystems.default'))->url('cropped/original/'.$this->filename.'.'.$this->extension).'?cache='.crc32($this->updated_at);
         }
-        return null;
+        return '';
     }
 
 
@@ -337,6 +337,22 @@ class Gallery extends CmsModel
             // delete them from disk and db
             Storage::disk(config('filesystems.default'))->delete($delete);
             $this->whereIn('id', $ids)->delete();
+        }
+    }
+
+
+    public function remove($original = false)
+    {
+        if($this->id) {
+            if($original) {
+                Storage::disk(config('filesystems.default'))->delete('original/'.$this->fullname);
+                Storage::disk(config('filesystems.default'))->delete('thumbnail/'.$this->fullname);
+            }
+            else {
+                Storage::disk(config('filesystems.default'))->delete('cropped/original/'.$this->fullname);
+                Storage::disk(config('filesystems.default'))->delete('cropped/thumbnail/'.$this->fullname);
+            }
+            $this->where('id', $this->id)->delete();
         }
     }
 }

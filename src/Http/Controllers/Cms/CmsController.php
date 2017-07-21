@@ -438,6 +438,8 @@ class CmsController extends Controller
 
             DB::beginTransaction();
 
+            $this->child->beforeDelete($id);
+
             // delete the pivots
             $this->model->where('id', $id)->delete();
 
@@ -466,6 +468,17 @@ class CmsController extends Controller
                 'error' => '',
             ]);
         } 
+    }
+
+
+    /**
+     * Before the delete action takes place
+     *
+     * @param  integer  $id
+     */
+    public function beforeDelete($id)
+    {
+        
     }
 
 

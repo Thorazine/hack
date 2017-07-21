@@ -89,6 +89,20 @@ class CarouselImageController extends CmsController
 
 
     /**
+     * Before the delete action takes place
+     *
+     * @param  integer  $id
+     */
+    public function beforeDelete($id)
+    {
+        // Remove the image before the record
+        $carouselImage = $this->model->with('gallery')->find($id);
+
+        $carouselImage->gallery->remove(); // remove the gallery with it's images
+    }
+
+
+    /**
      * Possibly add query parameters to the model
      *
      * @param  string  $query

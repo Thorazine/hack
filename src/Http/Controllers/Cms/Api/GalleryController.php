@@ -77,7 +77,7 @@ class GalleryController extends Controller
 					})
 					->encode($file['extension'], $this->quality);
 				
-					Storage::disk(config('filesystems.default'))->put($folder.'/'.$filename, $image->getEncoded());
+					Storage::disk(config('filesystems.default'))->put($folder.'/'.$filename, $image->getEncoded(), 'public');
 	    			
 	    			$image->destroy();
 	    		}	    		
@@ -153,22 +153,15 @@ class GalleryController extends Controller
 				->encode($gallery->extension, $this->quality);
 				
 				// save the default image
-				Storage::disk(config('filesystems.default'))->put('cropped/'.$folder.'/'.$filename, $image->getEncoded());
-
-    			
-    			// Storage::disk(config('filesystems.default'))->put('cropped/thumbnail/'.$filename, $image);
-    		}
+				Storage::disk(config('filesystems.default'))->put('cropped/'.$folder.'/'.$filename, $image->getEncoded(), 'public');
+       		}
 
     		// create stream of the resized original
     		$image = $cropped->resize($request->resize_width, $request->resize_height)
     			->encode($gallery->extension, $this->quality);
 				
 			// save the default image
-			Storage::disk(config('filesystems.default'))->put('cropped/original/'.$filename, $image->getEncoded());
-    			// ->stream($gallery->extension, $this->quality);
-
-    		// save the original image
-    		// Storage::disk(config('filesystems.default'))->put('cropped/original/'.$filename, $image);
+			Storage::disk(config('filesystems.default'))->put('cropped/original/'.$filename, $image->getEncoded(), 'public');
 
     		// Prepare for insert
 	    	$newFile = pathinfo($filename);

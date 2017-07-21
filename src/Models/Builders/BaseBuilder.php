@@ -163,5 +163,14 @@ class BaseBuilder extends Model
     }
 
 
+    /**
+     * Initiate a remove action and all the actions that belong
+     */
+    public function remove($id)
+    {
+        $this->where('id', $id)->delete();
+    }
+
+
 
 }

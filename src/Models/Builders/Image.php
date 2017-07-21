@@ -87,7 +87,7 @@ class Image extends BaseBuilder
      */
     public function image()
     {
-        return $this->hasOne('Thorazine\Hack\Models\Gallery', 'id', 'value');
+        return $this->hasOne('Thorazine\Hack\Models\Gallery', 'id', 'value')->withDefault();
     }
 
 
@@ -149,6 +149,19 @@ class Image extends BaseBuilder
         }
 
         return new Gallery;
+    }
+
+
+    /**
+     * Initiate a remove action and all the actions that belong
+     */
+    public function remove($id)
+    {
+        $image = $this->with('image')->find($id);
+
+        $image->image->remove(); // remove the gallery record and it's image
+
+        $this->where('id', $id)->delete();
     }
 
 }

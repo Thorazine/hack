@@ -17,6 +17,20 @@ class GalleryController extends CmsController
 
 
     /**
+     * Before the delete action takes place
+     *
+     * @param  integer  $id
+     */
+    public function beforeDelete($id)
+    {
+        // Remove the image before the record
+        $gallery = $this->model->find($id);
+
+        $gallery->remove(true); // remove the gallery with it's images
+    }
+
+
+    /**
      * Possibly add query parameters to the model
      *
      * @param  string  $query

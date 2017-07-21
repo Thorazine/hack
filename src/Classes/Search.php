@@ -173,7 +173,7 @@ class Search {
 
             $sitemap = view('hack::tools.sitemap')->with('pages', $this->sitemapData)->render();
 
-            Storage::disk(config('filesystems.default'))->put('sitemaps/'.Cms::siteId().'/sitemap.xml', $sitemap);
+            Storage::disk(config('filesystems.default'))->put('sitemaps/'.Cms::siteId().'/sitemap.xml', $sitemap, 'public');
             
         }
     }
