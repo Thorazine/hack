@@ -150,7 +150,7 @@ class PageOutput {
             $images = [];    
             foreach(Cms::site()->toArray() as $key => $value) {
                 if(! $this->pageData->{$key}) {
-                	if($site->types[$key]['type'] == 'image') {
+                	if(@$site->types[$key]['type'] == 'image') {
                         $images[$value] = $key;
 
                         // give each image a gallery placeholder
