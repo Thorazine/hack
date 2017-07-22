@@ -7,6 +7,7 @@
 	<meta name="keywords" content="{{ $page->keywords }}">
 	<meta name="description" content="{{ $page->description }}">
 	<meta name="robots" content="{{ $page->robots }}">
+	<meta name="last-modified" content="{{ $page->updated_at->format('Y-m-d') }}">
 	<meta property="og:title" content="{{ ($page->og_title) ? $page->og_title : $page->title  }}"/>
 	<meta property="og:description" content="{{ ($page->og_description) ? $page->og_description : $page->description }}"/>
 	<meta property="og:type" content="{{ ($page->og_type) ? $page->og_type : 'page' }}"/>

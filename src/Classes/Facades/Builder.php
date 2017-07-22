@@ -126,7 +126,9 @@ class Builder {
             }
 
             // drop the collection in the modules object
-            $builders = $collection->sortBy('pivot.drag_order')->values()->all();
+            $builders = $collection->sortBy(function($item) {
+                return $item->pivot->drag_order.'-'.$item->pivot->id; // concatenate to make sort better
+            })->values()->all();
 
             if($asArray) {
             	return json_decode(json_encode($builders), true);
