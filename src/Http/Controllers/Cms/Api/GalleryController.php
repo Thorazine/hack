@@ -102,7 +102,7 @@ class GalleryController extends Controller
 		    	return response()->json([
 		    		'id' => $id,
 		    		'filename' => $newFile['filename'],
-		    		'original' => asset(Storage::disk(config('filesystems.default'))->url('original/'.$filename))
+		    		'original' => Storage::disk(config('filesystems.default'))->url('original/'.$filename)
 		    	], 200);
 		    }
 		}
@@ -183,7 +183,7 @@ class GalleryController extends Controller
 
 	    	return response()->json([
 	    		'id' => $id,
-	    		'thumbnail' => asset(Storage::disk(config('filesystems.default'))->url('cropped/thumbnail/'.$filename)),
+	    		'thumbnail' => Storage::disk(config('filesystems.default'))->url('cropped/thumbnail/'.$filename),
 	    	], 200);
 
     	}
@@ -241,8 +241,8 @@ class GalleryController extends Controller
 	    		array_push($return, [
 	    			'id' => $data->id,
 	    			'title' => $data->filename,
-	    			'original' => asset(Storage::disk(config('filesystems.default'))->url('original/'.$data->fullname)),
-	    			'thumbnail' => asset(Storage::disk(config('filesystems.default'))->url('thumbnail/'.$data->fullname)),
+	    			'original' => Storage::disk(config('filesystems.default'))->url('original/'.$data->fullname),
+	    			'thumbnail' => Storage::disk(config('filesystems.default'))->url('thumbnail/'.$data->fullname),
 	    		]);
 	    	}
 
