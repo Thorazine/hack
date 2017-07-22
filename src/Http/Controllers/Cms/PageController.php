@@ -320,16 +320,24 @@ class PageController extends CmsController
         try {
             DB::beginTransaction();
 
+            // et all the builders
             $builders = Builder::getPageBuilders($id, $this->model, true);
 
+            //  delete all the slugs this page had
+            $this->slug->where('page_id', $id)->delete();
+
             foreach($builders as $builder) {
+                // remove the pivot that binds it
                 $this->pageable->find($builder['pivot']['id'])->delete();
 
+                // Get the builder class
                 $builderClass = Builder::makeBuilder($builder['type']);
 
+                // call the delete function for the builder
                 $builderClass->remove($builder['id']);
             }
 
+            // delete the page itself
             $this->model->where('id', $id)->delete();
 
             DB::commit();
