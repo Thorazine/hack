@@ -465,8 +465,8 @@ class CmsController extends Controller
             ]);
 
             return response()->json([
-                'error' => '',
-            ]);
+                'error' => $e->getMessage(),
+            ], 500);
         } 
     }
 

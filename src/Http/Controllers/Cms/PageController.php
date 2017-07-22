@@ -318,15 +318,21 @@ class PageController extends CmsController
     public function destroy($id)
     {
         try {
+            DB::beginTransaction();
+
             $builders = Builder::getPageBuilders($id, $this->model, true);
 
             foreach($builders as $builder) {
+                $this->pageable->find($builder['pivot']['id'])->delete();
+
                 $builderClass = Builder::makeBuilder($builder['type']);
 
                 $builderClass->remove($builder['id']);
             }
 
             $this->model->where('id', $id)->delete();
+
+            DB::commit();
 
             DbLog::add(__CLASS__, 'destroy', $id);
 
@@ -353,8 +359,8 @@ class PageController extends CmsController
             ]);
 
             return response()->json([
-                'error' => '',
-            ]);
+                'error' => $e->getMessage(),
+            ], 500);
         }
     }
 
