@@ -4,6 +4,7 @@ namespace Thorazine\Hack\Models;
 
 use Thorazine\Hack\Scopes\SiteScope;
 use Thorazine\Hack\Models\Template;
+use Carbon\Carbon;
 use Request;
 use Cms;
 
@@ -25,6 +26,12 @@ class Page extends CmsModel
         'url',
     ];
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'publish_at',
+        'depublish_at',
+    ];
 
     /**
      * Constructor
