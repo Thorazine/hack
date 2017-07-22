@@ -104,7 +104,6 @@ class PageOutput {
 	{
 		// find the page
 		$this->pageData = $this->page
-            ->where('site_id', Cms::siteId())
 			->where(DB::raw('TRIM(BOTH "/" FROM CONCAT_WS("/", prepend_slug, slug))'), $slug);
         
         // if we need the delimiter
