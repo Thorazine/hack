@@ -95,6 +95,11 @@ return [
 		'edit',
 		'destroy',
 	],
+	'persistences' => [
+		'index',
+		'edit',
+		'destroy',
+	],
 	'roles' => [
 		'index',
 		'create',

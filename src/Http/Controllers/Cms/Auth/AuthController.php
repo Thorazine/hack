@@ -2,6 +2,8 @@
 
 namespace Thorazine\Hack\Http\Controllers\Cms\Auth;
 
+use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
+use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
 use App\Http\Controllers\Controller;
 use Thorazine\Hack\Models\Auth\CmsPersistence;
 use Thorazine\Hack\Http\Requests\LoginRequest;
@@ -9,6 +11,8 @@ use Thorazine\Hack\Classes\Tools\Browser;
 use Illuminate\Http\Request;
 use Thorazine\Hack\Http\Requests;
 use Thorazine\Hack\Models\DbLog;
+use Carbon\Carbon;
+use Validator;
 use Location;
 use Sentinel;
 use Cms;
@@ -66,60 +70,68 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if($user = Sentinel::authenticateAndRemember($credentials)) {
+        try {
+            if($user = Sentinel::authenticateAndRemember($credentials)) {
 
-            // make a request cache version of the user
-            Cms::setUser($user);
+                // make a request cache version of the user
+                Cms::setUser($user);
 
-            // convert the coordinates to a city and country
-            $location = Location::locale('en')->coordinatesToAddress(['latitude' => $request->latitude, 'longitude' => $request->longitude])->get();
-            // $location = $this->location->coordinatesToAddress($request->latitude, $request->longitude)->get();
+                // convert the coordinates to a city and country
+                $location = Location::locale('en')->coordinatesToAddress(['latitude' => $request->latitude, 'longitude' => $request->longitude])->get();
 
-            $active = $this->persistence->shouldBeActive($user->id, $request->latitude, $request->longitude);
+                $active = $this->persistence->shouldBeActive($user->id, $request->latitude, $request->longitude);
 
-            $hash = hash('sha256', microtime().rand().env('APP_KEY'));
+                $hash = hash('sha256', microtime().rand().env('APP_KEY'));
 
-            $persistenceAddData = $this->browser->os()
-                    ->device()
-                    ->deviceType()
-                    ->browserAndVersion('browser')
-                    ->get()+[
-                'site_id' => Cms::siteId(),
-                'latitude' => $request->latitude,
-                'longitude' => $request->longitude,
-                'country' => $location['country'],
-                'city' => $location['city'],
-                'verified' => $active,
-                'verification_hash' => $hash,
-            ];
+                $persistenceAddData = $this->browser->os()
+                        ->device()
+                        ->deviceType()
+                        ->browserAndVersion('browser')
+                        ->get()+[
+                    'site_id' => Cms::siteId(),
+                    'latitude' => $request->latitude,
+                    'longitude' => $request->longitude,
+                    'country' => $location['country'],
+                    'city' => $location['city'],
+                    'verified' => $active,
+                    'verification_hash' => $hash,
+                ];
 
-            // get the persistance record for this session
-            $persistence = $this->persistence
-                ->where('code', $request->session()->get(config('cartalyst.sentinel.session')))
-                ->where('user_id', $user->id)
-                ->update($persistenceAddData);
+                // get the persistance record for this session
+                $persistence = $this->persistence
+                    ->where('code', $request->session()->get(config('cartalyst.sentinel.session')))
+                    ->where('user_id', $user->id)
+                    ->update($persistenceAddData);
 
-            // if we are in range or it is first run
-            if($active) {    
+                // if we are in range or it is first run
+                if($active) {    
+                    DbLog::add(__CLASS__, 'login', json_encode($request->except('password')));
+                    return redirect()->route('cms.panel.index');
+                }   
 
-                DbLog::add(__CLASS__, 'login', json_encode($request->except('password')));
+                // email user for verification to confirm the location
+                Mail::send('hack::emails.validate', ['user' => $user, 'persistence' => $persistenceAddData], function($message) use ($user) {
+                    $message->to($user->email);
+                    $message->subject('Hack CMS - Login attempt needs verification');
+                });
 
-                return redirect()->route('cms.panel.index');
-            }   
-
-            // email user for verification to confirm the location
-            Mail::send('hack::emails.validate', ['user' => $user, 'persistence' => $persistenceAddData], function($message) use ($user) {
-                $message->to($user->email);
-                $message->subject('Hack CMS - Login attempt needs verification');
-            });
-
-            return redirect()->route('cms.auth.persistence');
+                return redirect()->route('cms.auth.persistence');
+            }
+            $error = 'Wrong email address and/or password';            
+        } 
+        catch(NotActivatedException $e) {
+            $error = 'You are not activated.';
+        }
+        catch (ThrottlingException $e) {
+            $error = 'To many attempts. Please try again in '.Carbon::now()->diffInSeconds($e->getFree()).' seconds.';
         }
 
         // login failed
         return redirect()->back()
             ->withCookie(cookie()->forever('location_permission_set', 1))
-            ->with('alert-error', 'wrong pass user');
+            ->with('locationPermission', 1)
+            ->withInput()
+            ->with('alert-error', $error);
     }
 
 

@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <head>
 
+<!-- ##############################################
+    __  _____   ________ __                       
+   / / / /   | / ____/ //_/   _________ ___  _____
+  / /_/ / /| |/ /   / ,<     / ___/ __ `__ \/ ___/
+ / __  / ___ / /___/ /| |   / /__/ / / / / (__  ) 
+/_/ /_/_/  |_\____/_/ |_|   \___/_/ /_/ /_/____/  
+                                                  
+############################################### -->
+
 <title>{{ Cms::site('title') }} - CMS</title>
 <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1 minimal-ui">
 <link rel="shortcut icon" href="{{ Builder::image(Cms::site('favicon')) }}" type="image/x-icon" />

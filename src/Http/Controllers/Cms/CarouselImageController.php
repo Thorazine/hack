@@ -19,6 +19,18 @@ class CarouselImageController extends CmsController
         $this->hasOrder = true;
 
         parent::__construct($this);
+
+        view()->share([
+            'extraHeaderButtons' => function($datas) {
+                return [
+                    [
+                        'class' => 'primary',
+                        'route' => route('cms.carousels.index'),
+                        'text' => '<i class="fa fa-arrow-left"></i> '.trans('hack::cms.back'),
+                    ],
+                ];
+            },
+        ]);
     }
 
 

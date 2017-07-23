@@ -17,6 +17,27 @@ class CmsUserController extends CmsController
         $this->slug = 'users';
 
         parent::__construct($this);
+
+        view()->share([
+            'extraItemButtons' => function($data) {
+                return [
+                    [
+                        'class' => 'primary',
+                        'route' => route('cms.persistences.index', (($data->id) ? ['fid' => $data->id] : [] )),
+                        'text' => 'Persistences',
+                    ],
+                ];
+            },
+            'extraEditButtons' => function($data) {
+                return [
+                    [
+                        'class' => '',
+                        'route' => route('cms.persistences.index', ['fid' => $data['id']]),
+                        'text' => '<i class="fa fa-bars"></i> '.trans('hack::cms.add'),
+                    ]
+                ];
+            }
+        ]);
     }
 
 

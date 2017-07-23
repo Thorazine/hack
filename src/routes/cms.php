@@ -55,6 +55,7 @@ Route::group(['middleware' => 'sentinel.auth'], function() {
 	Route::resource('sites', 'SiteController');
 	Route::resource('user', 'UserController');
 	Route::resource('users', 'CmsUserController');
+	Route::resource('persistences', 'PersistenceController');
 	Route::resource('roles', 'CmsRoleController');
 	Route::resource('templates', 'TemplateController');
 	Route::post('builder/order', ['as' => 'builder.order', 'uses' => 'BuilderController@order']);

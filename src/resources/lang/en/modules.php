@@ -107,6 +107,15 @@ return [
 		'remove' => 'Remove',
 		'invalidate_session' => 'Invalidate session',
 	],
+	'persistences' => [
+		'country' => 'Country',
+		'city' => 'City',
+		'browser' => 'Browser',
+		'device' => 'Device',
+		'os' => 'Operating system',
+		'verified' => 'Verified',
+		'created_at' => 'Created',
+	],
 	'roles' => [
 		'name' => 'Name',
 		'permissions' => 'Permissions',

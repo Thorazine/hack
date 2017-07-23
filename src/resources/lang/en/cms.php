@@ -60,6 +60,7 @@ return [
 		'not_found' => '404',
 		'settings' => 'Settings',
 		'users' => 'Users',
+		'persistences' => 'Persistences',
 		'roles' => 'Roles',
 		'gallery' => 'Gallery',
 		'information' => 'Information',

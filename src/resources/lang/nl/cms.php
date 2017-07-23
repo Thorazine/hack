@@ -59,6 +59,7 @@ return [
 		'not_found' => '404',
 		'settings' => 'Instellingen',
 		'users' => 'Gebruikers',
+		'persistences' => 'Persistenties',
 		'roles' => 'Rollen',
 		'gallery' => 'Gallerij',
 		'information' => 'Informatie',

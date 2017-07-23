@@ -4,48 +4,16 @@
 
 @section('content')
 
+	<?php
+		// set the location permission to the variable always
+		if(! $locationPermission) {
+			$locationPermission = session('locationPermission');
+		}
+	?>
+
 	<section class="auth">
 
-		@if(! isset($latitude))
-			<div class="panel panel-primary horizontal-center-panel panel-form" @if($locationPermission == 1) style="display: none;" @endif id="information">
-				<div class="panel-heading">
-					<h3 class="panel-title">Login - Set automatic location</h3>
-				</div>
-				<div class="panel-body">
-					<p>This login system requires a location. Press the button below to activate the browsers location function.</p>
-					<button class="btn btn-primary pull-right" id="location">Turn on location</button>
-				</div>
-			</div>
-
-			<div class="panel panel-primary horizontal-center-panel panel-form" style="display: none;" id="error">
-				<div class="panel-heading">
-					<h3 class="panel-title">Login - Set manual location</h3>
-				</div>
-				<div class="panel-body">
-					<p>It seems your browser failed to set your location. No worries, here is a map. Select your location.</p>
-
-					<div class="form-group">
-						<div class="input-group">
-							<input type="text" placeholder="Type location or click on map" class="form-control" id="locationInput">
-							<span class="input-group-btn">
-								<button class="btn btn-primary" type="button" id="setLocation">Lookup</button>
-							</span>
-						</div>
-					</div>
-
-					<div class="google-maps" id="error-map" data-service="latlong"></div>
-
-					<div class="form-group" style="margin-top: 20px;">
-						<button class="btn btn-primary pull-right" id="selectLocation">Accept location</button>
-					</div>
-				</div>
-			</div>
-
-			<div class="panel panel-primary horizontal-center-panel panel-form" @if($locationPermission == 0) style="display: none;" @endif id="authentication">
-
-		@else 
-			<div class="panel panel-primary horizontal-center-panel panel-form" id="authentication">
-		@endif
+		@include('hack::auth.partials.location')
 
 			<div class="panel-heading">
 				<h3 class="panel-title">Login</h3>
@@ -60,6 +28,10 @@
 				            @endforeach
 				        </ul>
 				    </div>
+				@endif
+
+				@if(session('alert-error'))
+					<div class="alert alert-danger">{{ session('alert-error') }}</div>
 				@endif
 
 				{!! Form::open(['route' => 'cms.auth.store', 'method' => 'post', 'class' => 'form-horizontal']) !!}
@@ -83,7 +55,7 @@
 						</div>
 					</div>
 
-					@if(! isset($latitude))
+					@if(! isset($latitude) && ! session('alert-error'))
 						<button type="submit" class="btn btn-primary pull-right" disabled="disabled" id="submit">One moment please, requesting location <i class="fa fa-spinner fa-spin"></i></button>
 					@else
 						<button type="submit" class="btn btn-primary pull-right" id="submit">Login</button>

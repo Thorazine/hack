@@ -17,6 +17,89 @@ class CmsPersistence extends EloquentPersistence
 
     use SoftDeletes;
 
+
+    /**
+     * Placeholder for types.
+     */
+    public $types = [];
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        // we need to force the parent construct
+        parent::__construct();
+
+        $this->types = $this->types();
+    }
+
+
+    /**
+     * Return all the types for this module
+     */
+    public function types()
+    {
+        return [
+            'id' => [
+                'type' => 'number',
+                'label' => 'Id',
+                'regex' => '',
+                'overview' => false,
+                'create' => false,
+                'edit' => false,
+            ],
+            'country' => [
+                'type' => 'text',
+                'label' => trans('hack::modules.persistences.country'),
+                'regex' => '',
+                'create' => false,
+                'edit' => false,
+            ],
+            'city' => [
+                'type' => 'text',
+                'label' => trans('hack::modules.persistences.city'),
+                'regex' => '',
+                'create' => false,
+                'edit' => false,
+            ],
+            'browser' => [
+                'type' => 'browser',
+                'label' => trans('hack::modules.persistences.browser'),
+                'regex' => '',
+                'create' => false,
+                'edit' => false,
+            ],
+            'device' => [
+                'type' => 'text',
+                'label' => trans('hack::modules.persistences.device'),
+                'regex' => '',
+                'create' => false,
+                'edit' => false,
+            ],
+            'os' => [
+                'type' => 'text',
+                'label' => trans('hack::modules.persistences.os'),
+                'regex' => '',
+                'create' => false,
+                'edit' => false,
+            ],
+            'verified' => [
+                'type' => 'checkbox',
+                'label' => trans('hack::modules.persistences.verified'),
+                'regex' => '',
+            ],
+            'created_at' => [
+                'type' => 'timestamp',
+                'label' => trans('hack::modules.persistences.created_at'),
+                'regex' => '',
+                'create' => false,
+                'edit' => false,
+            ],
+        ];
+    } 
+
     /**
      * Determins if a session should be activated or if verification is needed
      *

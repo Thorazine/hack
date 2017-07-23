@@ -26,6 +26,6 @@ return array(
     |
     */
 
-    'quality' => 100,
+    'quality' => 90,
 
 );

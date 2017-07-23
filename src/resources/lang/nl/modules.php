@@ -107,6 +107,15 @@ return [
 		'remove' => 'Remove',
 		'invalidate_session' => 'Invalidate session',
 	],
+	'persistences' => [
+		'country' => 'Land',
+		'city' => 'Stad',
+		'browser' => 'Browser',
+		'device' => 'Apparaat',
+		'os' => 'Besturingssysteem',
+		'verified' => 'Geverifieerd',
+		'created_at' => 'Aangemaakt',
+	],
 	'roles' => [
 		'name' => 'Naam',
 		'permissions' => 'Permissies',

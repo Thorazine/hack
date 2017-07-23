@@ -20,9 +20,9 @@ class HackServiceProvider extends ServiceProvider
             __DIR__.'/config/cms.php' => config_path('cms.php'),
             __DIR__.'/config/cartalyst.sentinel.php' => config_path('cartalyst.sentinel.php'),
             __DIR__.'/config/image.php' => config_path('image.php'),
-            __DIR__.'/config/languages.php' => config_path('languages.php'),
+            // __DIR__.'/config/languages.php' => config_path('languages.php'), // removed
             __DIR__.'/config/menu.php' => config_path('menu.php'),
-            __DIR__.'/config/rights.php' => config_path('rights.php'),
+            __DIR__.'/config/stubs/rights.stub' => config_path('rights.php'),
 
             // js and style
             __DIR__.'/package.json' => base_path('package.json'),
@@ -84,7 +84,12 @@ class HackServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // as of version 1.0.20
+        $this->mergeConfigFrom(__DIR__.'/config/rights.php', 'rights');
+        $this->mergeConfigFrom(__DIR__.'/config/cms.php', 'cms');
+        $this->mergeConfigFrom(__DIR__.'/config/image.php', 'image');
+        $this->mergeConfigFrom(__DIR__.'/config/cartalyst.sentinel.php', 'cartalyst.sentinel');
+
+        // Define what came later but is needed
         $this->mergeConfigFrom(__DIR__.'/config/cms.php', 'cms.search.view_bind');
     }
 }
