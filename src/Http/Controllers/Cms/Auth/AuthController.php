@@ -13,6 +13,7 @@ use Thorazine\Hack\Http\Requests;
 use Thorazine\Hack\Models\DbLog;
 use Carbon\Carbon;
 use Validator;
+use Exception;
 use Location;
 use Sentinel;
 use Cms;

@@ -88,7 +88,6 @@ composer require thorazine/hack
 Run (although you might want to look at your migration folder first)
 ```
 php artisan vendor:publish --tag=hack --force
-php artisan vendor:publish --tag=location
 php artisan migrate
 npm install
 npm run dev
