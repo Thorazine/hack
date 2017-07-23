@@ -37,7 +37,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/frontend.css') }}?version={{ (App::environment() === 'develop') ? rand(1,1000) : '' }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend/css/frontend.css') }}?version={{ (config('app.debug')) ? rand(1,1000) : $page->browser_cache_hash }}">
 
     @yield('css')
     

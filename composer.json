@@ -16,6 +16,9 @@
         "maatwebsite/excel": "^2.1",
         "thorazine/location": "^1.0.0"
     },
+    "require-dev": {
+        "laravel/dusk": "^1.1",
+    },
     "autoload": {
         "psr-4": {
             "Thorazine\\Hack\\": "src/"
