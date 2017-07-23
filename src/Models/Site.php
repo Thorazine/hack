@@ -44,12 +44,12 @@ class Site extends CmsModel
             'title' => [
                 'type' => 'text',
                 'label' => trans('hack::modules.sites.title'),
-                'regex' => 'max:70',
+                'regex' => 'max:70|required',
             ],
             'protocol' => [
                 'type' => 'select',
                 'label' => trans('hack::modules.sites.protocol'),
-                'regex' => '',
+                'regex' => 'required',
                 'values' => [
                     'http://' => 'Http',
                     'https://' => 'Https',
@@ -58,7 +58,7 @@ class Site extends CmsModel
             'domain' => [
                 'type' => 'text',
                 'label' => trans('hack::modules.sites.domain'),
-                'regex' => '',
+                'regex' => 'required',
             ],
             'domains' => [
                 'type' => 'comma-seperated',
@@ -69,7 +69,7 @@ class Site extends CmsModel
             'language' => [
                 'type' => 'select',
                 'label' => trans('hack::modules.sites.language'),
-                'regex' => '',
+                'regex' => 'required',
                 'values' => 'getLanguages',
                 'overview' => true,
                 'default' => 'en',

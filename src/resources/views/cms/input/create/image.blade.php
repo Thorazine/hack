@@ -6,7 +6,12 @@
 
 		<button type="button" class="btn btn-primary" data-image-button data-open-gallery data-open-cropper @if(@$data[$key]) style="display: none" @endif>{{ trans('hack::cms.add') }}</button>
 		<div class="image-holder" data-image-image @if(! @$data[$key]) style="display: none" @endif>
-			<img src="">
+			<?php
+				if(@$data[$key]) {
+					$image = Builder::image($data[$key], false);
+				}
+			?>
+			<img @if(@$data[$key]) src="{{ @$image->thumbnail }}" @endif>
 			<div class="delete">&times;</div>
 
 			<div class="input-group extra">
