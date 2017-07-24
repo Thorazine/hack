@@ -21,9 +21,9 @@ return [
 	
 
 	/** 
-	 * All the modules we use
+	 * All the builders we use
 	 */
-	'modules' => [
+	'builders' => [
 		'text' => [
 		 	'namespace' => 'Thorazine\Hack\Models\Builders\Text',
 		 	'label' => 'Text',
@@ -36,7 +36,6 @@ return [
 		'carousel' => [
 		 	'namespace' => 'Thorazine\Hack\Models\Builders\Carousel',
 		 	'label' => 'Carousel',
-		 	// 'builder' => 'Thorazine\Hack\Classes\Builders\Image',
 	 	],
 		'wysiwyg' => [
 		 	'namespace' => 'Thorazine\Hack\Models\Builders\Wysiwyg',

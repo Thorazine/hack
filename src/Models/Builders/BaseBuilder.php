@@ -27,7 +27,7 @@ class BaseBuilder extends Model
 
         $this->child = $child;
 
-        // catch if the user uses an append an doesn't add the type
+        // catch if the user uses an append and doesn't add the type
         if($this->child) {
             if(! in_array('type', $this->child->appends)) {
                 array_push($this->child->appends, 'type');

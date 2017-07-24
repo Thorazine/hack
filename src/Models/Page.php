@@ -45,8 +45,8 @@ class Page extends CmsModel
 
         // add all the modules tot the array so they can be 
         // caught by the realtional builder
-        if(config('cms.modules')) {
-            foreach(config('cms.modules') as $key => $values) {
+        if(config('cms.builders')) {
+            foreach(config('cms.builders') as $key => $values) {
                 $this->morphs[str_plural($key)] = $values;
             }
         }

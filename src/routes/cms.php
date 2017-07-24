@@ -49,6 +49,8 @@ Route::group(['namespace' => 'Email', 'prefix' => 'email', 'as' => 'email.'], fu
  */
 Route::group(['middleware' => 'sentinel.auth'], function() {
 
+	// include(base_path('routes/cms.php'));
+
 	/**
 	 * Module routing
 	 */
@@ -81,6 +83,9 @@ Route::group(['middleware' => 'sentinel.auth'], function() {
 	Route::resource('carousels', 'CarouselController');
 	Route::post('carousel_images/order', ['as' => 'carousel_images.order', 'uses' => 'CarouselImageController@order']);
 	Route::resource('carousel_images', 'CarouselImageController');
+
+	// overwrite the default routes
+	include(base_path('routes/cms.php'));
 
 	/**
 	 * Gallery

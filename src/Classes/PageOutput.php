@@ -61,11 +61,11 @@ class PageOutput {
             ->toArray();
 
 		// lazy load all relations that exist in the morph if they exist and put them in order
-        foreach(array_keys(config('cms.modules')) as $relation) {
+        foreach(array_keys(config('cms.builders')) as $relation) {
 
-            if(in_array(config('cms.modules.'.$relation.'.namespace'), $this->morps)) {
+            if(in_array(config('cms.builders.'.$relation.'.namespace'), $this->morps)) {
 
-                $namespace = config('cms.modules.'.$relation.'.namespace');
+                $namespace = config('cms.builders.'.$relation.'.namespace');
                 $builderClass = new $namespace();
 
                 // lazy load with the frontend scope (extended functionality)

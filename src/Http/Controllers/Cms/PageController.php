@@ -163,7 +163,7 @@ class PageController extends CmsController
                 $this->pageable->insert([
                     'page_id' => $id,
                     'pageable_id' => $builderId,
-                    'pageable_type' => config('cms.modules.'.$builder['type'].'.namespace'),
+                    'pageable_type' => config('cms.builders.'.$builder['type'].'.namespace'),
                     'drag_order' => $builder['pivot']['drag_order'],
                 ]);
             }

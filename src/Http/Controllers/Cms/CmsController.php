@@ -87,7 +87,7 @@ class CmsController extends Controller
      */
     public function afterViewInitialiser()
     {
-        // void
+        view()->share([]);
     }
 
 
@@ -163,23 +163,7 @@ class CmsController extends Controller
             $data = [];
         }
 
-        $data = $this->child->beforeCreateExtra($request, $data);
         return $this->child->createExtra($request, $data);
-    }
-
-
-    /**
-     * An easy way to break in to the 
-     * create proces before sending
-     * it out to the view.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  Collection  $data
-     * @return mixed
-     */
-    protected function beforeCreateExtra($request, $data)
-    {
-        return $data;
     }
 
 
@@ -308,24 +292,7 @@ class CmsController extends Controller
                 ->toArray();
         }
 
-        $data = $this->child->beforeEditExtra($request, $id, $data);
         return $this->child->editExtra($request, $id, $data);
-    }
-
-
-    /**
-     * An easy way to break in to the 
-     * edit proces before sending
-     * it out to the view without changing the view
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @param  Collection  $data
-     * @return mixed
-     */
-    protected function beforeEditExtra($request, $id, $data)
-    {
-        return $data;
     }
 
 
@@ -438,8 +405,6 @@ class CmsController extends Controller
 
             DB::beginTransaction();
 
-            $this->child->beforeDelete($id);
-
             // delete the pivots
             $this->model->where('id', $id)->delete();
 
@@ -465,20 +430,9 @@ class CmsController extends Controller
             ]);
 
             return response()->json([
-                'error' => $e->getMessage(),
-            ], 500);
+                'error' => '',
+            ]);
         } 
-    }
-
-
-    /**
-     * Before the delete action takes place
-     *
-     * @param  integer  $id
-     */
-    public function beforeDelete($id)
-    {
-        
     }
 
 

@@ -36,7 +36,7 @@ class CmsModel extends Model
      */
     public function builder($module, $key = 'builder')
     {
-        $namespace = config('cms.modules.'.$module.'.'.$key);
+        $namespace = config('cms.builders.'.$module.'.'.$key);
         return new $namespace($this->child);
     }
 

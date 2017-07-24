@@ -127,7 +127,7 @@ class BuilderController
         }
 
         // get the type values
-        $namespace = config('cms.modules.'.$request->module.'.namespace');
+        $namespace = config('cms.builders.'.$request->module.'.namespace');
 
         $moduleClass = new $namespace;
 
@@ -159,7 +159,7 @@ class BuilderController
             DB::beginTransaction();
 
             // get the type values
-            $namespace = config('cms.modules.'.$request->module.'.namespace');
+            $namespace = config('cms.builders.'.$request->module.'.namespace');
 
             $moduleClass = new $namespace;
 

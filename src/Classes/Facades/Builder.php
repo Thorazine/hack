@@ -52,8 +52,8 @@ class Builder {
 	public function moduleValues()
 	{
 		$values = [];
-		foreach(config('cms.modules') as $key => $value) {
-			$values[$key] = config('cms.modules.'.$key.'.label');
+		foreach(config('cms.builders') as $key => $value) {
+			$values[$key] = config('cms.builders.'.$key.'.label');
 		}
 		return $values;
 	}
@@ -95,17 +95,17 @@ class Builder {
             // ->where('templateables.template_id', $templateId);
 
         // add all relations that exist in the morph if they exist
-        foreach(array_keys(config('cms.modules')) as $relation) {
+        foreach(array_keys(config('cms.builders')) as $relation) {
 
             // check if function exists. 
             // Spoiler alert, it doesn't. 
             // We magicaly create it with the __call function
-            if(in_array(config('cms.modules.'.$relation.'.namespace'), $morphs)) {
+            if(in_array(config('cms.builders.'.$relation.'.namespace'), $morphs)) {
                 $template = $template->with(str_plural($relation));
             }
             else {
                 // show user that he needs to add his relation
-                Log::info('Skipped relation '.config('cms.modules.'.$relation.'.namespace').' because it wasn\'t defined');
+                Log::info('Skipped relation '.config('cms.builders.'.$relation.'.namespace').' because it wasn\'t defined');
             }
         }
         
@@ -116,11 +116,11 @@ class Builder {
 
             // join all the module relations together if they exist and check is in morphs, else it will eager load. We don't want that
             $collection = []; //  default to nothing
-            foreach(array_keys(config('cms.modules')) as $relation) {
+            foreach(array_keys(config('cms.builders')) as $relation) {
                 if(! $collection) {
                     $collection = collect($template->{str_plural($relation)});
                 }
-                elseif(in_array(config('cms.modules.'.$relation.'.namespace'), $morphs)) {
+                elseif(in_array(config('cms.builders.'.$relation.'.namespace'), $morphs)) {
                     $collection = $collection->merge($template->{str_plural($relation)});
                 }
             }
@@ -163,13 +163,13 @@ class Builder {
             ->where('id', $pageId);
 
         // add all relations that exist in the morph if they exist
-        foreach(array_keys(config('cms.modules')) as $relation) {
-            if(method_exists($model, str_plural($relation)) && in_array(config('cms.modules.'.$relation.'.namespace'), $morphs)) {
+        foreach(array_keys(config('cms.builders')) as $relation) {
+            if(method_exists($model, str_plural($relation)) && in_array(config('cms.builders.'.$relation.'.namespace'), $morphs)) {
                 $page = $page->with(str_plural($relation));
             }
-            elseif(in_array(config('cms.modules.'.$relation.'.namespace'), $morphs)) {
+            elseif(in_array(config('cms.builders.'.$relation.'.namespace'), $morphs)) {
                 // show user that he needs to add his relation
-                Log::info('Skipped relation '.config('cms.modules.'.$relation.'.namespace').' because it wasn\'t defined');
+                Log::info('Skipped relation '.config('cms.builders.'.$relation.'.namespace').' because it wasn\'t defined');
             }
         }
         
@@ -180,11 +180,11 @@ class Builder {
 
             // join all the module relations together if they exist and check is in morphs, else it will eager load. We don't want that
             $collection = []; //  default to nothing
-            foreach(array_keys(config('cms.modules')) as $relation) {
+            foreach(array_keys(config('cms.builders')) as $relation) {
                 if(! $collection) {
                     $collection = collect($page->{str_plural($relation)});
                 }
-                elseif(in_array(config('cms.modules.'.$relation.'.namespace'), $morphs)) {
+                elseif(in_array(config('cms.builders.'.$relation.'.namespace'), $morphs)) {
                     $collection = $collection->merge($page->{str_plural($relation)});
                 }
             }
@@ -206,7 +206,7 @@ class Builder {
 
 	public function makeBuilder($type)
 	{
-		$namespace = config('cms.modules.'.$type.'.namespace');
+		$namespace = config('cms.builders.'.$type.'.namespace');
         return new $namespace;
 	}
 
