@@ -42,7 +42,7 @@ composer require thorazine/hack
 ```
 
 
-# Add to config/app.providers:
+## Add to config/app.providers:
 
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
@@ -59,7 +59,7 @@ composer require thorazine/hack
         Thorazine\Location\LocationServiceProvider::class,
 
 
-# Add to config/app.aliases:
+## Add to config/app.aliases:
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
@@ -75,7 +75,7 @@ composer require thorazine/hack
         'Location' => Thorazine\Location\Facades\LocationFacade::class,
 
 
-# Add to the App\Http\Kernel $routeMiddleware:
+## Add to the App\Http\Kernel $routeMiddleware:
 
         'sentinel.auth' => \Thorazine\Hack\Http\Middleware\SentinelAuthentication::class,
         'site' => \Thorazine\Hack\Http\Middleware\SiteRedirect::class,
@@ -91,23 +91,23 @@ npm run dev
 ```
 
 
-# Database
+## Database
 The default setting for strictness of the database is set to true. This needs to be false for the system to work since we 
 use the eloquent ```groupBy```.
 
 
-# Filesystem
+## Filesystem
 This package uses the default Laravel Filesystem to handle storage. For settings take a look at the [Laravel docs](https://laravel.com/docs/5.4/filesystem).
 Personally I like to start of with the ```public``` driver setting and the ```php artisan storage:link``` command. To do so add ```FILESYSTEM_DRIVER=public``` to the .env file.
 Obviously you are going to want to have the url availible on whatever driver you use.
 
 
-# Cache
+## Cache
 We use tags to control the cache. So set .env CACHE_DRIVER to array, memcached or redis. ```file``` will not do.
 To set the cache time for the pages you can add ```PAGE_CACHE_TIME=[minutes]```. The default has been set to 1 minute cache.
 
 
-# Important
+## Important
 Make sure you have a mail driver setup. If you don't have that option just use "log" although I recommend [Mailhog](https://github.com/mailhog/MailHog). But be sure to make it functional on the production server as we send out mails to confirm the location if needed.
 
 Make sure your .env file is in order, especially the APP_URL. This is used by the filesystem.
@@ -117,7 +117,7 @@ Also, to properly work with locations we use the google api. You are going to wa
 Now visit http://[domain]/cms and fill in the blancs.
 
 
-# Example website
+## Example website
 To get started you can seed the database with a simple Hack website. The seeder can be run by executing
 ```
 php artisan db:seed --class=Thorazine\\Hack\\Database\\Seeds\\HackExampleSite
