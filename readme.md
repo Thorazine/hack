@@ -44,6 +44,7 @@ composer require thorazine/hack
 
 ## Add to config/app.providers:
 
+```php
 Collective\Html\HtmlServiceProvider::class,
 Barryvdh\Debugbar\ServiceProvider::class,
 Thorazine\Hack\HackServiceProvider::class,
@@ -57,10 +58,10 @@ Jenssegers\Agent\AgentServiceProvider::class,
 Maatwebsite\Excel\ExcelServiceProvider::class,
 Thorazine\Hack\Providers\RouteServiceProvider::class,
 Thorazine\Location\LocationServiceProvider::class,
-
+```
 
 ## Add to config/app.aliases:
-
+```php
 'Form' => Collective\Html\FormFacade::class,
 'Html' => Collective\Html\HtmlFacade::class,
 'Debugbar' => Barryvdh\Debugbar\Facade::class,
@@ -73,13 +74,13 @@ Thorazine\Location\LocationServiceProvider::class,
 'Cms' => Thorazine\Hack\Facades\CmsFacade::class,
 'Front' => Thorazine\Hack\Facades\FrontFacade::class,
 'Location' => Thorazine\Location\Facades\LocationFacade::class,
-
+```
 
 ## Add to the App\Http\Kernel $routeMiddleware:
-
+```php
 'sentinel.auth' => \Thorazine\Hack\Http\Middleware\SentinelAuthentication::class,
 'site' => \Thorazine\Hack\Http\Middleware\SiteRedirect::class,
-
+```
 
 ## Asset and database deployment
 Run (although you might want to look at your migration folder first)
