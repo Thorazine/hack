@@ -85,7 +85,7 @@ class CarouselImageController extends CmsController
      * @param  Collection  $data
      * @return mixed
      */
-    protected function beforeEditExtra($request, $id, $data)
+    protected function beforeEditExtra($request, $data, $id)
     {
         $carousel = Carousel::find($data['carousel_id']);
 

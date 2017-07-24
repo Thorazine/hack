@@ -163,7 +163,24 @@ class CmsController extends Controller
             $data = [];
         }
 
+        $data = $this->child->beforeCreateExtra($request, $data);
+
         return $this->child->createExtra($request, $data);
+    }
+
+
+    /**
+     * An easy way to break in to the 
+     * create proces before sending
+     * it out to the view.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Collection  $data
+     * @return mixed
+     */
+    protected function beforeCreateExtra($request, $data)
+    {
+        return $data;
     }
 
 
@@ -292,7 +309,24 @@ class CmsController extends Controller
                 ->toArray();
         }
 
+        $data = $this->child->beforeEditExtra($request, $data, $id);
+
         return $this->child->editExtra($request, $id, $data);
+    }
+
+
+    /**
+     * An easy way to break in to the 
+     * edit proces before sending
+     * it out to the view.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Collection  $data
+     * @return mixed
+     */
+    protected function beforeEditExtra($request, $data, $id)
+    {
+        return $data;
     }
 
 
@@ -404,6 +438,8 @@ class CmsController extends Controller
         try {
 
             DB::beginTransaction();
+
+            $this->child->beforeDelete($id);
 
             // delete the pivots
             $this->model->where('id', $id)->delete();
