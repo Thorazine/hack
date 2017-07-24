@@ -105,7 +105,7 @@ But you can set it to whatever you want.
 
 
 ## Important
-Make sure you have a mail driver setup. If you don't have that option just use ```log``` although I recommend [Mailhog](https://github.com/mailhog/MailHog). But be sure to make it functional on the production server as we send out mails to confirm the location if needed.
+Make sure you have a mail driver setup. If you don't have that option just use ```log``` although I recommend [Mailhog](https://github.com/mailhog/MailHog). But be sure to make it functional on the production server as we send out mails to confirm the location when needed.
 
 Make sure your ```.env``` file is in order, especially the ```APP_URL``` which is used by the filesystem locally.
 
