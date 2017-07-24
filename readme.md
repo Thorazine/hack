@@ -7,21 +7,21 @@ Feel free to try it, but don't expect support any day soon.
 
 - Multi site
 - Multi domain
-- Multi language front end
+- Multi language frontend
 - Multi language CMS (language files can be added)
 - 2 factor authentication based on known previous locations with custom radius
 - Fully customisable rights authentication system (Sentinel)
 - The default Laravel Auth is totally unused and therfore availible for your project
 - Persistant login with session control
 - Advanced/automatic browser cache
-- Full cache (memcached/redis) on front end requests 
+- Full cache (memcached/redis) on frontend requests 
 - Cache flushed by tags, minimizing flushed items 
 - All pages and sites are equipped with editable on-/offline timestamps
 - Gallery with aspect ratio cropper (customisable per input)
-- Customisable wysiwygs per input
+- Customisable wysiwygs per input and pre site
 - Easy to extend with your own modules
 - Installable in excisting project
-- Front end SASS tools
+- Frontend SASS tools
 - Automatic response as JSON for API calls
 - Uses Laravel filesystem, so CDN and local support
 - Form builder/handler module
@@ -30,9 +30,9 @@ Feel free to try it, but don't expect support any day soon.
 
 ## Requirements
 - SSL (on every server that is not localhost)
-- Mail capabilities (env settings)
+- Mail capabilities
 - Npm
-- Laravel 5.4.14 or higher install, preferably a clean install
+- Laravel ^5.4 install, preferably a clean install
 
 
 ## Installing Hack
@@ -44,41 +44,41 @@ composer require thorazine/hack
 
 ## Add to config/app.providers:
 
-        Collective\Html\HtmlServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
-        Thorazine\Hack\HackServiceProvider::class,
-        Thorazine\Hack\Providers\BuilderServiceProvider::class,
-        Thorazine\Hack\Providers\CmsServiceProvider::class,
-        Thorazine\Hack\Providers\FrontServiceProvider::class,
-        Thorazine\Hack\Providers\ValidationServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
-        Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
-        Jenssegers\Agent\AgentServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
-        Thorazine\Hack\Providers\RouteServiceProvider::class,
-        Thorazine\Location\LocationServiceProvider::class,
+Collective\Html\HtmlServiceProvider::class,
+Barryvdh\Debugbar\ServiceProvider::class,
+Thorazine\Hack\HackServiceProvider::class,
+Thorazine\Hack\Providers\BuilderServiceProvider::class,
+Thorazine\Hack\Providers\CmsServiceProvider::class,
+Thorazine\Hack\Providers\FrontServiceProvider::class,
+Thorazine\Hack\Providers\ValidationServiceProvider::class,
+Intervention\Image\ImageServiceProvider::class,
+Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
+Jenssegers\Agent\AgentServiceProvider::class,
+Maatwebsite\Excel\ExcelServiceProvider::class,
+Thorazine\Hack\Providers\RouteServiceProvider::class,
+Thorazine\Location\LocationServiceProvider::class,
 
 
 ## Add to config/app.aliases:
 
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Image' => Intervention\Image\Facades\Image::class,
-        'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
-        'Reminder' => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
-        'Sentinel' => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
-        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Builder' => Thorazine\Hack\Facades\BuilderFacade::class,
-        'Cms' => Thorazine\Hack\Facades\CmsFacade::class,
-        'Front' => Thorazine\Hack\Facades\FrontFacade::class,
-        'Location' => Thorazine\Location\Facades\LocationFacade::class,
+'Form' => Collective\Html\FormFacade::class,
+'Html' => Collective\Html\HtmlFacade::class,
+'Debugbar' => Barryvdh\Debugbar\Facade::class,
+'Image' => Intervention\Image\Facades\Image::class,
+'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
+'Reminder' => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
+'Sentinel' => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
+'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+'Builder' => Thorazine\Hack\Facades\BuilderFacade::class,
+'Cms' => Thorazine\Hack\Facades\CmsFacade::class,
+'Front' => Thorazine\Hack\Facades\FrontFacade::class,
+'Location' => Thorazine\Location\Facades\LocationFacade::class,
 
 
 ## Add to the App\Http\Kernel $routeMiddleware:
 
-        'sentinel.auth' => \Thorazine\Hack\Http\Middleware\SentinelAuthentication::class,
-        'site' => \Thorazine\Hack\Http\Middleware\SiteRedirect::class,
+'sentinel.auth' => \Thorazine\Hack\Http\Middleware\SentinelAuthentication::class,
+'site' => \Thorazine\Hack\Http\Middleware\SiteRedirect::class,
 
 
 ## Asset and database deployment
