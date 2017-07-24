@@ -76,11 +76,6 @@ Thorazine\Location\LocationServiceProvider::class,
 'Location' => Thorazine\Location\Facades\LocationFacade::class,
 ```
 
-## Add to the App\Http\Kernel $routeMiddleware:
-```php
-'sentinel.auth' => \Thorazine\Hack\Http\Middleware\SentinelAuthentication::class,
-'site' => \Thorazine\Hack\Http\Middleware\SiteRedirect::class,
-```
 
 ## Asset and database deployment
 Run (although you might want to look at your migration folder first)

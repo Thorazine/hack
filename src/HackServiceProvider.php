@@ -5,6 +5,7 @@ namespace Thorazine\Hack;
 // use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Routing\Router;
 
 class HackServiceProvider extends ServiceProvider
 {
@@ -13,8 +14,13 @@ class HackServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Kernel $kernel)
+    public function boot(Kernel $kernel, Router $router)
     {
+        // add middleware to the Kernel
+        $router->aliasMiddleware('sentinel.auth', \Thorazine\Hack\Http\Middleware\SentinelAuthentication::class);
+        $router->aliasMiddleware('site', \Thorazine\Hack\Http\Middleware\SiteRedirect::class);
+
+        // publish 
         $this->publishes([
             // config
             __DIR__.'/config/cms.php' => config_path('cms.php'),
