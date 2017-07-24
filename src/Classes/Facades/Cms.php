@@ -41,14 +41,29 @@ class Cms {
 	 */
 	private $gallery;
 
-
+	/**
+	 * Flag for menu builder
+	 * @var boolean
+	 */
 	private $menuOpen = false;
 
-
-	private $initiateList = [];
-
-
+	/**
+	 * Flag for page not found
+	 * @var boolean
+	 */
 	private $notFound = false;
+
+	/**
+	 * The current slug (without language)
+	 * @var string
+	 */
+	private $slug;
+
+	/**
+	 * The current language
+	 * @var string
+	 */
+	private $language;
 
 
 	/**
@@ -62,6 +77,24 @@ class Cms {
 			return $this->site->{$attribute};
 		}
 		return $this->site;
+	}
+
+
+	/**
+	 * Set 404 flag
+	 */
+	public function setSlug($slug)
+	{
+		$this->slug = $slug;
+	}
+
+
+	/**
+	 * Set 404 flag
+	 */
+	public function getSlug()
+	{
+		return $this->slug;
 	}
 
 
@@ -130,7 +163,19 @@ class Cms {
 	 */
 	public function setSiteLanguage($language)
 	{
+		$this->language = $language;
 		App::setLocale($language);
+	}
+
+
+	/**
+	 * Get the site language for the current page
+	 *
+	 * @param collection
+	 */
+	public function getSiteLanguage()
+	{
+		return $this->language;
 	}
 
 

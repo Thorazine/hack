@@ -19,6 +19,7 @@ class HackServiceProvider extends ServiceProvider
         // add middleware to the Kernel
         $router->aliasMiddleware('sentinel.auth', \Thorazine\Hack\Http\Middleware\SentinelAuthentication::class);
         $router->aliasMiddleware('site', \Thorazine\Hack\Http\Middleware\SiteRedirect::class);
+        $router->aliasMiddleware('language', \Thorazine\Hack\Http\Middleware\LanguageRedirect::class);
 
         // publish 
         $this->publishes([
@@ -80,7 +81,6 @@ class HackServiceProvider extends ServiceProvider
                 Console\Commands\UpdateRehash::class,
             ]);
         }
-
     }
 
     /**
@@ -93,6 +93,7 @@ class HackServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/config/rights.php', 'rights');
         $this->mergeConfigFrom(__DIR__.'/config/cms.php', 'cms');
         $this->mergeConfigFrom(__DIR__.'/config/image.php', 'image');
+        $this->mergeConfigFrom(__DIR__.'/config/languages.php', 'languages');
         $this->mergeConfigFrom(__DIR__.'/config/cartalyst.sentinel.php', 'cartalyst.sentinel');
 
         // Define what came later but is needed

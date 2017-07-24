@@ -17,7 +17,7 @@ Route::group(['namespace' => 'Thorazine\Hack\Http\Controllers\Front'], function(
 			->header('Content-Type', 'text/xml');
 	});
 
-	// Test database connection (pingdom like service)
+	// Test database connection (ping service)
 	Route::get('polling/database', function() {
 		try {
 		    DB::connection()->getPdo();
@@ -29,6 +29,16 @@ Route::group(['namespace' => 'Thorazine\Hack\Http\Controllers\Front'], function(
 	// A post route for the form builder
 	Route::post('/form-builder/store', ['as' => 'form-builder.store', 'uses' => 'FormBuilderController@store']);
 
-	// This needs to be the last route, it catches all
-	Route::get('{slug}', ['as' => 'page', 'uses' => 'SlugController@slug'])->where('slug', '.*');
+	/** 
+	 * Uncomment this group if you want a country code prefix
+	 * The middleware will redirect the browser to the browser
+	 * language if nothing is given, but only if it matches a 
+	 * language in the dataset. If not it goes to the default
+	 */
+	// Route::group(['middleware' => 'language'], function() {
+
+		// This needs to be the last route, it catches all
+		Route::get('{slug}', ['as' => 'page', 'uses' => 'SlugController@slug'])->where('slug', '.*');
+
+	// });
 });

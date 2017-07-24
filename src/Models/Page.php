@@ -99,7 +99,7 @@ class Page extends CmsModel
                 'type' => 'select',
                 'label' => trans('hack::modules.pages.language'),
                 'regex' => 'required',
-                'values' => config('cms.languages'),
+                'values' => 'getLanguages',
             ],
             'prepend_slug' => [
                 'type' => 'text',
@@ -327,5 +327,18 @@ class Page extends CmsModel
     public function beforeSlugSave($value)
     {
         return trim(trim($value, '/'));
+    }
+
+    /**
+     * Return the languages form the site
+     */
+    public function getLanguages()
+    {
+        $languages = [];
+        foreach(Cms::site('languages') as $language) {
+            $languages[$language] = config('languages.'.$language.'.name');
+        }
+
+        return $languages;
     }
 }

@@ -313,6 +313,8 @@ class Builder {
             $languages[$settings['countryCode']] = $settings[$key];
         }
 
+        // dd('getLanguageAsArray');
+
         return $languages;
     }
 

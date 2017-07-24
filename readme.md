@@ -99,8 +99,9 @@ Obviously you are going to want to have the url availible on whatever driver you
 
 
 ## Cache
-We use tags to control the cache. So set .env CACHE_DRIVER to array, memcached or redis. ```file``` will not do.
+We use tags to control the cache. So set .env ```CACHE_DRIVER``` to ```array```, memcached or redis. ```file``` will not do.
 To set the cache time for the pages you can add ```PAGE_CACHE_TIME=[minutes]```. The default has been set to 1 minute cache.
+But you can set it to whatever you want.
 
 
 ## Important

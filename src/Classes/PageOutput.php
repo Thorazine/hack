@@ -37,7 +37,7 @@ class PageOutput {
 	{
 		$slug = $this->trimSlug($slug);
 
-		$this->getPageBySlug($slug, $withRestrictions);
+		$this->getPageBySlug($slug, Cms::getSiteLanguage(), $withRestrictions);
 
         // set the language
         Cms::setSiteLanguage($this->pageData['language']);
@@ -100,7 +100,7 @@ class PageOutput {
 	}
 
 
-	private function getPageBySlug($slug, $withRestrictions = true)
+	private function getPageBySlug($slug, $language = false, $withRestrictions = true)
 	{
 		// find the page
 		$this->pageData = $this->page
@@ -109,6 +109,10 @@ class PageOutput {
         // if we need the delimiter
         if($withRestrictions) {
 			$this->pageData = $this->pageData->published();
+        }
+
+        if($language) {
+        	$this->pageData = $this->pageData->where('language', Cms::getSiteLanguage());
         }
 
 		$this->pageData = $this->pageData->first();

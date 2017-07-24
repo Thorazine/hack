@@ -45,13 +45,24 @@ class SlugController extends Controller
             }
         }
 
+        // if a language was sent through the LanguageRedirect 
+		// middleware, replace the slug without the language
+		if(Cms::getSlug()) {
+			$slug = Cms::getSlug();
+			$language = Cms::getSiteLanguage();
+		}
+		else {
+			$slug = $request->slug;
+			$language = false;
+		}
+
         if(! $request->preview) {
-            $page = Cache::tags('pages', 'templates', 'slugs')->remember(Cms::cacheKey(['page', $request->slug, Cms::siteId()]), env('PAGE_CACHE_TIME', 1), function() use ($request) {
-                return $this->pageOutput->bySlug($request->slug);
+            $page = Cache::tags('pages', 'templates', 'slugs')->remember(Cms::cacheKey(['page', $request->slug, Cms::siteId()]), env('PAGE_CACHE_TIME', 1), function() use ($slug, $language) {
+                return $this->pageOutput->bySlug($slug, $language);
             });
         }
         else {
-            $page = $this->pageOutput->bySlug($request->slug, false);
+            $page = $this->pageOutput->bySlug($slug, $language, false);
         }
 
         // set the language (again) to make sure when in cache it's the correct language
