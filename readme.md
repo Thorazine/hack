@@ -111,7 +111,11 @@ Make sure your ```.env``` file is in order, especially the ```APP_URL``` which i
 
 Also, to properly work with locations we use the Google api. You are going to want to get a key at [Google](https://developers.google.com/maps/documentation/javascript/get-api-key). Once you have an api key add ```GOOGLE_KEY=[key]``` to your ```.env``` file.
 
-Now visit http://[domain]/cms and fill in the blancs.
+## Testing
+You can run a test to see if the setting are correct. You can find more (here)[https://github.com/Thorazine/hack/wiki/testing].
+
+## Setup your site
+Just visit http://[domain]/cms and fill in the blancs.
 
 
 ## Example website
