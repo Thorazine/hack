@@ -88,28 +88,28 @@ npm run dev
 
 
 ## Database
-The default setting for strictness of the database is set to true. This needs to be false for the system to work since we 
+The default setting for strictness of the database is set to ```true```. This needs to be ```false``` for the system to work since we 
 use the eloquent ```groupBy```.
 
 
 ## Filesystem
 This package uses the default Laravel Filesystem to handle storage. For settings take a look at the [Laravel docs](https://laravel.com/docs/5.4/filesystem).
-Personally I like to start of with the ```public``` driver setting and the ```php artisan storage:link``` command. To do so add ```FILESYSTEM_DRIVER=public``` to the .env file.
+Personally I like to start of with the ```public``` driver setting and the ```php artisan storage:link``` command. To do so add ```FILESYSTEM_DRIVER=public``` to the ```.env``` file.
 Obviously you are going to want to have the url availible on whatever driver you use.
 
 
 ## Cache
-We use tags to control the cache. So set .env ```CACHE_DRIVER``` to ```array```, memcached or redis. ```file``` will not do.
+We use tags to control the cache. So set ```.env``` ```CACHE_DRIVER``` to ```array```, memcached or redis. ```file``` will not do.
 To set the cache time for the pages you can add ```PAGE_CACHE_TIME=[minutes]```. The default has been set to 1 minute cache.
 But you can set it to whatever you want.
 
 
 ## Important
-Make sure you have a mail driver setup. If you don't have that option just use "log" although I recommend [Mailhog](https://github.com/mailhog/MailHog). But be sure to make it functional on the production server as we send out mails to confirm the location if needed.
+Make sure you have a mail driver setup. If you don't have that option just use ```log``` although I recommend [Mailhog](https://github.com/mailhog/MailHog). But be sure to make it functional on the production server as we send out mails to confirm the location if needed.
 
-Make sure your .env file is in order, especially the APP_URL. This is used by the filesystem.
+Make sure your ```.env``` file is in order, especially the ```APP_URL``` which is used by the filesystem locally.
 
-Also, to properly work with locations we use the google api. You are going to want to get a key at [Google](https://developers.google.com/maps/documentation/javascript/get-api-key). Once you have an api key add ```GOOGLE_KEY=[key]``` to your .env file.
+Also, to properly work with locations we use the Google api. You are going to want to get a key at [Google](https://developers.google.com/maps/documentation/javascript/get-api-key). Once you have an api key add ```GOOGLE_KEY=[key]``` to your ```.env``` file.
 
 Now visit http://[domain]/cms and fill in the blancs.
 
