@@ -19,7 +19,7 @@ class ValidationServiceProvider extends ServiceProvider
                 return true;
             }
             return preg_match('/^[a-z0-9\-\/]+$/', $value);
-        });
+        }, trans('hack::validation.slug'));
     }
 
     /**

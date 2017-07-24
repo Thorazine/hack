@@ -3,8 +3,6 @@
 namespace Thorazine\Hack\Tests\Feature;
 
 use Tests\TestCase;
-use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -26,11 +24,5 @@ class CreateFirstSiteTest extends TestCase
         $response->assertStatus(302);
         $response = $this->get('/auth/login');
         $response->assertStatus(200);
-    }
-
-    /** @test */
-    public function name_of_test() 
-    {
-        
     }
 }
