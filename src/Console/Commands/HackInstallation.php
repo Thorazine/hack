@@ -138,7 +138,7 @@ class HackInstallation extends Command
     			'FILESYSTEM_DRIVER' => 'FILESYSTEM_DRIVER=public'
     		])
     		->replace('CACHE_DRIVER=file', 'CACHE_DRIVER=array')
-    		->replace('MAIL_HOST=mailtrap.io', 'MAIL_HOST=127.0.0.1')
+    		->replace('MAIL_HOST=smtp.mailtrap.io', 'MAIL_HOST=127.0.0.1')
     		->replace('MAIL_PORT=2525', 'MAIL_PORT=1025')
     		->write();
     }
