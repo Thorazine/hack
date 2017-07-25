@@ -36,7 +36,7 @@ Feel free to try it, but don't expect support any day soon.
 
 
 ## Installing Hack
-Take a Laravel project with a working database.
+Take a Laravel project with a working database and a writable storage folder.
 
 Run
 ```
