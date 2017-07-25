@@ -56,12 +56,6 @@ class HackBuilder extends Command
         try {
             $this->builderGenerator->fire($this->name, $this->force);
             $this->migrationGenerator->fire($this->name, $this->force);
-
-            // $exitCode = Artisan::call('make:migration', [
-            //     'name' => 'create_table_builder_'.snake_case($this->name),
-            //     // '--force' => $this->force,
-            //     '--create' => snake_case($this->name),
-            // ]);
         }
         catch(Exception $e) {
             $this->error($e->getMessage());

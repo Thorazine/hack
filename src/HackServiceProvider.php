@@ -27,7 +27,6 @@ class HackServiceProvider extends ServiceProvider
             __DIR__.'/config/cms.php' => config_path('cms.php'),
             __DIR__.'/config/cartalyst.sentinel.php' => config_path('cartalyst.sentinel.php'),
             __DIR__.'/config/image.php' => config_path('image.php'),
-            // __DIR__.'/config/languages.php' => config_path('languages.php'), // removed
             __DIR__.'/config/menu.php' => config_path('menu.php'),
             __DIR__.'/config/stubs/rights.stub' => config_path('rights.php'),
 
@@ -53,7 +52,6 @@ class HackServiceProvider extends ServiceProvider
             __DIR__.'/resources/lang/stubs/nl/builder.php' => base_path('resources/lang/vendor/hack/nl/builder.php'),
 
             // views
-            // __DIR__.'/resources/views/cms' => resource_path('views/cms'),
             __DIR__.'/resources/views/1' => resource_path('views/1'),
             __DIR__.'/resources/views/offline.blade.php' => resource_path('views/offline.blade.php'),
 
@@ -79,6 +77,7 @@ class HackServiceProvider extends ServiceProvider
                 Console\Commands\HackModule::class,
                 Console\Commands\HackSearch::class,
                 Console\Commands\UpdateRehash::class,
+                Console\Commands\HackInstallation::class,
             ]);
         }
     }
