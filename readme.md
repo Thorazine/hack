@@ -59,16 +59,16 @@ npm run dev
 ```
 
 This command runs some commands and finds and replaces some settings. What it exactly does can be found on the 
-(wiki page)[https://github.com/Thorazine/hack/wiki/Manual-installation-and-setup].
+[wiki page](https://github.com/Thorazine/hack/wiki/Manual-installation-and-setup).
 
 
 ## Settings
 Now that all basic settings have been done you will need to fill in the blancs in your ```.env``` file.
-A Google API key can be retrieved (here)[https://developers.google.com/maps/documentation/javascript/get-api-key].
+A Google API key can be retrieved [here](https://developers.google.com/maps/documentation/javascript/get-api-key).
 
 
 ## Testing
-To see if everything has gone as planned you can run the (installation test)[https://github.com/Thorazine/hack/wiki/testing]. 
+To see if everything has gone as planned you can run the [installation test](https://github.com/Thorazine/hack/wiki/testing). 
 
 
 ## Setup your site
