@@ -58,6 +58,7 @@ class HackServiceProvider extends ServiceProvider
             // routes
             __DIR__.'/routes/front.php' => base_path('routes/front.php'),
             __DIR__.'/routes/hack.php' => base_path('routes/hack.php'),
+            __DIR__.'/routes/stubs/cms.stub' => base_path('routes/cms.php'),
 
 
             // stubs
