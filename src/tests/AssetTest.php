@@ -17,17 +17,9 @@ class AssetTest extends TestCase
     /** 
      * @test
      */
-    public function welcome_blade_removed_test() 
-    {
-        $this->assertTrue(!file_exists(base_path('resources/views/welcome.blade.php')), 'The welcome blade still exists. Please remove "'.base_path('resources/views/welcome.blade.php').'"');
-    }
-
-    /** 
-     * @test
-     */
     public function node_modules_installed_test() 
     {
-        $this->assertTrue(file_exists(base_path('node_modules')), 'Node module have not been created. Please run "npm install"');
+        $this->assertTrue(file_exists(base_path('node_modules')), 'Node_modules have not been created. Please run "npm install"');
     }
 
     /** 
