@@ -180,7 +180,7 @@ class PageOutput {
             if(! Cms::getNotFound()) {
                 NotFound::add($slug); // Add to 404 table
                 Cms::setNotFound();
- 
+
                 $page = Cache::tags('pages', 'templates', 'slugs')->remember(Cms::cacheKey(['page', '404', Cms::siteId()]), env('PAGE_CACHE_TIME', 1), function() {
                     return $this->bySlug('404');
                 });

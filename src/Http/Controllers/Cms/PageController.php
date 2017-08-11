@@ -324,7 +324,7 @@ class PageController extends CmsController
             $builders = Builder::getPageBuilders($id, $this->model, true);
 
             //  delete all the slugs this page had
-            $this->slug->where('page_id', $id)->delete();
+            $this->notFound->where('page_id', $id)->delete();
 
             foreach($builders as $builder) {
                 // remove the pivot that binds it

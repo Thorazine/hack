@@ -466,9 +466,21 @@ class CmsController extends Controller
             ]);
 
             return response()->json([
-                'error' => '',
-            ]);
+                'error' => $e->getMessage(),
+            ], 500);
         } 
+    }
+
+
+    /**
+     * A function to run before deleting something
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function beforeDelete($id)
+    {
+
     }
 
 

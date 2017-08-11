@@ -68,7 +68,7 @@ class NotFound extends CmsModel
             'slug' => [
                 'type' => 'text',
                 'label' => trans('hack::modules.not_found.slug'),
-                'regex' => 'required',
+                'regex' => '',
             ],
             'redirect' => [
                 'type' => 'text',
@@ -88,10 +88,18 @@ class NotFound extends CmsModel
 
     public static function add($slug)
     {
-        $exist = NotFound::where('slug', $slug)
+        $notFound = NotFound::where('slug', $slug)
             ->first();
 
-        if($exist) {
+        if($notFound) {
+
+        	// redirect if specified
+        	if($notFound->redirect) {
+        		header("HTTP/1.1 302 Moved Temporarily");
+	            header('Location: '.$notFound->redirect);
+	            die();
+        	}
+
             NotFound::where('referer', Request::header('referer'))
                 ->where('slug', $slug)
                 ->increment('requests');
