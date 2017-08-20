@@ -9,9 +9,9 @@ use Thorazine\Hack\Models\Auth\CmsRole;
 class CmsUser extends EloquentUser
 {
     use SoftDeletes;
-    
+
     /**
-     * Overwrite the sentinel default table with a new 
+     * Overwrite the sentinel default table with a new
      * one so we can keep using the users for in site
      *
      **/
@@ -110,7 +110,7 @@ class CmsUser extends EloquentUser
                 'overview' => false,
             ],
         ];
-    } 
+    }
 
 
     public function gallery()
@@ -124,11 +124,9 @@ class CmsUser extends EloquentUser
      */
     public function getRoles($data = [], $key = '')
     {
-        if(! @$this->cmsRoles) {
-           $this->cmsRoles = CmsRole::select('id', 'name')->orderBy('name', 'asc')->pluck('name', 'id');
+        if (! @$this->cmsRoles) {
+            $this->cmsRoles = CmsRole::select('id', 'name')->orderBy('name', 'asc')->pluck('name', 'id');
         }
         return $this->cmsRoles;
     }
-
-
 }
