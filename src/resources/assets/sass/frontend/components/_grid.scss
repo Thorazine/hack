@@ -1,0 +1,153 @@
+.grid {
+	box-sizing: content-box;
+	clear: both;
+	min-height: 1px;
+
+	&:after { 
+		content: " ";
+		display: block; 
+		height: 0; 
+		clear: both;
+	}
+
+	// horizontal space inbetween the grid items defined by padding
+	$sizes: (0, 1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50);
+
+	// create inner padding on the blocks from the border
+	@each $size in $sizes {
+
+		&.space-#{$size} {
+			margin-left: -#{$size}px;
+			margin-right: -#{$size}px;
+
+			> div[class^="grid-"] {
+				padding: 0 #{$size}px;
+			}
+		}
+	}
+
+
+	// vertical space inbetween the grid items defined by margin
+	$sizes: (0, 1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60);
+
+	// create inner padding on the blocks from the border
+	@each $size in $sizes {
+
+		&.vspace-#{$size} {
+			margin-bottom: #{$size}px;
+
+			div[class^="grid-"] {
+				margin-bottom: #{$size}px;
+			}
+		}
+	}
+
+	div[class^="grid-"] {
+		box-sizing: border-box;
+		min-height: 1px;
+		float: left;
+		position: relative;
+		display: block;
+	}
+
+	.grid-12 {
+		width: 100%;
+	}
+
+	.grid-8 {
+		width: 66.666666%;
+	}
+
+	.grid-7 {
+		width: 58.333333%;
+	}
+
+	.grid-6 {
+		width: 50%;
+	}
+
+	.grid-5 {
+		width: 41.666666%;
+	}
+
+	.grid-4 {
+		width: 33.333333%;
+	}
+
+	.grid-3 {
+		width: 25%;
+	}
+
+	.grid-2 {
+		width: 16.666666%;
+	}
+
+	.grid-1 {
+		width: 8.333333%;
+	}
+
+	.grid-9 {
+		width: 75%;
+	}
+
+	.grid-51 {
+		width: 20%;
+	}
+
+	.grid-52 {
+		width: 40%;
+	}
+
+	.grid-53 {
+		width: 60%;
+	}
+
+	.grid-54 {
+		width: 80%;
+	}
+
+	
+
+	// @include respond-to('tablet-portrait') {
+	// 	&.break-lg {
+	// 		div[class^="grid-"] {
+	// 			width: 100%;
+	// 		}
+	// 	}
+	// }
+
+	// @include respond-to('mobile-landscape') {
+	// 	&.break-md {
+	// 		div[class^="grid-"] {
+	// 			width: 100%;
+	// 		}
+	// 	}
+	// }
+
+	// @include respond-to('mobile-portrait') {
+	// 	div[class^="grid-"] {
+	// 		width: 100%;
+	// 	}
+	// }
+
+}
+
+/**
+* A grid, bootstrap 12 block style
+*
+
+<div class="grid">
+	<div class="grid-6"></div>
+	<div class="grid-6"></div>
+</div>
+
+
+* 
+* a grid with padding from the container wall and 10px space in each block
+
+<div class="grid space-10 vspace-10">
+	<div class="grid-4"></div>
+	<div class="grid-8"></div>
+</div>
+
+*/

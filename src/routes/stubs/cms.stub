@@ -1,0 +1,13 @@
+<?php
+/**
+ * This is where you can break in to the default routing system of
+ * the default modules. It is simply an include of this file
+ * which overwrites the current routes. 
+ *
+ * Example: 
+ * 
+ * Route::resource('carousels', '\App\Http\Controllers\Cms\CarouselController');
+ *
+ * This will overwrite the current carousels route. So be sure to extend
+ * the original class and it's dependency
+ */

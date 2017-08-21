@@ -1,0 +1,28 @@
+.model {
+	.model-options {
+		width: 1px;
+		white-space: nowrap;
+	}
+
+	thead th {
+		a {
+			cursor: pointer; 
+		}
+	}
+
+	.ui-state-highlight {
+		width: 100% !important;
+		height: 50px !important;
+		border: none;
+	}
+
+	.ui-placeholder-inner {
+		border: 1px dashed $link-color;
+		height: 50px;
+	}
+
+	.ui-sortable-helper {
+		border: 1px solid $link-color;
+		background-color: $table-bg-accent;
+	}
+}

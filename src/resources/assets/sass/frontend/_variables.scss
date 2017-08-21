@@ -1,0 +1,12 @@
+$font-family: helvetica;
+$font-color: #333;
+$default-border: #333;
+$breakpoints: (
+	'mobile-portrait': 	'(max-width: 479px)',
+	'tablet-portrait': 	'(max-width: 768px)',
+	'mobile-landscape': '(max-width: 800px)',
+	'tablet': 			'(max-width: 1024px)',
+	'desktop': 			'(min-width: 1025px)',
+	'desktop-hover':	'(min-device-width: 1025px)',
+	'desktop-high':		'(min-height: 1000px)',
+);

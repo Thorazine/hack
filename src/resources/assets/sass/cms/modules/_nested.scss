@@ -1,0 +1,65 @@
+.nested {
+	margin-top: 20px;
+	padding: 0px;
+
+	li {
+		list-style: none;
+	}
+
+	.item {
+		background-color: $navbar-default-bg;
+		margin-bottom: 5px;
+		color: $btn-default-color;
+		padding: 5px;
+		position: relative;
+		border: 1px solid $btn-default-border;
+		border-radius: 5px;
+		cursor: move;
+		min-height: 32px;
+
+		&.inactive {
+			border: 1px dashed $btn-danger-border;
+		}
+
+		.title {
+			width: 190px;
+			display: block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.url {
+			position: absolute;
+			left: 0px;
+			padding-left: 200px;
+			padding-right: 70px;
+			width: 100%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+
+	.options {
+		position: absolute;
+		right: 10px;
+		top: 4px;
+	}
+
+	.mjs-nestedSortable-error {
+		background-color: $btn-warning-bg;
+	}
+
+	.placeholder {
+		height: 32px;
+		width: 100%;
+		border: 1px dashed $link-color;
+		display: block;
+		visibility: visible !important;
+		padding: 5px;
+		margin-bottom: 5px;
+		border-radius: 5px;
+	}
+
+}

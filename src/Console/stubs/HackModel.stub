@@ -1,0 +1,82 @@
+<?php
+
+namespace App\Models\Cms;
+
+use Thorazine\Hack\Classes\Builders\FormBuilder;
+use Thorazine\Hack\Scopes\SiteScope;
+use Thorazine\Hack\Models\CmsModel;
+use Cms;
+
+class DummyClass extends CmsModel
+{
+    protected $table = 'DummyTable';
+
+    protected $builder;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        // we need to force the parent construct
+        parent::__construct($this);
+
+        $this->types = $this->types();
+
+    }
+
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new SiteScope);
+    }
+
+
+    /**
+     * Return all the types for this module
+     */
+    public function types()
+    {
+        return [
+            'id' => [
+                'type' => 'number',
+                'label' => 'Id',
+                'regex' => '',
+                'overview' => false,
+                'create' => false,
+                'edit' => false,
+            ],
+            // 'title' => [
+            //     'type' => 'text',
+            //     'label' => trans('hack::modules.DummyPath.title'),
+            //     'regex' => 'required',
+            // ],
+            // 'image' => [
+            //     'type' => 'image',
+            //     'label' => trans('hack::modules.DummyPath.image'),
+            //     'regex' => '',
+            //     'width' => false,
+            //     'height' => 140,
+            //     'regex' => 'required',
+            // ],
+        ];
+    }
+
+    /**
+     * Example function for adding an image to this module
+     * In this case the image relates to the "image" field
+     *
+    public function gallery()
+    {
+        return $this->hasOne('Thorazine\Hack\Models\Gallery', 'id', 'image');
+    }
+    */
+}

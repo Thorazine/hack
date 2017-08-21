@@ -1,0 +1,27 @@
+.alert {
+	
+	&.alert-timeout {
+		position: fixed;
+		top: 0px;
+		right: 0px;
+		display: inline;
+		width: auto;
+		max-width: 100%;
+		// transition: all 1s linear;
+		// animation: in-and-out 3s 1;
+		z-index: 999;
+	}
+
+	&.alert-danger {
+		// animation: in-and-out 10s 1;
+	}
+
+}
+
+
+// @keyframes in-and-out {
+//     0% {top: -65px;}
+//     10% {top: 0px;}
+//     90% {top: 0px;}
+//     100% {top: -65px;}
+// }

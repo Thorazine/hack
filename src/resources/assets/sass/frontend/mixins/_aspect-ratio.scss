@@ -1,0 +1,52 @@
+/**
+ * Make a child element bound by height ratio
+ * NOTE: (Only) works if child is positioned absolutely
+ *
+ * @param {number} $height (100%) - Height compared to 100% width
+ */
+@mixin height-ratio($height: 100%, $width: 0) {
+
+	@if $width > 0 {
+		$height: (($height / $width) * 100) * 1%; // keep it a percentage, do not cast to string
+	}
+
+    position: relative;
+    &:before {
+        content: '';
+        display: block;
+        padding-bottom: $height;
+    }
+
+    > div, > img, > video, > iframe, > figure {
+    	position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+    }
+}
+
+
+/**
+<div class="ar">
+	<div class="inner"></div>
+</div>
+
+.ar {
+	width: 500px;
+	@include height-ratio(50%);
+
+	.inner {
+		// Automatically gets:
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		// 250px height
+	}
+}
+
+Give a percentage to calculate the ratio
+OR
+Percentage can be calculated as follow: "(small / big) * 100". Usually this results in "(original height / original width) * 100"
+
+*/

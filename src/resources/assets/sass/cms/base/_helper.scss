@@ -1,0 +1,24 @@
+.center-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.horizontal-center-panel {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+}
+
+.no-break {
+	white-space: nowrap;
+}
+
+.panel-form {
+	width: 500px;
+}
+
+.font-normal {
+	font-weight: normal;
+}

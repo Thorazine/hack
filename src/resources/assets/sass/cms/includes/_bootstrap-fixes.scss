@@ -1,0 +1,54 @@
+.form-group {
+	position: relative;
+}
+
+
+
+.form-horizontal {
+	
+	.bottom-float {
+		position: fixed;
+		bottom: 50px;
+	}
+
+	.form-vertical {
+		margin: 0px;
+
+		div[class^='col-sm-'], .control-label {
+			width: 100%;
+			float: none !important;
+			margin: 0;
+			position: relative;
+		}
+
+		.control-label {
+			text-align: left;
+		}
+
+		&.ui-sortable {
+			.control-label {
+				text-align: center;
+			}
+		}
+
+		.module {
+
+			button, div {
+				top: 0px !important;
+			}
+		}
+	}
+}
+
+.table-responsive {
+	-webkit-overflow-scrolling: touch;
+}
+
+
+// modal 
+@media (min-width: 768px) {
+	.modal-dialog.modal-xl {
+		width: 90%;
+		max-width: 1200px;
+	}
+}

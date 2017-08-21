@@ -1,0 +1,1 @@
+<td>{!! Front::str_short($data->{$key}) !!}</td>
