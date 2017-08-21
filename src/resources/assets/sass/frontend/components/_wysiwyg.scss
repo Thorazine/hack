@@ -50,7 +50,7 @@
 		}
 
 		&:visited {
-			color: inherit; 
+			color: inherit;
 		}
 	}
 
@@ -79,8 +79,8 @@
 	}
 
 	img {
-		border: none;	
-		max-width: 100% !important;	
+		border: none;
+		max-width: 100% !important;
 		height: auto;
 		margin: 10px;
 
@@ -91,17 +91,17 @@
 
 		&.left {
 			margin: 5px 10px 5px 0;
-			float: left; 
+			float: left;
 		}
 
 		&.right {
 			margin: 5px 0 5px 10px;
-			float: right; 
+			float: right;
 		}
 	}
 
 	.iframe {
-		@include aspect-ratio(56.25%);
+		@include height-ratio(56.25%);
 
 		> iframe, .mce-object-iframe {
 			position: absolute;
