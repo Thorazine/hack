@@ -20,5 +20,15 @@
         "psr-4": {
             "Thorazine\\Hack\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Thorazine\\Hack\\LocationServiceProvider"
+            ],
+            "aliases": {
+                "Location": "Thorazine\\Hack\\Facades\\LocationFacade"
+            }
+        }
     }
 }
