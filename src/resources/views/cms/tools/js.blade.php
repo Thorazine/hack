@@ -38,7 +38,7 @@
 
 
 	function wysiwygConfig(id, configType) {
-		<?php 
+		<?php
 			if(@$data['url']) {
 				$baseUrl = $data['url'];
 			}
@@ -138,7 +138,7 @@
 @endif
 
 
-{{-- 
+{{--
 Example wysiwyg fully stacked with examples
 
 return {

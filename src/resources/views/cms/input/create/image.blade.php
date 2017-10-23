@@ -4,8 +4,8 @@
 	</label>
 	<div class="col-sm-9 image gallery cropper" data-gallery-api="{{ route('cms.api.gallery.api') }}" data-remove-api="{{ route('cms.api.gallery.destroy') }}" data-upload-crop="{{ route('cms.api.gallery.crop') }}" data-upload-url="{{ route('cms.api.gallery.upload') }}" data-key="{{ $key }}" data-width="{{ $type['width'] }}" data-height="{{ $type['height'] }}">
 
-		<button type="button" class="btn btn-primary" data-image-button data-open-gallery data-open-cropper @if(@$data[$key]) style="display: none" @endif>{{ trans('hack::cms.add') }}</button>
-		<div class="image-holder" data-image-image @if(! @$data[$key]) style="display: none" @endif>
+		<button type="button" class="btn btn-primary">{{ trans('hack::cms.add') }}</button>
+		<div class="image-holder">
 			<?php
 				if(@$data[$key]) {
 					$image = Builder::image($data[$key], false);
@@ -23,8 +23,7 @@
 		{!! Form::hidden($key, '', ['class' => 'input-value']) !!}
 		{!! $errors->first($key, '<p class="text-danger">:message</p>') !!}
 
-		@include('hack::input.module.cropper')
-		@include('hack::input.module.gallery')
+		<gallery gallery-open=""></gallery>
 
 	</div>
 </div>

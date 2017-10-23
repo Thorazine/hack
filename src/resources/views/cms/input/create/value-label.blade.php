@@ -9,7 +9,7 @@
 	<div class="col-sm-9">
 
 		{!! Form::hidden(
-			$key, 
+			$key,
 			$value,
 			['class' => 'input']
 		) !!}
@@ -49,6 +49,6 @@
     @parent
 
 	<script>
-		valueLabel.init('#value-label-{{ $key }}');
+		// valueLabel.init('#value-label-{{ $key }}');
 	</script>
 @stop
