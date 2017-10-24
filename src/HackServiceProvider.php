@@ -67,7 +67,7 @@ class HackServiceProvider extends ServiceProvider
 
         // Register the migrations
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
-        $this->loadViewsFrom(__DIR__.'/resources/views/cms', 'hack');
+        $this->loadViewsFrom(__DIR__.'/resources/views/hack', 'hack');
         $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'hack');
 
         // Register console commands

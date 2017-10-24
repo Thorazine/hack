@@ -1,0 +1,15 @@
+.auth {
+	max-width: 500px;
+	min-height: 200px;
+	margin: 100px auto;
+
+	&-map {
+		width: 100%;
+		height: 300px;
+		margin-bottom: 20px;
+	}
+
+	&-search {
+		width: 100%;
+	}
+}

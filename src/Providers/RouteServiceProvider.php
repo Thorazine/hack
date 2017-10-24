@@ -35,51 +35,65 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapCmsRoutes();
-        
-        $this->mapHackCustomRoutes();
-
+        $this->mapHackRoutes();
+        $this->mapHackApiRoutes();
+        $this->mapHackLanguageRoutes();
         $this->mapFrontRoutes();
     }
 
     /**
-     * Define the "web" routes for the application.
+     * Define the "web" routes for Hack.
      *
      * These routes all receive session state, CSRF protection, etc.
      *
      * @return void
      */
-    protected function mapCmsRoutes()
+    protected function mapHackRoutes()
     {
         Route::group([
             'middleware' => ['web', 'site'],
-            'namespace' => $this->vendorNamespace.'\Cms',
-            'prefix' => 'cms',
-            'as' => 'cms.'
+            'namespace' => $this->vendorNamespace,
+            'prefix' => 'hack',
+            'as' => 'hack.'
         ], function ($router) {
-            // if(file_exists(base_path('vendor/thorazine/hack/src/routes/cms.php'))) {
-                require base_path('vendor/thorazine/hack/src/routes/cms.php');
-            // }
+            require base_path('vendor/thorazine/hack/src/routes/hack.php');
         });
     }
 
     /**
-     * Define the "web" routes for the application.
+     * Define the "api" routes for Hack.
      *
      * These routes all receive session state, CSRF protection, etc.
      *
      * @return void
      */
-    protected function mapHackCustomRoutes()
+    protected function mapHackApiRoutes()
     {
         Route::group([
             'middleware' => ['web', 'site'],
-            'prefix' => 'cms',
-            'as' => 'cms.'
+            'namespace' => $this->vendorNamespace.'\Api',
+            'prefix' => 'hack/api',
+            'as' => 'hack.api.'
         ], function ($router) {
-            // if(file_exists(base_path('routes/hack.php'))) {
-                require base_path('routes/hack.php');
-            // }
+            require base_path('vendor/thorazine/hack/src/routes/api.php');
+        });
+    }
+
+    /**
+     * Define the "language" routes for Hack.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapHackLanguageRoutes()
+    {
+        Route::group([
+            'middleware' => [],
+            'prefix' => 'hack/js',
+            'as' => 'hack.language.'
+        ], function ($router) {
+            require base_path('vendor/thorazine/hack/src/routes/language.php');
         });
     }
 

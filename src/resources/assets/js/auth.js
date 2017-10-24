@@ -6,7 +6,7 @@
     marker;
 
 $(document).ready(function() {
-	
+
 	$('#location').click(function(event) {
 		$(this).prop('disabled', 'disabled').html('One moment please, requesting location <i class="fa fa-spinner fa-spin"></i>');
 		getLocation();
@@ -38,11 +38,11 @@ function getLocation() {
 			$('#submit').prop('disabled', false).text('Submit');
 			$('#authentication').fadeIn();
 
-		}, 
+		},
 		function(error) {
 			showErrorMap();
 		});
-	} 
+	}
 	else {
 		showErrorMap();
 	}
@@ -56,7 +56,7 @@ function showErrorMap() {
 
 	// load the google map
 	getLatLongMapHtml(document.getElementById('error-map'));
-	
+
 	$('#setLocation').click(function(event) {
 		setMapLocation($('#locationInput').val(), 1);
 	});
@@ -83,7 +83,7 @@ function showErrorMap() {
 /**
  * Create the map options
  */
-function getLatLongMapHtml(placeholder) 
+function getLatLongMapHtml(placeholder)
 {
 	// Load the map options
     var mapOptions = {
@@ -105,12 +105,12 @@ function getLatLongMapHtml(placeholder)
 
 /**
  * Set the users location on the map
- * 
+ *
  * @param string (address)
  */
 function setMapLocation(address, radius)
 {
-	
+
 	if(typeof radius == "undefined") {
     	radius = 100;
     }
@@ -170,7 +170,7 @@ function getIPLocation()
 
 
 function setMarker(location)
-{	
+{
 	// remove old marker id there is one
 	if(marker) {
         marker.setMap(null);
