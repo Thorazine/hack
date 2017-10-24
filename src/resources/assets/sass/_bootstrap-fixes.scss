@@ -5,3 +5,25 @@
 		}
 	}
 }
+
+.btn {
+	&-busy {
+		&:before {
+			font-family: 'FontAwesome';
+			content: '\f110';
+			animation: fa-spin 1s infinite steps(8);
+			width: 1.28571429em;
+		    text-align: center;
+		    display: inline-block;
+		    font-size: inherit;
+		    text-rendering: auto;
+		    -webkit-font-smoothing: antialiased;
+		}
+	}
+}
+
+.alert {
+	ul {
+		margin-bottom: 0;
+	}
+}

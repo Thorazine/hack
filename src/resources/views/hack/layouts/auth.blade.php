@@ -10,7 +10,7 @@
 	</div>
 
 	<script>
-		var BASE_URL = "{{ env('APP_URL') }}";
+		window.BASE_URL = "{{ env('APP_URL') }}";
 		window.trans = (string) => _.get(window.i18n, string);
 	</script>
 	<script src="{{ asset('hack/js/auth-lang.js') }}"></script>

@@ -1,6 +1,20 @@
 <template>
 	<div class="auth">
 		<transition name="fadebottom">
+			<div class="auth-location" v-if="tab == 0">
+				<div class="card border-dark mb-3">
+					<div class="card-header">
+						<h4 class="card-title">{{ trans('auth.header.wait') }}</h4>
+					</div>
+					<div class="card-body text-dark">
+						<p class="card-text">
+							Please wait while we retrieve your location.
+						</p>
+					</div>
+				</div>
+			</div>
+		</transition>
+		<transition name="fadebottom">
 			<div class="auth-location" v-if="tab == 1">
 				<div class="card border-dark mb-3">
 					<div class="card-header">
@@ -12,7 +26,7 @@
 							So to continue we need to get a fix on your location first.
 							Please press "next" and give us permission to get your location.
 						</p>
-						<button type="button" :class="{disabled:busy}" class="btn btn-dark" v-on:click="getLocationPermission">Next</button>
+						<button type="button" :class="{'disabled btn-busy':busy}" class="btn btn-dark" v-on:click="getLocation">Next</button>
 					</div>
 				</div>
 			</div>
@@ -46,21 +60,30 @@
 					<div class="card-body text-dark">
 						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 						<form action="">
+							<Alert :alerts="alerts" :type="alertType"></Alert>
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">{{ trans('auth.input.email') }}</label>
 								<div class="col-sm-9">
-									<input type="email" class="form-control" :placeholder="trans('auth.input.email')" v-model="username.value">
+									<input type="email" class="form-control" :class="{'is-invalid':username.error}" :placeholder="trans('auth.input.email')" v-model="username.value">
+									<div class="invalid-feedback">
+								        {{ username.error }}
+								    </div>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">{{ trans('auth.input.password') }}</label>
 								<div class="col-sm-9">
-									<input type="password" class="form-control" :placeholder="trans('auth.input.password')" v-model="password.value">
+									<input type="password" class="form-control" :class="{'is-invalid':password.error}" :placeholder="trans('auth.input.password')" v-model="password.value">
+									<div class="invalid-feedback">
+								        {{ password.error }}
+								    </div>
 								</div>
 							</div>
 							<div class="form-group row">
 								<div class="col-sm-12">
-									<button type="button" :class="{disabled:busy}" class="btn btn-dark pull-right">{{ trans('auth.input.submit') }}</button>
+									<button type="button" :class="{'disabled btn-busy':busy}" class="btn btn-dark pull-right" v-on:click="authenticate">
+										{{ trans('auth.input.submit') }}
+									</button>
 								</div>
 							</div>
 						</form>
@@ -72,10 +95,15 @@
 </template>
 
 <script>
+	import Cookie from 'js-cookie';
+	import Alert from './Alert';
+
 	export default {
 		data: function() {
 			return {
-				tab: 1,
+				alerts: [],
+				alertType: 'danger',
+				tab: -1,
 				busy: false,
 				map: null,
 				marker: null,
@@ -107,8 +135,11 @@
 				},
 			};
 		},
+		components: {
+			Alert
+		},
     	methods: {
-    		getLocationPermission() {
+    		getLocation() {
     			this.busy = true;
     			if (navigator.geolocation) {
 					navigator.geolocation.getCurrentPosition((position) => {
@@ -116,6 +147,7 @@
 						this.longitude.value = position.coords.longitude;
 						this.busy = false;
 						this.changeTab(3);
+						Cookie.set('hack-geo', true, { expires: 365 });
 					},
 					(error) => {
 						this.getLocationByIp()
@@ -229,10 +261,40 @@
     		},
     		mapTheme() {
     			return [{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"labels.text","stylers":[{"visibility":"off"}]}];
+    		},
+    		authenticate() {
+    			if(!this.busy) {
+    				this.busy = true;
+	    			axios.post(BASE_URL+'/hack/api/authenticate', {}).then((response) => {
+
+	    				this.busy = false;
+	    			})
+	    			.catch((error) => {
+	    				this.busy = false;
+	    				if(error.response.status == 422) {
+							$.each(error.response.data.errors, (index, values) => {
+								this[index].error = values[0];
+							});
+							this.alerts = [error.response.data.message];
+							if(error.response.data.errors.latitude) {
+								this.alerts.push(error.response.data.errors.latitude[0]);
+							}
+							if(error.response.data.errors.longitude) {
+								this.alerts.push(error.response.data.errors.longitude[0]);
+							}
+						}
+	    			});
+	    		}
     		}
     	},
 	    mounted: function() {
-
+	    	if(Cookie.get('hack-geo')) {
+	    		this.changeTab(0);
+	    		this.getLocation();
+	    	}
+	    	else {
+	    		this.changeTab(1);
+	    	}
 	    }
     }
 

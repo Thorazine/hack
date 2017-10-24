@@ -18,7 +18,6 @@ Vue.prototype.trans = window.trans;
  */
 
 Vue.component('auth', require('./components/Auth.vue'));
-Vue.component('alert', require('./components/Alert.vue'));
 
 const app = new Vue({
     el: '#app',

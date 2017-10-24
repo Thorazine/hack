@@ -1,6 +1,6 @@
 <template>
-	<transition name="fadetop">
-		<div class="alert alert-vue alert-dismissible" :class="'alert-'+type" v-if="messages.length">
+	<transition name="fade">
+		<div class="alert alert-dismissible fade show" :class="'alert-'+type" v-if="messages.length">
 			<button type="button" class="close" v-on:click="close()"><span aria-hidden="true">&times;</span></button>
 			<ul>
 				<li v-for="message in messages">
@@ -15,7 +15,7 @@
 	export default {
 		data: function() {
 			return {
-				messages: ['blabla'],
+				messages: [],
 			};
 		},
     	props: [
@@ -30,9 +30,9 @@
     	watch: {
     		alerts: function(value) {
     			this.messages = value;
-    	    	setTimeout(() => {
-    	    		this.messages = [];
-    	    	}, 3000);
+    	    	// setTimeout(() => {
+    	    	// 	this.messages = [];
+    	    	// }, 3000);
     	    }
     	}
     }
