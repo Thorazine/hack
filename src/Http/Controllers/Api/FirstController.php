@@ -9,9 +9,8 @@ use Exception;
 
 class FirstController extends Controller
 {
-    public function authenticate(FirstRequest $request)
+    public function store(FirstRequest $request)
     {
-
         try {
             if($user = Sentinel::authenticateAndRemember($credentials)) {
             	return response()->json([

@@ -25,8 +25,7 @@ class FirstRequest extends FormRequest
     {
         return [
             'email' => 'required|email',
-            'password' => 'required|min:6|max:50|confirmed',
-            'title' => '',
+            'password' => 'required|min:6|max:200|confirmed',
             'language' => 'required',
             'protocol' => 'required|in:http://,https://',
             'domain' => 'required',

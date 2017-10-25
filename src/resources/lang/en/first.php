@@ -21,8 +21,9 @@ return [
 			],
 		],
 		3 => [
-			'title' => 'Domain',
+			'title' => 'Website data',
 			'introduction' => 'Check if your domain is correct',
+
 			'previous' => 'Previous',
 			'next' => 'Next',
 		],
