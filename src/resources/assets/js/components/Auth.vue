@@ -38,12 +38,13 @@
 						<h4 class="card-title">{{ trans('auth.header.location') }}</h4>
 					</div>
 					<div class="card-body text-dark">
+						<Alert :alerts="alerts" :type="'warning'" :timeout="true"></Alert>
 						<p class="card-text">
 							An exact location could not be found. Please manually select your location.
 						</p>
 						<div class="auth-map" id="auth-map"></div>
 						<div class="input-group auth-search">
-							<input type="text" class="form-control" v-model="address">
+							<input type="text" class="form-control" v-model="address" v-on:keyup.13="searchLocation">
 							<button type="button" class="input-group-addon btn btn-primary" v-on:click="searchLocation">Zoek</button>
 							<button type="button" class="input-group-addon btn btn-primary" v-on:click="selectLocation">Next</button>
 						</div>
@@ -58,9 +59,9 @@
 						<h4 class="card-title">{{ trans('auth.header.login') }}</h4>
 					</div>
 					<div class="card-body text-dark">
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						<form action="">
-							<Alert :alerts="alerts" :type="alertType"></Alert>
+						<p class="card-text">Please enter your authentication data.</p>
+						<form>
+							<Alert :alerts="alerts" :type="'danger'" :timeout="false"></Alert>
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">{{ trans('auth.input.email') }}</label>
 								<div class="col-sm-9">
@@ -102,7 +103,6 @@
 		data: function() {
 			return {
 				alerts: [],
-				alertType: 'danger',
 				tab: -1,
 				busy: false,
 				map: null,
@@ -147,7 +147,7 @@
 						this.longitude.value = position.coords.longitude;
 						this.busy = false;
 						this.changeTab(3);
-						Cookie.set('hack-geo', true, { expires: 365 });
+						Cookie.set('hack-geo', 1, { expires: 365 });
 					},
 					(error) => {
 						this.getLocationByIp()
@@ -158,6 +158,7 @@
 				}
     		},
     		getLocationByIp() {
+    			Cookie.set('hack-geo', 2, { expires: 365 });
     			axios.get('http://ipinfo.io').then((response) => {
     				if(response.data.loc) {
     					let location = response.data.loc.split(',');
@@ -242,18 +243,15 @@
 			            let centerLatLng = [results[0].geometry.location.lat(), results[0].geometry.location.lng()];
 			            let addressLatLng = new google.maps.LatLng(centerLatLng[0], centerLatLng[1]);
 
-			            $('#latitude').val(centerLatLng[0]);
-						$('#longitude').val(centerLatLng[1]);
-
 			            this.map.setCenter(addressLatLng);
 
 			            this.map.setZoom(Math.round(19-Math.log(100)/Math.LN2));
 			            this.latitude.value = centerLatLng[0];
 						this.longitude.value = centerLatLng[1];
 			            this.setMarker();
-
-			        } else {
-			            alert(trans('auth.errors.not_found'));
+			        }
+			        else {
+			        	this.alerts = [trans('auth.errors.not_found')];
 			        }
 			    });
 
@@ -265,8 +263,13 @@
     		authenticate() {
     			if(!this.busy) {
     				this.busy = true;
-	    			axios.post(BASE_URL+'/hack/api/authenticate', {}).then((response) => {
-
+	    			axios.post(BASE_URL+'/hack/api/authenticate', {
+	    				username: this.username.value,
+	    				password: this.password.value,
+	    				latitude: this.latitude.value,
+	    				longitude: this.longitude.value,
+	    			}).then((response) => {
+	    				window.location.href = response.data.url;
 	    				this.busy = false;
 	    			})
 	    			.catch((error) => {
@@ -276,21 +279,29 @@
 								this[index].error = values[0];
 							});
 							this.alerts = [error.response.data.message];
-							if(error.response.data.errors.latitude) {
-								this.alerts.push(error.response.data.errors.latitude[0]);
+							if(error.response.data.errors) {
+								if(error.response.data.errors.latitude) {
+									this.alerts.push(error.response.data.errors.latitude[0]);
+								}
+								if(error.response.data.errors.longitude) {
+									this.alerts.push(error.response.data.errors.longitude[0]);
+								}
 							}
-							if(error.response.data.errors.longitude) {
-								this.alerts.push(error.response.data.errors.longitude[0]);
-							}
+						}
+						else if(error.response.status == 401) {
+							// not authenticated
 						}
 	    			});
 	    		}
     		}
     	},
 	    mounted: function() {
-	    	if(Cookie.get('hack-geo')) {
+	    	if(Cookie.get('hack-geo') == 1) {
 	    		this.changeTab(0);
 	    		this.getLocation();
+	    	}
+	    	else if(Cookie.get('hack-geo') == 2) {
+	    		this.getLocationByIp();
 	    	}
 	    	else {
 	    		this.changeTab(1);

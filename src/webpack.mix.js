@@ -11,7 +11,8 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('vendor/thorazine/hack/src/resources/assets/js/login.js', 'public/hack/js')
+mix.js('vendor/thorazine/hack/src/resources/assets/js/auth.js', 'public/hack/js')
+	.js('vendor/thorazine/hack/src/resources/assets/js/first.js', 'public/hack/js')
 
    .sass('vendor/thorazine/hack/src/resources/assets/sass/hack.scss', 'public/hack/css')
    .sass('vendor/thorazine/hack/src/resources/assets/sass/wysiwyg.scss', 'public/hack/css');

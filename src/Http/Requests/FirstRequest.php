@@ -4,7 +4,7 @@ namespace Thorazine\Hack\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BaseFirstRequest extends FormRequest
+class FirstRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

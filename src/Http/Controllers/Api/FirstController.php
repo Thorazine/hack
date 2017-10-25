@@ -2,17 +2,15 @@
 
 namespace Thorazine\Hack\Http\Controllers\Api;
 
-use Thorazine\Hack\Http\Requests\AuthRequest;
+use Thorazine\Hack\Http\Requests\FirstRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Exception;
-use Sentinel;
 
-class AuthController extends Controller
+class FirstController extends Controller
 {
-    public function authenticate(AuthRequest $request)
+    public function authenticate(FirstRequest $request)
     {
-    	$credentials = $request->only('email', 'password');
 
         try {
             if($user = Sentinel::authenticateAndRemember($credentials)) {

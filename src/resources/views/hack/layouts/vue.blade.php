@@ -13,8 +13,6 @@
 		window.BASE_URL = "{{ env('APP_URL') }}";
 		window.trans = (string) => _.get(window.i18n, string);
 	</script>
-	<script src="{{ asset('hack/js/auth-lang.js') }}"></script>
-	<script src="{{ asset('hack/js/login.js') }}"></script>
 	<script src="https://use.fontawesome.com/5daec6a801.js"></script>
 
 	@yield('script')

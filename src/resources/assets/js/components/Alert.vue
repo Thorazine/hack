@@ -20,7 +20,8 @@
 		},
     	props: [
     		'alerts',
-    		'type'
+    		'type',
+    		'timeout',
     	],
     	methods: {
     		close: function() {
@@ -30,9 +31,11 @@
     	watch: {
     		alerts: function(value) {
     			this.messages = value;
-    	    	// setTimeout(() => {
-    	    	// 	this.messages = [];
-    	    	// }, 3000);
+    			if(this.timeout) {
+	    	    	setTimeout(() => {
+	    	    		this.messages = [];
+	    	    	}, 3000);
+	    	    }
     	    }
     	}
     }

@@ -16,8 +16,8 @@ return [
 		'submit' => 'Submit',
 	],
 
-	'error' => [
-		'errors' => 'There we\'re errors in your request',
+	'errors' => [
+		'error' => 'There we\'re errors in your request',
 		'not_found' => 'No results',
 	]
 ];

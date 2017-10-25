@@ -17,7 +17,7 @@ Vue.prototype.trans = window.trans;
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('auth', require('./components/Auth.vue'));
+Vue.component('First', require('./components/First.vue'));
 
 const app = new Vue({
     el: '#app',
