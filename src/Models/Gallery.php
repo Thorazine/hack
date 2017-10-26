@@ -5,7 +5,7 @@ namespace Thorazine\Hack\Models;
 use Illuminate\Support\Facades\Storage;
 use Thorazine\Hack\Scopes\SiteScope;
 
-class Gallery extends CmsModel
+class Gallery extends HackModel
 {
     /**
      * The table name for the model.
@@ -44,7 +44,7 @@ class Gallery extends CmsModel
      * @var string
      */
 	public $hashed = false;
-    
+
 
     /**
      * These are the allowed extensions and their categories
@@ -137,7 +137,7 @@ class Gallery extends CmsModel
                 'edit' => false,
             ],
         ];
-    } 
+    }
 
 
     /**
@@ -275,7 +275,7 @@ class Gallery extends CmsModel
             case 'KB':
                 $size = $this->filesize / 1024;
                 break;
-            
+
             case 'MB':
                 $size = $this->filesize / 1024 / 1024;
                 break;

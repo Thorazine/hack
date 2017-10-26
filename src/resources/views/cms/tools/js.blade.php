@@ -38,12 +38,12 @@
 
 
 	function wysiwygConfig(id, configType) {
-		<?php 
+		<?php
 			if(@$data['url']) {
 				$baseUrl = $data['url'];
 			}
 			else {
-				$baseUrl = Cms::site('domain');
+				$baseUrl = Hack::site('domain');
 			}
 		?>
 		if(configType == 'full') {
@@ -138,7 +138,7 @@
 @endif
 
 
-{{-- 
+{{--
 Example wysiwyg fully stacked with examples
 
 return {

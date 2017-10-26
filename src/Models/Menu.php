@@ -5,7 +5,7 @@ namespace Thorazine\Hack\Models;
 use Thorazine\Hack\Scopes\SiteScope;
 use Thorazine\Hack\Models\MenuItem;
 
-class Menu extends CmsModel
+class Menu extends HackModel
 {
     protected $table = 'menus';
 
@@ -68,7 +68,7 @@ class Menu extends CmsModel
                 ],
             ],
         ];
-    } 
+    }
 
 
     /**

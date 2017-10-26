@@ -5,9 +5,9 @@ namespace Thorazine\Hack\Models;
 use Thorazine\Hack\Classes\Builders\FormBuilder;
 use Thorazine\Hack\Scopes\SiteScope;
 use View;
-use Cms;
+use Hack;
 
-class Form extends CmsModel
+class Form extends HackModel
 {
     protected $table = 'forms';
 
@@ -178,19 +178,19 @@ class Form extends CmsModel
      */
     public function html()
     {
-        $page = Cms::page();
+        $page = Hack::page();
 
-        if(view()->exists(Cms::site('id').'.form.form')) {
-            return view(Cms::site('id').'.form.form')
+        if(view()->exists(Hack::site('id').'.form.form')) {
+            return view(Hack::site('id').'.form.form')
             ->with('page', $page)
             ->with('form', $this)
             ->render();
         }
-        
+
         return view('hack::frontend.form.form')
             ->with('page', $page)
             ->with('form', $this)
             ->render();
     }
-    
+
 }

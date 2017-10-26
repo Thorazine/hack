@@ -4,9 +4,9 @@ namespace Thorazine\Hack\Models;
 
 use Thorazine\Hack\Scopes\SiteScope;
 use Request;
-use Cms;
+use Hack;
 
-class NotFound extends CmsModel
+class NotFound extends HackModel
 {
     protected $table = 'not_found';
 
@@ -83,7 +83,7 @@ class NotFound extends CmsModel
                 'edit' => false,
             ],
         ];
-    } 
+    }
 
 
     public static function add($slug)
@@ -106,7 +106,7 @@ class NotFound extends CmsModel
         }
         else {
             NotFound::insert([
-                'site_id' => Cms::siteId(),
+                'site_id' => Hack::siteId(),
                 'slug' => $slug,
                 'referer' => Request::header('referer'),
                 'requests' => 1,

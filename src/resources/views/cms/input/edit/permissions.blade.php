@@ -4,14 +4,14 @@
 	</label>
 	<div class="col-sm-9 labeled-multi-checkbox">
 
-		@foreach(Cms::sites() as $site)
+		@foreach(Hack::sites() as $site)
 			<h3>{{ ucfirst($site->title) }}</h3>
 
 			@foreach(Builder::getArrayValue($model, $type, $type['values'], @$data, $key) as $section => $rights)
 				<hr>
 				<h4>{{ trans('hack::cms.module.'.$section) }}</h4>
 				<div class="grid space-10 vspace-10" style="margin-bottom: 10px;">
-				
+
 					<span class="pull-right">
 						<a class="select-all">All</a> | <a class="select-none">None</a>
 					</span>
@@ -24,7 +24,7 @@
 							</label>
 						</div>
 					@endforeach
-					
+
 				</div>
 			@endforeach
 

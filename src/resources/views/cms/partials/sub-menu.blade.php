@@ -9,11 +9,11 @@
 
 	foreach($possibilities as $possibility) {
 		if(strpos(Request::url(), $possibility) !== false) {
-			Cms::setMenuOpen(true);
+			Hack::setMenuOpen(true);
 			$subMenuOpen = true;
 		}
 	}
-	// dd(Cms::hasPermission($child['route']));
+	// dd(Hack::hasPermission($child['route']));
 ?>
 	<li @if(@$subMenuOpen) class="active" @endif>
 	    <a @if(Request::url() == $route) href="javascript:void(0)" @else href="{{ $route }}" @endif>

@@ -5,7 +5,7 @@
 | Predefined frontend routes
 |--------------------------------------------------------------------------
 |
-| This area contains the routes Hack needs to work. Alteration is 
+| This area contains the routes Hack needs to work. Alteration is
 | not recommended.
 |
 */
@@ -13,7 +13,7 @@ Route::group(['namespace' => 'Thorazine\Hack\Http\Controllers\Front'], function(
 
 	// Return the sitemap
 	Route::get('sitemap.xml', function() {
-		return response(Storage::disk(config('filesystems.default'))->get('sitemaps/'.Cms::siteId().'/sitemap.xml'), 200)
+		return response(Storage::disk(config('filesystems.default'))->get('sitemaps/'.Hack::siteId().'/sitemap.xml'), 200)
 			->header('Content-Type', 'text/xml');
 	});
 
@@ -29,10 +29,10 @@ Route::group(['namespace' => 'Thorazine\Hack\Http\Controllers\Front'], function(
 	// A post route for the form builder
 	Route::post('/form-builder/store', ['as' => 'form-builder.store', 'uses' => 'FormBuilderController@store']);
 
-	/** 
+	/**
 	 * Uncomment this group if you want a country code prefix
 	 * The middleware will redirect the browser to the browser
-	 * language if nothing is given, but only if it matches a 
+	 * language if nothing is given, but only if it matches a
 	 * language in the dataset. If not it goes to the default
 	 */
 	// Route::group(['middleware' => 'language'], function() {

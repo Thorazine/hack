@@ -2,7 +2,7 @@
 
 namespace Thorazine\Hack\Models;
 
-class Slug extends CmsModel
+class Slug extends HackModel
 {
     protected $table = 'slugs';
 
@@ -61,5 +61,5 @@ class Slug extends CmsModel
     }
 
 
-    
+
 }

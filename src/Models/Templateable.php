@@ -2,7 +2,7 @@
 
 namespace Thorazine\Hack\Models;
 
-class Templateable extends CmsModel
+class Templateable extends HackModel
 {
     /**
      * The databae table

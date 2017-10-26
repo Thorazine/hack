@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Exception;
-use Cms;
+use Hack;
 use DB;
 
-class CmsPersistence extends EloquentPersistence
+class HackPersistence extends EloquentPersistence
 {
-    
-    protected $table = 'cms_persistences';
+
+    protected $table = 'hack_persistences';
 
     use SoftDeletes;
 
@@ -98,7 +98,7 @@ class CmsPersistence extends EloquentPersistence
                 'edit' => false,
             ],
         ];
-    } 
+    }
 
     /**
      * Determins if a session should be activated or if verification is needed
@@ -110,21 +110,21 @@ class CmsPersistence extends EloquentPersistence
      */
     public function shouldBeActive($userId, $latitude, $longitude)
     {
-    	// km: 6371 
+    	// km: 6371
     	// miles: 3959
 
         try {
 
         	$inRange = $this->select(DB::raw('
-    	    		( 6371 * acos( cos( radians('.$latitude.') ) * cos( radians( cms_persistences.latitude ) ) 
-    			   * cos( radians(cms_persistences.longitude) - radians('.$longitude.')) + sin(radians('.$latitude.')) 
-    			   * sin( radians(cms_persistences.latitude)))) AS distance
+    	    		( 6371 * acos( cos( radians('.$latitude.') ) * cos( radians( hack_persistences.latitude ) )
+    			   * cos( radians(hack_persistences.longitude) - radians('.$longitude.')) + sin(radians('.$latitude.'))
+    			   * sin( radians(hack_persistences.latitude)))) AS distance
     	    	'))
         		->having('distance', '<', config('cms.validation_distance'))
         		->where('user_id', $userId)
         		->where('verified', 1)
-        		->get();        		
-        		
+        		->get();
+
         	if($inRange->count()) {
         		return 1;
         	}
@@ -139,6 +139,7 @@ class CmsPersistence extends EloquentPersistence
 
         }
         catch(Exception $e) {
+        	abort(500, $e->getMessage());
             abort(500, 'There was a problem running the query. Try to set your config.database.connections.mysql setting to: strict => false');
         }
     }
@@ -146,8 +147,8 @@ class CmsPersistence extends EloquentPersistence
 
     public function scopeActive($query)
     {
-    	$query->where('user_id', Cms::userId())
-    		->where('code', Cms::code())
+    	$query->where('user_id', Hack::userId())
+    		->where('code', Hack::code())
     		->where('verified', 1);
     }
 

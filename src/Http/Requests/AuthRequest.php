@@ -24,10 +24,10 @@ class AuthRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|email',
+            'email' => 'required|email',
             'password' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
         ];
     }
 }

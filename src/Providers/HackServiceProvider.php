@@ -5,7 +5,7 @@ namespace Thorazine\Hack\Providers;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
-class CmsServiceProvider extends ServiceProvider
+class HackServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -24,9 +24,9 @@ class CmsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        App::bind('cms', function()
+        App::bind('hack', function()
         {
-            return new \Thorazine\Hack\Classes\Facades\Cms;
+            return new \Thorazine\Hack\Classes\Facades\Hack;
         });
     }
 }

@@ -4,12 +4,12 @@ namespace Thorazine\Hack\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User extends CmsModel
+class User extends HackModel
 {
 	use SoftDeletes;
-	
+
 	/**
-	 * Overwrite the sentinel default table with a new 
+	 * Overwrite the sentinel default table with a new
 	 * one so we can keep using the users for in site
 	 *
 	 **/
@@ -85,7 +85,7 @@ class User extends CmsModel
                 'confirmation_placeholder' => trans('hack::modules.users.password_confirm'),
             ],
         ];
-    } 
+    }
 
 
     public function gallery()
@@ -96,7 +96,7 @@ class User extends CmsModel
 
     public function persistences()
     {
-        return $this->hasMany('Thorazine\Hack\Models\Auth\CmsPersistence');
+        return $this->hasMany('Thorazine\Hack\Models\Auth\HackPersistence');
     }
 
 

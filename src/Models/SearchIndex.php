@@ -4,7 +4,7 @@ namespace Thorazine\Hack\Models;
 
 use Builder;
 
-class SearchIndex extends CmsModel
+class SearchIndex extends HackModel
 {
     protected $table = 'search_index';
 
@@ -47,6 +47,6 @@ class SearchIndex extends CmsModel
                 'regex' => 'max:70',
             ],
         ];
-    } 
+    }
 
 }

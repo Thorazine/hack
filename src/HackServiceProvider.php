@@ -25,10 +25,10 @@ class HackServiceProvider extends ServiceProvider
         $this->publishes([
             // config
             // __DIR__.'/config/cms.php' => config_path('cms.php'),
-            // __DIR__.'/config/cartalyst.sentinel.php' => config_path('cartalyst.sentinel.php'),
-            // __DIR__.'/config/image.php' => config_path('image.php'),
+            __DIR__.'/config/cartalyst.sentinel.php' => config_path('cartalyst.sentinel.php'),
+            __DIR__.'/config/image.php' => config_path('image.php'),
             // __DIR__.'/config/menu.php' => config_path('menu.php'),
-            // __DIR__.'/config/stubs/rights.stub' => config_path('rights.php'),
+            __DIR__.'/config/stubs/rights.stub' => config_path('rights.php'),
 
             // // js and style
             // __DIR__.'/package.json' => base_path('package.json'),
@@ -62,7 +62,7 @@ class HackServiceProvider extends ServiceProvider
 
 
             // // stubs
-            // __DIR__.'/Http/Controllers/Cms/stubs/PanelController.stub' => app_path('Http/Controllers/Cms/PanelController.php'),
+            // __DIR__.'/Http/Controllers/Hack/stubs/PanelController.stub' => app_path('Http/Controllers/Hack/PanelController.php'),
         ], 'hack');
 
         // Register the migrations

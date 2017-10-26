@@ -2,7 +2,7 @@
 
 namespace Thorazine\Hack\Models;
 
-class FormField extends CmsModel
+class FormField extends HackModel
 {
     protected $table = 'form_fields';
 
@@ -139,5 +139,5 @@ class FormField extends CmsModel
     }
 
 
-    
+
 }

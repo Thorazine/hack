@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Thorazine\Hack\Models\FormValidation;
 use Thorazine\Hack\Models\Form;
 use Request;
-use Cms;
+use Hack;
 
 class FormBuilderStore extends FormRequest
 {
@@ -70,7 +70,7 @@ class FormBuilderStore extends FormRequest
 
 
         $messages = FormValidation::whereIn('regex', $individualRules)
-            ->where('language', Cms::site('language'))
+            ->where('language', Hack::site('language'))
             ->pluck('error_message', 'regex')
             ->toArray();
 

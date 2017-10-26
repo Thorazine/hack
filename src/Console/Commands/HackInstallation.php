@@ -58,7 +58,7 @@ class HackInstallation extends Command
     {
     	// set the force
         $this->force = $this->option('force');
-    	$this->ascii();        
+    	$this->ascii();
     	$this->runCommands();
         $this->updateApp();
         $this->updateEnv();
@@ -93,7 +93,7 @@ class HackInstallation extends Command
     			'Barryvdh\Debugbar\ServiceProvider::class,',
     			'Thorazine\Hack\Providers\RouteServiceProvider::class,',
     			'Thorazine\Hack\Providers\BuilderServiceProvider::class,',
-    			'Thorazine\Hack\Providers\CmsServiceProvider::class,',
+    			'Thorazine\Hack\Providers\HackServiceProvider::class,',
     			'Thorazine\Hack\Providers\FrontServiceProvider::class,',
     			'Thorazine\Hack\Providers\ValidationServiceProvider::class,',
     			'Intervention\Image\ImageServiceProvider::class,',
@@ -101,9 +101,9 @@ class HackInstallation extends Command
     			'Jenssegers\Agent\AgentServiceProvider::class,',
     			'Maatwebsite\Excel\ExcelServiceProvider::class,',
     			'Thorazine\Location\LocationServiceProvider::class,',
-    		], 
-    		'Thorazine\Hack\HackServiceProvider::class,', 
-    		'		', 
+    		],
+    		'Thorazine\Hack\HackServiceProvider::class,',
+    		'		',
     		PHP_EOL)
 
     		// add to aliases
@@ -117,7 +117,7 @@ class HackInstallation extends Command
 			    "'Sentinel' => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,",
 			    "'Excel' => Maatwebsite\Excel\Facades\Excel::class,",
 			    "'Builder' => Thorazine\Hack\Facades\BuilderFacade::class,",
-			    "'Cms' => Thorazine\Hack\Facades\CmsFacade::class,",
+			    "'Hack' => Thorazine\Hack\Facades\HackFacade::class,",
 			    "'Front' => Thorazine\Hack\Facades\FrontFacade::class,",
 			    "'Location' => Thorazine\Location\Facades\LocationFacade::class,",
     		],
@@ -146,7 +146,7 @@ class HackInstallation extends Command
     /**
      * Update the config.database
      */
-    private function updateDatabase() 
+    private function updateDatabase()
     {
     	$this->get(base_path('config/database.php'))
     		->replace("'strict' => true,", "'strict' => false,")
@@ -203,7 +203,7 @@ class HackInstallation extends Command
     			$this->content .= PHP_EOL.$insert;
     		}
     	}
-    	
+
     	return $this;
     }
 
@@ -245,12 +245,12 @@ class HackInstallation extends Command
     private function ascii()
     {
         // http://patorjk.com/software/taag/#p=display&f=Slant&t=HACK%20cms
-        $this->info("    __  _____   ________ __                       
+        $this->info("    __  _____   ________ __
    / / / /   | / ____/ //_/   _________ ___  _____
   / /_/ / /| |/ /   / ,<     / ___/ __ `__ \/ ___/
- / __  / ___ / /___/ /| |   / /__/ / / / / (__  ) 
-/_/ /_/_/  |_\____/_/ |_|   \___/_/ /_/ /_/____/  
+ / __  / ___ / /___/ /| |   / /__/ / / / / (__  )
+/_/ /_/_/  |_\____/_/ |_|   \___/_/ /_/ /_/____/
 
 ");
-	} 
+	}
 }

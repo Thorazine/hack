@@ -9,9 +9,7 @@
 						<h4 class="card-title">{{ trans('first.tab.1.title') }}</h4>
 					</div>
 					<div class="card-body text-dark">
-						<p class="card-text">
-							{{ trans('first.tab.1.introduction') }}
-						</p>
+						<p class="card-text" v-html="trans('first.tab.1.introduction')"></p>
 						<button class="btn btn-dark pull-right" v-on:click="nextTab(2)">{{ trans('first.tab.1.next') }}</button>
 					</div>
 				</div>
@@ -24,9 +22,7 @@
 						<h4 class="card-title">{{ trans('first.tab.2.title') }}</h4>
 					</div>
 					<div class="card-body text-dark">
-						<p class="card-text">
-							{{ trans('first.tab.2.introduction') }}
-						</p>
+						<p class="card-text" v-html="trans('first.tab.2.introduction')"></p>
 
 						<div class="form-group row">
 							<div class="col-sm-12">
@@ -51,9 +47,7 @@
 						<h4 class="card-title">{{ trans('first.tab.3.title') }}</h4>
 					</div>
 					<div class="card-body text-dark">
-						<p class="card-text">
-							{{ trans('first.tab.3.introduction') }}
-						</p>
+						<p class="card-text" v-html="trans('first.tab.3.introduction')"></p>
 
 						<div class="form-group row">
 							<div class="col-sm-4">
@@ -86,16 +80,16 @@
 						<h4 class="card-title">{{ trans('first.tab.4.title') }}</h4>
 					</div>
 					<div class="card-body text-dark">
-						<p class="card-text">
-							{{ trans('first.tab.4.introduction') }}
-						</p>
+						<p class="card-text" v-html="trans('first.tab.4.introduction')"></p>
+
+						<Alert :alerts="alerts" :type="'danger'" :timeout="false"></Alert>
 
 						<form v-on:submit.prevent>
 							<div class="form-group row">
 								<div class="col-sm-12">
-									<input type="email" class="form-control" :class="{'is-invalid':username.error}" :placeholder="trans('first.tab.4.username')" v-model="username.value">
+									<input type="email" class="form-control" :class="{'is-invalid':email.error}" :placeholder="trans('first.tab.4.email')" v-model="email.value">
 									<div class="invalid-feedback">
-								        {{ username.error }}
+								        {{ email.error }}
 								    </div>
 								</div>
 							</div>
@@ -104,6 +98,14 @@
 									<input type="password" class="form-control" :class="{'is-invalid':password.error}" :placeholder="trans('first.tab.4.password')" v-model="password.value">
 									<div class="invalid-feedback">
 								        {{ password.error }}
+								    </div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-12">
+									<input type="password" class="form-control" :class="{'is-invalid':password_confirmation.error}" :placeholder="trans('first.tab.4.password_confirmation')" v-model="password_confirmation.value">
+									<div class="invalid-feedback">
+								        {{ password_confirmation.error }}
 								    </div>
 								</div>
 							</div>
@@ -122,9 +124,7 @@
 						<h4 class="card-title">{{ trans('first.tab.5.title') }}</h4>
 					</div>
 					<div class="card-body text-dark">
-						<p class="card-text">
-							{{ trans('first.tab.5.introduction') }}
-						</p>
+						<p class="card-text" v-html="trans('first.tab.5.introduction')"></p>
 						<a :href="cmsUrl" class="btn btn-dark pull-right">{{ trans('first.tab.5.next') }}</a>
 					</div>
 				</div>
@@ -154,14 +154,18 @@
 					error: '',
 				},
 				domain: {
-					value: window.location.hostname,
+					value: '',
 					error: '',
 				},
-				username: {
+				email: {
 					value: '',
 					error: '',
 				},
 				password: {
+					value: '',
+					error: '',
+				},
+				password_confirmation: {
 					value: '',
 					error: '',
 				},
@@ -191,15 +195,19 @@
 		},
     	methods: {
     		nextTab(nr) {
+    			this.alerts = [];
     			this.tab = nr;
+    			$('title').html('Hack - '+trans('first.tab.'+nr+'.title'));
     		},
     		createFirstUser() {
+    			this.busy = true;
     			axios.post(BASE_URL+'/hack/api/first', {
     				language: this.language.value,
     				protocol: this.protocol.value,
     				domain: this.domain.value,
-    				username: this.username.value,
+    				email: this.email.value,
     				password: this.password.value,
+    				password_confirmation: this.password_confirmation.value,
     			}).then((response) => {
     				this.busy = false;
     				this.nextTab(5);
@@ -211,12 +219,10 @@
 							this[index].error = values[0];
 						});
 						this.alerts = [error.response.data.message];
+
 						if(error.response.data.errors) {
-							if(error.response.data.errors.latitude) {
-								this.alerts.push(error.response.data.errors.latitude[0]);
-							}
-							if(error.response.data.errors.longitude) {
-								this.alerts.push(error.response.data.errors.longitude[0]);
+							if(error.response.data.errors.domain) {
+								this.nextTab(3);
 							}
 						}
 					}
@@ -224,7 +230,14 @@
     		}
     	},
 	    mounted: function() {
-
+	    	let url = window.location.href.split('#')[0];
+	    	url = url.split('?')[0];
+	    	url = url.replace('https://', '');
+	    	url = url.replace('http://', '');
+	    	if(url.indexOf('/public/hack') !== false) {
+	    		url = url.split('/public/hack')[0]+'/public';
+	    	}
+	    	this.domain.value = url;
 	    }
     }
 

@@ -2,7 +2,7 @@
 
 namespace Thorazine\Hack\Models;
 
-class Setting extends CmsModel
+class Setting extends HackModel
 {
     protected $table = 'settings';
 
@@ -37,5 +37,5 @@ class Setting extends CmsModel
     }
 
 
-    
+
 }

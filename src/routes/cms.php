@@ -6,7 +6,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Cms Routes
+| Hack Routes
 |--------------------------------------------------------------------------
 |
 | This file is where you may define all of the routes that are handled
@@ -60,9 +60,9 @@ Route::group(['middleware' => 'sentinel.auth'], function() {
 	//  */
 	// Route::resource('sites', 'SiteController');
 	// Route::resource('user', 'UserController');
-	// Route::resource('users', 'CmsUserController');
+	// Route::resource('users', 'HackUserController');
 	// Route::resource('persistences', 'PersistenceController');
-	// Route::resource('roles', 'CmsRoleController');
+	// Route::resource('roles', 'HackRoleController');
 	// Route::resource('templates', 'TemplateController');
 	// Route::post('builder/order', ['as' => 'builder.order', 'uses' => 'BuilderController@order']);
 	// Route::resource('builder', 'BuilderController');

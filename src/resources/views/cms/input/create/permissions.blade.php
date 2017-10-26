@@ -4,7 +4,7 @@
 	</label>
 	<div class="col-sm-9 labeled-multi-checkbox">
 
-		@foreach(Cms::sites() as $site)
+		@foreach(Hack::sites() as $site)
 			<h3>{{ ucfirst($site->title) }}</h3>
 
 			@foreach(Builder::getArrayValue($model, $type, $type['values'], @$data, $key) as $section => $rights)
@@ -26,7 +26,7 @@
 							</label>
 						</div>
 					@endforeach
-					
+
 				</div>
 			@endforeach
 

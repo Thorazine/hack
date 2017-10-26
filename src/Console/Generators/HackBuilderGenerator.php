@@ -5,11 +5,11 @@ namespace Thorazine\Hack\Console\Generators;
 use Thorazine\Hack\Classes\Generator;
 
 class HackBuilderGenerator extends Generator {
-	
-	protected $namespace = 'App\\Models\\Cms\\Builders';
+
+	protected $namespace = 'App\\Models\\Hack\\Builders';
 
 
-	public function fire($name, $force = false) 
+	public function fire($name, $force = false)
 	{
 		$this->name = $name;
 		$this->force = $force;
@@ -26,8 +26,8 @@ class HackBuilderGenerator extends Generator {
 
 		$this->replaceTableName();
 
-		$this->create(base_path('app/Models/Cms/Builders'));
-		
+		$this->create(base_path('app/Models/Hack/Builders'));
+
 	}
 
 

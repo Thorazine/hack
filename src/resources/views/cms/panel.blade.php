@@ -5,7 +5,7 @@
 @section('content')
 
 	@include('hack::partials.menu')
-	
+
 	<div class="content">
 
 		@include('hack::partials.header')
@@ -24,12 +24,12 @@
 					</div>
 				</div>
 			@endif
-			
+
 		</div>
 	</div>
 
 	<div class="footer">
-		<span class="version">Version {{ Cms::getVersion() }}</span>
+		<span class="version">Version {{ Hack::getVersion() }}</span>
 	</div>
 
 @stop

@@ -3,9 +3,9 @@
 namespace Thorazine\Hack\Models;
 
 use Request;
-use Cms;
+use Hack;
 
-class MenuItem extends CmsModel
+class MenuItem extends HackModel
 {
     protected $table = 'menu_items';
 
@@ -77,7 +77,7 @@ class MenuItem extends CmsModel
                 'default' => 1,
             ],
         ];
-    } 
+    }
 
 
     /**
@@ -140,7 +140,7 @@ class MenuItem extends CmsModel
     public function getPages()
     {
         if(@$this->getPagesData) {
-            return $this->getPagesData; 
+            return $this->getPagesData;
         }
 
         $pages = Page::get();

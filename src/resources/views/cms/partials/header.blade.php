@@ -4,19 +4,19 @@
 	</div>
 
 	<div class="menu-right">
-		@if(Cms::user('first_name') || Cms::user('last_name'))
+		@if(Hack::user('first_name') || Hack::user('last_name'))
 			<div class="holder text">
-				<a href="{{ route('cms.user.show', ['id' => Cms::user('id')]) }}">{{ Cms::user('first_name') }} {{ Cms::user('last_name') }}</a>
+				<a href="{{ route('cms.user.show', ['id' => Hack::user('id')]) }}">{{ Hack::user('first_name') }} {{ Hack::user('last_name') }}</a>
 			</div>
 		@else
 			<div class="holder text">
-				<a href="{{ route('cms.user.show', ['id' => Cms::user('id')]) }}">Anonymous user</a>
+				<a href="{{ route('cms.user.show', ['id' => Hack::user('id')]) }}">Anonymous user</a>
 			</div>
 		@endif
 
-		@if(Cms::user('image'))
+		@if(Hack::user('image'))
 			<div class="holder" id="portrait">
-				<div style="background-image: url('{{ asset(Builder::asset(@Cms::user('gallery')->fullname)) }}');"></div>
+				<div style="background-image: url('{{ asset(Builder::asset(@Hack::user('gallery')->fullname)) }}');"></div>
 			</div>
 		@else
 			<div class="holder">

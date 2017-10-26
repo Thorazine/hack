@@ -5,7 +5,7 @@ namespace Thorazine\Hack\Scopes;
 use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use Cms;
+use Hack;
 
 class SiteScope implements Scope
 {
@@ -18,6 +18,6 @@ class SiteScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('site_id', Cms::siteId());
+        $builder->where('site_id', Hack::siteId());
     }
 }

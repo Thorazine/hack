@@ -6,9 +6,9 @@ use Thorazine\Hack\Scopes\SiteScope;
 use Thorazine\Hack\Models\Template;
 use Carbon\Carbon;
 use Request;
-use Cms;
+use Hack;
 
-class Page extends CmsModel
+class Page extends HackModel
 {
     protected $table = 'pages';
 
@@ -43,7 +43,7 @@ class Page extends CmsModel
 
         $this->types = $this->types();
 
-        // add all the modules tot the array so they can be 
+        // add all the modules tot the array so they can be
         // caught by the realtional builder
         if(config('cms.builders')) {
             foreach(config('cms.builders') as $key => $values) {
@@ -175,13 +175,13 @@ class Page extends CmsModel
 
     public function toUrl()
     {
-        $url = rtrim(Cms::site('protocol').Cms::site('domain').$this->prepend_slug, '/');
+        $url = rtrim(Hack::site('protocol').Hack::site('domain').$this->prepend_slug, '/');
         return $url.'/'.$this->slug;
     }
 
 
     /*
-     * Catch all the methods for this model. Filter out the 
+     * Catch all the methods for this model. Filter out the
      * relational requests so we can automatically make
      * a relational query for it based on the array
      * This is only for eager loading. Send the
@@ -283,7 +283,7 @@ class Page extends CmsModel
      */
     public function getUrlAttribute()
     {
-        return Cms::site('protocol').Cms::site('domain').(($this->attributes['prepend_slug']) ? '/' : '').$this->attributes['prepend_slug'].'/'.$this->attributes['slug'];
+        return Hack::site('protocol').Hack::site('domain').(($this->attributes['prepend_slug']) ? '/' : '').$this->attributes['prepend_slug'].'/'.$this->attributes['slug'];
     }
 
 
@@ -291,7 +291,7 @@ class Page extends CmsModel
      * Get all of the module owners.
      */
     public function getTemplates($data = [], $key = '')
-    {        
+    {
         // check if there is request cache.
         if(@$this->templates) {
             return $this->templates;
@@ -313,11 +313,11 @@ class Page extends CmsModel
         // dd($data);
         if(Request::has('template_id')) {
             $template = Template::where('id', Request::get('template_id'))->first();
-            return Cms::site('protocol').Cms::site('domain').'/'.$template->prepend_slug.(($template->prepend_slug) ? '/' : '');
+            return Hack::site('protocol').Hack::site('domain').'/'.$template->prepend_slug.(($template->prepend_slug) ? '/' : '');
         }
 
         $page = $this->where('id', $data['id'])->with('template')->first();
-        return Cms::site('protocol').Cms::site('domain').'/'.$page->template->prepend_slug.(($page->template->slug) ? '/' : '');   
+        return Hack::site('protocol').Hack::site('domain').'/'.$page->template->prepend_slug.(($page->template->slug) ? '/' : '');
     }
 
 
@@ -335,7 +335,7 @@ class Page extends CmsModel
     public function getLanguages()
     {
         $languages = [];
-        foreach(Cms::site('languages') as $language) {
+        foreach(Hack::site('languages') as $language) {
             $languages[$language] = config('languages.'.$language.'.name');
         }
 

@@ -5,16 +5,16 @@ namespace Thorazine\Hack\Models\Auth;
 use Cartalyst\Sentinel\Roles\EloquentRole;
 use Thorazine\Hack\Models\Site;
 use Sentinel;
-use Cms;
+use Hack;
 
-class CmsRole extends EloquentRole
+class HackRole extends EloquentRole
 {
 	/**
-	 * Overwrite the sentinel default table with a new 
+	 * Overwrite the sentinel default table with a new
 	 * one so we can keep using the roles for in site
 	 *
 	 **/
-	protected $table = 'cms_roles';
+	protected $table = 'hack_roles';
 
 
     /**
@@ -62,7 +62,7 @@ class CmsRole extends EloquentRole
                 'overview' => false,
             ],
         ];
-    } 
+    }
 
 
     public function getRights()

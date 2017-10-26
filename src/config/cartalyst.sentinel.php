@@ -53,7 +53,7 @@ return [
 
     'users' => [
 
-        'model' => 'Thorazine\Hack\Models\Auth\CmsUser',
+        'model' => 'Thorazine\Hack\Models\Auth\HackUser',
 
     ],
 
@@ -68,7 +68,7 @@ return [
 
     'roles' => [
 
-        'model' => 'Thorazine\Hack\Models\Auth\CmsRole',
+        'model' => 'Thorazine\Hack\Models\Auth\HackRole',
 
     ],
 
@@ -111,7 +111,7 @@ return [
 
     'persistences' => [
 
-        'model' => 'Thorazine\Hack\Models\Auth\CmsPersistence',
+        'model' => 'Thorazine\Hack\Models\Auth\HackPersistence',
 
         'single' => false,
 

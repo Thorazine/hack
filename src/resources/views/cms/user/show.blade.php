@@ -4,7 +4,7 @@
 @section('content')
 
 	@include('hack::partials.menu')
-	
+
 	<div class="content user">
 
 		@include('hack::partials.header')
@@ -17,9 +17,9 @@
 
 		<div class="row">
 			<div class="col-sm-12">
-				@if(Cms::user('image'))
+				@if(Hack::user('image'))
 					<div class="holder">
-						<img src="{{ Builder::image(Cms::user('image')) }}">
+						<img src="{{ Builder::image(Hack::user('image')) }}">
 					</div>
 				@else
 					<div class="holder">
@@ -28,10 +28,10 @@
 				@endif
 
 				<div class="user-data">
-					<h2>{{ Cms::user('first_name') }} {{ Cms::user('last_name') }}</h2>
+					<h2>{{ Hack::user('first_name') }} {{ Hack::user('last_name') }}</h2>
 					<p>
-						@foreach(Cms::user('roles') as $index => $role)
-							@if($index != 0), 
+						@foreach(Hack::user('roles') as $index => $role)
+							@if($index != 0),
 							@endif
 							{{ str_singular($role->name) }}
 						@endforeach
@@ -60,18 +60,18 @@
 					<tbody>
 						<tr>
 							<td><i class="fa fa-check"></i></td>
-							<td>{{ Cms::user('persistence', 'country') }}</td>
-							<td>{{ Cms::user('persistence', 'city') }}</td>
-							<td>{{ Cms::user('persistence', 'os') }}</td>
-							<td>@include('hack::user.browser', ['browser' => strtolower(Cms::user('persistence', 'browser'))]) {{ Cms::user('persistence', 'browser') }}</td>
-							<td>{{ Cms::user('persistence', 'device_type') }}</td>
-							<td>{{ Cms::user('persistence', 'device') }}</td>
-							<td>{{ Cms::user('persistence', 'updated_at')->format('d-m-Y H:i:s') }}</td>
+							<td>{{ Hack::user('persistence', 'country') }}</td>
+							<td>{{ Hack::user('persistence', 'city') }}</td>
+							<td>{{ Hack::user('persistence', 'os') }}</td>
+							<td>@include('hack::user.browser', ['browser' => strtolower(Hack::user('persistence', 'browser'))]) {{ Hack::user('persistence', 'browser') }}</td>
+							<td>{{ Hack::user('persistence', 'device_type') }}</td>
+							<td>{{ Hack::user('persistence', 'device') }}</td>
+							<td>{{ Hack::user('persistence', 'updated_at')->format('d-m-Y H:i:s') }}</td>
 							<td><a href="{{ route('cms.auth.destroy') }}" class="btn btn-danger btn-xs">{{ trans('hack::cms.logout') }}</a></td>
 						</tr>
 
 						@foreach($user->persistences as $persistence)
-							@if(Cms::user('persistence', 'id') != $persistence->id)
+							@if(Hack::user('persistence', 'id') != $persistence->id)
 								<tr>
 									<td></td>
 									<td>{{ $persistence->country }}</td>
@@ -119,7 +119,7 @@
 			new google.maps.LatLng(-85, 180)	// bottom right corner
 		);
 
-		var k = 5.0; 
+		var k = 5.0;
 		var n = allowedBounds .getNorthEast().lat() - k;
 		var e = allowedBounds .getNorthEast().lng() - k;
 		var s = allowedBounds .getSouthWest().lat() + k;

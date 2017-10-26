@@ -1,6 +1,6 @@
 <?php
 
-namespace Thorazine\Hack\Http\Requests\Email;
+namespace Thorazine\Hack\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

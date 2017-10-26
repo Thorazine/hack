@@ -2,11 +2,11 @@
 
 namespace Thorazine\Hack\Http\Middleware;
 
-use Thorazine\Hack\Models\Auth\CmsPersistence;
+use Thorazine\Hack\Models\Auth\HackPersistence;
 use Thorazine\Hack\Scopes\SiteScope;
 use Sentinel;
 use Closure;
-use Cms;
+use Hack;
 
 class SentinelAuthentication
 {
@@ -31,30 +31,30 @@ class SentinelAuthentication
             }]);
 
             // make a request cache version of the user
-            Cms::setUser($user);
+            Hack::setUser($user);
 
             // set the persistence code with the request
-            Cms::setCode($request);
+            Hack::setCode($request);
 
             // get all the users rights
             $permissions = $this->getPermissions($user);
 
             // set the rights
-            Cms::setRights($permissions);
+            Hack::setRights($permissions);
 
-            if($persistence = CmsPersistence::active()->first()) {
+            if($persistence = HackPersistence::active()->first()) {
 
-                $user = Cms::setPersistence($persistence);
+                $user = Hack::setPersistence($persistence);
 
                 // update persistence last used time
-                CmsPersistence::where('id', $persistence->id)->update([
+                HackPersistence::where('id', $persistence->id)->update([
                     'updated_at' => date('Y-m-d H:i:s'),
                 ]);
 
                 // set the cms language as defined by the user
-                Cms::setLanguage();
+                Hack::setLanguage();
 
-                if(in_array($this->replaceEndOfRight(Cms::siteId().'.'.$request->route()->getName()), $permissions) || in_array($request->route()->getName(), config('cms.rights.excluded'))) {
+                if(in_array($this->replaceEndOfRight(Hack::siteId().'.'.$request->route()->getName()), $permissions) || in_array($request->route()->getName(), config('cms.rights.excluded'))) {
                     return $next($request);
                 }
                 else {
@@ -65,14 +65,14 @@ class SentinelAuthentication
                 }
             }
 
-            if(in_array($request->route()->getName(), ['cms.auth.persistence', 'cms.auth.persistence.resend'])) {
+            if(in_array($request->route()->getName(), ['hack.auth.persistence', 'hack.auth.persistence.resend'])) {
                 return $next($request);
             }
 
-            return redirect()->route('cms.auth.persistence');
+            return redirect()->route('hack.auth.persistence');
         }
 
-        return redirect()->route('cms.auth.index');
+        return redirect()->route('hack.auth.index');
     }
 
 
@@ -86,7 +86,7 @@ class SentinelAuthentication
         foreach($user->roles as $role) {
             $permissions = array_merge($permissions, $role->permissions);
         }
-        
+
         return $permissions;
     }
 

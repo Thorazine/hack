@@ -4,7 +4,7 @@ namespace Thorazine\Hack\Models;
 
 use Builder;
 
-class Site extends CmsModel
+class Site extends HackModel
 {
     protected $table = 'sites';
 
@@ -164,7 +164,7 @@ class Site extends CmsModel
                 'overview' => false,
             ],
         ];
-    } 
+    }
 
 
     /**
@@ -173,6 +173,13 @@ class Site extends CmsModel
     public function pages()
     {
         return $this->hasMany('Thorazine\Hack\Models\Page');
+    }
+
+
+    public function setDomainAttribute($value)
+    {
+    	// copy paste is an easy mistake
+        $this->attributes['domain'] = str_replace(['http://', 'https://'], ['', ''], $value);
     }
 
 

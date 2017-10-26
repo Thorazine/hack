@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Cms;
+namespace App\Http\Controllers\Hack;
 
-use Thorazine\Hack\Http\Controllers\Cms\CmsController;
+use Thorazine\Hack\Http\Controllers\Hack\HackController;
 use Thorazine\Hack\Http\Requests\ModuleStore;
 use Illuminate\Http\Request;
-use App\Models\Cms\DummyClass;
-use Cms;
+use App\Models\Hack\DummyClass;
+use Hack;
 
-class DummyClassController extends CmsController
+class DummyClassController extends HackController
 {
 
 
@@ -24,7 +24,7 @@ class DummyClassController extends CmsController
 
     /**
      * Get the values for saving. This function
-     * makes overwriting it with an array  
+     * makes overwriting it with an array
      * for the child class easier
      *
      * @param  \Illuminate\Http\Request  $request|array
@@ -33,7 +33,7 @@ class DummyClassController extends CmsController
     protected function beforeStore($request)
     {
         $this->extraCreateValues = [
-            'site_id' => Cms::siteId(),
+            'site_id' => Hack::siteId(),
         ];
 
         return $request;

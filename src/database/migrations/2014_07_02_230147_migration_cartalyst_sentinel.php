@@ -41,7 +41,7 @@ class MigrationCartalystSentinel extends Migration
             $table->engine = 'InnoDB';
         });
 
-        Schema::create('cms_persistences', function (Blueprint $table) {
+        Schema::create('hack_persistences', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('site_id')->nullable();
@@ -75,7 +75,7 @@ class MigrationCartalystSentinel extends Migration
             $table->timestamps();
         });
 
-        Schema::create('cms_roles', function (Blueprint $table) {
+        Schema::create('hack_roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('slug');
             $table->string('name');
@@ -106,7 +106,7 @@ class MigrationCartalystSentinel extends Migration
             $table->index('user_id');
         });
 
-        Schema::create('cms_users', function (Blueprint $table) {
+        Schema::create('hack_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email');
             $table->string('password');
@@ -133,11 +133,11 @@ class MigrationCartalystSentinel extends Migration
     public function down()
     {
         Schema::dropIfExists('activations');
-        Schema::dropIfExists('cms_persistences');
+        Schema::dropIfExists('hack_persistences');
         Schema::dropIfExists('reminders');
-        Schema::dropIfExists('cms_roles');
+        Schema::dropIfExists('hack_roles');
         Schema::dropIfExists('role_users');
         Schema::dropIfExists('throttle');
-        Schema::dropIfExists('cms_users');
+        Schema::dropIfExists('hack_users');
     }
 }

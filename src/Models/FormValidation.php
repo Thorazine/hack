@@ -2,9 +2,9 @@
 
 namespace Thorazine\Hack\Models;
 
-use Cms;
+use Hack;
 
-class FormValidation extends CmsModel
+class FormValidation extends HackModel
 {
     protected $table = 'form_validations';
 
@@ -57,18 +57,18 @@ class FormValidation extends CmsModel
                 'regex' => '',
             ],
         ];
-    } 
+    }
 
 
     /**
      * Get all of the module owners.
      */
     public function getLanguages($data = [], $key = '')
-    {        
+    {
         $languages = [];
-        foreach(Cms::site('languages') as $language) {
+        foreach(Hack::site('languages') as $language) {
             $languages[$language] = $language;
         }
         return $languages;
-    }  
+    }
 }

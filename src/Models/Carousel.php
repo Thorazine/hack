@@ -4,10 +4,10 @@ namespace Thorazine\Hack\Models;
 
 use Thorazine\Hack\Classes\Builders\FormBuilder;
 use Thorazine\Hack\Scopes\SiteScope;
-use Thorazine\Hack\Models\CmsModel;
-use Cms;
+use Thorazine\Hack\Models\HackModel;
+use Hack;
 
-class Carousel extends CmsModel
+class Carousel extends HackModel
 {
     protected $table = 'carousels';
 

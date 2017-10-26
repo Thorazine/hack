@@ -65,9 +65,9 @@
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">{{ trans('auth.input.email') }}</label>
 								<div class="col-sm-9">
-									<input type="email" class="form-control" :class="{'is-invalid':username.error}" :placeholder="trans('auth.input.email')" v-model="username.value">
+									<input type="email" class="form-control" :class="{'is-invalid':email.error}" :placeholder="trans('auth.input.email')" v-model="email.value">
 									<div class="invalid-feedback">
-								        {{ username.error }}
+								        {{ email.error }}
 								    </div>
 								</div>
 							</div>
@@ -108,7 +108,7 @@
 				map: null,
 				marker: null,
 				address: null,
-				username: {
+				email: {
 					name: 'Username',
 					value: '',
 					error: '',
@@ -264,7 +264,7 @@
     			if(!this.busy) {
     				this.busy = true;
 	    			axios.post(BASE_URL+'/hack/api/authenticate', {
-	    				username: this.username.value,
+	    				email: this.email.value,
 	    				password: this.password.value,
 	    				latitude: this.latitude.value,
 	    				longitude: this.longitude.value,

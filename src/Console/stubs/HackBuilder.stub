@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models\Cms\Builders;
+namespace App\Models\Hack\Builders;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Cms\DummyClass as DummyClassModel;
+use App\Models\Hack\DummyClass as DummyClassModel;
 use Thorazine\Hack\Models\Builders\BaseBuilder;
 
 class DummyClass extends BaseBuilder

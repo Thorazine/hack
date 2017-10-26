@@ -1,15 +1,15 @@
 <div class="menu menu-vertical">
-    
-            
+
+
     <?php
-        $sites = Cms::getSites();
+        $sites = Hack::getSites();
     ?>
 
     @if(count($sites) > 1)
         <div class="brand chevron">
             <select id="site-selector">
                 @foreach($sites as $site)
-                    @if(Cms::site()->id == $site->id)
+                    @if(Hack::site()->id == $site->id)
                         <option value="{{ $site->protocol.$site->domain }}/cms/panel" selected>{{ $site->title }}</option>
                     @else
                         <option value="{{ $site->protocol.$site->domain }}/cms/panel">{{ $site->title }}</option>
@@ -22,7 +22,7 @@
             {{ $sites[0]->title }}
         </div>
     @endif
-    
+
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
     <div class="menu-list">
@@ -31,7 +31,7 @@
 
             @foreach(config('menu') as $menu)
 
-                @if(@$menu['route'] && (Cms::hasPermission(Cms::site('id').'.'.$menu['route']) || @$menu['verified']))
+                @if(@$menu['route'] && (Hack::hasPermission(Hack::site('id').'.'.$menu['route']) || @$menu['verified']))
 
                     <?php
                         $route = route($menu['route']);
@@ -39,7 +39,7 @@
 
                     <li @if(strpos(Request::url(), $route) !== false) class="active" @endif>
                         <a @if(Request::url() == $route) href="javascript:void(0)" @else href="{{ $route }}" @endif>
-                            <i class="fa {{ $menu['icon'] }} fa-lg"></i> 
+                            <i class="fa {{ $menu['icon'] }} fa-lg"></i>
                             {{ trans('hack::'.$menu['label']) }}
                         </a>
                     </li>

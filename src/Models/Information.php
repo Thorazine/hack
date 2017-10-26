@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Thorazine\Hack\Scopes\SiteScope;
 use Thorazine\Hack\Models\Site;
 
-class Information extends CmsModel
-{	
+class Information extends HackModel
+{
 	/**
-	 * Overwrite the sentinel default table with a new 
+	 * Overwrite the sentinel default table with a new
 	 * one so we can keep using the users for in site
 	 *
 	 **/
@@ -114,7 +114,7 @@ class Information extends CmsModel
                 'overview' => false,
             ],
         ];
-    } 
+    }
 
 
     public function scopePublished($query)

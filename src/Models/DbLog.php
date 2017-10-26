@@ -3,16 +3,16 @@
 namespace Thorazine\Hack\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Thorazine\Hack\Models\Auth\CmsUser;
+use Thorazine\Hack\Models\Auth\HackUser;
 use Thorazine\Hack\Scopes\SiteScope;
 use Exception;
-use Cms;
+use Hack;
 use Log;
 
-class DbLog extends CmsModel
-{	
+class DbLog extends HackModel
+{
 	/**
-	 * Overwrite the sentinel default table with a new 
+	 * Overwrite the sentinel default table with a new
 	 * one so we can keep using the users for in site
 	 *
 	 **/
@@ -62,7 +62,7 @@ class DbLog extends CmsModel
             	'type' => 'select',
                 'label' => trans('hack::modules.db_logs.cms_user_id'),
                 'regex' => '',
-                'values' => 'getCmsUsers',
+                'values' => 'getHackUsers',
             ],
             'action' => [
                 'type' => 'text',
@@ -96,12 +96,12 @@ class DbLog extends CmsModel
                 'edit' => false,
             ],
         ];
-    } 
+    }
 
 
-    public function getCmsUsers()
+    public function getHackUsers()
     {
-    	return CmsUser::select('id', 'email')->orderBy('email', 'asc')->pluck('email', 'id');
+    	return HackUser::select('id', 'email')->orderBy('email', 'asc')->pluck('email', 'id');
     }
 
 
@@ -109,8 +109,8 @@ class DbLog extends CmsModel
 	{
 		try {
 			DbLog::insert([
-				'site_id' => Cms::site('id'),
-				'cms_user_id' => Cms::user('id'),
+				'site_id' => Hack::site('id'),
+				'cms_user_id' => Hack::user('id'),
 				'logged_session_id' => '',
 				'level' => $level,
 				'action' => $action,

@@ -3,9 +3,9 @@
 namespace Thorazine\Hack\Models;
 
 use Thorazine\Hack\Scopes\SiteScope;
-use Cms;
+use Hack;
 
-class Template extends CmsModel
+class Template extends HackModel
 {
     /**
      * The databae table
@@ -29,7 +29,7 @@ class Template extends CmsModel
 
         $this->types = $this->types();
 
-        // add all the modules to the array so they can be 
+        // add all the modules to the array so they can be
         // caught by the realtional builder
         if(config('cms.builders')) {
             foreach(config('cms.builders') as $key => $values) {
@@ -101,7 +101,7 @@ class Template extends CmsModel
 
 
     /*
-     * Catch all the methods for this model. Filter out the 
+     * Catch all the methods for this model. Filter out the
      * relational requests so we can automatically make
      * a relational query for it based on the array
      * This is only for eager loading. Send the
@@ -155,7 +155,7 @@ class Template extends CmsModel
      */
     public function prependPrependSlugLabel($data, $key)
     {
-        return Cms::site('protocol').Cms::site('domain').'/';
+        return Hack::site('protocol').Hack::site('domain').'/';
     }
 
 }

@@ -3,21 +3,21 @@
 namespace Thorazine\Hack\Traits;
 
 // use Illuminate\Foundation\Application;
-use Cms;
+use Hack;
 use Log;
 use DB;
 
 trait ModuleSearch {
-	
+
 	protected $defaultSearchTypes = [];
 
 	/**
-	 * 
+	 *
 	 */
 	protected $searchFields = [];
 
 	/**
-	 * 
+	 *
 	 */
 	protected $searchDirection = 'desc';
 

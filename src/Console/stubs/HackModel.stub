@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models\Cms;
+namespace App\Models\Hack;
 
 use Thorazine\Hack\Classes\Builders\FormBuilder;
 use Thorazine\Hack\Scopes\SiteScope;
-use Thorazine\Hack\Models\CmsModel;
-use Cms;
+use Thorazine\Hack\Models\HackModel;
+use Hack;
 
-class DummyClass extends CmsModel
+class DummyClass extends HackModel
 {
     protected $table = 'DummyTable';
 

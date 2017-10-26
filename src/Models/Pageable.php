@@ -2,7 +2,7 @@
 
 namespace Thorazine\Hack\Models;
 
-class Pageable extends CmsModel
+class Pageable extends HackModel
 {
     protected $table = 'pageables';
 

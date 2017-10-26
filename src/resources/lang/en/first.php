@@ -4,11 +4,10 @@ return [
 	'tab' => [
 		1 => [
 			'title' => 'Welcome',
-			'introduction' => 'Welcome, and thanks for trying Hack!
-				I really do appreciate you trying it seeing I\'ve spent countless hours building it.
-				To me it is the accumulation of building a lot of projects where specs really differ
-				and no content management system did what I wanted. So here it is, have fun with it!',
-			'next' => 'Lets get\'r done',
+			'introduction' => 'Welcome, and thanks for trying Hack!<br>
+				You are now entering the setup fase for Hack. These steps will
+				help you setup the basics for Hack.',
+			'next' => 'Lets get going',
 		],
 		2 => [
 			'title' => 'Language',
@@ -32,8 +31,9 @@ return [
 			'introduction' => 'Create your administrator account here',
 			'previous' => 'Previous',
 			'next' => 'Next',
-			'username' => 'Username',
+			'email' => 'Email',
 			'password' => 'Password',
+			'password_confirmation' => 'Confirm your password',
 		],
 		5 => [
 			'title' => 'Done',

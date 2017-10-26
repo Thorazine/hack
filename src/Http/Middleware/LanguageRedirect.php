@@ -3,12 +3,12 @@
 namespace Thorazine\Hack\Http\Middleware;
 
 use Closure;
-use Cms;
+use Hack;
 
 class LanguageRedirect
 {
     /**
-     * Filter the language from the slug and 
+     * Filter the language from the slug and
      * redirect to a language if needed
      *
      * @param  \Illuminate\Http\Request  $request
@@ -23,7 +23,7 @@ class LanguageRedirect
         	$slug = str_replace($request->root(), '', $request->fullUrl());
 
         	// grab segment 1 and see if it's a language
-        	if(in_array($request->segment(1), Cms::site('languages'))) {
+        	if(in_array($request->segment(1), Hack::site('languages'))) {
 
         		if(substr($slug, 0, 1) === '/') {
         			$slug = '/'.ltrim(substr($slug, strlen($request->segment(1)) + 1), '/');
@@ -32,10 +32,10 @@ class LanguageRedirect
         			$slug = '/'.ltrim(substr($slug, strlen($request->segment(1))), '/');
         		}
 
-        		Cms::setSlug($slug);
+        		Hack::setSlug($slug);
 
         		// set the current language
-        		Cms::setSiteLanguage($request->segment(1));
+        		Hack::setSiteLanguage($request->segment(1));
 
         		// go to the original request
         	    return $next($request);
@@ -45,21 +45,21 @@ class LanguageRedirect
         	$locale = substr($request->server('HTTP_ACCEPT_LANGUAGE'), 0, 2);
 
         	// if browser language matchaes a language
-        	if(in_array($locale, Cms::site('languages'))) {
+        	if(in_array($locale, Hack::site('languages'))) {
 
-        		// set the language 
-        		Cms::setSiteLanguage($locale);
+        		// set the language
+        		Hack::setSiteLanguage($locale);
 
         		return redirect($request->root().'/'.$locale.$slug);
         	}
 
-        	// set the language 
-        	Cms::setSiteLanguage(Cms::site('language'));
+        	// set the language
+        	Hack::setSiteLanguage(Hack::site('language'));
 
         	// redirect the user to the default site language
-        	return redirect($request->root().'/'.Cms::site('language').$slug);
+        	return redirect($request->root().'/'.Hack::site('language').$slug);
         }
-        
-        return $next($request);        
+
+        return $next($request);
     }
 }

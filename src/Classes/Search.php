@@ -8,7 +8,7 @@ use Thorazine\Hack\Models\Site;
 use Storage;
 use Request;
 use Front;
-use Cms;
+use Hack;
 use DB;
 
 class Search {
@@ -27,7 +27,7 @@ class Search {
 	}
 
 
-	
+
 	public function get()
 	{
 		$q = Request::get('q');
@@ -65,7 +65,7 @@ class Search {
     }
 
     /*
-	 * Trim and push all the query parts 
+	 * Trim and push all the query parts
 	 */
     private function removeQuotes($parts)
     {
@@ -88,21 +88,21 @@ class Search {
 
 
         foreach($sites as $site) {
-            Cms::setSite($site);
+            Hack::setSite($site);
 
             $this->pageIndexEntry();
         }
     }
 
 
-    public function pageIndexEntry() 
+    public function pageIndexEntry()
     {
         // get the builder types we want to be able to search for
         $searchTypes = config('cms.search.frontend_search_types');
         $date = date('Y-m-d H:i:s');
 
-        if(Cms::site('publish_at') < $date && (is_null(Cms::site('depublish_at')) || Cms::site('depublish_at') > $date)) {
-            $domain = Cms::site('protocol').Cms::site('domain');
+        if(Hack::site('publish_at') < $date && (is_null(Hack::site('depublish_at')) || Hack::site('depublish_at') > $date)) {
+            $domain = Hack::site('protocol').Hack::site('domain');
 
             // start query
             $pages = $this->page
@@ -173,8 +173,8 @@ class Search {
 
             $sitemap = view('hack::tools.sitemap')->with('pages', $this->sitemapData)->render();
 
-            Storage::disk(config('filesystems.default'))->put('sitemaps/'.Cms::siteId().'/sitemap.xml', $sitemap, 'public');
-            
+            Storage::disk(config('filesystems.default'))->put('sitemaps/'.Hack::siteId().'/sitemap.xml', $sitemap, 'public');
+
         }
     }
 

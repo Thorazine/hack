@@ -5,11 +5,11 @@ namespace Thorazine\Hack\Console\Generators;
 use Thorazine\Hack\Classes\Generator;
 
 class HackControllerGenerator extends Generator {
-	
-	protected $namespace = 'App\\Http\\Controllers\\Cms\\';
+
+	protected $namespace = 'App\\Http\\Controllers\\Hack\\';
 
 
-	public function fire($name, $force) 
+	public function fire($name, $force)
 	{
 		$this->name = $name;
 		$this->force = $force;
@@ -20,7 +20,7 @@ class HackControllerGenerator extends Generator {
 
 		$this->replaceClassName()->replacePathName()->replaceUrlName()->replaceSlugName();
 
-		$this->create(base_path('app/Http/Controllers/Cms'));		
+		$this->create(base_path('app/Http/Controllers/Hack'));
 	}
 
 

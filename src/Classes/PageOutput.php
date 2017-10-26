@@ -11,7 +11,7 @@ use Thorazine\Hack\Models\Slug;
 use Request;
 use Builder;
 use Cache;
-use Cms;
+use Hack;
 use DB;
 
 class PageOutput {
@@ -19,8 +19,8 @@ class PageOutput {
 
 	private $pageData;
 	private $morphs;
-	
-	
+
+
 	public function __construct(Page $page, Slug $slug, Pageable $pageable, Search $search)
 	{
 		$this->page = $page;
@@ -37,10 +37,10 @@ class PageOutput {
 	{
 		$slug = $this->trimSlug($slug);
 
-		$this->getPageBySlug($slug, Cms::getSiteLanguage(), $withRestrictions);
+		$this->getPageBySlug($slug, Hack::getSiteLanguage(), $withRestrictions);
 
         // set the language
-        Cms::setSiteLanguage($this->pageData['language']);
+        Hack::setSiteLanguage($this->pageData['language']);
 
 		$this->addSiteData($slug);
 
@@ -81,7 +81,7 @@ class PageOutput {
         }
 
         // put the page data in a flash variable and return it
-        Cms::setPage($this->pageData);
+        Hack::setPage($this->pageData);
 
         return $this->pageData;
 	}
@@ -105,14 +105,14 @@ class PageOutput {
 		// find the page
 		$this->pageData = $this->page
 			->where(DB::raw('TRIM(BOTH "/" FROM CONCAT_WS("/", prepend_slug, slug))'), $slug);
-        
+
         // if we need the delimiter
         if($withRestrictions) {
 			$this->pageData = $this->pageData->published();
         }
 
         if($language) {
-        	$this->pageData = $this->pageData->where('language', Cms::getSiteLanguage());
+        	$this->pageData = $this->pageData->where('language', Hack::getSiteLanguage());
         }
 
 		$this->pageData = $this->pageData->first();
@@ -146,12 +146,12 @@ class PageOutput {
 	private function addSiteData($slug)
 	{
 		// Add the site data to the output, overwrite what is non existant or empty
-        $site = Cms::site();   
+        $site = Hack::site();
 
 
-        if($this->pageData) {  
-            $images = [];    
-            foreach(Cms::site()->toArray() as $key => $value) {
+        if($this->pageData) {
+            $images = [];
+            foreach(Hack::site()->toArray() as $key => $value) {
                 if(! $this->pageData->{$key}) {
                 	if(@$site->types[$key]['type'] == 'image') {
                         $images[$value] = $key;
@@ -173,27 +173,27 @@ class PageOutput {
                 $this->pageData->{$images[$gallery->id]} = $gallery;
             }
 
-            $this->pageData->site = Cms::site();   
+            $this->pageData->site = Hack::site();
         }
         else {
-            
-            if(! Cms::getNotFound()) {
-                NotFound::add($slug); // Add to 404 table
-                Cms::setNotFound();
 
-                $page = Cache::tags('pages', 'templates', 'slugs')->remember(Cms::cacheKey(['page', '404', Cms::siteId()]), env('PAGE_CACHE_TIME', 1), function() {
+            if(! Hack::getNotFound()) {
+                NotFound::add($slug); // Add to 404 table
+                Hack::setNotFound();
+
+                $page = Cache::tags('pages', 'templates', 'slugs')->remember(Hack::cacheKey(['page', '404', Hack::siteId()]), env('PAGE_CACHE_TIME', 1), function() {
                     return $this->bySlug('404');
                 });
 
                 if($page) {
                     return $page;
-                    return view(Cms::siteId().'.error')
+                    return view(Hack::siteId().'.error')
                         ->with('page', $page)
                         ->render();
                 }
             }
 
-            Cms::abort(404, 'Slug not found');
+            Hack::abort(404, 'Slug not found');
         }
 
         return $this;

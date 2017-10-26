@@ -1,30 +1,25 @@
 
 // fade: fade
+.fade-enter-active, .fade-leave-active {
+	transition-property: opacity;
+	transition-duration: .25s;
+}
+
 .fade-enter-active {
-	transition: opacity .5s, transform .5s;
-	-webkit-transition-delay: .5s;
-    -moz-transition-delay: .5s;
-    -o-transition-delay: .5s;
-    transition-delay: .5s;
+	transition-delay: .25s;
 }
-.fade-leave-active {
-	transition: opacity .5s, transform .5s;
-}
-.fade-enter, .fade-leave-to {
+
+.fade-enter, .fade-leave-active {
 	opacity: 0;
 }
 
 
 // fade to bottom: fadebottom
-.fadebottom-enter-active {
+.fadebottom-enter-active, .fadebottom-leave-active {
 	transition: opacity .5s, transform .5s;
-	-webkit-transition-delay: .5s;
-    -moz-transition-delay: .5s;
-    -o-transition-delay: .5s;
-    transition-delay: .5s;
 }
-.fadebottom-leave-active {
-	transition: opacity .5s, transform .5s;
+.fadebottom-enter-active {
+    transition-delay: .5s;
 }
 .fadebottom-enter, .fadebottom-leave-to {
 	opacity: 0;
@@ -33,19 +28,43 @@
 
 
 // fade to top: fadetop
-.fadetop-enter-active {
+.fadetop-enter-active, .fadetop-leave-active {
 	transition: opacity .5s, transform .5s;
-	-webkit-transition-delay: .5s;
-    -moz-transition-delay: .5s;
-    -o-transition-delay: .5s;
+}
+.fadetop-enter-active {
     transition-delay: .5s;
 }
-
-.fadetop-leave-active {
-	transition: opacity .5s, transform .5s;
-}
-
 .fadetop-enter, .fadetop-leave-to {
 	opacity: 0;
 	transform: translateY(-50px);
+}
+
+
+/* base */
+.company {
+  backface-visibility: hidden;
+  z-index: 1;
+}
+
+/* moving */
+.company-move {
+  transition: all 600ms ease-in-out 50ms;
+}
+
+/* appearing */
+.company-enter-active {
+  transition: all 400ms ease-out;
+}
+
+/* disappearing */
+.company-leave-active {
+  transition: all 200ms ease-in;
+  position: absolute;
+  z-index: 0;
+}
+
+/* appear at / disappear to */
+.company-enter,
+.company-leave-to {
+  opacity: 0;
 }
