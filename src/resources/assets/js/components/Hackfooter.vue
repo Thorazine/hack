@@ -1,8 +1,8 @@
 <template>
 	<div class="footer">
-		<slot class="footer-navigation">
-
-		</slot>
+		<div class="footer-navigation">
+			<slot></slot>
+		</div>
 		<div class="footer-information">
 			<slot name="footer"></slot>
 		</div>

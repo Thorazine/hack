@@ -12,6 +12,7 @@
 		</div>
 	</div>
 	<Hackfooter>
+		bla bl
 		<span slot="footer" class="version">Version {{ Hack::getVersion() }}</span>
 	</Hackfooter>
 @stop
