@@ -65,7 +65,7 @@
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">{{ trans('auth.input.email') }}</label>
 								<div class="col-sm-9">
-									<input type="email" class="form-control" :class="{'is-invalid':email.error}" :placeholder="trans('auth.input.email')" v-model="email.value">
+									<input type="email" name="email" class="form-control" :class="{'is-invalid':email.error}" :placeholder="trans('auth.input.email')" v-model="email.value" autocomplete="username">
 									<div class="invalid-feedback">
 								        {{ email.error }}
 								    </div>
@@ -74,7 +74,7 @@
 							<div class="form-group row">
 								<label class="col-sm-3 col-form-label">{{ trans('auth.input.password') }}</label>
 								<div class="col-sm-9">
-									<input type="password" class="form-control" :class="{'is-invalid':password.error}" :placeholder="trans('auth.input.password')" v-model="password.value">
+									<input type="password" name="password" class="form-control" :class="{'is-invalid':password.error}" :placeholder="trans('auth.input.password')" v-model="password.value" autocomplete="current-password">
 									<div class="invalid-feedback">
 								        {{ password.error }}
 								    </div>

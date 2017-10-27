@@ -1,6 +1,6 @@
 <template>
-	<div class="step">
-
+	<div class="header">
+		<slot></slot>
 	</div>
 </template>
 
@@ -12,9 +12,10 @@
 			};
 		},
     	props: [
-    		'steps',
-    		'step',
-    	],
-    }
 
+    	],
+    	mounted: function() {
+
+	    }
+    }
 </script>

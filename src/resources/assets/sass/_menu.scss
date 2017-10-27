@@ -1,0 +1,16 @@
+.menu {
+	width: 200px;
+	background-color: $color-menu;
+	float: left;
+	height: 100vh;
+
+	&-switcher {
+		width: 100%;
+		height: $height-header;
+	}
+
+	&-options {
+		width: 100%;
+		height: $height-header;
+	}
+}

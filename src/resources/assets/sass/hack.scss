@@ -1,8 +1,16 @@
 
+@import './vendor/thorazine/hack/src/resources/assets/sass/variables';
 @import "~bootstrap/scss/bootstrap";
-
 @import './vendor/thorazine/hack/src/resources/assets/sass/bootstrap-fixes';
+
+
 @import './vendor/thorazine/hack/src/resources/assets/sass/transitions';
+
+// components
+@import './vendor/thorazine/hack/src/resources/assets/sass/header';
+@import './vendor/thorazine/hack/src/resources/assets/sass/footer';
+@import './vendor/thorazine/hack/src/resources/assets/sass/menu';
+@import './vendor/thorazine/hack/src/resources/assets/sass/model';
 
 
 // pages

@@ -4,14 +4,15 @@ namespace Thorazine\Hack\Http\Controllers\Api;
 
 use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
-use Thorazine\Hack\Http\Requests\AuthRequest;
+use Thorazine\Hack\Http\Requests\ValidatePersistence;
 use Thorazine\Hack\Models\Auth\HackPersistence;
+use Thorazine\Hack\Http\Requests\AuthRequest;
 use Thorazine\Hack\Classes\Tools\Browser;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Exception;
 use Sentinel;
-use App\Models\DbLog;
+use Thorazine\Hack\Models\DbLog;
 use Mail;
 use Hack;
 use Location;
@@ -66,14 +67,12 @@ class AuthController extends Controller
                 // if we are in range or it is first run
                 if($active) {
                     DbLog::add(__CLASS__, 'login', json_encode($request->except('password')));
-                    return redirect()->route('cms.panel.index');
+                    return response()->json([
+	            		'url' => route('hack.overview.index'),
+			    	], 200);
                 }
 
-                // email user for verification to confirm the location
-                Mail::send('hack::emails.validate', ['user' => $user, 'persistence' => $persistenceAddData], function($message) use ($user) {
-                    $message->to($user->email);
-                    $message->subject('Hack CMS - Login attempt needs verification');
-                });
+                $this->sendPersistanceMail($user, $persistenceAddData);
 
                 return response()->json([
             		'url' => route('hack.overview.index'),
@@ -94,8 +93,60 @@ class AuthController extends Controller
     	], 422);
     }
 
+    /**
+     * Resend the persistence email
+     */
+    public function resend(Request $request)
+    {
+        $user = Hack::user();
+
+        if(! $user) {
+            abort(404, 'Not logged in.');
+        }
+
+        // no more code
+        if($code = Hack::code()) {
+
+            // get the persistance record for this session
+            $persistence = $this->persistence
+                ->where('code', $code)
+                ->where('user_id', $user->id)
+                ->where('verified', 0)
+                ->first();
+
+            if(! $persistence) {
+                abort(404, 'No persistence found.');
+            }
+
+            $this->sendPersistanceMail($user, $persistence);
+
+            return response()->json([
+            	'success' => true,
+            ], 200);
+        }
+        // no more code in session, so login, get code
+        return response()->json([
+        	'url' => route('hack.auth.index'),
+        ], 200);
+    }
+
+    /**
+	 * Generate a naice and random hash for persistence acceptance.
+	 */
     private function generateHash()
     {
     	return hash('sha256', microtime().rand().env('APP_KEY'));
+    }
+
+    /**
+     * Send the persistance mail
+     */
+    private function sendPersistanceMail($user, $persistence)
+    {
+    	// email user for verification
+        Mail::send('hack::emails.validate', ['user' => $user, 'persistence' => $persistence], function($message) use ($user) {
+            $message->to($user->email);
+            $message->subject('Hack - Login attempt needs verification');
+        });
     }
 }

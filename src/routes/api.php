@@ -7,5 +7,6 @@ Route::post('authenticate', 'AuthController@authenticate')->name('auth.authentic
 
 Route::group(['middleware' => 'sentinel.auth'], function() {
 
+	Route::post('authenticate/validate/resend', 'AuthController@resend')->name('auth.validate.resend');
 
 });

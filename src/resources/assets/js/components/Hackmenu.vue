@@ -1,6 +1,6 @@
 <template>
-	<div class="step">
-
+	<div class="menu">
+		some menu
 	</div>
 </template>
 
@@ -11,10 +11,12 @@
 
 			};
 		},
-    	props: [
-    		'steps',
-    		'step',
-    	],
+		methods: {
+
+    	},
+	    mounted: function() {
+
+	    }
     }
 
 </script>

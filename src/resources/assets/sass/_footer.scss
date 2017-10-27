@@ -1,0 +1,16 @@
+.footer {
+	width: 100%;
+	min-height: 35px;
+	background-color: $color-bg;
+
+	&-navigation {
+		height: 35px;
+		width: 100%;
+	}
+
+	&-information {
+		height: 35px;
+		width: 100%;
+		border-top: 1px solid $color-border;
+	}
+}

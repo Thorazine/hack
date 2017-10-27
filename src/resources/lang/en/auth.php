@@ -28,5 +28,6 @@ return [
 			To confirm your new location we sent you an email with a confirmation link.
 			Please open your email and click the link in your email to gain access.',
 		'resend' => 'Resend confirmation email',
+		'sent' => 'Email succesfully resent',
 	]
 ];

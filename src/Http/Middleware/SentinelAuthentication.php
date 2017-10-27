@@ -65,7 +65,8 @@ class SentinelAuthentication
                 }
             }
 
-            if(in_array($request->route()->getName(), ['hack.auth.persistence', 'hack.auth.persistence.resend'])) {
+            // exclude these routes from redirecting to the persistence
+            if(in_array($request->route()->getName(), ['hack.auth.persistence', 'hack.auth.validate', 'hack.api.auth.validate.resend'])) {
                 return $next($request);
             }
 

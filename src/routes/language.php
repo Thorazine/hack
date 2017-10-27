@@ -23,7 +23,10 @@ Route::get('/js/lang.js', function () {
 
 
 // Localization
-Route::get('{file}-lang.js', function ($file) {
+Route::get('{language}/{file}-lang.js', function ($language, $file) {
+
+	App::setLocale($language);
+
 	$data = [
 		$file => trans('hack::'.$file),
 	];

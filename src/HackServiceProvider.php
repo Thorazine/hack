@@ -18,6 +18,7 @@ class HackServiceProvider extends ServiceProvider
     {
         // add middleware to the Kernel
         $router->aliasMiddleware('sentinel.auth', \Thorazine\Hack\Http\Middleware\SentinelAuthentication::class);
+        $router->aliasMiddleware('sentinel.auth.not', \Thorazine\Hack\Http\Middleware\SentinelIsNotAuthenticated::class);
         $router->aliasMiddleware('site', \Thorazine\Hack\Http\Middleware\SiteRedirect::class);
         $router->aliasMiddleware('language', \Thorazine\Hack\Http\Middleware\LanguageRedirect::class);
 

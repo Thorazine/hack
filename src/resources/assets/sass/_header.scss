@@ -1,0 +1,26 @@
+.header {
+	transition: padding 0.5s ease;
+	padding-left: 200px;
+	height: $height-header;
+	background-color: $color-bg;
+	border-bottom: 1px solid $color-border;
+
+	&-menu {
+		&-button {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			width: 30px;
+			height: 30px;
+			// border: 1px solid #000;
+			text-align: center;
+			line-height: 30px;
+
+			&:before {
+				content: "\f0c9";
+				line-height: 30px;
+				font-size: 30px;
+			}
+		}
+	}
+}

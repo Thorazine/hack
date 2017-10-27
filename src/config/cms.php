@@ -9,9 +9,9 @@ return [
 		'en' => 'English',
 		'nl' => 'Dutch',
 	],
-	
 
-	/** 
+
+	/**
 	 * All the builders we use
 	 */
 	'builders' => [
@@ -47,9 +47,9 @@ return [
 		 	'builder' => 'Thorazine\Hack\Classes\Builders\Form',
 	 	],
 	],
-	
 
-	/** 
+
+	/**
 	 * All the availible form elements
 	 */
 	'forms' => [
@@ -95,23 +95,23 @@ return [
 
 
 	/**
-	 * The routes that do not need to be in the 
-	 * sentinel rights configuration to pass 
-	 * through the middleware check. 
+	 * The routes that do not need to be in the
+	 * sentinel rights configuration to pass
+	 * through the middleware check.
 	 * These routes alway work.
 	 */
 	'rights' => [
-	
+
 		'excluded' => [
-			'cms.panel.index',
-			'cms.api.gallery.upload',
-			'cms.api.gallery.destroy',
-			'cms.api.gallery.api',
-			'cms.api.gallery.crop',
-			'cms.user.show',
-			'cms.user.edit',
-			'cms.user.update',
-			'cms.user.destroy',
+			'hack.overview.index',
+			'hack.api.gallery.upload',
+			'hack.api.gallery.destroy',
+			'hack.api.gallery.api',
+			'hack.api.gallery.crop',
+			'hack.user.show',
+			'hack.user.edit',
+			'hack.user.update',
+			'hack.user.destroy',
 		],
 	],
 
@@ -143,9 +143,9 @@ return [
 		],
 
 		/**
-		 * The search results are indexed to make searching the pages 
-		 * more efficient. When you are low on pages it makes 
-		 * sense to only update the results on a page change. 
+		 * The search results are indexed to make searching the pages
+		 * more efficient. When you are low on pages it makes
+		 * sense to only update the results on a page change.
 		 * However, when the amount of pages grows you are going to want
 		 * to run the indexer in the background by running the hack:search
 		 * artisan command on a crontab every few minutes.
@@ -153,7 +153,7 @@ return [
 		'index_on_update' => true,
 
 		/**
-		 * Run the search engine on these views 
+		 * Run the search engine on these views
 		 */
 		'view_bind' => [
 			'search',

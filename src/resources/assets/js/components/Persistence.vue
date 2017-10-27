@@ -1,14 +1,26 @@
 <template>
 	<div class="auth">
 		<transition name="fadebottom">
-			<div class="auth-location">
+			<div class="auth-location" v-if="tab == 1">
 				<div class="card border-dark mb-3">
 					<div class="card-header">
 						<h4 class="card-title">{{ trans('auth.persistence.title') }}</h4>
 					</div>
 					<div class="card-body text-dark">
 						<p class="card-text" v-html="trans('auth.persistence.introduction')"></p>
-						<a href="" class="btn btn-dark pull-right">{{ trans('auth.persistence.resend') }}</a>
+						<button type="button" class="btn btn-dark pull-right" v-on:click="resendValidation">{{ trans('auth.persistence.resend') }}</button>
+					</div>
+				</div>
+			</div>
+		</transition>
+		<transition name="fadebottom">
+			<div class="auth-location" v-if="tab == 2">
+				<div class="card border-dark mb-3">
+					<div class="card-header">
+						<h4 class="card-title">{{ trans('auth.persistence.title') }}</h4>
+					</div>
+					<div class="card-body text-dark">
+						<p class="card-text" v-html="trans('auth.persistence.sent')"></p>
 					</div>
 				</div>
 			</div>
@@ -32,23 +44,18 @@
 		},
     	methods: {
     		nextTab(nr) {
-    			this.alerts = [];
     			this.tab = nr;
-    			$('title').html('Hack - '+trans('first.tab.'+nr+'.title'));
     		},
-    		createFirstUser() {
+    		resendValidation() {
     			this.busy = true;
-    			axios.post(BASE_URL+'/hack/api/first', {
-    				language: this.language.value,
-    				protocol: this.protocol.value,
-    				domain: this.domain.value,
-    				email: this.email.value,
-    				password: this.password.value,
-    				password_confirmation: this.password_confirmation.value,
-    			}).then((response) => {
+    			axios.post(BASE_URL+'/hack/api/authenticate/validate/resend', {}).then((response) => {
     				this.busy = false;
-    				this.nextTab(5);
-    				this.cmsUrl = response.data.url;
+    				if(response.data.url) {
+    					window.location.href = response.data.url;
+    				}
+    				else {
+    					this.nextTab(2);
+    				}
     			}).catch((error) => {
     				this.busy = false;
     				if(error.response.status == 422) {
@@ -59,7 +66,7 @@
 
 						if(error.response.data.errors) {
 							if(error.response.data.errors.domain) {
-								this.nextTab(3);
+								this.nextTab(1);
 							}
 						}
 					}

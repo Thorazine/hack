@@ -6,6 +6,7 @@ use Thorazine\Hack\Http\Requests\ValidatePersistence;
 use App\Http\Controllers\Controller;
 use Thorazine\Hack\Models\Auth\HackPersistence;
 use Illuminate\Http\Request;
+use Sentinel;
 
 class AuthController extends Controller
 {
@@ -18,11 +19,17 @@ class AuthController extends Controller
 
     public function index()
     {
+    	if(Sentinel::check()) {
+            return redirect()->route('hack.overview.index');
+        }
     	return view('hack::auth.index');
     }
 
     public function persistence()
     {
+    	if(Sentinel::check()) {
+            return redirect()->route('hack.overview.index');
+        }
     	return view('hack::auth.persistence');
     }
 
@@ -37,7 +44,7 @@ class AuthController extends Controller
     	]);
 
     	if($success) {
-    		return view('hack::overview.index');
+    		return redirect()->route('hack.overview.index');
     	}
 
     	abort(404, 'No validation found');
