@@ -15,11 +15,7 @@
 
     	],
     	mounted: function() {
-    		axios.get('https://www.kro-ncrv.nl/voorwiesteekjijeenkaarsjeop/candlescount').then(() => {
-    			alert('okido');
-    		}).catch((error) => {
-    			alert('nope');
-    		});
+
 	    }
     }
 </script>
