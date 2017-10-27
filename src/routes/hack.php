@@ -13,3 +13,11 @@ Route::group(['middleware' => 'sentinel.auth'], function() {
 	Route::get('overview', 'OverviewController@index')->name('overview.index');
 
 });
+
+/**
+ * Redirect the simple url to the dashboard
+ */
+// Route::redirect('/', route('hack.overview.index'), 302);
+Route::get('/', function() {
+	return redirect()->route('hack.overview.index');
+});
