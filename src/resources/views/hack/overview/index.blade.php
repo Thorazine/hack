@@ -20,5 +20,5 @@
 
 @section('script')
 	<script src="{{ asset('hack/js/en/hack-lang.js') }}"></script>
-	<script src="{{ asset('hack/js/hack.js') }}"></script>
+	<script src="{{ asset('js/hack.js') }}"></script>
 @stop

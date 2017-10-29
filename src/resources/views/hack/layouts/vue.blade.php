@@ -3,7 +3,7 @@
 	<title>Hack</title>
 	<meta name="robots" content="no index, no follow">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<link href="{{ asset('hack/css/hack.css') }}" type="text/css" rel="stylesheet" media="screen"/>
+	<link href="{{ asset('css/hack.css') }}" type="text/css" rel="stylesheet" media="screen"/>
 </head>
 <body>
 	<div id="app">

@@ -8,5 +8,5 @@
 
 @section('script')
 	<script src="{{ asset('hack/js/en/first-lang.js') }}"></script>
-	<script src="{{ asset('hack/js/first.js') }}"></script>
+	<script src="{{ asset('js/first.js') }}"></script>
 @stop

@@ -8,5 +8,5 @@
 
 @section('script')
 	<script src="{{ asset('hack/js/auth-lang.js') }}"></script>
-	<script src="{{ asset('hack/js/persistence.js') }}"></script>
+	<script src="{{ asset('js/persistence.js') }}"></script>
 @stop
