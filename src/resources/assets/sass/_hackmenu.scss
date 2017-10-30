@@ -1,0 +1,139 @@
+.hackmenu {
+	width: 200px;
+	background-color: $color-menu;
+	float: left;
+	height: 100vh;
+	position: relative;
+
+	&-header {
+		width: 100%;
+		height: $height-header;
+		border-bottom: 1px solid $color-border-secondary;
+		line-height: $height-header;
+		text-align: center;
+		padding-left: 10px;
+
+		&.hackmenu-select {
+			padding-left: 0px;
+		}
+
+		select {
+			width: 100%;
+			height: $height-header;
+			border-radius: 0px;
+			-webkit-appearance:none;
+			outline: none;
+			border:none;
+		    background-image:none;
+		    background-color:transparent;
+		    -webkit-box-shadow: none;
+		    -moz-box-shadow: none;
+		    box-shadow: none;
+		    color: $body-color;
+		    padding-left: 10px;
+		    cursor: pointer;
+		}
+	}
+
+	&-switcher {
+		width: 100%;
+		height: $height-header;
+	}
+
+	&-items, &-subitems {
+		margin-left: 0px;
+		padding: 0px;
+		display: block;
+		line-height: 35px;
+		font-size: 85%;
+		position: relative;
+		cursor: pointer;
+	}
+
+	&-items {
+		.hackmenu-subitems {
+			margin-left: -10px;
+		}
+	}
+
+	&-subitems {
+
+	}
+
+	&-item, &-subitem {
+		height: 35px;
+		width: 100%;
+		border-bottom: 1px solid $color-border-secondary;
+		list-style: none;
+		display: block;
+		position: relative;
+	}
+
+	&-item {
+		padding-left: 10px;
+
+		&:before {
+			content: ' ';
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			width: 4px;
+			background-color: $color-border-secondary;
+			transition: background 0.5s ease;
+		}
+
+		&:hover:before {
+			background-color: $color-secondary
+		}
+	}
+
+	&-subitem {
+		padding-left: 30px;
+
+		&:before {
+			@include fa("\f054");
+			height: 35px;
+			line-height: 35px;
+		    position: absolute;
+		    left: 10px;
+		}
+	}
+
+	&-options {
+		width: 100%;
+		height: $height-header;
+	}
+
+	&-footer {
+		height: 35px;
+		width: 100%;
+		position: absolute;
+		bottom: 0px;
+		border-top: 1px solid $color-border;
+
+		a {
+			display: block;
+			float: left;
+			width: 25%;
+			height: 35px;
+			line-height: 35px;
+			text-align: center;
+			border-right: 1px solid $color-border;
+			font-size: 1.5rem;
+			cursor: pointer;
+
+			&:hover {
+				background-color: $color-border-secondary;
+			}
+
+			&:nth-child(4) {
+				border-right: 0px;
+			}
+
+			.fa {
+				color: $color-border;
+			}
+		}
+	}
+}

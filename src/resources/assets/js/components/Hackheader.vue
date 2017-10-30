@@ -1,6 +1,7 @@
 <template>
-	<div class="header">
+	<div class="hackheader">
 		<slot></slot>
+		<slot name="hackheader-user"></slot>
 	</div>
 </template>
 

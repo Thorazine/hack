@@ -1,0 +1,53 @@
+.hackheader {
+	transition: padding 0.5s ease;
+	padding-left: 200px;
+	height: $height-header;
+	background-color: $color-bg;
+	border-bottom: 1px solid $color-border;
+
+	&-menu {
+		&-button {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			width: 30px;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+
+			&:before {
+				content: "\f0c9";
+				line-height: 30px;
+				font-size: 30px;
+			}
+		}
+	}
+
+	&-user {
+		float: right;
+		height: $height-header;
+		margin-right: 0px;
+		display: inline-block;
+
+
+		&-image {
+			padding: 5px;
+			width: $height-header;
+			display: inline-block;
+
+			img {
+				width: calc($height-header - 10px);
+				height: calc($height-header - 10px);
+				display: block;
+				max-height: 100%;
+				max-width: 100%;
+				border-radius: 20px;
+			}
+
+			.fa {
+				font-size: 40px;
+				color: $color-border;
+			}
+		}
+	}
+}

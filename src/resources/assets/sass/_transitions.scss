@@ -42,29 +42,42 @@
 
 /* base */
 .company {
-  backface-visibility: hidden;
-  z-index: 1;
+	backface-visibility: hidden;
+	z-index: 1;
 }
 
 /* moving */
 .company-move {
-  transition: all 600ms ease-in-out 50ms;
+	transition: all 600ms ease-in-out 50ms;
 }
 
 /* appearing */
 .company-enter-active {
-  transition: all 400ms ease-out;
+	transition: all 400ms ease-out;
 }
 
 /* disappearing */
 .company-leave-active {
-  transition: all 200ms ease-in;
-  position: absolute;
-  z-index: 0;
+	transition: all 200ms ease-in;
+	position: absolute;
+	z-index: 0;
 }
 
 /* appear at / disappear to */
 .company-enter,
 .company-leave-to {
-  opacity: 0;
+	opacity: 0;
+}
+
+// slide
+.slidefade-enter-active,
+.slidefade-leave-active {
+	transition: all 0.25s;
+	max-height: 600px;
+}
+.slidefade-enter,
+.slidefade-leave-to
+{
+	opacity: 0;
+	max-height: 0px;
 }

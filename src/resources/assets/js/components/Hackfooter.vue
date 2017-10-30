@@ -1,9 +1,9 @@
 <template>
-	<div class="footer">
-		<div class="footer-navigation">
+	<div class="hackfooter">
+		<div class="hackfooter-navigation">
 			<slot></slot>
 		</div>
-		<div class="footer-information">
+		<div class="hackfooter-information">
 			<slot name="footer"></slot>
 		</div>
 	</div>

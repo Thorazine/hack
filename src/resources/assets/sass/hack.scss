@@ -3,13 +3,15 @@
 @import "~bootstrap/scss/bootstrap";
 @import './vendor/thorazine/hack/src/resources/assets/sass/bootstrap-fixes';
 
+// mixins
+@import './vendor/thorazine/hack/src/resources/assets/sass/mixins/fa';
 
 @import './vendor/thorazine/hack/src/resources/assets/sass/transitions';
 
 // components
-@import './vendor/thorazine/hack/src/resources/assets/sass/header';
-@import './vendor/thorazine/hack/src/resources/assets/sass/footer';
-@import './vendor/thorazine/hack/src/resources/assets/sass/menu';
+@import './vendor/thorazine/hack/src/resources/assets/sass/hackheader';
+@import './vendor/thorazine/hack/src/resources/assets/sass/hackfooter';
+@import './vendor/thorazine/hack/src/resources/assets/sass/hackmenu';
 @import './vendor/thorazine/hack/src/resources/assets/sass/model';
 
 
