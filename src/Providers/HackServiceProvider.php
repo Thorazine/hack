@@ -26,7 +26,7 @@ class HackServiceProvider extends ServiceProvider
     {
         App::bind('hack', function()
         {
-            return new \Thorazine\Hack\Classes\Facades\Hack;
+            return new \Thorazine\Hack\Hack;
         });
     }
 }

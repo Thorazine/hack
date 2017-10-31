@@ -104,6 +104,11 @@ return [
 
 		'excluded' => [
 			'hack.overview.index',
+			'hack.settings.index',
+			'hack.subitem1.index',
+			'hack.subitem2.index',
+			'hack.subitem3.index',
+			'hack.subitem4.index',
 			'hack.api.gallery.upload',
 			'hack.api.gallery.destroy',
 			'hack.api.gallery.api',
@@ -160,5 +165,10 @@ return [
 			'example.search',
 		],
 	],
+
+	/**
+	 * The url for all the updates
+	 */
+	'update_url' => 'http://localhost/hack2/public/hack/status.json',
 
 ];

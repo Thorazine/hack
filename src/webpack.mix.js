@@ -14,6 +14,7 @@ let mix = require('laravel-mix');
 mix.js('vendor/thorazine/hack/src/resources/assets/js/auth.js', 'public/js')
 	.js('vendor/thorazine/hack/src/resources/assets/js/first.js', 'public/js')
 	.js('vendor/thorazine/hack/src/resources/assets/js/persistence.js', 'public/js')
+	.js('vendor/thorazine/hack/src/resources/assets/js/settings.js', 'public/js')
 	.js('vendor/thorazine/hack/src/resources/assets/js/hack.js', 'public/js')
 
    .sass('vendor/thorazine/hack/src/resources/assets/sass/hack.scss', 'public/css')

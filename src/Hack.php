@@ -1,6 +1,6 @@
 <?php
 
-namespace Thorazine\Hack\Classes\Facades;
+namespace Thorazine\Hack;
 
 use Thorazine\Hack\Classes\PageOutput;
 use Thorazine\Hack\Models\Gallery;
@@ -45,7 +45,7 @@ class Hack {
 	 * Flag for menu builder
 	 * @var boolean
 	 */
-	private $menuOpen = false;
+	// private $menuOpen = false;
 
 	/**
 	 * Flag for page not found
@@ -450,36 +450,70 @@ class Hack {
         return $this->gallery;
     }
 
-    /*
-     * Get the submenus for a parent
-     */
-    public function getSubMenu($children)
-    {
-    	$html = '';
-    	foreach($children as $child) {
-			if(@$child['route'] && (Hack::hasPermission(Hack::site('id').'.'.$child['route']) || @$menu['verified'])) {
-                $html .= view('hack::partials.sub-menu')
-                	->with('child', $child)
-                	->render();
-			}
-		}
-		return $html;
-    }
+  //   /*
+  //    * Get the submenus for a parent
+  //    */
+  //   public function getSubMenu($children)
+  //   {
+  //   	$html = '';
+  //   	foreach($children as $child) {
+		// 	if(@$child['route'] && (Hack::hasPermission(Hack::site('id').'.'.$child['route']) || @$menu['verified'])) {
+  //               $html .= view('hack::partials.sub-menu')
+  //               	->with('child', $child)
+  //               	->render();
+		// 	}
+		// }
+		// return $html;
+  //   }
 
-    /*
-     * Flag the menu open
-     */
-    public function setMenuOpen($state)
-    {
-    	$this->menuOpen = $state;
-    }
+  //   /*
+  //    * Flag the menu open
+  //    */
+  //   public function setMenuOpen($state)
+  //   {
+  //   	$this->menuOpen = $state;
+  //   }
 
-    /*
-     * Return the state of a flag
-     */
-    public function getMenu()
+  //   /*
+  //    * Return the state of a flag
+  //    */
+  //   public function getMenu()
+  //   {
+  //   	return $this->menuOpen;
+  //   }
+
+
+    public function menu()
     {
-    	return $this->menuOpen;
+    	$menus = config('menu');
+    	$url = \Request::url();
+    	foreach($menus as &$menu) {
+
+    		if(@$menu['route']) {
+    			$menu['route'] = route($menu['route']);
+    		}
+
+    		if(@$menu['children']) {
+    			foreach($menu['children'] as &$child) {
+
+    				if(@$child['route']) {
+    					$child['route'] = route($child['route']);
+    					if(strpos($url, $child['route']) !== false) {
+    						$child['active'] = true;
+    						$menu['active'] = true;
+    					}
+    				}
+
+    				foreach((@$child['route-matches']) ? $child['route-matches'] : [] as $match) {
+    					if(strpos($url, $match) !== false) {
+    						$child['active'] = true;
+    						$menu['active'] = true;
+    					}
+    				}
+    			}
+    		}
+    	}
+    	return $menus;
     }
 
     /*
@@ -502,6 +536,14 @@ class Hack {
 	    catch(Exception $e) {
 	    	return '0.0.0';
 	    }
+    }
+
+    /**
+     * Check for updates
+     */
+    public function update()
+    {
+    	$content = file_get_contents(config('cms.update_url'));
     }
 
 }

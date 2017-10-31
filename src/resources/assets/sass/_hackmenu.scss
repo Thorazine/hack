@@ -40,7 +40,7 @@
 		height: $height-header;
 	}
 
-	&-items, &-subitems {
+	&-items, &-children {
 		margin-left: 0px;
 		padding: 0px;
 		display: block;
@@ -48,48 +48,66 @@
 		font-size: 85%;
 		position: relative;
 		cursor: pointer;
+		clear: both;
 	}
 
 	&-items {
-		.hackmenu-subitems {
+		.hackmenu-children {
 			margin-left: -10px;
 		}
 	}
 
-	&-subitems {
+	&-children {
 
 	}
 
-	&-item, &-subitem {
-		height: 35px;
+	&-item, &-child {
+		min-height: 35px;
 		width: 100%;
-		border-bottom: 1px solid $color-border-secondary;
 		list-style: none;
 		display: block;
 		position: relative;
+
+		a {
+			display: block;
+			width: 100%;
+			height: 35px;
+			text-decoration: none;
+			color: inherit;
+		}
 	}
 
 	&-item {
 		padding-left: 10px;
+		border-bottom: 1px solid $color-border-secondary;
 
 		&:before {
 			content: ' ';
 			position: absolute;
 			left: 0;
+			height: 35px;
 			top: 0;
-			bottom: 0;
 			width: 4px;
 			background-color: $color-border-secondary;
 			transition: background 0.5s ease;
 		}
 
 		&:hover:before {
-			background-color: $color-secondary
+			background-color: $color-secondary;
+		}
+
+		&.active:before {
+			background-color: $color-secondary;
 		}
 	}
 
-	&-subitem {
+	&-child {
 		padding-left: 30px;
+		border-top: 1px solid $color-border-secondary;
+
+		&:hover {
+			color: $color-link-hover;
+		}
 
 		&:before {
 			@include fa("\f054");
@@ -97,6 +115,21 @@
 			line-height: 35px;
 		    position: absolute;
 		    left: 10px;
+		}
+
+		&.active {
+			color: $color-secondary;
+		}
+
+		&.active:after {
+			content: ' ';
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 35px;
+			width: 4px;
+			background-color: $color-secondary;
+			transition: background 0.5s ease;
 		}
 	}
 

@@ -25,7 +25,8 @@
         "laravel": {
             "providers": [
                 "Thorazine\\Hack\\HackServiceProvider",
-                "Thorazine\\Hack\\Providers\\RouteServiceProvider"
+                "Thorazine\\Hack\\Providers\\RouteServiceProvider",
+
             ],
             "aliases": {
                 "Location": "Thorazine\\Hack\\Facades\\LocationFacade"
