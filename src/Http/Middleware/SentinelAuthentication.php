@@ -72,6 +72,10 @@ class SentinelAuthentication
             return redirect()->route('cms.auth.persistence');
         }
 
+        if($request->route()->getName() === 'cms.auth.index') {
+            return $next($request);
+        }
+
         return redirect()->route('cms.auth.index');
     }
 
@@ -86,7 +90,7 @@ class SentinelAuthentication
         foreach($user->roles as $role) {
             $permissions = array_merge($permissions, $role->permissions);
         }
-        
+
         return $permissions;
     }
 
