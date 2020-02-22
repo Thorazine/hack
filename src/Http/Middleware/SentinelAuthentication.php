@@ -72,10 +72,9 @@ class SentinelAuthentication
             return redirect()->route('cms.auth.persistence');
         }
 
-        if($request->route()->getName() === 'cms.auth.index') {
+        if(in_array($request->route()->getName(), ['cms.auth.index', 'cms.auth.store'])) {
             return $next($request);
         }
-
         return redirect()->route('cms.auth.index');
     }
 

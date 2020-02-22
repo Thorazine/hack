@@ -6,20 +6,21 @@
     marker;
 
 $(document).ready(function() {
-	
-	$('#location').click(function(event) {
-		$(this).prop('disabled', 'disabled').html('One moment please, requesting location <i class="fa fa-spinner fa-spin"></i>');
-		getLocation();
-	});
 
-	// if(! $('#latitude').val() && ! $('#longitude').val()) {
-	// 	if($('#information').data('accepted')) {
-	// 		alert('accepted');
-	// 	}
-	// 	else {
-	// 		// getLocation();
-	// 	}
-	// }
+    $('#location').click(function(event) {
+        $(this).prop('disabled', 'disabled').html('One moment please, requesting location <i class="fa fa-spinner fa-spin"></i>');
+        getLocation();
+    });
+
+    // if(! $('#latitude').val() && ! $('#longitude').val()) {
+    //  if($('#information').data('accepted')) {
+    //      alert('accepted');
+    //  }
+    //  else {
+    //      // getLocation();
+    //  }
+    // }
+
 
 });
 
@@ -28,24 +29,49 @@ $(document).ready(function() {
  * Use HTML5 to get the users position
  */
 function getLocation() {
-	console.log('getLocation');
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function(position) {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
 
-			$('#latitude').val(position.coords.latitude);
-			$('#longitude').val(position.coords.longitude);
-			$('.panel').hide();
-			$('#submit').prop('disabled', false).text('Submit');
-			$('#authentication').fadeIn();
+            $('#latitude').val(position.coords.latitude);
+            $('#longitude').val(position.coords.longitude);
+            $('.panel').hide();
+            $('#submit').prop('disabled', false).text('Submit');
+            $('#authentication').fadeIn();
 
-		}, 
-		function(error) {
-			showErrorMap();
-		});
-	} 
-	else {
-		showErrorMap();
-	}
+        },
+        function(error) {
+            getLocationByInfo();
+        });
+    }
+    else {
+        showErrorMap();
+    }
+}
+
+
+function getLocationByInfo()
+{
+
+    $.get("https://api.ipdata.co?api-key=be5013fcc732346e548c0e943a1446965c27f438ac0c10f9d6541314", function (response) {
+        if(response.latitude && response.longitude) {
+            $('#latitude').val(response.latitude);
+            $('#longitude').val(response.longitude);
+            $('.panel').hide();
+            $('#submit').prop('disabled', false).text('Submit');
+            $('#authentication').fadeIn();
+        }
+        else {
+            showErrorMap();
+            $('#locationInput').val('Amsterdam, NL');
+            setMapLocation('Amsterdam, NL', 3000);
+        }
+    }, "jsonp")
+    .fail(function(error) {
+        showErrorMap();
+        $('#locationInput').val('Amsterdam, NL');
+        setMapLocation('Amsterdam, NL', 3000);
+
+    });
 }
 
 
@@ -54,38 +80,38 @@ function getLocation() {
  */
 function showErrorMap() {
 
-	// load the google map
-	getLatLongMapHtml(document.getElementById('error-map'));
-	
-	$('#setLocation').click(function(event) {
-		setMapLocation($('#locationInput').val(), 1);
-	});
+    // load the google map
+    getLatLongMapHtml(document.getElementById('error-map'));
 
-	$('#locationInput').keypress(function(e) {
-	    if(e.which == 13) {
-	        setMapLocation($(this).val(), 1);
-	    }
-	});
+    $('#setLocation').click(function(event) {
+        setMapLocation($('#locationInput').val(), 1);
+    });
 
-	$('#selectLocation').click(function(event) {
-		console.log(addressLatLng);
-		$('.panel').hide();
-		$('#submit').prop('disabled', false).text('Submit');
-		$('#latitude').val(addressLatLng.lat());
-		$('#longitude').val(addressLatLng.lng());
-		$('#authentication').fadeIn();
-	});
+    $('#locationInput').keypress(function(e) {
+        if(e.which == 13) {
+            setMapLocation($(this).val(), 1);
+        }
+    });
 
-	$('.panel').hide();
+    $('#selectLocation').click(function(event) {
+        console.log(addressLatLng);
+        $('.panel').hide();
+        $('#submit').prop('disabled', false).text('Submit');
+        $('#latitude').val(addressLatLng.lat());
+        $('#longitude').val(addressLatLng.lng());
+        $('#authentication').fadeIn();
+    });
+
+    $('.panel').hide();
     $('#error').fadeIn();
 }
 
 /**
  * Create the map options
  */
-function getLatLongMapHtml(placeholder) 
+function getLatLongMapHtml(placeholder)
 {
-	// Load the map options
+    // Load the map options
     var mapOptions = {
         scrollwheel: true,
         zoomControl: true,
@@ -97,22 +123,22 @@ function getLatLongMapHtml(placeholder)
         styles: googleMapsStyle(),
     };
 
-	map = new google.maps.Map(placeholder, mapOptions);
+    map = new google.maps.Map(placeholder, mapOptions);
 
-	// find the users location
-	getIPLocation();
+    // find the users location
+    getIPLocation();
 }
 
 /**
  * Set the users location on the map
- * 
+ *
  * @param string (address)
  */
 function setMapLocation(address, radius)
 {
-	
-	if(typeof radius == "undefined") {
-    	radius = 100;
+
+    if(typeof radius == "undefined") {
+        radius = 100;
     }
 
     var geocoder = new google.maps.Geocoder();
@@ -125,7 +151,7 @@ function setMapLocation(address, radius)
             addressLatLng = new google.maps.LatLng(centerLatLng[0], centerLatLng[1]);
 
             $('#latitude').val(centerLatLng[0]);
-			$('#longitude').val(centerLatLng[1]);
+            $('#longitude').val(centerLatLng[1]);
 
             map.setCenter(addressLatLng);
 
@@ -141,10 +167,10 @@ function setMapLocation(address, radius)
     google.maps.event.trigger(map,'resize');
 
     google.maps.event.addListener(map, 'click', function(event) {
-    	setMarker(event.latLng);
-    	$('#latitude').val(event.latLng.lat());
-		$('#longitude').val(event.latLng.lng());
-	});
+        setMarker(event.latLng);
+        $('#latitude').val(event.latLng.lat());
+        $('#longitude').val(event.latLng.lng());
+    });
 }
 
 /**
@@ -152,27 +178,27 @@ function setMapLocation(address, radius)
  */
 function getIPLocation()
 {
-	$.get("http://ipinfo.io", function (response) {
-	    if(response.city && response.region) {
-	    	$('#locationInput').val(response.city + ', ' + response.region);
-	    	setMapLocation(response.city + ((response.city && response.region) ? ', ' : '') + response.region);
-	    }
-	    else {
-	    	$('#locationInput').val('Amsterdam, NL');
-	    	setMapLocation('Amsterdam, NL', 3000);
-	    }
-	}, "jsonp")
-	.fail(function(error) {
-		$('#locationInput').val('Amsterdam, NL');
-		setMapLocation('Amsterdam, NL', 3000);
-	});
+    $.get("http://ipinfo.io", function (response) {
+        if(response.city && response.region) {
+            $('#locationInput').val(response.city + ', ' + response.region);
+            setMapLocation(response.city + ((response.city && response.region) ? ', ' : '') + response.region);
+        }
+        else {
+            $('#locationInput').val('Amsterdam, NL');
+            setMapLocation('Amsterdam, NL', 3000);
+        }
+    }, "jsonp")
+    .fail(function(error) {
+        $('#locationInput').val('Amsterdam, NL');
+        setMapLocation('Amsterdam, NL', 3000);
+    });
 }
 
 
 function setMarker(location)
-{	
-	// remove old marker id there is one
-	if(marker) {
+{
+    // remove old marker id there is one
+    if(marker) {
         marker.setMap(null);
     }
 
@@ -185,5 +211,5 @@ function setMarker(location)
 
 
 function googleMapsStyle() {
-	return [{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"labels.text","stylers":[{"visibility":"off"}]}];
+    return [{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"labels.text","stylers":[{"visibility":"off"}]}];
 }
