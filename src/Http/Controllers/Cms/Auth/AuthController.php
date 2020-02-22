@@ -21,7 +21,7 @@ use Mail;
 
 class AuthController extends Controller
 {
-    
+
     private $locationSession = null;
 
 
@@ -78,9 +78,10 @@ class AuthController extends Controller
                 Cms::setUser($user);
 
                 // convert the coordinates to a city and country
-                $location = Location::locale('en')->coordinatesToAddress(['latitude' => $request->latitude, 'longitude' => $request->longitude])->get();
-
-                $active = $this->persistence->shouldBeActive($user->id, $request->latitude, $request->longitude);
+                $location = json_decode(file_get_contents('https://api.ipdata.co?api-key=be5013fcc732346e548c0e943a1446965c27f438ac0c10f9d6541314'));
+                // $location = Location::locale('en')->coordinatesToAddress(['latitude' => $request->latitude, 'longitude' => $request->longitude])->get();
+// dd($location);
+                $active = $this->persistence->shouldBeActive($user->id, $location->latitude, $location->longitude);
 
                 $hash = hash('sha256', microtime().rand().env('APP_KEY'));
 
@@ -90,10 +91,10 @@ class AuthController extends Controller
                         ->browserAndVersion('browser')
                         ->get()+[
                     'site_id' => Cms::siteId(),
-                    'latitude' => $request->latitude,
-                    'longitude' => $request->longitude,
-                    'country' => $location['country'],
-                    'city' => $location['city'],
+                    'latitude' => $location->latitude,
+                    'longitude' => $location->longitude,
+                    'country' => $location->country_name,
+                    'city' => $location->city,
                     'verified' => $active,
                     'verification_hash' => $hash,
                 ];
@@ -105,10 +106,10 @@ class AuthController extends Controller
                     ->update($persistenceAddData);
 
                 // if we are in range or it is first run
-                if($active) {    
+                if($active) {
                     DbLog::add(__CLASS__, 'login', json_encode($request->except('password')));
                     return redirect()->route('cms.panel.index');
-                }   
+                }
 
                 // email user for verification to confirm the location
                 Mail::send('hack::emails.validate', ['user' => $user, 'persistence' => $persistenceAddData], function($message) use ($user) {
@@ -118,8 +119,8 @@ class AuthController extends Controller
 
                 return redirect()->route('cms.auth.persistence');
             }
-            $error = 'Wrong email address and/or password';            
-        } 
+            $error = 'Wrong email address and/or password';
+        }
         catch(NotActivatedException $e) {
             $error = 'You are not activated.';
         }
@@ -157,7 +158,7 @@ class AuthController extends Controller
         }
 
         // no more code
-        if($code = Cms::code()) {            
+        if($code = Cms::code()) {
 
             // get the persistance record for this session
             $persistence = $this->persistence
