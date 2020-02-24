@@ -79,7 +79,7 @@ class AuthController extends Controller
 
                 // convert the coordinates to a city and country
 
-                $location = Location::locale('en')->coordinatesToAddress(['latitude' => $request->latitude, 'longitude' => $request->longitude])->get();
+                $location = Location::locale('en')->coordinatesToAddress(['latitude' => $request->latitude, 'longitude' => $request->longitude])->get(true);
 
                 $active = $this->persistence->shouldBeActive($user->id, $location->latitude, $location->longitude);
 
@@ -91,8 +91,8 @@ class AuthController extends Controller
                         ->browserAndVersion('browser')
                         ->get()+[
                     'site_id' => Cms::siteId(),
-                    'latitude' => $request->latitude,
-                    'longitude' => $request->longitude,
+                    'latitude' => $location->latitude,
+                    'longitude' => $location->longitude,
                     'country' => $location->country,
                     'city' => $location->city,
                     'verified' => $active,
