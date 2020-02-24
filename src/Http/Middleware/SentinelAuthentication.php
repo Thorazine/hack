@@ -65,14 +65,14 @@ class SentinelAuthentication
                 }
             }
 
-            if(in_array($request->route()->getName(), ['cms.auth.persistence', 'cms.auth.persistence.resend'])) {
+            if(in_array($request->route()->getName(), ['cms.auth.persistence', 'cms.auth.persistence.resend', 'cms.email.validate'])) {
                 return $next($request);
             }
 
             return redirect()->route('cms.auth.persistence');
         }
 
-        if(in_array($request->route()->getName(), ['cms.auth.index', 'cms.auth.store'])) {
+        if(in_array($request->route()->getName(), ['cms.auth.index', 'cms.auth.store', 'cms.email.validate'])) {
             return $next($request);
         }
         return redirect()->route('cms.auth.index');
