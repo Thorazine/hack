@@ -78,9 +78,9 @@ class AuthController extends Controller
                 Cms::setUser($user);
 
                 // convert the coordinates to a city and country
-                $location = json_decode(file_get_contents('https://api.ipdata.co?api-key=be5013fcc732346e548c0e943a1446965c27f438ac0c10f9d6541314'));
-                // $location = Location::locale('en')->coordinatesToAddress(['latitude' => $request->latitude, 'longitude' => $request->longitude])->get();
-// dd($location);
+
+                $location = Location::locale('en')->coordinatesToAddress(['latitude' => $request->latitude, 'longitude' => $request->longitude])->get();
+
                 $active = $this->persistence->shouldBeActive($user->id, $location->latitude, $location->longitude);
 
                 $hash = hash('sha256', microtime().rand().env('APP_KEY'));
@@ -91,9 +91,9 @@ class AuthController extends Controller
                         ->browserAndVersion('browser')
                         ->get()+[
                     'site_id' => Cms::siteId(),
-                    'latitude' => $location->latitude,
-                    'longitude' => $location->longitude,
-                    'country' => $location->country_name,
+                    'latitude' => $request->latitude,
+                    'longitude' => $request->longitude,
+                    'country' => $location->country,
                     'city' => $location->city,
                     'verified' => $active,
                     'verification_hash' => $hash,
