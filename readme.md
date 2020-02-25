@@ -1,6 +1,12 @@
+<p align="center">
+<a href="https://packagist.org/packages/thorazine/hack"><img src="https://poser.pugx.org/thorazine/hack/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/thorazine/hack"><img src="https://poser.pugx.org/thorazine/hack/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/thorazine/hack"><img src="https://poser.pugx.org/thorazine/hack/license.svg" alt="License"></a>
+</p>
+
 ## Introduction
 This is a personal content management system I use for clients.
-Feel free to try it, but don't expect support any day soon. 
+Feel free to try it, but don't expect support any day soon.
 
 
 ## Included in package
@@ -14,8 +20,8 @@ Feel free to try it, but don't expect support any day soon.
 - The default Laravel Auth is totally unused and therfore availible for your project
 - Persistant login with session control
 - Advanced/automatic browser cache
-- Full cache (memcached/redis) on frontend requests 
-- Cache flushed by tags, minimizing flushed items 
+- Full cache (memcached/redis) on frontend requests
+- Cache flushed by tags, minimizing flushed items
 - All pages and sites are equipped with editable on-/offline timestamps
 - Gallery with aspect ratio cropper (customisable per input)
 - Customisable wysiwygs per input and pre site
@@ -58,7 +64,7 @@ npm install
 npm run dev
 ```
 
-This command runs some commands and finds and replaces some settings. What it exactly does can be found on the 
+This command runs some commands and finds and replaces some settings. What it exactly does can be found on the
 [wiki page](https://github.com/Thorazine/hack/wiki/Manual-installation-and-setup).
 
 
@@ -68,7 +74,7 @@ A Google API key can be retrieved [here](https://developers.google.com/maps/docu
 
 
 ## Testing
-To see if everything has gone as planned you can run the [installation test](https://github.com/Thorazine/hack/wiki/testing). 
+To see if everything has gone as planned you can run the [installation test](https://github.com/Thorazine/hack/wiki/testing).
 
 
 ## Setup your site
