@@ -178,7 +178,7 @@ function setMapLocation(address, radius)
  */
 function getIPLocation()
 {
-    $.get("http://ipinfo.io", function (response) {
+    $.get("https://ipinfo.io", function (response) {
         if(response.city && response.region) {
             $('#locationInput').val(response.city + ', ' + response.region);
             setMapLocation(response.city + ((response.city && response.region) ? ', ' : '') + response.region);
