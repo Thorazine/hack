@@ -6,12 +6,7 @@
     "license": "MIT",
     "require": {
         "ext-gd": "*",
-        "ext-exif": "*",
-        "laravelcollective/html": "5.*",
-        "intervention/image": "^2.3",
-        "cartalyst/sentinel": "^2.0",
-        "jenssegers/agent": "^2.5",
-        "thorazine/location": "^3.0"
+        "ext-exif": "*"
     },
     "autoload": {
         "psr-4": {
