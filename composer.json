@@ -5,15 +5,12 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "laravel/framework": "5.3.*|^5.4.13",
         "ext-gd": "*",
         "ext-exif": "*",
         "laravelcollective/html": "5.*",
         "intervention/image": "^2.3",
         "cartalyst/sentinel": "^2.0",
         "jenssegers/agent": "^2.5",
-        "barryvdh/laravel-debugbar": "^2.3",
-        "maatwebsite/excel": "^2.1",
         "thorazine/location": "^3.0"
     },
     "autoload": {
