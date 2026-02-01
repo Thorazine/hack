@@ -2,6 +2,7 @@
 
 namespace Thorazine\Hack\Models\Auth;
 
+use IteratorAggregate;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cartalyst\Sentinel\Users\EloquentUser;
 use Thorazine\Hack\Models\Auth\CmsRole;
@@ -122,7 +123,7 @@ class CmsUser extends EloquentUser
     /**
      * Get all the availible roles
      */
-    public function getRoles($data = [], $key = '')
+    public function getRoles() : IteratorAggregate
     {
         if(! @$this->cmsRoles) {
            $this->cmsRoles = CmsRole::select('id', 'name')->orderBy('name', 'asc')->pluck('name', 'id');
